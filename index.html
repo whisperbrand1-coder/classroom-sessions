@@ -1,0 +1,325 @@
+<!doctype html>
+<!-- ============================================================
+     STUDY HUB — personal index linking the two Session-4 sites
+     (interactive presentations) + the two bilingual study guides.
+     Neo-brutalist design family (ref: alfredo-last-lecture.vercel.app).
+     Standalone · offline-friendly · does not modify the linked files.
+     ============================================================ -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<title>📚 My Study Hub — Session 4</title>
+<meta name="description" content="Personal study hub: interactive presentations and bilingual study notes for AI and Cybersecurity Session 4.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
+<style>
+:root{
+  --paper:#FBF9F3; --ink:#1C2434; --muted:#5C6478; --line:#E6E2D4; --hl:#FFE873;
+  --teal:#0F6E56; --teal-l:#E1F5EE; --violet:#463A9C; --violet-l:#ECEAFB;
+  --cyan:#0C6C79; --cyan-l:#E0F4F6; --red:#B02A2A; --red-l:#FBE9E9;
+  --amber:#8A5A12; --amber-l:#FBF0DA; --blue:#1D5B9E; --blue-l:#E7F0FA;
+  --disp:'Baloo 2','Trebuchet MS',system-ui,sans-serif;
+  --body:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,Consolas,monospace;
+  --shadow:6px 6px 0 rgba(28,36,52,.9); --shadow-s:3px 3px 0 var(--ink); --shadow-xs:2px 2px 0 var(--ink);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--body);color:var(--ink);background:var(--paper);line-height:1.65;font-size:17px;
+  background-image:linear-gradient(rgba(28,36,52,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(28,36,52,.045) 1px,transparent 1px);
+  background-size:26px 26px;min-height:100vh;-webkit-text-size-adjust:100%}
+h1,h2,h3{font-family:var(--disp);line-height:1.18;font-weight:700}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--violet);outline-offset:3px;border-radius:8px}
+.hl{background:linear-gradient(100deg,transparent 1%,var(--hl) 4%,var(--hl) 96%,transparent 99%);padding:0 8px;border-radius:5px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px 80px}
+.masri{direction:rtl;font-size:15px;color:var(--muted)}
+
+/* topbar */
+.topbar{position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:12px;padding:12px 20px;
+  background:rgba(251,249,243,.95);backdrop-filter:blur(6px);border-bottom:2px solid var(--ink)}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--disp);font-weight:800;font-size:18px}
+.brand .mk{width:30px;height:30px}
+.topbar .sp{flex:1}
+.tag-mono{font-family:var(--mono);font-size:12px;font-weight:600;background:var(--ink);color:#fff;padding:5px 12px;border-radius:999px;border:2px solid var(--ink)}
+
+/* hero */
+.hero{text-align:center;padding:52px 0 24px}
+.stamp{display:inline-block;font-family:var(--mono);font-size:12.5px;letter-spacing:1px;border:2px dashed var(--violet);
+  color:var(--violet);padding:5px 15px;border-radius:8px;transform:rotate(-1.5deg);background:#fff;box-shadow:var(--shadow-xs)}
+.hero h1{font-size:clamp(32px,6vw,54px);margin:18px 0 6px;letter-spacing:-.5px}
+.hero .sub{color:var(--muted);font-size:clamp(16px,2.4vw,20px);max-width:640px;margin:6px auto 0}
+.hero .sub.masri{margin-top:8px}
+
+/* session group */
+.group{margin-top:34px}
+.group-head{display:flex;align-items:center;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+.group-head .gi{width:46px;height:46px;flex:0 0 auto;border:2px solid var(--ink);border-radius:12px;display:grid;place-items:center;font-size:24px;box-shadow:var(--shadow-xs)}
+.group-head h2{font-size:clamp(20px,3.4vw,28px)}
+.group-head .gm{direction:rtl;color:var(--muted);font-size:14px;width:100%}
+.group.ai .gi{background:var(--violet-l)} .group.cy .gi{background:var(--teal-l)}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
+.card{display:flex;flex-direction:column;background:#fff;border:2px solid var(--ink);border-radius:16px;
+  box-shadow:var(--shadow);overflow:hidden;transition:transform .13s,box-shadow .13s}
+.card:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 rgba(28,36,52,.9)}
+.card:active{transform:translate(2px,2px);box-shadow:2px 2px 0 rgba(28,36,52,.9)}
+.card .top{padding:18px 20px 14px;border-bottom:2px solid var(--ink);display:flex;align-items:center;gap:12px}
+.card .top .ic{font-size:30px;line-height:1}
+.card .top .kind{margin-inline-start:auto;font-family:var(--mono);font-size:11px;font-weight:600;padding:4px 10px;border-radius:999px;border:2px solid var(--ink);white-space:nowrap}
+.card.pres .top .kind{background:var(--amber-l)}
+.card.notes .top .kind{background:var(--blue-l)}
+.card .body{padding:16px 20px 20px;flex:1;display:flex;flex-direction:column;gap:8px}
+.card h3{font-size:20px}
+.card .en{font-size:14.5px;color:var(--ink)}
+.card .masri{margin-top:2px}
+.card .meta{display:flex;gap:7px;flex-wrap:wrap;margin-top:4px}
+.chip{font-size:12px;font-weight:600;border:1.6px solid var(--muted);color:var(--muted);border-radius:999px;padding:3px 10px}
+.card .go{margin-top:auto;align-self:flex-start;display:inline-flex;align-items:center;gap:8px;font-family:var(--disp);font-weight:700;font-size:15px;
+  background:var(--ink);color:#fff;border:2px solid var(--ink);border-radius:10px;padding:9px 18px;box-shadow:var(--shadow-s)}
+.card.ai .top{background:var(--violet-l)} .card.cy .top{background:var(--teal-l)}
+
+/* how-to note */
+.note{margin-top:36px;border:2px solid var(--ink);border-inline-start:6px solid var(--hl);background:#FFFBE8;border-radius:12px;padding:16px 18px;box-shadow:var(--shadow-xs)}
+.note h3{font-size:17px;margin-bottom:6px}
+.note ul{margin:6px 18px 0;font-size:15px}
+.note .masri{margin-top:8px}
+
+footer{text-align:center;color:var(--muted);font-size:13px;margin-top:34px;font-family:var(--mono)}
+@media(max-width:560px){body{font-size:16px}.brand .t{display:none}}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <svg class="mk" viewBox="0 0 40 40" aria-hidden="true"><rect x="6" y="7" width="28" height="26" rx="4" fill="#FFE873" stroke="#1C2434" stroke-width="2.6"/><path d="M13 14h14M13 20h14M13 26h9" stroke="#1C2434" stroke-width="2.4" stroke-linecap="round"/></svg>
+    <span class="t">Study Hub</span>
+  </div>
+  <span class="sp"></span>
+  <span class="tag-mono">SESSION 4 · LEVEL 1 &amp; 4</span>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <span class="stamp">MY PERSONAL STUDY HUB 📚</span>
+    <h1>Everything for <span class="hl">Session 4</span></h1>
+    <p class="sub">Two full sessions, each with a live interactive presentation and bilingual study notes — English first, Egyptian Arabic underneath.</p>
+    <p class="sub masri">سيشنين كاملين، لكل واحدة عرض تفاعلي للبروجيكتور + كراسة مذاكرة English أساسي وتحته شرح بالمصري. ده كله ليك إنت عشان تذاكر منه. 💪</p>
+  </section>
+
+  <!-- ============ SESSION: AI ============ -->
+  <section class="group ai">
+    <div class="group-head">
+      <span class="gi">🤖</span>
+      <h2>Session 4 · Artificial Intelligence</h2>
+      <span class="gm">الذكاء الاصطناعي، تعلُّم الآلة، رؤية الكمبيوتر، ومعالجة اللغة</span>
+    </div>
+    <div class="cards">
+      <a class="card ai pres" href="AI_Session4_Audience.html">
+        <div class="top"><span class="ic">🎬</span><span class="kind">PRESENTATION</span></div>
+        <div class="body">
+          <h3>Interactive Presentation</h3>
+          <p class="en">The full cinematic classroom experience — 74 scenes with games, quizzes &amp; live demos (RGB mixer, pixel zoom, mystery board, WeakBot vs StrongBot).</p>
+          <p class="masri">العرض التفاعلي الكامل للبروجيكتور — 74 مشهد فيها ألعاب وكويزات وتجارب حية.</p>
+          <div class="meta"><span class="chip">🎮 Games</span><span class="chip">✅ 30+ MCQs</span><span class="chip">📽️ Projector</span></div>
+          <span class="go">Open presentation →</span>
+        </div>
+      </a>
+      <a class="card ai notes" href="AI_Session4_StudyGuide.html">
+        <div class="top"><span class="ic">📖</span><span class="kind">STUDY NOTES</span></div>
+        <div class="body">
+          <h3>Bilingual Study Guide</h3>
+          <p class="en">Read-to-teach notes: every concept in clear English with a simple Egyptian-Arabic explanation right underneath, so you say the terms correctly.</p>
+          <p class="masri">كراسة المذاكرة: كل مفهوم بالإنجليزي وتحته شرح بالمصري عشان تقول المصطلح صح وتفهمه بسهولة.</p>
+          <div class="meta"><span class="chip">🇬🇧 EN + 🇪🇬 مصري</span><span class="chip">🔎 Search</span><span class="chip">✅ Progress</span></div>
+          <span class="go">Open study notes →</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============ SESSION: CYBERSECURITY ============ -->
+  <section class="group cy">
+    <div class="group-head">
+      <span class="gi">🔐</span>
+      <h2>Session 4 · Cybersecurity</h2>
+      <span class="gm">أمن المؤسسات، تقييم المخاطر، الأدلة الجنائية الرقمية، والتشفير</span>
+    </div>
+    <div class="cards">
+      <a class="card cy pres" href="Organizational_Security_Audience.html">
+        <div class="top"><span class="ic">🎬</span><span class="kind">PRESENTATION</span></div>
+        <div class="body">
+          <h3>Interactive Presentation</h3>
+          <p class="en">102 scenes covering CIA, risk, forensics &amp; cryptography — including the full safe <b>FakeBank</b> offensive-security lab (terminal, dirb, transfer attack).</p>
+          <p class="masri">102 مشهد عن CIA والمخاطر والأدلة والتشفير — وفيها لعبة FakeBank الآمنة بالكامل.</p>
+          <div class="meta"><span class="chip">🏦 FakeBank Lab</span><span class="chip">✅ 37 MCQs</span><span class="chip">📽️ Projector</span></div>
+          <span class="go">Open presentation →</span>
+        </div>
+      </a>
+      <div class="card cy notes" style="opacity:.62;box-shadow:var(--shadow-xs);cursor:default">
+        <div class="top"><span class="ic">📖</span><span class="kind">NOT BUILT YET</span></div>
+        <div class="body">
+          <h3>Bilingual Study Guide</h3>
+          <p class="en">Teach-ready notes for the security session (CIA, lifecycle, risk, forensics, hashing &amp; cryptography). <b>Not created yet</b> — ask me to build it whenever you want.</p>
+          <p class="masri">كراسة مذاكرة سيشن الأمن — <b>لسه ماتعملتش</b>. قوللي وقت ما تحب وأعملها.</p>
+          <div class="meta"><span class="chip">⏳ لسه</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SESSION: UI/UX DESIGN ============ -->
+  <section class="group ai">
+    <div class="group-head">
+      <span class="gi" style="background:var(--violet-l)">🎨</span>
+      <h2>Session 4 · UI/UX Design</h2>
+      <span class="gm">من الفكرة إلى النموذج التفاعلي — UI/UX، فيجما، الـWireframes والبروتوتايب</span>
+    </div>
+    <div class="cards">
+      <a class="card ai pres" href="UIUX_Session4_Audience.html" style="grid-column:1/-1;max-width:520px">
+        <div class="top"><span class="ic">🎬</span><span class="kind">PRESENTATION</span></div>
+        <div class="body">
+          <h3>Interactive Presentation</h3>
+          <p class="en">Level 3 recap — from idea to interactive prototype. 41 scenes: UI vs UX, Figma, wireframing &amp; hi-fi prototyping, with a live button-states demo, Lo-Fi↔Hi-Fi toggle and a 10-question Knowledge Quest.</p>
+          <p class="masri">ريكاب الـLevel 3 — من الفكرة للبروتوتايب. فيها عروض حية لحالات الأزرار وتحويل Lo-Fi إلى Hi-Fi وكويز 10 أسئلة.</p>
+          <div class="meta"><span class="chip">🖲️ Button states</span><span class="chip">✨ Lo-Fi↔Hi-Fi</span><span class="chip">🧠 10-Q Quest</span></div>
+          <span class="go">Open presentation →</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============ SESSION: CYBERSECURITY + DIGITAL ART ============ -->
+  <section class="group cy">
+    <div class="group-head">
+      <span class="gi" style="background:var(--cyan-l)">🛡️🎨</span>
+      <h2>Session 4 · Cybersecurity + Digital Art</h2>
+      <span class="gm">الأمن السيبراني + فنون وتصميم رقمي + رواية بصرية — سيشن كبيرة تجمع مجالين</span>
+    </div>
+    <div class="cards">
+      <a class="card cy pres" href="L2_Session4_Audience.html" style="grid-column:1/-1;max-width:520px">
+        <div class="top"><span class="ic">🎬</span><span class="kind">PRESENTATION</span></div>
+        <div class="body">
+          <h3>Interactive Presentation</h3>
+          <p class="en">A 58-scene journey blending <b>cybersecurity</b> (offensive/defensive, AAA, incident response, careers) with <b>digital art &amp; design</b> (elements, principles, color, composition) and the <b>visual-storytelling workflow</b> — with a live raster↔vector zoom test, an idea generator &amp; a 6-question check.</p>
+          <p class="masri">58 مشهد يجمع الأمن السيبراني مع الفنون والتصميم الرقمي ورواية القصة البصرية — وفيها تجربة تكبير Raster/Vector ومولّد أفكار وكويز.</p>
+          <div class="meta"><span class="chip">🖥️ Raster↔Vector</span><span class="chip">💡 Idea machine</span><span class="chip">🕵️ 2 activities</span></div>
+          <span class="go">Open presentation →</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============ GRADE LESSONS (Session 3, Lesson 1) ============ -->
+  <section class="group cy">
+    <div class="group-head">
+      <span class="gi" style="background:var(--amber-l)">🎒</span>
+      <h2>Grade 4–6 · Session 3 · Lesson 1</h2>
+      <span class="gm">دروس للأطفال — بشرح مبسّط وأمثلة وخطوات المشروع (تذاكر منها وتعرضها وتخليهم يعملوا البروجيكت)</span>
+    </div>
+    <div class="cards">
+      <a class="card cy notes" href="G4_HealthApp_Audience.html">
+        <div class="top"><span class="ic">🩺</span><span class="kind">GRADE 4</span></div>
+        <div class="body">
+          <h3>Build a Health App</h3>
+          <p class="en">World problems → app ideas → Google skills → design 3 pages (Sign-up/Login/Home) on App Lab → present → conditionals (if-else). With a live app-pages viewer &amp; a conditional-cards game.</p>
+          <p class="masri">إزاي يبنوا تطبيق صحة بصفحاته الـ3، ويتعلموا الـif-else بلعبة كروت.</p>
+          <span class="go">Open lesson →</span>
+        </div>
+      </a>
+      <a class="card cy notes" href="G5_AI_ClassMonitor_Audience.html">
+        <div class="top"><span class="ic">🤖</span><span class="kind">GRADE 5</span></div>
+        <div class="body">
+          <h3>AI &amp; the Class Monitor</h3>
+          <p class="en">What AI is → how <b>facial recognition</b> works (an animated capture → extract → match demo) → Tech-Innovators challenge → build a Class Monitor attendance system in mBlock.</p>
+          <p class="masri">الذكاء الاصطناعي والتعرّف على الوجه، وبناء نظام حضور Class Monitor في mBlock.</p>
+          <span class="go">Open lesson →</span>
+        </div>
+      </a>
+      <a class="card cy notes" href="G6_Robotics_WallMaze_Audience.html">
+        <div class="top"><span class="ic">🧱</span><span class="kind">GRADE 6</span></div>
+        <div class="body">
+          <h3>Robotics: The Wall Maze</h3>
+          <p class="en">Sensors &amp; Sense-Think-Act → the Bumper Sensor (pressed/released) → Boolean TRUE/FALSE (interactive) → the Bumper-Walk game → <code>[wait until]</code> → program the Wall Maze, with a robot that runs it live.</p>
+          <p class="masri">الروبوتات وحساس الاصطدام والمنطق TRUE/FALSE، وبرمجة متاهة Wall Maze مع روبوت بيتحرّك فعلاً.</p>
+          <span class="go">Open lesson →</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============ MY PRIVATE GUIDE ============ -->
+  <section class="group cy">
+    <div class="group-head">
+      <span class="gi" style="background:#FBE9E9">🔒</span>
+      <h2>ليّا أنا بس · دليل الأدوات</h2>
+      <span class="gm">شرح تفصيلي بالعربي: mBlock · code.org App Lab · VEXcode VR + المشاريع خطوة بخطوة</span>
+    </div>
+    <div class="cards">
+      <a class="card cy notes" href="MY_PRIVATE_GUIDE.html" style="grid-column:1/-1;max-width:560px;border-color:#B02A2A">
+        <div class="top" style="background:#FBE9E9"><span class="ic">🔒</span><span class="kind" style="background:#fff">PRIVATE</span></div>
+        <div class="body">
+          <h3>دليلي الخاص — الأدوات والمشاريع</h3>
+          <p class="masri">مكتوب بافتراض إنك عمرك ما فتحت الأدوات دي. من «افتح المتصفح» لحد «المشروع شغّال»: خطوات App Lab، تدريب الـAI في mBlock، كود Class Monitor الحقيقي، بناء الـFunctions في VEX، وحل المشاكل الشائعة.</p>
+          <div class="meta"><span class="chip">💻 3 أدوات</span><span class="chip">🤖 Face Recognition</span><span class="chip">🛠️ حل المشاكل</span></div>
+          <span class="go">افتح الدليل ←</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============ GRADE LESSONS — LESSON 2 ============ -->
+  <section class="group ai">
+    <div class="group-head">
+      <span class="gi" style="background:var(--teal-l)">🎒</span>
+      <h2>Grade 4–6 · Session 3 · Lesson 2</h2>
+      <span class="gm">الدروس التانية — بتفاعل وأسئلة أكتر</span>
+    </div>
+    <div class="cards">
+      <a class="card ai notes" href="G4_BloodDonation_Audience.html">
+        <div class="top"><span class="ic">🩸</span><span class="kind">GRADE 4</span></div>
+        <div class="body">
+          <h3>Blood Donation App</h3>
+          <p class="en">UX &amp; user flow → flowchart shapes (interactive) → build a 4-page app → the <b>barcode check-digit lab</b> where students type a real barcode and the maths runs live.</p>
+          <p class="masri">الـUX والفلوتشارت وتطبيق التبرع بالدم + معمل الباركود التفاعلي.</p>
+          <span class="go">Open lesson →</span>
+        </div>
+      </a>
+      <a class="card ai notes" href="G5_ChatbotDesign_Audience.html">
+        <div class="top"><span class="ic">💬</span><span class="kind">GRADE 5</span></div>
+        <div class="body">
+          <h3>Chatbot Design</h3>
+          <p class="en">Why we program → flowchart symbols → a <b>pattern-recognition game</b> (shapes, numbers &amp; both) → design a chatbot menu, with a clickable live preview.</p>
+          <p class="masri">فايدة البرمجة والفلوتشارت ولعبة الأنماط وتصميم الشات بوت.</p>
+          <span class="go">Open lesson →</span>
+        </div>
+      </a>
+      <a class="card ai notes" href="G6_DistanceSensor_Audience.html">
+        <div class="top"><span class="ic">📏</span><span class="kind">GRADE 6</span></div>
+        <div class="body">
+          <h3>Distance &amp; Eye Sensors</h3>
+          <p class="en">Ultrasonic distance → a <b>live simulator</b> (move the wall, watch TRUE/FALSE) → Eye Sensor colours → Disk-Maze reflex game → fold long code into <b>functions</b>.</p>
+          <p class="masri">حساس المسافة والعين ومحاكي حي ولعبة الألوان واختصار الكود بالـFunctions.</p>
+          <span class="go">Open lesson →</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <div class="note">
+    <h3>💡 How to use this hub</h3>
+    <ul>
+      <li><b>Presentation</b> = what you show on the projector while teaching.</li>
+      <li><b>Study Notes</b> = what you read to prepare; toggle Arabic on/off to self-test.</li>
+    </ul>
+    <p class="masri"><b>Presentation</b> اللي بتعرضه قدام الطلبة، و<b>Study Notes</b> اللي بتذاكر منها وتقدر تخفي العربي عشان تختبر نفسك.</p>
+  </div>
+
+  <footer>Local study hub · works offline · nothing is collected or sent 🔒</footer>
+</main>
+
+</body>
+</html>

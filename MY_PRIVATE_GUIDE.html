@@ -1,0 +1,770 @@
+<!doctype html>
+<!-- ============================================================
+     دليل ألفريد الخاص — PRIVATE. ملف شخصي للمدرّس فقط.
+     شرح كامل للأدوات (App Lab · mBlock · VEXcode VR) + المشاريع.
+     نفس الديزاين النيو-بروتاليست. standalone · offline.
+     ============================================================ -->
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<meta name="robots" content="noindex,nofollow">
+<title>🔒 دليلي الخاص — شرح الأدوات والمشاريع</title>
+<meta name="description" content="دليل شخصي: إزاي تستخدم code.org App Lab و mBlock و VEXcode VR خطوة بخطوة، وشرح كل الدروس والمشاريع.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
+<style>
+:root{
+  --paper:#FBF9F3; --ink:#1C2434; --muted:#5C6478; --line:#E6E2D4; --hl:#FFE873;
+  --teal:#0F6E56; --teal-l:#E1F5EE; --coral:#993C1D; --coral-mid:#D85A30; --coral-l:#FAECE7;
+  --violet:#463A9C; --violet-l:#ECEAFB; --blue:#1D5B9E; --blue-l:#E7F0FA;
+  --green:#2C7A3E; --green-l:#E7F4EA; --red:#B02A2A; --red-l:#FBE9E9;
+  --amber:#8A5A12; --amber-mid:#DE8A22; --amber-l:#FBF0DA; --cyan:#0C6C79; --cyan-l:#E0F4F6;
+  --disp:'Baloo Bhaijaan 2','Trebuchet MS',system-ui,sans-serif;
+  --body:'IBM Plex Sans Arabic',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,Consolas,monospace;
+  --shadow:6px 6px 0 rgba(28,36,52,.9); --shadow-s:3px 3px 0 var(--ink); --shadow-xs:2px 2px 0 var(--ink);
+  --accent:var(--violet); --accent-l:var(--violet-l);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);color:var(--ink);background:var(--paper);line-height:1.9;font-size:16.5px;
+  background-image:linear-gradient(rgba(28,36,52,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(28,36,52,.04) 1px,transparent 1px);
+  background-size:26px 26px;-webkit-text-size-adjust:100%}
+h1,h2,h3,h4{font-family:var(--disp);line-height:1.4;font-weight:700}
+a{color:var(--blue)}
+:focus-visible{outline:3px solid var(--violet);outline-offset:2px;border-radius:6px}
+.hl{background:linear-gradient(100deg,transparent 1%,var(--hl) 4%,var(--hl) 96%,transparent 99%);padding:0 6px;border-radius:5px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.mono,code{font-family:var(--mono);direction:ltr;unicode-bidi:isolate;display:inline-block;background:#F1EFE6;border:1px solid var(--line);border-radius:6px;padding:1px 7px;font-size:14px}
+.en{direction:ltr;unicode-bidi:isolate;display:inline-block;font-family:var(--mono);font-size:14.5px}
+
+/* topbar */
+.topbar{position:sticky;top:0;z-index:30;display:flex;align-items:center;gap:10px;padding:9px 16px;
+  background:rgba(251,249,243,.96);backdrop-filter:blur(6px);border-bottom:2px solid var(--ink);flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:9px;font-family:var(--disp);font-weight:800;font-size:16px;white-space:nowrap}
+.brand .mk{width:26px;height:26px}
+.lock{font-family:var(--mono);font-size:11.5px;font-weight:600;background:var(--red);color:#fff;padding:4px 10px;border-radius:999px;border:2px solid var(--ink);white-space:nowrap}
+.tb-sp{flex:1 1 auto}
+.search{position:relative;flex:1 1 200px;max-width:330px;min-width:150px}
+.search input{width:100%;font-family:var(--body);font-size:14.5px;padding:8px 32px 8px 12px;border:2px solid var(--ink);border-radius:10px;background:#fff}
+.search::before{content:"🔎";position:absolute;right:9px;top:50%;transform:translateY(-50%);font-size:14px}
+.icon-btn{width:36px;height:36px;flex:0 0 auto;display:grid;place-items:center;background:#fff;border:2px solid var(--ink);border-radius:9px;cursor:pointer;font-size:15px;box-shadow:var(--shadow-xs);color:var(--ink)}
+.home{font-family:var(--mono);font-size:12px;font-weight:600;border:2px solid var(--ink);border-radius:9px;padding:5px 11px;background:#fff;box-shadow:var(--shadow-xs);text-decoration:none;color:var(--ink)}
+
+/* progress */
+.prog{height:7px;background:#EFEBDD;border-bottom:2px solid var(--ink);position:sticky;top:53px;z-index:29}
+.prog>span{display:block;height:100%;width:0;background:var(--accent);transition:width .4s}
+
+/* layout */
+.layout{display:grid;grid-template-columns:280px 1fr;gap:26px;max-width:1240px;margin:0 auto;padding:0 20px 90px;align-items:start}
+.toc{position:sticky;top:74px;max-height:calc(100vh - 92px);overflow:auto;padding:16px 4px 20px;border-inline-start:2px dashed var(--line)}
+.toc h2{font-size:12.5px;letter-spacing:.1em;color:var(--muted);font-family:var(--mono);margin:14px 6px 8px}
+.toc h2:first-child{margin-top:0}
+.toc a{display:block;font-size:13.5px;font-weight:600;color:var(--ink);text-decoration:none;padding:6px 10px;border-radius:8px;border:1.5px solid transparent;line-height:1.5}
+.toc a:hover{background:#fff;border-color:var(--line)}
+.toc a.active{background:var(--accent-l);border-color:var(--accent);color:var(--accent)}
+.toc a.done::after{content:" ✓";color:var(--green);font-weight:800}
+.content{min-width:0}
+
+/* hero */
+.hero{padding:40px 0 8px}
+.stamp{display:inline-block;font-family:var(--mono);font-size:12px;letter-spacing:1px;border:2px dashed var(--accent);
+  color:var(--accent);padding:5px 14px;border-radius:8px;transform:rotate(-1.2deg);background:#fff;box-shadow:var(--shadow-xs);direction:ltr}
+.hero h1{font-size:clamp(28px,5vw,44px);margin:16px 0 6px}
+.hero .sub{color:var(--muted);font-size:17px;max-width:62ch}
+
+/* part divider */
+.part{margin:34px 0 8px;padding:14px 18px;border:2px solid var(--ink);border-radius:14px;background:var(--ink);color:#fff;box-shadow:var(--shadow-s);display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.part .pn{font-family:var(--mono);font-size:12px;background:var(--hl);color:var(--ink);padding:3px 10px;border-radius:7px;font-weight:700}
+.part h2{font-size:clamp(19px,3.4vw,27px)}
+
+/* topic card */
+.topic{background:#fff;border:2px solid var(--ink);border-radius:16px;box-shadow:var(--shadow);margin:20px 0;overflow:hidden;scroll-margin-top:78px}
+.topic>.th{display:flex;align-items:center;gap:12px;padding:15px 20px 13px;border-bottom:2px solid var(--ink);background:var(--accent-l);flex-wrap:wrap}
+.topic>.th h3{font-size:clamp(18px,3vw,24px);flex:1 1 200px}
+.topic>.th .rev{margin-inline-start:auto;display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:12px;font-weight:600;
+  border:2px solid var(--ink);background:#fff;border-radius:999px;padding:5px 12px;cursor:pointer;box-shadow:var(--shadow-xs);white-space:nowrap;color:var(--ink)}
+.topic>.th .rev[aria-pressed="true"]{background:var(--green-l);border-color:var(--green);color:var(--green)}
+.topic>.th .rev .bx{width:15px;height:15px;border:2px solid currentColor;border-radius:4px;display:grid;place-items:center;font-size:10px}
+.topic>.body{padding:18px 20px 22px}
+
+/* content bits */
+h4.sub-h{font-size:17px;margin:18px 0 6px;color:var(--accent);border-inline-start:5px solid var(--accent);padding-inline-start:10px}
+p{margin:0 0 10px}
+ul.list,ol.list{margin:8px 22px 12px;line-height:2}
+ul.list li,ol.list li{margin:4px 0}
+.steps{counter-reset:st 0;margin:12px 0}
+.step{position:relative;padding:12px 58px 12px 16px;margin:9px 0;background:#fff;border:2px solid var(--line);border-radius:11px;font-size:15.5px;line-height:1.85}
+.step::before{counter-increment:st 1;content:counter(st);position:absolute;inset-inline-start:auto;right:12px;top:11px;width:30px;height:30px;border-radius:50%;background:var(--accent);color:#fff;font-family:var(--mono);font-weight:600;font-size:14px;display:flex;align-items:center;justify-content:center}
+.step b{color:var(--ink)}
+.note{border-inline-start:5px solid var(--hl);background:#FFFBE8;padding:12px 16px;border-radius:9px;margin:12px 0;font-size:15px}
+.note.warn{border-inline-start-color:var(--coral-mid);background:var(--coral-l)}
+.note.info{border-inline-start-color:var(--blue);background:var(--blue-l)}
+.note.good{border-inline-start-color:var(--green);background:var(--green-l)}
+.note.bad{border-inline-start-color:var(--red);background:var(--red-l)}
+pre.code{background:#0E1524;color:#D7E5D8;font-family:var(--mono);font-size:13.5px;line-height:1.7;padding:14px 16px;border-radius:10px;border:2px solid var(--ink);overflow-x:auto;margin:12px 0;box-shadow:var(--shadow-xs);direction:ltr;text-align:left}
+pre.code .cm{color:#7C8CA0}
+pre.code .kw{color:#FFE873}
+pre.code .ai{color:#7CE0A0}
+.tbwrap{overflow-x:auto;margin:14px 0}
+table.tb{width:100%;border-collapse:collapse;font-size:15px;background:#fff;min-width:420px}
+table.tb th,table.tb td{border:1.6px solid var(--ink);padding:9px 11px;text-align:start;vertical-align:top}
+table.tb th{background:var(--ink);color:#fff;font-weight:600;font-size:14px;font-family:var(--disp)}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.tile{background:#fff;border:2px solid var(--ink);border-radius:12px;padding:14px 16px;box-shadow:var(--shadow-xs)}
+.tile .ic{font-size:26px;display:block;margin-bottom:6px;line-height:1}
+.tile h4{font-size:16px;margin-bottom:4px}
+.tile p{font-size:14.5px;color:var(--muted);margin:0}
+.tile.accent{background:var(--accent-l)}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;border-radius:999px;padding:5px 13px;font-weight:600;border:2px solid var(--ink);background:#fff;box-shadow:var(--shadow-xs);margin:3px 3px 3px 0}
+.ui{display:inline-block;font-family:var(--disp);font-weight:700;font-size:14px;background:var(--ink);color:#fff;border-radius:7px;padding:2px 10px;margin:0 2px;direction:ltr}
+.key{display:inline-block;font-family:var(--mono);font-size:13px;background:#F1EFE6;border:2px solid var(--ink);border-bottom-width:3px;border-radius:6px;padding:1px 8px;direction:ltr}
+
+/* screen mock */
+.mock{border:2px solid var(--ink);border-radius:12px;overflow:hidden;box-shadow:var(--shadow-xs);margin:14px 0;background:#fff}
+.mock .bar{background:var(--ink);color:#fff;font-family:var(--mono);font-size:12px;padding:6px 12px;display:flex;gap:8px;align-items:center;direction:ltr}
+.mock .bar i{width:10px;height:10px;border-radius:50%;display:inline-block}
+.mock .in{display:grid;grid-template-columns:150px 1fr 190px;min-height:150px;direction:ltr}
+.mock .col{padding:10px;font-size:12.5px;font-family:var(--mono);border-inline-end:2px dashed var(--line)}
+.mock .col:last-child{border:none}
+.mock .col b{display:block;font-family:var(--disp);font-size:13px;margin-bottom:6px;color:var(--accent)}
+@media(max-width:640px){.mock .in{grid-template-columns:1fr}}
+
+details.faq{border:2px solid var(--ink);border-radius:11px;margin:10px 0;overflow:hidden;box-shadow:var(--shadow-xs);background:#fff}
+details.faq summary{cursor:pointer;list-style:none;padding:11px 15px;font-weight:700;background:var(--paper);display:flex;gap:9px;align-items:center;font-family:var(--disp)}
+details.faq summary::-webkit-details-marker{display:none}
+details.faq[open] summary{border-bottom:2px solid var(--ink)}
+details.faq .a{padding:12px 15px;background:var(--green-l)}
+
+.hidden{display:none!important}
+.no-results{padding:30px;text-align:center;color:var(--muted)}
+.totop{position:fixed;left:18px;bottom:18px;z-index:20;width:46px;height:46px;border-radius:50%;border:2px solid var(--ink);
+  background:var(--accent);color:#fff;font-size:20px;cursor:pointer;box-shadow:var(--shadow-s);display:none}
+.totop.show{display:grid;place-items:center}
+.toc-toggle{display:none}
+@media(max-width:900px){
+  .layout{grid-template-columns:1fr}
+  .toc{position:fixed;inset:53px 0 auto 0;z-index:28;max-height:70vh;background:var(--paper);border-bottom:2px solid var(--ink);
+    border-inline-start:none;padding:14px 18px;display:none;box-shadow:var(--shadow)}
+  .toc.open{display:block}
+  .toc-toggle{display:grid}
+}
+@media print{.topbar,.toc,.prog,.totop{display:none!important}.topic{box-shadow:none;break-inside:avoid}body{background:#fff}}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <span class="brand">
+    <svg class="mk" viewBox="0 0 40 40" aria-hidden="true"><rect x="8" y="17" width="24" height="18" rx="4" fill="#ECEAFB" stroke="#1C2434" stroke-width="2.4"/><path d="M14 17v-4a6 6 0 0 1 12 0v4" fill="none" stroke="#1C2434" stroke-width="2.4"/><circle cx="20" cy="25" r="2.6" fill="#463A9C"/></svg>
+    <span>دليلي الخاص</span>
+  </span>
+  <span class="lock">🔒 PRIVATE — ليّا أنا بس</span>
+  <button class="icon-btn toc-toggle" id="tocToggle" aria-label="المحتويات">☰</button>
+  <div class="search"><input id="search" type="text" placeholder="دوّر على أي حاجة…" aria-label="بحث" autocomplete="off"></div>
+  <span class="tb-sp"></span>
+  <a class="home" href="index.html">🏠 الرئيسية</a>
+</header>
+<div class="prog"><span id="progBar"></span></div>
+
+<div class="layout">
+  <nav class="toc" id="toc" aria-label="المحتويات"></nav>
+
+  <main class="content" id="content">
+    <div class="hero">
+      <span class="stamp">PRIVATE TEACHER GUIDE · v1</span>
+      <h1>كل اللي محتاج تعرفه <span class="hl">خطوة بخطوة</span></h1>
+      <p class="sub">الملف ده ليك إنت بس. مكتوب بافتراض إنك <b>عمرك ما فتحت</b> mBlock ولا code.org ولا VEXcode VR. هنمشي من «افتح المتصفح» لحد «المشروع شغّال قدام العيال».</p>
+      <div style="margin-top:12px">
+        <span class="chip">💻 3 أدوات</span><span class="chip">🧩 6 دروس</span><span class="chip">🤖 مشروع الـFace Recognition</span><span class="chip">🛠️ حل المشاكل</span>
+      </div>
+    </div>
+
+    <div class="note warn"><b>قاعدة ذهبية قبل أي سيشن:</b> افتح الأداة وجرّب المشروع <b>بنفسك</b> قبل الحصة بيوم. أول مرة دايمًا بتاخد وقت (تحميل، تسجيل دخول، إذن الكاميرا). لو عملتها قبلها، الحصة هتمشي زي الحرير.</div>
+
+    <!-- ================= PART 0 ================= -->
+    <div class="part" id="p0"><span class="pn">مقدمة</span><h2>الأدوات الثلاثة — نظرة سريعة</h2></div>
+
+    <section class="topic" id="s-tools" data-title="الأدوات الثلاثة — إيه الفرق؟">
+      <div class="th"><h3>🧭 إيه الفرق بين الثلاثة؟</h3></div>
+      <div class="body">
+        <p>قبل ما ندخل في التفاصيل، دي الصورة الكبيرة. كل أداة ليها صف ومشروع:</p>
+        <div class="tbwrap">
+          <table class="tb">
+            <thead><tr><th>الأداة</th><th>بتشتغل فين</th><th>بتعمل بيها إيه</th><th>الصف</th></tr></thead>
+            <tbody>
+              <tr><td><b>code.org App Lab</b></td><td>متصفح (أونلاين)</td><td>تصميم تطبيق موبايل بصفحات وأزرار</td><td>Grade 4</td></tr>
+              <tr><td><b>mBlock 5</b></td><td>برنامج تنزّله (أو أونلاين)</td><td>برمجة بالبلوكات + ذكاء اصطناعي (تعرّف على الوش)</td><td>Grade 5</td></tr>
+              <tr><td><b>VEXcode VR</b></td><td>متصفح (أونلاين)</td><td>برمجة روبوت افتراضي يمشي في متاهات</td><td>Grade 6</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="note info">🧠 <b>الحاجة المشتركة بينهم كلهم:</b> إنك <b>بتسحب بلوكات</b> وتركّبها فوق بعض — مفيش كتابة كود. لو فهمت فكرة «البلوك بيتنده لما يحصل حدث معيّن»، تكون فهمت الثلاثة.</div>
+        <h4 class="sub-h">مصطلحات هتقابلها في الثلاثة</h4>
+        <div class="tbwrap">
+          <table class="tb">
+            <thead><tr><th>الكلمة</th><th>يعني إيه بالبلدي</th></tr></thead>
+            <tbody>
+              <tr><td><span class="en">Sprite</span></td><td>أي عنصر/شخصية على الشاشة (زرار، روبوت، مدرّس…). بتختاره الأول عشان تبرمجه.</td></tr>
+              <tr><td><span class="en">Stage</span></td><td>المسرح — الشاشة اللي بيظهر عليها الشغل.</td></tr>
+              <tr><td><span class="en">Costume</span></td><td>شكل الـSprite. الـSprite ممكن يكون ليه أكتر من شكل.</td></tr>
+              <tr><td><span class="en">Backdrop</span></td><td>الخلفية بتاعة المسرح.</td></tr>
+              <tr><td><span class="en">Block</span></td><td>قطعة الكود اللي بتسحبها.</td></tr>
+              <tr><td><span class="en">Extension</span></td><td>إضافة بتفتحلك بلوكات جديدة (زي بلوكات الذكاء الاصطناعي).</td></tr>
+              <tr><td><span class="en">Variable</span></td><td>صندوق بتحفظ فيه قيمة (زي اسم طالب).</td></tr>
+              <tr><td><span class="en">Event</span></td><td>حدث — زي «لما أضغط على السبرايت ده».</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PART 1: APP LAB ================= -->
+    <div class="part" id="p1"><span class="pn">الأداة 1</span><h2>code.org — App Lab (Grade 4)</h2></div>
+
+    <section class="topic" id="s-applab-open" data-title="App Lab — تفتحه إزاي">
+      <div class="th"><h3>🚪 تفتحه إزاي (من الصفر)</h3></div>
+      <div class="body">
+        <div class="steps">
+          <div class="step">افتح المتصفح (Chrome أحسن حاجة) واكتب في شريط العنوان: <span class="mono">code.org</span> ودوس Enter.</div>
+          <div class="step">من فوق على اليمين اضغط <span class="ui">Sign in</span> — تقدر تدخل بحساب Google بتاعك على طول (زرار <span class="ui">Sign in with Google</span>). <b>مهم:</b> من غير تسجيل دخول الشغل مش هيتحفظ.</div>
+          <div class="step">عشان توصل للأداة على طول من غير لف: اكتب في شريط العنوان الرابط ده مباشرة:<br><span class="mono">studio.code.org/projects/applab/new</span><br>ده بيفتحلك مشروع App Lab جديد فاضي فورًا.</div>
+          <div class="step">أول ما يفتح، هتلاقي الشاشة مقسومة: <b>شاشة الموبايل</b> (المعاينة)، و<b>صندوق العناصر/البلوكات</b>، و<b>مساحة الشغل</b>.</div>
+        </div>
+        <div class="mock">
+          <div class="bar"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i> App Lab</div>
+          <div class="in">
+            <div class="col"><b>📱 Phone preview</b>شاشة الموبايل + فوقيها زراير:<br>▶ Run<br>Design ⇄ Code</div>
+            <div class="col"><b>🧰 Toolbox</b>في وضع Design: العناصر (Button, Label, Text Input…)<br>في وضع Code: البلوكات</div>
+            <div class="col"><b>⚙️ Properties / Workspace</b>لما تختار عنصر بتظهر خصائصه (id, text, colors)</div>
+          </div>
+        </div>
+        <div class="note">🔎 <b>لو تايه:</b> دوّر على كلمة <span class="ui">Design</span> و<span class="ui">Code</span> — دول أهم زرارين في الأداة كلها، وبيبدّلوا بين «الرسم» و«البرمجة».</div>
+      </div>
+    </section>
+
+    <section class="topic" id="s-applab-design" data-title="App Lab — ترسم الصفحات إزاي">
+      <div class="th"><h3>🎨 ترسم صفحات التطبيق إزاي</h3></div>
+      <div class="body">
+        <p>ده الجزء اللي العيال هتقضي فيه معظم الوقت. الفكرة: <b>تسحب عنصر</b> من الصندوق وترميه على شاشة الموبايل.</p>
+        <div class="steps">
+          <div class="step">اضغط <span class="ui">Design</span> عشان تدخل وضع التصميم.</div>
+          <div class="step">هتلاقي قايمة عناصر. أهمهم اللي هنستخدمهم:
+            <br>• <span class="ui">Button</span> = زرار.
+            <br>• <span class="ui">Label</span> = كلام/عنوان ثابت.
+            <br>• <span class="ui">Text Input</span> = خانة المستخدم يكتب فيها.
+            <br>• <span class="ui">Image</span> = صورة.
+          </div>
+          <div class="step"><b>اسحب</b> العنصر واحطّه على شاشة الموبايل. سيبه في مكانه.</div>
+          <div class="step">لما تدوس على العنصر، بتظهر <b>خصائصه</b>. غيّر منها:
+            <br>• <span class="en">id</span> = اسم العنصر (مهم جدًا للبرمجة — سمّيه باسم واضح زي <span class="mono">loginBtn</span>).
+            <br>• <span class="en">text</span> = الكلام المكتوب عليه.
+            <br>• الألوان والحجم.
+          </div>
+          <div class="step"><b>تعمل صفحة جديدة:</b> فوق شاشة الموبايل في وضع Design هتلاقي اسم الشاشة الحالية (<span class="mono">screen1</span>) وجنبه خيار إضافة شاشة — اضغطه واختار <span class="ui">New screen</span>. سمّي الشاشات: <span class="mono">signup</span> / <span class="mono">login</span> / <span class="mono">home</span>.</div>
+        </div>
+        <div class="note warn">⚠️ <b>أهم نصيحة:</b> خلّي العيال يسمّوا كل عنصر باسم مفهوم من الأول. لو سابوا الأسماء الافتراضية (<span class="mono">button1, button2, button3</span>) هيتوهوا لما ييجوا يبرمجوا.</div>
+      </div>
+    </section>
+
+    <section class="topic" id="s-applab-code" data-title="App Lab — تربط الأزرار بالصفحات">
+      <div class="th"><h3>🔗 تربط الأزرار بالصفحات (أهم خطوة)</h3></div>
+      <div class="body">
+        <p>التصميم لوحده مش تطبيق. لازم لما ندوس على زرار، ينقلنا لصفحة تانية. ده بيتعمل في وضع <span class="ui">Code</span>.</p>
+        <div class="steps">
+          <div class="step">اضغط <span class="ui">Code</span>.</div>
+          <div class="step">من صندوق البلوكات دوّر على قسم <span class="ui">UI controls</span> وهتلاقي بلوك <span class="mono">onEvent</span> — اسحبه لمساحة الشغل.</div>
+          <div class="step">في البلوك ده حدّد: اسم الزرار (<span class="mono">id</span>) ونوع الحدث <span class="mono">"click"</span>.</div>
+          <div class="step">جوّه البلوك ده حط بلوك <span class="mono">setScreen</span> واختار اسم الشاشة اللي عايز تروحلها.</div>
+          <div class="step">اضغط <span class="ui">▶ Run</span> فوق شاشة الموبايل وجرّب تدوس على الزرار.</div>
+        </div>
+        <p>لو حبيت تشوف الكود كنص (أو تشرحه للعيال المتقدمين)، شكله كده بالظبط:</p>
+        <pre class="code"><span class="cm">// لما المستخدم يدوس على زرار الدخول → روح لصفحة الهوم</span>
+onEvent(<span class="kw">"loginBtn"</span>, <span class="kw">"click"</span>, function() {
+  setScreen(<span class="kw">"home"</span>);
+});
+
+<span class="cm">// ولو دوس على "معنديش حساب" → روح لصفحة التسجيل</span>
+onEvent(<span class="kw">"signupLink"</span>, <span class="kw">"click"</span>, function() {
+  setScreen(<span class="kw">"signup"</span>);
+});</pre>
+        <div class="note good">✅ <b>ده كل السر.</b> تطبيق كامل من 3 أو 4 صفحات = مجموعة بلوكات <span class="mono">onEvent → setScreen</span>، واحد لكل زرار. مفيش حاجة أصعب من كده في الدرسين.</div>
+        <h4 class="sub-h">تحفظ وتشارك</h4>
+        <ul class="list">
+          <li>الحفظ <b>أوتوماتيك</b> طول ما إنت مسجّل دخول.</li>
+          <li>عشان تشارك: زرار <span class="ui">Share</span> فوق → بيديك لينك تبعته أو تحطه على البروجيكتور.</li>
+          <li>ترجع لمشاريعك من <span class="mono">studio.code.org/projects</span>.</li>
+        </ul>
+        <div class="note bad">🚫 <b>تحذير من دليل المدرّس:</b> فيه لينك لتطبيق جاهز (نسخة المدرّس) — <b>متشاركهوش مع الطلبة أبدًا</b>. هو ليك إنت بس عشان تتخيل الشكل النهائي؛ الطلبة لازم يعملوا مشروعهم بنفسهم.</div>
+      </div>
+    </section>
+
+    <section class="topic" id="s-applab-projects" data-title="App Lab — مشروعا الحصتين">
+      <div class="th"><h3>🩺🩸 مشروعا Grade 4 (الدرسين)</h3></div>
+      <div class="body">
+        <h4 class="sub-h">الدرس 1 — Health App (3 صفحات)</h4>
+        <div class="tbwrap"><table class="tb">
+          <thead><tr><th>الصفحة</th><th>فيها إيه</th><th>الزرار بيروح لفين</th></tr></thead>
+          <tbody>
+            <tr><td><span class="mono">signup</span></td><td>Label «Create account» + 3 خانات: Name / Email / Password + زرار</td><td>→ <span class="mono">login</span></td></tr>
+            <tr><td><span class="mono">login</span></td><td>خانتين: Email / Password + زرار Login</td><td>→ <span class="mono">home</span></td></tr>
+            <tr><td><span class="mono">home</span></td><td>الوظيفة الأساسية (مثلًا عدّاد كباية مية + زرار «Add a cup»)</td><td>—</td></tr>
+          </tbody>
+        </table></div>
+        <h4 class="sub-h">الدرس 2 — Blood Donation App (4 صفحات)</h4>
+        <div class="tbwrap"><table class="tb">
+          <thead><tr><th>الصفحة</th><th>فيها إيه</th></tr></thead>
+          <tbody>
+            <tr><td><span class="mono">signup</span> + <span class="mono">login</span></td><td><b>أعد استخدامهم</b> من مشروع الحصة اللي فاتت — ده بيوفر وقت كبير (والـTG بيقول كده).</td></tr>
+            <tr><td><span class="mono">donation</span></td><td>الخانات: Name · Personal ID · Phone · City · Blood type · التاريخ والوقت + زرار «Send request»</td></tr>
+            <tr><td><span class="mono">thankyou</span></td><td>رسالة شكر — دي بالظبط الـ<b>UX</b> الحلو اللي بنتكلم عنه في الدرس.</td></tr>
+          </tbody>
+        </table></div>
+        <div class="note info">⏱️ <b>إدارة الوقت:</b> 45 دقيقة للتصميم قليلة. خلّي كل مجموعة تقسّم: واحد يعمل signup+login، والتاني donation، والتالت thankyou — وبعدين يجمّعوا.</div>
+      </div>
+    </section>
+
+    <!-- ================= PART 2: MBLOCK ================= -->
+    <div class="part" id="p2"><span class="pn">الأداة 2</span><h2>mBlock 5 (Grade 5)</h2></div>
+
+    <section class="topic" id="s-mblock-open" data-title="mBlock — تنزّله وتفتحه إزاي">
+      <div class="th"><h3>⬇️ تنزّله وتفتحه إزاي</h3></div>
+      <div class="body">
+        <div class="note warn">⚠️ <b>مهم جدًا:</b> مشروع الـFace Recognition محتاج <b>كاميرا</b>. النسخة المنزّلة على الجهاز (Desktop) أثبت وأضمن من نسخة المتصفح في موضوع الكاميرا والإضافات. نزّلها قبل الحصة.</div>
+        <div class="steps">
+          <div class="step">افتح <span class="mono">mblock.cc</span> ومنها روح لصفحة التحميل (<span class="ui">Downloads</span>).</div>
+          <div class="step">نزّل نسخة <b>mBlock 5</b> بتاعة Windows، وثبّتها عادي (Next → Next → Install).</div>
+          <div class="step">افتح البرنامج. أول مرة ممكن يسألك تسجيل دخول — تقدر تتخطاه، بس التسجيل بيسمحلك تحفظ أونلاين.</div>
+          <div class="step">(البديل السريع لو الجهاز مش راضي يثبّت: <span class="mono">ide.mblock.cc</span> بيشتغل من المتصفح — بس لازم تسمح للكاميرا.)</div>
+        </div>
+        <h4 class="sub-h">شكل الشاشة — إيه بيعمل إيه</h4>
+        <div class="mock">
+          <div class="bar"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i> mBlock 5</div>
+          <div class="in">
+            <div class="col"><b>🎬 Stage</b>المسرح فوق.<br>تحته تبويبات:<br>Devices / Sprites / Background<br><br>وتحتها قايمة السبرايتات</div>
+            <div class="col"><b>🧱 Blocks palette</b>أقسام البلوكات بالألوان:<br>Motion, Looks, Sound,<br>Events, Control, Sensing,<br>Operators, Variables<br><br>وتحت خالص: <b>+ Extension</b></div>
+            <div class="col"><b>📝 Scripts area</b>هنا بتسحب البلوكات وتركّبها.<br><br>فوق: تبويبات<br>Blocks / Costumes / Sounds</div>
+          </div>
+        </div>
+        <div class="note info">🧠 <b>القاعدة الذهبية في mBlock:</b> قبل ما تسحب أي بلوك، <b>اتأكد إنك مختار السبرايت الصح</b> من القايمة تحت المسرح. البلوكات بتتحط على السبرايت المختار، ودي أكتر حاجة بتلخبط المبتدئين.</div>
+      </div>
+    </section>
+
+    <section class="topic" id="s-mblock-tm" data-title="mBlock — تدريب الذكاء الاصطناعي (Teachable Machine)">
+      <div class="th"><h3>🤖 تدريب الـAI على الوشوش (أهم جزء)</h3></div>
+      <div class="body">
+        <p>ده قلب مشروع <b>Class Monitor</b>. الفكرة إنك <b>بتعلّم</b> الكمبيوتر شكل كل طالب، وبعدين هو يعرف يميّزه.</p>
+        <div class="steps">
+          <div class="step">اتأكد إنك في وضع <span class="ui">Sprites</span> (مش Devices) من التبويبات تحت المسرح.</div>
+          <div class="step">تحت صندوق البلوكات خالص اضغط <span class="ui">+ Extension</span> (أو <span class="ui">Add Extension</span>).</div>
+          <div class="step">دوّر على <b>Teachable Machine</b> واضغط <span class="ui">+ Add</span>. هتلاقي قسم بلوكات جديد ظهر عندك.</div>
+          <div class="step">اضغط على بلوك فتح نافذة التدريب (<span class="ui">Training Model</span> / <span class="ui">TM</span>). هتفتح نافذة فيها الكاميرا.</div>
+          <div class="step">هتلاقي <b>Class 1</b> — اضغط على اسمها وغيّره لاسم الطالب (مثلًا <span class="mono">mostafa</span>).</div>
+          <div class="step">خلّي الطالب يقف قدام الكاميرا، واضغط <b>مستمر</b> على زرار <span class="ui">Learn</span> لمدة ٣-٥ ثواني — البرنامج بياخد صور كتير. خلّيه يلف وشه شمال ويمين شوية عشان يتعلم أحسن.</div>
+          <div class="step">اضغط <span class="ui">New Class</span> وكرّر لكل طالب (<span class="mono">ahmed</span>… إلخ). محتاج على الأقل ٢-٣ كلاسات.</div>
+          <div class="step">اضغط <span class="ui">Train Model</span> واستنى لحد ما يخلص، وبعدين اقفل النافذة.</div>
+        </div>
+        <div class="note good">✅ <b>اختبار سريع:</b> بعد التدريب، النافذة بتوريك اسم الكلاس اللي شايفه دلوقتي. قف قدام الكاميرا وشوف بيقول اسمك ولا لأ. لو صح — الموديل جاهز.</div>
+        <div class="note warn">💡 <b>نصايح تخلي الدقة عالية:</b>
+          <br>• إضاءة كويسة على الوش (متقفش وضهرك للشباك).
+          <br>• خلفية ثابتة قدر الإمكان.
+          <br>• صور كتير لكل طالب (اضغط Learn شوية ثواني مش ضغطة سريعة).
+          <br>• لو ضفت طالب جديد بعدين، لازم تعمل <b>Train Model</b> تاني.</div>
+      </div>
+    </section>
+
+    <section class="topic" id="s-classmonitor" data-title="مشروع Class Monitor — الكود الحقيقي">
+      <div class="th"><h3>🏫 مشروع Class Monitor — بالبلوك بالظبط</h3></div>
+      <div class="body">
+        <p>أنا فتحت الملفين اللي بعتهملي وقريت اللي جواهم فعلًا. دي التفاصيل الحقيقية مش تخمين:</p>
+        <h4 class="sub-h">اللي جوه الملفين</h4>
+        <div class="tbwrap"><table class="tb">
+          <thead><tr><th>الحاجة</th><th>التفاصيل</th></tr></thead>
+          <tbody>
+            <tr><td>السبرايتات</td><td><span class="mono">Stage</span> · <span class="mono">cyberpi</span> · <span class="mono">Start button1</span> · <span class="mono">Teacher</span></td></tr>
+            <tr><td>الخلفيات</td><td><span class="mono">backdrop1</span> و <span class="mono">Classroom2</span> (خلفية فصل)</td></tr>
+            <tr><td>المتغيرات</td><td><span class="mono">first student</span> · <span class="mono">second student</span> · <span class="mono">third student</span></td></tr>
+            <tr><td>الكود موجود على</td><td>سبرايت <b><span class="mono">Start button1</span></b> — <b>مش</b> على الاستيج</td></tr>
+            <tr><td>نسخة المدرّس</td><td>فيها <b>12 بلوك</b> (الكود كامل)</td></tr>
+            <tr><td>نسخة الطالب</td><td><b>فاضية تمامًا</b> (صفر بلوكات) — الطالب هو اللي هيبنيها</td></tr>
+          </tbody>
+        </table></div>
+        <div class="note bad">🔴 <b>ركّز:</b> الكود مش على المسرح ولا على الروبوت — هو على السبرايت اسمه <b>Start button1</b>. لو فتحت الملف ومشوفتش بلوكات، إنت غالبًا واقف على سبرايت تاني. دوس على <span class="mono">Start button1</span> الأول.</div>
+
+        <h4 class="sub-h">الكود بالظبط (نسخة المدرّس)</h4>
+        <pre class="code"><span class="cm">// على سبرايت: Start button1</span>
+when this sprite clicked
+repeat 3
+    set [first student]  to (<span class="ai">recognition result</span>)
+    wait 5 seconds
+    set [second student] to (<span class="ai">recognition result</span>)
+    wait 5 seconds
+    set [third student]  to (<span class="ai">recognition result</span>)
+    wait 5 seconds
+    stop this script</pre>
+        <h4 class="sub-h">الكود ده بيعمل إيه بالبلدي؟</h4>
+        <ul class="list">
+          <li><b>when this sprite clicked</b> — البرنامج مش بيبدأ بالعلم الأخضر! بيبدأ لما <b>تدوس على زرار Start</b> اللي على المسرح.</li>
+          <li><b>set [first student] to (recognition result)</b> — بلوك الـAI بيبصّ للكاميرا ويرجّع <b>اسم الكلاس</b> اللي عرفه، والبرنامج بيحفظه في المتغير.</li>
+          <li><b>wait 5 seconds</b> — بيدي فرصة إن الطالب اللي بعده يقف قدام الكاميرا.</li>
+          <li>يكرّر ده ٣ مرات (٣ طلبة) وبعدين <b>stop this script</b>.</li>
+        </ul>
+        <div class="note info">👀 <b>عشان الحضور يبان قدام العيال:</b> روح لقسم <span class="ui">Variables</span> وحط علامة ✔️ جنب المتغيرات التلاتة — هيظهروا على المسرح، وهتشوف الأسامي بتتكتب لحظة بلحظة. ده اللي بيخلي العيال تنبهر.</div>
+
+        <h4 class="sub-h">تشغّله إزاي في الحصة (الترتيب الصح)</h4>
+        <div class="steps">
+          <div class="step"><b>File → Open</b> واختار ملف <span class="mono">Class monitor.mblock</span>.</div>
+          <div class="step">درّب الموديل الأول (القسم اللي فات) — سمّي الكلاسات بأسامي الطلبة الحقيقيين اللي هيقفوا.</div>
+          <div class="step">دوس ✔️ على المتغيرات التلاتة عشان تظهر على المسرح.</div>
+          <div class="step">دوس على <b>زرار Start على المسرح</b> (مش العلم الأخضر).</div>
+          <div class="step">أول طالب يقف قدام الكاميرا → استنى → التاني → التالت. الأسامي بتتسجل.</div>
+        </div>
+
+        <h4 class="sub-h">نسخة الطالب — هما هيعملوا إيه</h4>
+        <p>ملف <span class="mono">Class monitor Student Version.mblock</span> فيه <b>كل حاجة جاهزة</b> (السبرايتات والخلفية والمتغيرات) بس <b>الكود فاضي</b>. مهمة الطالب إنه يركّب البلوكات دي بنفسه:</p>
+        <div class="steps">
+          <div class="step">يدوس على سبرايت <span class="mono">Start button1</span>.</div>
+          <div class="step">من <span class="ui">Events</span> يسحب <span class="mono">when this sprite clicked</span>.</div>
+          <div class="step">من <span class="ui">Control</span> يسحب <span class="mono">repeat</span> ويكتب فيه 3.</div>
+          <div class="step">من <span class="ui">Variables</span> يسحب <span class="mono">set [ ] to [ ]</span> ويختار <span class="mono">first student</span>.</div>
+          <div class="step">من قسم الـAI يسحب بلوك <span class="mono">recognition result</span> ويحطه <b>جوه</b> خانة القيمة.</div>
+          <div class="step">من <span class="ui">Control</span> يسحب <span class="mono">wait 5 seconds</span>.</div>
+          <div class="step">يكرّر للطالب التاني والتالت، وفي الآخر <span class="mono">stop this script</span>.</div>
+        </div>
+        <div class="note good">🎯 <b>ده هدف الحصة بالظبط:</b> إنهم يوصلوا بنفسهم إن «الحضور» = متغير + بلوك ذكاء اصطناعي + انتظار. بسيطة، بس فكرتها قوية جدًا.</div>
+      </div>
+    </section>
+
+    <section class="topic" id="s-mblock-chatbot" data-title="mBlock — مشروع الشات بوت (الدرس 2)">
+      <div class="th"><h3>💬 مشروع الشات بوت (Grade 5 — الدرس 2)</h3></div>
+      <div class="body">
+        <p>الحصة دي <b>تصميم بس</b> — مش برمجة. الهدف إنهم يعملوا واجهة (Interface) حلوة للشات بوت، والكود جاي الحصة اللي بعدها.</p>
+        <h4 class="sub-h">الخطوات الثلاثة زي ما هي في الـTG</h4>
+        <div class="steps">
+          <div class="step"><b>دوّر على أزرار:</b> افتح جوجل واكتب <span class="mono">button sprite png</span> → اختار أزرار شكلها موحّد → <b>نزّلها</b>. (اختار PNG عشان الخلفية شفافة.)</div>
+          <div class="step"><b>ضيفها للمشروع:</b> افتح مشروع الشات بوت → من قايمة السبرايتات تحت المسرح، قرّب من زرار <b>+</b> → اختار <span class="ui">Upload Sprite</span> → اختار الصورة اللي نزّلتها.</div>
+          <div class="step"><b>عدّل شكلها:</b> اختار السبرايت → روح لتبويب <span class="ui">Costumes</span> فوق → استخدم أداة النص <span class="key">T</span> عشان تكتب اسم الزرار (Sunday / Maths…) → غيّر اللون والحجم.</div>
+        </div>
+        <p>المطلوب النهائي: خلفية + شخصية شات بوت + قايمة فيها زرار <b>Schedule</b> وزرار <b>To-Do</b> + أزرار لأيام الأسبوع والمواد.</p>
+        <div class="note info">🎨 <b>خلي بالك في التقييم:</b> ركّز إن كل الأزرار تبقى <b>نفس الحجم ونفس الاستايل</b> — دي نقطة الديزاين الأهم، وهي نفس فكرة الـConsistency اللي بيدرسوها.</div>
+      </div>
+    </section>
+
+    <!-- ================= PART 3: VEXCODE VR ================= -->
+    <div class="part" id="p3"><span class="pn">الأداة 3</span><h2>VEXcode VR (Grade 6)</h2></div>
+
+    <section class="topic" id="s-vex-open" data-title="VEXcode VR — تفتحه إزاي">
+      <div class="th"><h3>🤖 تفتحه إزاي (مفيش تحميل خالص)</h3></div>
+      <div class="body">
+        <div class="note good">✅ <b>أسهل أداة في التلاتة:</b> مفيش تنزيل ولا تسجيل دخول مطلوب. بتفتح لينك وتشتغل على طول.</div>
+        <div class="steps">
+          <div class="step">افتح المتصفح واكتب: <span class="mono">vr.vex.com</span></div>
+          <div class="step">هيفتح معاك مباشرة مساحة الشغل + الروبوت. مش محتاج حساب.</div>
+          <div class="step">فوق هتلاقي زرار اختيار الملعب — <span class="ui">Select Playground</span>. اضغطه.</div>
+          <div class="step">هتظهر قايمة ملاعب (بالصور). <b>انزل تحت</b> لحد ما تلاقي:
+            <br>• <span class="ui">Wall Maze</span> — متاهة الحيطان (درس 1 و 2).
+            <br>• <span class="ui">Disk Maze</span> — متاهة الأقراص الملوّنة (درس 2).
+            <br>اضغط على اللي عايزه.</div>
+        </div>
+        <h4 class="sub-h">شكل الشاشة</h4>
+        <div class="mock">
+          <div class="bar"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i> VEXcode VR</div>
+          <div class="in">
+            <div class="col"><b>🧰 Toolbox</b>أقسام البلوكات:<br>Drivetrain (الحركة)<br>Looks · Sound<br>Events (البداية)<br>Control (التكرار/الانتظار)<br>Sensing (الحساسات)<br>Operators (المقارنات)<br>Variables<br><b>My Blocks</b> (الدوال)</div>
+            <div class="col"><b>📝 Workspace</b>هنا بتركّب البلوكات<br><br>وفوق: زراير<br>▶ Start و ⏹ Stop</div>
+            <div class="col"><b>🤖 Playground</b>الروبوت والمتاهة<br><br>وزرار<br><b>Select Playground</b><br>لتغيير الملعب</div>
+          </div>
+        </div>
+        <div class="note info">🕹️ <b>التشغيل:</b> زرار <span class="ui">▶ Start</span> بيشغّل الكود. لو الروبوت اتلخبط أو خبط، اضغط <span class="ui">⏹ Stop</span> وبعدين اختار الملعب تاني (أو اعمل Reset) عشان يرجّعه لمكانه الأصلي.</div>
+      </div>
+    </section>
+
+    <section class="topic" id="s-vex-blocks" data-title="VEXcode VR — البلوكات المهمة">
+      <div class="th"><h3>🧱 البلوكات اللي هتستخدمها فعلًا</h3></div>
+      <div class="body">
+        <p>مش محتاج تحفظ كل البلوكات — دول بس اللي الدرسين محتاجينهم:</p>
+        <div class="tbwrap"><table class="tb">
+          <thead><tr><th>البلوك</th><th>قسمه</th><th>بيعمل إيه</th></tr></thead>
+          <tbody>
+            <tr><td><span class="en">when started</span></td><td>Events</td><td>بداية البرنامج (بيشتغل لما تدوس Start)</td></tr>
+            <tr><td><span class="en">drive forward</span></td><td>Drivetrain</td><td>يمشي لقدّام (ويفضل ماشي لحد ما أمر تاني يوقفه)</td></tr>
+            <tr><td><span class="en">turn left / right for 90 degrees</span></td><td>Drivetrain</td><td>يلف ٩٠ درجة</td></tr>
+            <tr><td><span class="en">stop driving</span></td><td>Drivetrain</td><td>يقف خالص</td></tr>
+            <tr><td><span class="en">wait until ⟨ ⟩</span></td><td>Control</td><td>يستنى (يفضل يفحص) لحد ما الشرط يبقى TRUE</td></tr>
+            <tr><td><span class="en">forever</span></td><td>Control</td><td>يكرّر اللي جواه للأبد</td></tr>
+            <tr><td><span class="en">repeat ( )</span></td><td>Control</td><td>يكرّر عدد مرات محدد</td></tr>
+            <tr><td><span class="en">if ⟨ ⟩ then</span></td><td>Control</td><td>لو الشرط صح، اعمل اللي جوّه</td></tr>
+            <tr><td><span class="en">⟨LeftBumper pressed?⟩</span></td><td>Sensing</td><td>هل حساس الاصطدام مضغوط؟ (TRUE/FALSE) — <b>درس 1</b></td></tr>
+            <tr><td><span class="en">(FrontDistance in mm)</span></td><td>Sensing</td><td>رقم المسافة قدّام الروبوت — <b>درس 2</b></td></tr>
+            <tr><td><span class="en">⟨FrontEye detects (colour)?⟩</span></td><td>Sensing</td><td>هل العين الأمامية شايفة اللون ده؟ — <b>درس 2</b></td></tr>
+            <tr><td><span class="en">( &lt; )</span></td><td>Operators</td><td>علامة «أصغر من» — بتحط فيها المسافة والرقم</td></tr>
+          </tbody>
+        </table></div>
+        <div class="note warn">⚠️ <b>أهم فرق بين الدرسين:</b>
+          <br>• <b>درس 1 (Bumper):</b> الروبوت لازم <b>يخبط</b> في الحيطة. الشرط: <span class="en">wait until ⟨LeftBumper pressed?⟩</span>
+          <br>• <b>درس 2 (Distance):</b> الروبوت <b>بيشوفها من بعيد</b>. الشرط: <span class="en">wait until ⟨(FrontDistance in mm) &lt; 50⟩</span>
+          <br>ودي بالظبط الرسالة التعليمية: الحساس بيخلي الحركة أنعم وأأمن.</div>
+      </div>
+    </section>
+
+    <section class="topic" id="s-vex-maze" data-title="VEXcode VR — تبني كود المتاهة">
+      <div class="th"><h3>🧱 تبني كود Wall Maze خطوة بخطوة</h3></div>
+      <div class="body">
+        <h4 class="sub-h">النسخة البسيطة (اللي هتبنيها قدامهم الأول)</h4>
+        <div class="steps">
+          <div class="step">من <span class="ui">Events</span> اسحب <span class="en">when started</span> وحطه في مساحة الشغل.</div>
+          <div class="step">من <span class="ui">Drivetrain</span> اسحب <span class="en">drive forward</span> ولزّقه تحته.</div>
+          <div class="step">من <span class="ui">Control</span> اسحب <span class="en">wait until</span>.</div>
+          <div class="step">من <span class="ui">Operators</span> اسحب بلوك المقارنة <span class="en">( ) &lt; ( )</span> وحطه <b>جوّه</b> خانة الشرط في <span class="en">wait until</span>.</div>
+          <div class="step">من <span class="ui">Sensing</span> اسحب <span class="en">FrontDistance in mm</span> وحطه في <b>الخانة الشمال</b> من المقارنة، واكتب <span class="mono">50</span> في اليمين.</div>
+          <div class="step">من <span class="ui">Drivetrain</span> اسحب <span class="en">turn left for 90 degrees</span> ثم <span class="en">drive forward</span>.</div>
+          <div class="step">كرّر (wait until → turn → drive forward) على حسب شكل المتاهة، وفي الآخر <span class="en">stop driving</span>.</div>
+        </div>
+        <pre class="code">when started
+drive forward
+wait until ⟨(FrontDistance in mm) &lt; 50⟩
+turn left for 90 degrees
+drive forward
+wait until ⟨(FrontDistance in mm) &lt; 50⟩
+turn right for 90 degrees
+drive forward
+...
+stop driving</pre>
+        <h4 class="sub-h">وكود Disk Maze (الألوان)</h4>
+        <pre class="code">when started
+forever
+   if ⟨FrontEye detects <span class="ai">green</span>?⟩ then
+        turn right for 90 degrees
+   if ⟨FrontEye detects <span class="ai">blue</span>?⟩ then
+        turn left for 90 degrees
+   if ⟨FrontEye detects <span class="ai">red</span>?⟩ then
+        stop driving
+   if ⟨FrontEye detects <span class="ai">none</span>?⟩ then
+        drive forward</pre>
+        <div class="note info">🎨 القاعدة اللي العيال هيحفظوها: <b>أخضر = يمين · أزرق = شمال · أحمر = قِف · مفيش لون = كمّل قدّام.</b></div>
+      </div>
+    </section>
+
+    <section class="topic" id="s-vex-func" data-title="VEXcode VR — تعمل Function (My Blocks)">
+      <div class="th"><h3>🧩 تعمل Function (أهم فكرة في درس 2)</h3></div>
+      <div class="body">
+        <p>بعد ما الكود يطوّل جدًا، الدرس بيعلّمهم يقصّروه بـ<b>دالة</b> (بلوك من صنعك). ده اللي هيفرق معاهم كبرمجيين.</p>
+        <div class="steps">
+          <div class="step">من الـToolbox انزل تحت خالص لقسم <span class="ui">My Blocks</span>.</div>
+          <div class="step">اضغط <span class="ui">Make a Block</span>.</div>
+          <div class="step">اكتب اسم البلوك: <span class="mono">Left</span></div>
+          <div class="step">عايزه ياخد رقم (المسافة)؟ اضغط <span class="ui">Add an input</span> → اختار <b>number</b> → سمّيه <span class="mono">distance</span>.</div>
+          <div class="step">اضغط <span class="ui">OK</span> — هيظهرلك في المساحة بلوك <span class="en">define Left (distance)</span>.</div>
+          <div class="step">تحت الـdefine حط البلوكات المتكررة:
+            <br><span class="en">wait until ⟨(FrontDistance in mm) &lt; (distance)⟩</span> ← اسحب كلمة <span class="mono">distance</span> من رأس الـdefine نفسها.
+            <br><span class="en">turn left for 90 degrees</span>
+            <br><span class="en">drive forward</span></div>
+          <div class="step">اعمل نفس الحاجة لبلوك اسمه <span class="mono">Right</span> بس باللف يمين.</div>
+          <div class="step">دلوقتي في البرنامج الرئيسي استخدم <span class="mono">Left 50</span> و <span class="mono">Right 50</span> بدل ما تكرر ٣ بلوكات كل مرة.</div>
+        </div>
+        <pre class="code"><span class="cm">// بدل ٣٠+ بلوك مكررة… بقى كده:</span>
+define Left (distance)
+   wait until ⟨(FrontDistance in mm) &lt; (distance)⟩
+   turn left for 90 degrees
+   drive forward
+
+when started
+drive forward
+Left 50
+Right 50
+Left 50
+Right 300
+wait until ⟨(FrontDistance in mm) &lt; 100⟩
+stop driving</pre>
+        <div class="note good">💡 <b>الجملة اللي تقولها للعيال:</b> «لو عايز تغيّر المسافة من ٥٠ لـ٧٠، في الكود الطويل هتغيّرها ١٢ مرة وممكن تنسى واحدة. مع الدالة بتغيّرها <b>مرة واحدة</b>.» دي الفكرة كلها.</div>
+      </div>
+    </section>
+
+    <!-- ================= PART 4: LESSONS ================= -->
+    <div class="part" id="p4"><span class="pn">الدروس</span><h2>ملخص الستة دروس — مين بيعمل إيه</h2></div>
+
+    <section class="topic" id="s-lessons" data-title="جدول الدروس الستة">
+      <div class="th"><h3>🗂️ الصورة الكاملة في جدول واحد</h3></div>
+      <div class="body">
+        <div class="tbwrap"><table class="tb">
+          <thead><tr><th>الصف / الدرس</th><th>الفكرة الأساسية</th><th>الأداة</th><th>المشروع النهائي</th></tr></thead>
+          <tbody>
+            <tr><td><b>G4 — L1</b></td><td>مشاكل العالم → فكرة تطبيق → البحث الصح في جوجل → الشرطية (if/else)</td><td>App Lab</td><td>Health App بـ٣ صفحات</td></tr>
+            <tr><td><b>G4 — L2</b></td><td>UX (إحساس المستخدم) + الفلوتشارت + سر الباركود</td><td>App Lab</td><td>Blood Donation App بـ٤ صفحات</td></tr>
+            <tr><td><b>G5 — L1</b></td><td>الذكاء الاصطناعي + التعرّف على الوجه</td><td>mBlock</td><td>Class Monitor (حضور بالكاميرا)</td></tr>
+            <tr><td><b>G5 — L2</b></td><td>فايدة البرمجة + الفلوتشارت + الأنماط</td><td>mBlock</td><td>تصميم واجهة الشات بوت</td></tr>
+            <tr><td><b>G6 — L1</b></td><td>الحساسات + Sense-Think-Act + المنطق TRUE/FALSE</td><td>VEXcode VR</td><td>Wall Maze بحساس الاصطدام</td></tr>
+            <tr><td><b>G6 — L2</b></td><td>حساس المسافة + حساس العين + الدوال</td><td>VEXcode VR</td><td>Disk Maze + Wall Maze بالمسافة</td></tr>
+          </tbody>
+        </table></div>
+        <h4 class="sub-h">الخيط اللي بيربط الستة</h4>
+        <p>كلهم بيدرّسوا <b>نفس ٣ أفكار</b> بأشكال مختلفة — لو ركّزت عليهم هتشرح أي درس فيهم بثقة:</p>
+        <div class="grid g3">
+          <div class="tile accent"><span class="ic">🔀</span><h4>الشرطية</h4><p>لو حصل كذا → اعمل كذا. (if/else في G4 · TRUE/FALSE في G6 · تعرّف الوش في G5)</p></div>
+          <div class="tile accent"><span class="ic">📋</span><h4>التخطيط قبل التنفيذ</h4><p>فلوتشارت / wireframe قبل ما نبني. (G4 L2 و G5 L2)</p></div>
+          <div class="tile accent"><span class="ic">🔁</span><h4>التكرار والاختصار</h4><p>repeat والدوال بدل تكرار نفس الشغل. (G6 L2)</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="topic" id="s-teach" data-title="نصايح للشرح قدام العيال">
+      <div class="th"><h3>🎙️ إزاي تشرح وإنت مش خبير في الأداة</h3></div>
+      <div class="body">
+        <div class="note info">🧠 <b>السر:</b> إنت مش محتاج تعرف كل حاجة في الأداة — إنت محتاج تعرف <b>المسار الواحد</b> بتاع الحصة، وتعرفه كويس جدًا. أي حاجة برّه المسار ده، قول «سؤال حلو، تعالوا نجرّبه مع بعض».</div>
+        <div class="steps">
+          <div class="step"><b>اعرض الناتج الأول.</b> ورّيهم المشروع شغّال (التطبيق/الروبوت/الحضور) قبل ما تبدأ تشرح. لما يشوفوا الهدف بيركّزوا.</div>
+          <div class="step"><b>ابنِ قدامهم على البروجيكتور</b> بلوك بلوك، وقول بصوت عالي إنت بتعمل إيه وليه.</div>
+          <div class="step"><b>اغلط عمد مرة.</b> حط بلوك في مكان غلط وورّيهم الروبوت بيتلخبط، وبعدين صلّحه. ده بيعلّمهم الـ<b>Debugging</b> أكتر من أي كلام.</div>
+          <div class="step"><b>سيبهم يجرّبوا</b> وإنت بتلف عليهم. متمسكش الماوس من إيد الطالب — قوله «اضغط إنت».</div>
+          <div class="step"><b>اقفل بسؤال</b>: «مين يقدر يقولي بجملة واحدة الكود ده بيعمل إيه؟»</div>
+        </div>
+        <h4 class="sub-h">جمل جاهزة تستخدمها</h4>
+        <ul class="list">
+          <li>«البرنامج مبيفكرش — هو بس بينفّذ اللي إحنا كاتبينه بالترتيب.»</li>
+          <li>«الحساس زي حاسة عندنا: العين والإيد. من غيره الروبوت أعمى.»</li>
+          <li>«TRUE يعني أيوه، FALSE يعني لأ. الكمبيوتر بيشتغل بالاتنين دول بس.»</li>
+          <li>«الفلوتشارت زي ما ترسم الطريق قبل ما تمشي فيه.»</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ================= PART 5: TROUBLESHOOTING ================= -->
+    <div class="part" id="p5"><span class="pn">إسعافات</span><h2>لو حصلت مشكلة في الحصة</h2></div>
+
+    <section class="topic" id="s-fix" data-title="حل المشاكل الشائعة">
+      <div class="th"><h3>🛠️ أشهر المشاكل وحلولها</h3></div>
+      <div class="body">
+        <details class="faq"><summary>📷 الكاميرا مش شغالة في mBlock</summary><div class="a">
+          <b>الحل بالترتيب:</b> ① لو المتصفح، هيطلعلك سؤال إذن الكاميرا — اضغط <b>Allow</b>. لو رفضته قبل كده، دوس على أيقونة القفل جنب العنوان → فعّل الكاميرا → اعمل Refresh.<br>
+          ② اقفل أي برنامج تاني ماسك الكاميرا (Zoom / Teams).<br>
+          ③ لو لسه، استخدم <b>نسخة الديسك توب</b> بدل المتصفح.</div></details>
+
+        <details class="faq"><summary>🤖 الـAI بيقول اسم غلط أو مش عارف الطالب</summary><div class="a">
+          غالبًا التدريب ضعيف. ارجع لنافذة التدريب و: زوّد الصور (اضغط <b>Learn</b> شوية ثواني مش ضغطة)، حسّن الإضاءة، خلي الطالب يقرّب من الكاميرا، وبعدين <b>Train Model</b> تاني.<br>
+          كمان: لو ضفت كلاس جديد لازم تدرّب من تاني.</div></details>
+
+        <details class="faq"><summary>🧩 فتحت ملف mBlock ومش لاقي أي بلوكات</summary><div class="a">
+          إنت واقف على السبرايت الغلط. الكود في مشروع Class Monitor موجود على سبرايت <b><span class="mono">Start button1</span></b> — دوس عليه من قايمة السبرايتات تحت المسرح.<br>
+          وكمان: بلوكات الـAI مش بتظهر غير لو ضفت الإكستنشن (<b>+ Extension</b>).</div></details>
+
+        <details class="faq"><summary>▶️ دوست العلم الأخضر في Class Monitor ومحصلش حاجة</summary><div class="a">
+          ده مضبوط! البرنامج مبيبدأش بالعلم — بيبدأ بـ <span class="en">when this sprite clicked</span>، يعني لازم تدوس على <b>زرار Start اللي على المسرح</b> نفسه.</div></details>
+
+        <details class="faq"><summary>📱 في App Lab: الزرار مش بينقلني للصفحة التانية</summary><div class="a">
+          ① اتأكد إنك في وضع <b>Run</b> (دوست ▶) مش وضع التصميم.<br>
+          ② اتأكد إن الاسم في بلوك <span class="mono">onEvent</span> هو نفس الـ<span class="mono">id</span> بتاع الزرار بالحرف (حساس لحالة الحروف).<br>
+          ③ اتأكد إن اسم الشاشة في <span class="mono">setScreen</span> مكتوب صح.</div></details>
+
+        <details class="faq"><summary>💾 شغل الطلبة ضاع في App Lab</summary><div class="a">
+          غالبًا مكانوش <b>مسجلين دخول</b>. الحفظ التلقائي بيشتغل بس مع حساب. خلّيهم يسجّلوا دخول <b>قبل</b> ما يبدأوا، ويدوسوا <b>Share</b> ويحتفظوا باللينك.</div></details>
+
+        <details class="faq"><summary>🚗 الروبوت في VEX بيخبط أو بيخرج من المتاهة</summary><div class="a">
+          ① المسافة كبيرة أوي → صغّرها (جرّب 50 mm).<br>
+          ② لفة ناقصة → اتأكد إنها <b>90 درجة</b> والاتجاه صح (شمال/يمين).<br>
+          ③ لتصفير الوضع: اضغط <b>Stop</b> ثم اختار الـPlayground تاني.</div></details>
+
+        <details class="faq"><summary>🐢 الإنترنت ضعيف / الموقع مش فاتح</summary><div class="a">
+          <b>خطة بديلة جاهزة:</b> اشرح على البروجيكتور من مواقع الدروس اللي عملناها (فيها محاكاة تفاعلية للروبوت وللمسافة وللفلوتشارت)، وخلّي النشاط <b>على ورق</b> — الفلوتشارت والأنماط ولعبة الاصطدام (Bumper Walk) كلها بتتعمل من غير نت أصلًا.</div></details>
+
+        <div class="note warn" style="margin-top:16px">🧯 <b>قاعدة الطوارئ:</b> لو الأداة وقعت خالص، متقفش مكانك. حوّل على النشاط الورقي بتاع الدرس (فلوتشارت / أنماط / Bumper Walk / الباركود) — كله موجود في مواقع الدروس وبيحقّق نفس الهدف التعليمي.</div>
+      </div>
+    </section>
+
+    <section class="topic" id="s-checklist" data-title="شيك ليست قبل كل حصة">
+      <div class="th"><h3>✅ شيك ليست قبل الحصة بيوم</h3></div>
+      <div class="body">
+        <div class="grid g2">
+          <div class="tile"><span class="ic">🩺</span><h4>Grade 4 — App Lab</h4><p>✔️ دخلت <span class="mono">code.org</span> وسجّلت دخول<br>✔️ عملت مشروع تجريبي بـ٣ صفحات<br>✔️ جربت <span class="mono">onEvent → setScreen</span><br>✔️ جهزت باركود منتج للعبة (درس 2)</p></div>
+          <div class="tile"><span class="ic">🤖</span><h4>Grade 5 — mBlock</h4><p>✔️ نزّلت mBlock 5<br>✔️ ضفت إكستنشن Teachable Machine<br>✔️ درّبت الموديل على وشّك وجرّبته<br>✔️ فتحت ملف Class monitor وشغّلته<br>✔️ الكاميرا شغالة</p></div>
+          <div class="tile"><span class="ic">🧱</span><h4>Grade 6 — VEX VR</h4><p>✔️ فتحت <span class="mono">vr.vex.com</span><br>✔️ لقيت Wall Maze و Disk Maze<br>✔️ بنيت كود بسيط وشغّلته<br>✔️ جربت تعمل Function من My Blocks</p></div>
+          <div class="tile accent"><span class="ic">🎒</span><h4>عام</h4><p>✔️ البروجيكتور شغال<br>✔️ الصوت شغال<br>✔️ ورق وأقلام للأنشطة<br>✔️ فتحت موقع الدرس المناسب</p></div>
+        </div>
+        <div class="note good" style="margin-top:14px">🎯 لو خلّصت الشيك ليست دي، إنت جاهز ١٠٠٪. الحصة هتبقى سهلة عليك وممتعة ليهم.</div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<button class="totop" id="toTop" aria-label="لأعلى">↑</button>
+
+<script>
+(function(){
+"use strict";
+var $=function(s,c){return (c||document).querySelector(s);};
+var $$=function(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s));};
+var STORE='myguide_read_v1';
+var content=$('#content'), toc=$('#toc');
+
+function buildTOC(){
+  toc.innerHTML='';
+  Array.prototype.slice.call(content.children).forEach(function(el){
+    if(el.classList.contains('part')){
+      var h=document.createElement('h2'); h.textContent=el.querySelector('h2').textContent; toc.appendChild(h);
+    } else if(el.classList.contains('topic')){
+      var a=document.createElement('a'); a.href='#'+el.id; a.textContent=el.getAttribute('data-title')||el.id;
+      a.dataset.target=el.id; toc.appendChild(a);
+    }
+  });
+}
+buildTOC();
+var links={}; $$('.toc a').forEach(function(a){links[a.dataset.target]=a;});
+var obs=new IntersectionObserver(function(es){
+  es.forEach(function(e){ if(e.isIntersecting){ $$('.toc a').forEach(function(x){x.classList.remove('active');});
+    var a=links[e.target.id]; if(a){a.classList.add('active'); a.scrollIntoView({block:'nearest'});} } });
+},{rootMargin:'-70px 0px -75% 0px'});
+$$('.topic').forEach(function(t){obs.observe(t);});
+
+toc.addEventListener('click',function(e){ if(e.target.tagName==='A') toc.classList.remove('open'); });
+$('#tocToggle').addEventListener('click',function(){ toc.classList.toggle('open'); });
+
+/* mark as read + progress */
+var read={}; try{read=JSON.parse(localStorage.getItem(STORE))||{};}catch(e){}
+var topics=$$('.topic');
+topics.forEach(function(t){
+  var b=document.createElement('button'); b.className='rev'; b.type='button';
+  b.innerHTML='<span class="bx"></span> قرأته';
+  b.setAttribute('aria-pressed', read[t.id]?'true':'false');
+  if(read[t.id]){ b.querySelector('.bx').textContent='✓'; if(links[t.id])links[t.id].classList.add('done'); }
+  b.addEventListener('click',function(){
+    var on=b.getAttribute('aria-pressed')!=='true'; b.setAttribute('aria-pressed',on?'true':'false');
+    b.querySelector('.bx').textContent=on?'✓':''; read[t.id]=on; if(!on)delete read[t.id];
+    if(links[t.id])links[t.id].classList.toggle('done',on);
+    try{localStorage.setItem(STORE,JSON.stringify(read));}catch(e){}
+    paint();
+  });
+  $('.th',t).appendChild(b);
+});
+function paint(){ var d=topics.filter(function(t){return read[t.id];}).length;
+  $('#progBar').style.width=(topics.length?Math.round(d/topics.length*100):0)+'%'; }
+paint();
+
+/* search */
+$('#search').addEventListener('input',function(){
+  var q=this.value.trim().toLowerCase(), any=false;
+  topics.forEach(function(t){
+    var m=!q || t.textContent.toLowerCase().indexOf(q)>=0 || (t.getAttribute('data-title')||'').toLowerCase().indexOf(q)>=0;
+    t.classList.toggle('hidden',!m); if(m)any=true;
+  });
+  $$('.part').forEach(function(pd){
+    var el=pd.nextElementSibling, show=false;
+    while(el && !el.classList.contains('part')){ if(el.classList.contains('topic') && !el.classList.contains('hidden')){show=true;break;} el=el.nextElementSibling; }
+    pd.classList.toggle('hidden',!!q && !show);
+  });
+  var nr=$('#noRes');
+  if(!any){ if(!nr){nr=document.createElement('div');nr.id='noRes';nr.className='no-results';nr.textContent='مفيش نتايج — جرّب كلمة تانية.';content.appendChild(nr);} }
+  else if(nr){nr.remove();}
+});
+
+var toTop=$('#toTop');
+addEventListener('scroll',function(){ toTop.classList.toggle('show',scrollY>500); },{passive:true});
+toTop.addEventListener('click',function(){ scrollTo({top:0,behavior:'smooth'}); });
+addEventListener('keydown',function(e){ if(e.key==='/' && document.activeElement!==$('#search')){ e.preventDefault(); $('#search').focus(); } });
+})();
+</script>
+</body>
+</html>

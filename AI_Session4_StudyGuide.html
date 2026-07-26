@@ -1,0 +1,917 @@
+<!doctype html>
+<!-- ============================================================
+     AI SESSION 4 — BILINGUAL STUDY GUIDE (English primary · بالمصري helper)
+     Personal teach-ready notes. Standalone, offline-friendly.
+     Neo-brutalist design family (ref: alfredo-last-lecture.vercel.app).
+     ============================================================ -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<title>📖 AI Session 4 — Study Guide</title>
+<meta name="description" content="Bilingual study guide for Session 4: Artificial Intelligence, Machine Learning, Computer Vision and NLP.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
+<style>
+:root{
+  --paper:#FBF9F3; --ink:#1C2434; --muted:#5C6478; --line:#E6E2D4; --hl:#FFE873;
+  --teal:#0F6E56; --teal-l:#E1F5EE; --violet:#463A9C; --violet-l:#ECEAFB;
+  --cyan:#0C6C79; --cyan-l:#E0F4F6; --green:#2C7A3E; --green-l:#E7F4EA;
+  --amber:#8A5A12; --amber-l:#FBF0DA; --blue:#1D5B9E; --blue-l:#E7F0FA; --red:#B02A2A; --red-l:#FBE9E9;
+  --disp:'Baloo 2','Trebuchet MS',system-ui,sans-serif;
+  --body:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,Consolas,monospace;
+  --shadow:6px 6px 0 rgba(28,36,52,.9); --shadow-s:3px 3px 0 var(--ink); --shadow-xs:2px 2px 0 var(--ink);
+  --accent:var(--violet); --accent-l:var(--violet-l);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);color:var(--ink);background:var(--paper);line-height:1.65;font-size:16.5px;
+  background-image:linear-gradient(rgba(28,36,52,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(28,36,52,.04) 1px,transparent 1px);
+  background-size:26px 26px;-webkit-text-size-adjust:100%}
+h1,h2,h3,h4{font-family:var(--disp);line-height:1.2;font-weight:700}
+a{color:var(--blue)}
+:focus-visible{outline:3px solid var(--violet);outline-offset:2px;border-radius:6px}
+.hl{background:linear-gradient(100deg,transparent 1%,var(--hl) 4%,var(--hl) 96%,transparent 99%);padding:0 6px;border-radius:5px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.mono{font-family:var(--mono)}
+
+/* ---------- top bar ---------- */
+.topbar{position:sticky;top:0;z-index:30;display:flex;align-items:center;gap:10px;padding:9px 16px;
+  background:rgba(251,249,243,.96);backdrop-filter:blur(6px);border-bottom:2px solid var(--ink);flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:9px;font-family:var(--disp);font-weight:800;font-size:16px;white-space:nowrap}
+.brand .mk{width:26px;height:26px}
+.home{font-family:var(--mono);font-size:12px;font-weight:600;border:2px solid var(--ink);border-radius:9px;padding:5px 11px;background:#fff;box-shadow:var(--shadow-xs);text-decoration:none;color:var(--ink)}
+.home:hover{background:var(--accent-l)}
+.tb-sp{flex:1 1 auto}
+.search{position:relative;flex:1 1 190px;max-width:320px;min-width:150px}
+.search input{width:100%;font-family:var(--body);font-size:14.5px;padding:8px 12px 8px 32px;border:2px solid var(--ink);border-radius:10px;background:#fff}
+.search::before{content:"🔎";position:absolute;left:9px;top:50%;transform:translateY(-50%);font-size:14px}
+.langtg{display:flex;border:2px solid var(--ink);border-radius:999px;overflow:hidden;flex:0 0 auto;box-shadow:var(--shadow-xs)}
+.langtg button{font-family:var(--disp);font-size:13px;font-weight:700;border:none;background:#fff;color:var(--ink);padding:6px 12px;cursor:pointer}
+.langtg button.on{background:var(--ink);color:#fff}
+.icon-btn{width:36px;height:36px;flex:0 0 auto;display:grid;place-items:center;background:#fff;border:2px solid var(--ink);border-radius:9px;cursor:pointer;font-size:15px;box-shadow:var(--shadow-xs);color:var(--ink)}
+.icon-btn:hover{background:var(--accent-l)}
+
+/* progress rail */
+.prog{height:7px;background:#EFEBDD;border-bottom:2px solid var(--ink);position:sticky;top:53px;z-index:29}
+.prog>span{display:block;height:100%;width:0;background:var(--accent);transition:width .4s}
+
+/* ---------- layout ---------- */
+.layout{display:grid;grid-template-columns:270px 1fr;gap:26px;max-width:1220px;margin:0 auto;padding:0 20px 90px;align-items:start}
+.toc{position:sticky;top:74px;max-height:calc(100vh - 90px);overflow:auto;padding:16px 4px 20px;border-inline-end:2px dashed var(--line)}
+.toc h2{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-family:var(--mono);margin:14px 6px 8px}
+.toc h2:first-child{margin-top:0}
+.toc a{display:block;font-size:13.5px;font-weight:600;color:var(--ink);text-decoration:none;padding:6px 10px;border-radius:8px;border:1.5px solid transparent;line-height:1.3}
+.toc a:hover{background:#fff;border-color:var(--line)}
+.toc a.active{background:var(--accent-l);border-color:var(--accent);color:var(--accent)}
+.toc a.done::after{content:" ✓";color:var(--green);font-weight:800}
+.content{min-width:0}
+
+/* ---------- hero ---------- */
+.hero{padding:40px 0 8px}
+.stamp{display:inline-block;font-family:var(--mono);font-size:12px;letter-spacing:1px;border:2px dashed var(--accent);
+  color:var(--accent);padding:5px 14px;border-radius:8px;transform:rotate(-1.2deg);background:#fff;box-shadow:var(--shadow-xs)}
+.hero h1{font-size:clamp(28px,5vw,44px);margin:16px 0 6px}
+.hero .sub{color:var(--muted);font-size:17px;max-width:60ch}
+.hero .sub.masri{direction:rtl;margin-top:6px}
+
+/* part divider */
+.part-divider{margin:34px 0 8px;padding:14px 18px;border:2px solid var(--ink);border-radius:14px;background:var(--ink);color:#fff;box-shadow:var(--shadow-s);display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.part-divider .pn{font-family:var(--mono);font-size:12px;background:var(--hl);color:var(--ink);padding:3px 10px;border-radius:7px;font-weight:700}
+.part-divider h2{font-size:clamp(20px,3.4vw,28px)}
+.part-divider .pm{direction:rtl;font-size:14px;opacity:.85;width:100%}
+
+/* ---------- topic card ---------- */
+.topic{background:#fff;border:2px solid var(--ink);border-radius:16px;box-shadow:var(--shadow);margin:20px 0;overflow:hidden;scroll-margin-top:78px}
+.topic>.th{display:flex;align-items:center;gap:12px;padding:15px 20px 13px;border-bottom:2px solid var(--ink);background:var(--accent-l);flex-wrap:wrap}
+.topic>.th h3{font-size:clamp(19px,3vw,25px);flex:1 1 200px}
+.topic>.th .rev{margin-inline-start:auto;display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:12px;font-weight:600;
+  border:2px solid var(--ink);background:#fff;border-radius:999px;padding:5px 12px;cursor:pointer;box-shadow:var(--shadow-xs);white-space:nowrap;color:var(--ink)}
+.topic>.th .rev[aria-pressed="true"]{background:var(--green-l);border-color:var(--green);color:var(--green)}
+.topic>.th .rev .bx{width:15px;height:15px;border:2px solid currentColor;border-radius:4px;display:grid;place-items:center;font-size:10px}
+.topic>.body{padding:18px 20px 22px}
+
+/* content blocks */
+.en{margin:8px 0}
+.en.lead{font-size:17.5px}
+.masri{direction:rtl;background:#FFFBEA;border:1px solid #EADFA8;border-radius:9px;padding:7px 13px;margin:6px 0 12px;font-size:15px;color:#4a4327;line-height:1.7}
+.masri b{color:var(--ink)}
+.masri::before{content:"🇪🇬 مصري";display:block;font-family:var(--mono);font-size:10px;letter-spacing:.5px;color:var(--amber);margin-bottom:2px;font-weight:700}
+h4.sub-h{font-size:16.5px;margin:16px 0 4px;color:var(--accent)}
+ul.list,ol.list{margin:6px 22px 12px;line-height:1.7}
+ul.list li,ol.list li{margin:3px 0}
+.ex{border-inline-start:5px solid var(--blue);background:var(--blue-l);border-radius:8px;padding:10px 14px;margin:10px 0;font-size:15px}
+.ex .lbl{font-family:var(--mono);font-size:11px;font-weight:700;color:var(--blue);letter-spacing:.5px;display:block;margin-bottom:2px}
+pre.code{background:#0E1524;color:#D7E5D8;font-family:var(--mono);font-size:13.5px;line-height:1.55;padding:12px 14px;border-radius:10px;border:2px solid var(--ink);overflow-x:auto;margin:10px 0;box-shadow:var(--shadow-xs)}
+.analogy{border-inline-start:5px solid var(--violet);background:var(--violet-l);border-radius:8px;padding:10px 14px;margin:10px 0;font-size:15px}
+.analogy .lbl{font-family:var(--mono);font-size:11px;font-weight:700;color:var(--violet);letter-spacing:.5px;display:block;margin-bottom:2px}
+.memq{border:2px solid var(--ink);background:#FFFBE8;border-radius:10px;padding:10px 14px;margin:10px 0;font-weight:600;box-shadow:var(--shadow-xs)}
+.warn{border-inline-start:5px solid var(--red);background:var(--red-l);border-radius:8px;padding:10px 14px;margin:10px 0;font-size:15px}
+.warn .lbl{font-family:var(--mono);font-size:11px;font-weight:700;color:var(--red);letter-spacing:.5px;display:block;margin-bottom:2px}
+.summary{border:2px dashed var(--muted);border-radius:10px;padding:9px 14px;margin:14px 0 2px;direction:rtl;font-size:14.5px;color:var(--muted);background:#FCFBF7}
+.summary::before{content:"📌 خلاصة";display:block;font-family:var(--mono);font-size:10px;color:var(--amber);margin-bottom:2px;font-weight:700}
+.say{border:2px solid var(--ink);border-radius:10px;background:var(--teal-l);padding:11px 14px;margin:10px 0;box-shadow:var(--shadow-xs)}
+.say .lbl{font-family:var(--mono);font-size:11px;font-weight:700;color:var(--teal);letter-spacing:.5px;display:block;margin-bottom:3px}
+.say .q{font-weight:600;font-size:16px}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:8px 0}
+.pair>div{border:1.6px solid var(--ink);border-radius:9px;padding:8px 12px;background:#fff}
+.pair .a{font-family:var(--mono);font-size:12px;color:var(--muted);display:block}
+.qa{border:2px solid var(--ink);border-radius:10px;margin:8px 0;overflow:hidden;box-shadow:var(--shadow-xs)}
+.qa summary{cursor:pointer;list-style:none;padding:10px 14px;font-weight:600;background:#fff;display:flex;gap:9px;align-items:center}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary::before{content:"❓";flex:0 0 auto}
+.qa[open] summary{background:var(--accent-l);border-bottom:2px solid var(--ink)}
+.qa .ans{padding:10px 14px;background:var(--green-l)}
+.qa .ans::before{content:"✅ ";}
+
+/* language toggle behavior */
+body.lang-en .masri{display:none}
+body.lang-ar .en,body.lang-ar .say .q,body.lang-ar pre.code,body.lang-ar .pair .en{display:none}
+body.lang-ar .masri{background:#fff;border-color:var(--line)}
+
+.hidden{display:none!important}
+.no-results{padding:30px;text-align:center;color:var(--muted);font-size:16px}
+
+/* back to top */
+.totop{position:fixed;right:18px;bottom:18px;z-index:20;width:46px;height:46px;border-radius:50%;border:2px solid var(--ink);
+  background:var(--accent);color:#fff;font-size:20px;cursor:pointer;box-shadow:var(--shadow-s);display:none}
+.totop.show{display:grid;place-items:center}
+
+/* mobile */
+.toc-toggle{display:none}
+@media(max-width:860px){
+  .layout{grid-template-columns:1fr}
+  .toc{position:fixed;inset:53px 0 auto 0;top:53px;z-index:28;max-height:70vh;background:var(--paper);border-bottom:2px solid var(--ink);
+    border-inline-end:none;padding:14px 18px;display:none;box-shadow:var(--shadow)}
+  .toc.open{display:block}
+  .toc-toggle{display:grid}
+}
+@media(max-width:560px){body{font-size:16px}.brand .t{display:none}.langtg button{padding:6px 9px}}
+@media print{.topbar,.toc,.prog,.totop,.rev,.toc-toggle{display:none!important}.topic{box-shadow:none;break-inside:avoid}body{background:#fff}}
+</style>
+</head>
+<body class="lang-both">
+
+<header class="topbar">
+  <a class="brand" href="index.html" title="Study hub">
+    <svg class="mk" viewBox="0 0 40 40" aria-hidden="true"><rect x="6" y="7" width="28" height="26" rx="4" fill="#ECEAFB" stroke="#1C2434" stroke-width="2.6"/><circle cx="20" cy="17" r="3.5" fill="#463A9C"/><path d="M20 20.5v5M14 14l-2-2M26 14l2-2M13 24h14" stroke="#463A9C" stroke-width="2" stroke-linecap="round"/></svg>
+    <span class="t">AI · Study Guide</span>
+  </a>
+  <button class="icon-btn toc-toggle" id="tocToggle" aria-label="Contents">☰</button>
+  <div class="search"><input id="search" type="text" placeholder="Search notes…" aria-label="Search notes" autocomplete="off"></div>
+  <span class="tb-sp"></span>
+  <div class="langtg" role="group" aria-label="Language">
+    <button data-lang="both" class="on">Both</button>
+    <button data-lang="en">EN</button>
+    <button data-lang="ar">مصري</button>
+  </div>
+  <a class="home" href="index.html">🏠 Hub</a>
+</header>
+<div class="prog"><span id="progBar"></span></div>
+
+<div class="layout">
+  <nav class="toc" id="toc" aria-label="Table of contents"></nav>
+
+  <main class="content" id="content">
+    <div class="hero">
+      <span class="stamp">PHYSICAL SESSION 4 · STUDY NOTES 🤖</span>
+      <h1>Artificial Intelligence, Machine Learning, <span class="hl">Computer Vision</span> &amp; NLP</h1>
+      <p class="sub">Read-to-teach notes. Each idea appears in clear English first, then a simple Egyptian-Arabic explanation so you can say the terms correctly to students.</p>
+      <p class="sub masri">الأساس English، وتحت كل نقطة شرح بالمصري يسهّل عليك تشرح المصطلح صح للطلبة. استخدم زرار «مصري / EN / Both» فوق عشان تختبر نفسك.</p>
+    </div>
+
+    <!-- ========= SESSION TOPICS ========= -->
+    <section class="topic" id="s-topics" data-title="Session Topics">
+      <div class="th"><h3>Session Topics — موضوعات السيشن</h3></div>
+      <div class="body">
+        <ol class="list">
+          <li><b>Introduction to Artificial Intelligence — AI</b><div class="masri">مقدمة عن الذكاء الاصطناعي.</div></li>
+          <li><b>Machine Learning Fundamentals — ML</b><div class="masri">أساسيات تعلُّم الآلة.</div></li>
+          <li><b>Introduction to Computer Vision — CV</b><div class="masri">مقدمة عن رؤية الكمبيوتر.</div></li>
+          <li><b>Natural Language Processing — NLP</b><div class="masri">معالجة اللغة الطبيعية وفهم كلام البشر.</div></li>
+        </ol>
+      </div>
+    </section>
+
+    <div class="part-divider" id="part-1"><span class="pn">PART 1</span><h2>Introduction to Artificial Intelligence 🤖</h2><span class="pm">مقدمة عن الذكاء الاصطناعي</span></div>
+
+    <!-- 1 -->
+    <section class="topic" id="s-1" data-title="1 · Session Opening">
+      <div class="th"><h3>1. Session Opening — بداية السيشن 🎉</h3></div>
+      <div class="body">
+        <h4 class="sub-h">What you can say to the students</h4>
+        <div class="say"><span class="lbl">🗣️ SAY</span><p class="q">“Good morning, everyone! Today, we are going to discover how computers can think, learn, see, and understand our language.”</p></div>
+        <div class="masri">«صباح الخير يا أبطال! النهارده هنكتشف إزاي الكمبيوتر ممكن يفكر، ويتعلم، ويشوف، ويفهم كلامنا.»</div>
+        <h4 class="sub-h">Then ask</h4>
+        <p class="en">“Do you think your phone is smart?”</p>
+        <div class="masri">«تفتكروا الموبايل بتاعكم ذكي؟»</div>
+        <p class="en">Let students answer, then ask:</p>
+        <ul class="list">
+          <li>“How does your phone recognize your face?” <div class="masri">«الموبايل بيعرف وشك إزاي؟»</div></li>
+          <li>“How does YouTube know which videos you may like?” <div class="masri">«يوتيوب بيعرف إزاي الفيديوهات اللي ممكن تعجبك؟»</div></li>
+          <li>“How does Google Maps choose the fastest route?” <div class="masri">«Google Maps بيعرف منين أنهي طريق أسرع؟»</div></li>
+        </ul>
+        <p class="en">Then say: “All these examples use Artificial Intelligence.”</p>
+        <div class="masri">«كل الأمثلة دي بتستخدم حاجة اسمها Artificial Intelligence أو AI.»</div>
+      </div>
+    </section>
+
+    <!-- 2 -->
+    <section class="topic" id="s-2" data-title="2 · Icebreaker: Morning Routine">
+      <div class="th"><h3>2. Icebreaker: Morning Routine Audit 🌅</h3></div>
+      <div class="body">
+        <h4 class="sub-h">Activity Question</h4>
+        <p class="en">“Where do you use AI during your morning routine?”</p>
+        <div class="masri">«فين ممكن تكون استخدمت AI من أول ما صحيت من النوم؟»</div>
+
+        <h4 class="sub-h">Unlocking Your Phone — فتح الموبايل</h4>
+        <p class="en">“Your phone may recognize your face using Face Recognition.”</p>
+        <div class="masri">«الموبايل ممكن يشوف وشك ويعرف إن ده إنت باستخدام Face Recognition.»</div>
+        <p class="en"><b>Simple explanation:</b> “The camera captures your face, and the phone compares it with the saved face data.”</p>
+        <div class="masri">«الكاميرا بتصور وشك، وبعد كده الموبايل يقارنه بالمعلومات اللي مخزنها عن وشك.»</div>
+        <div class="memq">Ask: “Is Face Recognition related to sound, text, or images?” → <b>Images. It is related to Computer Vision.</b><div class="masri">«متعلق بالصور، وده جزء من Computer Vision.»</div></div>
+
+        <h4 class="sub-h">Choosing Music — اختيار الأغاني 🎵</h4>
+        <p class="en">“Spotify or YouTube may recommend music based on what you listened to before.”</p>
+        <div class="masri">«Spotify أو YouTube ممكن يقترحوا أغاني بناءً على الأغاني اللي سمعتها قبل كده.»</div>
+        <p class="en">The application watches things such as:</p>
+        <ul class="list">
+          <li>What you played. <span class="masri" style="display:inline-block">إنت شغلت إيه.</span></li>
+          <li>What you skipped. <span class="masri" style="display:inline-block">إنت عملت Skip لإيه.</span></li>
+          <li>What you liked. <span class="masri" style="display:inline-block">إنت عملت Like لإيه.</span></li>
+          <li>How long you listened. <span class="masri" style="display:inline-block">فضلت تسمع الأغنية قد إيه.</span></li>
+        </ul>
+        <p class="en">Then it creates a <b>Recommendation</b>.<span class="masri" style="display:inline-block">اقتراح أو توصية.</span></p>
+
+        <h4 class="sub-h">Checking the Weather — معرفة الطقس 🌧️</h4>
+        <p class="en">“Weather applications analyze old and current data to predict the weather.”</p>
+        <div class="masri">«تطبيقات الطقس بتحلل معلومات قديمة وحالية عشان تتوقع حالة الجو.»</div>
+        <p class="en">They may use: Temperature — درجة الحرارة · Wind speed — سرعة الرياح · Air pressure — ضغط الهواء · Satellite images — صور الأقمار الصناعية.</p>
+        <div class="warn"><span class="lbl">IMPORTANT</span>“Prediction does not mean knowing the future with 100% certainty.”<div class="masri">«Prediction مش معناها إن البرنامج عارف المستقبل بشكل مؤكد، هو بيعمل توقع بناءً على المعلومات.»</div></div>
+
+        <h4 class="sub-h">Planning Your Route — اختيار الطريق 🗺️</h4>
+        <p class="en">“Google Maps uses real-time traffic data to find a faster route.” It analyzes: Traffic · Accidents · Closed roads · Your current location.</p>
+        <div class="masri">«Google Maps بيستخدم معلومات الزحمة الحالية عشان يختار طريق أسرع» — بيحلل الزحمة، الحوادث، الطرق المقفولة، وموقعك الحالي.</div>
+
+        <h4 class="sub-h">Social Media Content — محتوى السوشيال ميديا 📱</h4>
+        <p class="en">“Social media applications recommend posts and videos based on your activity.”</p>
+        <div class="masri">«تطبيقات السوشيال ميديا بتقترح فيديوهات وبوستات على حسب استخدامك.»</div>
+
+        <h4 class="sub-h">Discussion Questions</h4>
+        <ul class="list">
+          <li>“Which example surprised you the most?” <span class="masri" style="display:inline-block">«أنهي مثال فاجأك أكتر؟»</span></li>
+          <li>“Can you think of another AI example?” <span class="masri" style="display:inline-block">«تقدر تفتكر مثال تاني للـAI؟»</span></li>
+          <li>“What is the AI trying to do in each example?” <span class="masri" style="display:inline-block">«الـAI بيحاول يعمل إيه في كل مثال؟»</span></li>
+        </ul>
+        <div class="summary">السيشن تبدأ بأمثلة مثل Face ID، اقتراح الموسيقى، الطقس، الخرائط والمحتوى المقترح.</div>
+      </div>
+    </section>
+
+    <!-- 3 -->
+    <section class="topic" id="s-3" data-title="3 · What Is AI?">
+      <div class="th"><h3>3. What Is Artificial Intelligence? 🤖</h3></div>
+      <div class="body">
+        <h4 class="sub-h">Definition</h4>
+        <p class="en lead">“Artificial Intelligence means teaching machines to perform tasks that normally require human intelligence.”</p>
+        <div class="masri">«Artificial Intelligence يعني نخلي الأجهزة تعمل مهام عادةً محتاجة نوع من ذكاء الإنسان.»</div>
+        <p class="en">These tasks may include: Recognizing faces · Understanding language · Making predictions · Solving problems · Making decisions.</p>
+        <div class="masri">التعرّف على الوجوه، فهم اللغة، عمل توقعات، حل المشكلات، واتخاذ قرارات.</div>
+        <div class="analogy"><span class="lbl">🧠 SIMPLE</span>“AI is like giving a computer a smart system that can learn from information.”<div class="masri">«كأننا بندي الكمبيوتر نظام ذكي يقدر يتعلم من المعلومات.»</div></div>
+        <div class="warn"><span class="lbl">BUT</span>“AI does not have a real human brain. It finds patterns in data and uses those patterns to make smart guesses.”<div class="masri">«الـAI معندوش مخ حقيقي زي الإنسان. هو بيدور على Patterns أو أنماط في البيانات، وبعد كده يستخدمها عشان يعمل تخمين ذكي.»</div></div>
+      </div>
+    </section>
+
+    <!-- 4 -->
+    <section class="topic" id="s-4" data-title="4 · How Does AI Work?">
+      <div class="th"><h3>4. How Does AI Work? 🔄</h3></div>
+      <div class="body">
+        <h4 class="sub-h">Step 1: Data In 📊</h4>
+        <p class="en">“First, we give the AI data and examples.” Examples: Images · Text · Sounds · Numbers · Videos.</p>
+        <div class="masri">«أول حاجة بندي للـAI معلومات وأمثلة» — صور، نصوص، أصوات، أرقام، فيديوهات.</div>
+        <h4 class="sub-h">Step 2: Find Patterns 🔍</h4>
+        <p class="en">“The AI looks for similarities, differences, and repeated patterns.”</p>
+        <div class="masri">«الـAI بيدور على الحاجات المتشابهة والمختلفة والأنماط اللي بتتكرر.»</div>
+        <div class="ex"><span class="lbl">EXAMPLE</span>When looking at many cats, it may notice: Ears — ودان · Whiskers — شوارب · Eyes — عيون · Face shape — شكل الوش.</div>
+        <h4 class="sub-h">Step 3: Make a Guess 💡</h4>
+        <p class="en">“When the AI receives new data, it uses the patterns to make a prediction.”</p>
+        <div class="masri">«لما يشوف حاجة جديدة، يستخدم الـPatterns اللي اتعلمها عشان يتوقع الإجابة.»</div>
+        <div class="ex"><span class="lbl">EXAMPLE</span>“This image probably contains a cat.” <div class="masri">«الصورة دي غالبًا فيها قطة.»</div></div>
+        <div class="summary">الـAI يعتمد على Data، ثم يبحث عن Patterns، ثم يستخدمها في عمل Guess أو Prediction.</div>
+      </div>
+    </section>
+
+    <!-- 5 -->
+    <section class="topic" id="s-5" data-title="5 · How Does AI Learn?">
+      <div class="th"><h3>5. How Does AI Learn? 🧠</h3></div>
+      <div class="body">
+        <p class="en lead">“AI learns by studying many examples.”</p>
+        <div class="masri">«الـAI بيتعلم لما يشوف أمثلة كتير.»</div>
+        <h4 class="sub-h">Cat Example 🐱</h4>
+        <p class="en">“A child learns what a cat looks like after seeing many cats. In a similar way, AI can learn by studying thousands of cat images.”</p>
+        <div class="masri">«الطفل بيعرف شكل القطة بعد ما يشوف قطط كتير. بنفس الفكرة تقريبًا، الـAI ممكن يتعلم من آلاف صور القطط.»</div>
+        <p class="en">Then when it sees a new image: “The AI compares the new image with the patterns it learned.”</p>
+        <div class="masri">«يقارن الصورة الجديدة بالـPatterns اللي اتعلمها.»</div>
+        <div class="memq">Interactive: “How did you know this was a cat?” Expected answers: whiskers · cat-like ears · a cat face · I have seen cats before.<div class="masri">«إنت عرفت منين إن دي قطة؟»</div></div>
+        <p class="en">Then say: “You used your past experience. AI uses training data.”</p>
+        <div class="masri">«إنت استخدمت خبرتك القديمة، والـAI بيستخدم Training Data.»</div>
+        <div class="summary">الـAI يتعلم من أمثلة كثيرة، يبحث عن الصفات المشتركة، ثم يستخدمها عند التعامل مع أمثلة جديدة.</div>
+      </div>
+    </section>
+
+    <!-- 6 -->
+    <section class="topic" id="s-6" data-title="6 · Three Types of AI">
+      <div class="th"><h3>6. The Three Types of AI 🥉🥈🥇</h3></div>
+      <div class="body">
+        <h4 class="sub-h">1. Narrow AI — Weak AI</h4>
+        <p class="en">“Narrow AI is designed to perform one specific task or a limited group of tasks.” Examples: Face Unlock · YouTube Recommendations · Spam Filters · Google Translate · Chess Programs.</p>
+        <div class="masri">«Narrow AI معمول عشان ينفذ مهمة محددة أو مجموعة مهام محدودة.»</div>
+        <div class="analogy"><span class="lbl">🧠 ANALOGY</span>“A calculator is excellent at calculations, but it cannot cook food.”<div class="masri">«الآلة الحاسبة شاطرة جدًا في الحساب، لكن مينفعش تطلب منها تطبخ.»</div></div>
+        <div class="warn"><span class="lbl">FACT</span>“The AI systems we use today are considered Narrow AI.”<div class="masri">«أنظمة الـAI اللي بنستخدمها دلوقتي بتعتبر Narrow AI.»</div></div>
+        <h4 class="sub-h">2. General AI — Strong AI</h4>
+        <p class="en">“General AI would be able to learn and perform almost any intellectual task a human can perform.” It would be able to: learn different subjects · adapt to new situations · understand many problems · transfer knowledge between tasks.</p>
+        <div class="masri">«General AI المفروض يقدر يتعلم ويعمل تقريبًا أي مهمة عقلية الإنسان يقدر يعملها.»</div>
+        <div class="warn"><span class="lbl">BUT</span>“True General AI does not currently exist as an everyday system.”<div class="masri">«General AI الحقيقي مش موجود عندنا حاليًا كنظام بنستخدمه في حياتنا اليومية.»</div></div>
+        <h4 class="sub-h">3. Super AI</h4>
+        <p class="en">“Super AI is a theoretical AI that would be more intelligent than humans in almost every field.” It may be better in: Strategy · Creativity · Science · Problem-solving.</p>
+        <div class="masri">«Super AI فكرة عن ذكاء اصطناعي يكون أذكى من البشر في أغلب أو كل المجالات.»</div>
+        <div class="warn"><span class="lbl">BUT</span>“Super AI is still a future idea and science fiction concept.”<div class="masri">«لسه فكرة مستقبلية وقريبة من أفلام الخيال العلمي.»</div></div>
+        <div class="summary">المادة توضّح أن المستخدم حاليًا هو Narrow AI، بينما General AI وSuper AI ما زالا غير متاحين كأنظمة حقيقية يومية.</div>
+      </div>
+    </section>
+
+    <!-- 7 -->
+    <section class="topic" id="s-7" data-title="7 · Human vs AI">
+      <div class="th"><h3>7. Human Intelligence vs. Artificial Intelligence 👦🤝🤖</h3></div>
+      <div class="body">
+        <p class="en lead">“AI is not simply better or worse than humans. It is good at different things.”</p>
+        <div class="masri">«الـAI مش أفضل من الإنسان في كل حاجة، ومش أسوأ منه في كل حاجة. كل واحد شاطر في حاجات مختلفة.»</div>
+        <h4 class="sub-h">Humans Are Good At</h4>
+        <ul class="list">
+          <li><b>Emotions:</b> “Humans can truly feel happiness, sadness, fear, and excitement.” <div class="masri">«الإنسان فعلًا بيحس بالفرح والحزن والخوف والحماس.»</div></li>
+          <li><b>Empathy:</b> “Humans can understand and care about another person’s feelings.” <div class="masri">«الإنسان يقدر يحس بالناس ويتعاطف معاهم.»</div></li>
+          <li><b>Creativity:</b> “Humans can imagine new ideas based on life experiences.” <div class="masri">«الإنسان يقدر يبتكر أفكار جديدة من خبراته وحياته.»</div></li>
+          <li><b>Common Sense:</b> “Humans naturally understand many everyday situations.” <div class="masri">«الإنسان بيفهم مواقف يومية كتير من غير ما حد يشرحله كل تفصيلة.»</div></li>
+        </ul>
+        <h4 class="sub-h">AI Is Good At</h4>
+        <ul class="list">
+          <li><b>Speed:</b> “AI can analyze large amounts of data quickly.” <div class="masri">«الـAI يقدر يحلل معلومات كتير بسرعة.»</div></li>
+          <li><b>Repetition:</b> “AI can repeat the same task without becoming bored.” <div class="masri">«يقدر يكرر نفس المهمة من غير ما يزهق.»</div></li>
+          <li><b>Pattern Recognition:</b> “AI can find patterns in thousands or millions of examples.” <div class="masri">«يقدر يلاقي Patterns وسط آلاف أو ملايين الأمثلة.»</div></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 8 -->
+    <section class="topic" id="s-8" data-title="8 · Popular AI Tools">
+      <div class="th"><h3>8. Popular AI Tools 🌟</h3></div>
+      <div class="body">
+        <ul class="list">
+          <li><b>ChatGPT:</b> “ChatGPT can answer questions, explain ideas, write text, and help with coding.” <div class="masri">«ChatGPT يقدر يجاوب، ويشرح، ويكتب، ويساعد في البرمجة.»</div></li>
+          <li><b>Gemini:</b> “Gemini is an AI assistant developed by Google.” <div class="masri">«Gemini مساعد AI تابع لـGoogle.»</div></li>
+          <li><b>Claude:</b> “Claude is an AI assistant that can work with conversations and long documents.” <div class="masri">«Claude مساعد AI كويس في المحادثات والتعامل مع النصوص الطويلة.»</div></li>
+          <li><b>DeepSeek:</b> “DeepSeek is an AI system used for problem-solving, language, and coding tasks.” <div class="masri">«DeepSeek نظام AI بيستخدم في حل المشكلات واللغات والبرمجة.»</div></li>
+        </ul>
+        <div class="warn"><span class="lbl">IMPORTANT WARNING</span>“AI tools can make mistakes, even when their answers sound confident.”<div class="masri">«أدوات الـAI ممكن تغلط حتى لو الإجابة مكتوبة بثقة جدًا.»</div></div>
+        <div class="summary">الأدوات المذكورة في المادة تشمل ChatGPT وGemini وDeepSeek وClaude.</div>
+      </div>
+    </section>
+
+    <!-- 9 -->
+    <section class="topic" id="s-9" data-title="9 · AI in Daily Life">
+      <div class="th"><h3>9. AI in Daily Life 📱🏠🚗</h3></div>
+      <div class="body">
+        <h4 class="sub-h">Phones</h4>
+        <p class="en">Face Unlock · Auto-correct · Voice Assistants · Camera Filters.</p>
+        <div class="masri">فتح الموبايل بالوش، تصحيح الكتابة، المساعدات الصوتية، وفلاتر الكاميرا.</div>
+        <h4 class="sub-h">Internet</h4>
+        <p class="en">Search Suggestions · YouTube Recommendations · Spam Filters · Online Translation.</p>
+        <div class="masri">اقتراحات البحث، اقتراحات الفيديوهات، اكتشاف الرسائل المزعجة، والترجمة.</div>
+        <h4 class="sub-h">Transportation</h4>
+        <p class="en">Google Maps Routing · Uber Arrival Predictions · Self-parking Cars.</p>
+        <div class="masri">اختيار الطريق، توقع وقت وصول العربية، والركن الذاتي.</div>
+        <h4 class="sub-h">Smart Homes</h4>
+        <p class="en">Smart Lights · Smart Air Conditioners · Robot Vacuum Cleaners.</p>
+        <div class="masri">الإضاءة الذكية، التكييف الذكي، ومكانس الروبوت.</div>
+        <h4 class="sub-h">Banking</h4>
+        <p class="en">“Banks use AI to detect unusual or possibly fraudulent transactions.”</p>
+        <div class="masri">«البنوك ممكن تستخدم AI عشان تكتشف عملية شراء غريبة أو احتمال تكون سرقة.»</div>
+      </div>
+    </section>
+
+    <!-- 10 -->
+    <section class="topic" id="s-10" data-title="10 · Advantages of AI">
+      <div class="th"><h3>10. Advantages of AI ✅</h3></div>
+      <div class="body">
+        <ul class="list">
+          <li><b>Speed:</b> “AI can process information much faster than a person in many tasks.” <div class="masri">«في مهام معينة، الـAI يقدر يعالج المعلومات أسرع من الإنسان.»</div></li>
+          <li><b>Accuracy:</b> “A well-trained AI system can achieve high accuracy in a specific task.” <div class="masri">«لو النظام اتدرب كويس، ممكن يحقق دقة عالية في مهمة محددة.»</div></li>
+          <li><b>Always Available:</b> “AI systems can operate 24 hours a day.” <div class="masri">«أنظمة AI ممكن تشتغل 24 ساعة.»</div></li>
+          <li><b>Repeated Tasks:</b> “AI can repeat the same task many times without becoming tired.” <div class="masri">«يقدر يكرر المهمة كتير من غير ما يتعب.»</div></li>
+        </ul>
+        <div class="warn"><span class="lbl">IMPORTANT</span>“High accuracy does not mean perfect accuracy.”<div class="masri">«دقة عالية مش معناها إنه مبيغلطش خالص.»</div></div>
+      </div>
+    </section>
+
+    <!-- 11 -->
+    <section class="topic" id="s-11" data-title="11 · Challenges of AI">
+      <div class="th"><h3>11. Challenges of AI ⚠️</h3></div>
+      <div class="body">
+        <h4 class="sub-h">Hallucinations</h4>
+        <p class="en">“An AI hallucination happens when an AI gives incorrect or invented information as if it were true.” Example: “The AI may invent the name of a book or a scientific fact.”</p>
+        <div class="masri">«Hallucination بتحصل لما الـAI يقول معلومة غلط أو مخترعة كأنها حقيقة» — ممكن يخترع اسم كتاب أو معلومة علمية مش حقيقية.</div>
+        <div class="memq">Tell students: “Always verify important information.” <div class="masri">«راجعوا أي معلومة مهمة واتأكدوا منها.»</div></div>
+        <h4 class="sub-h">No Real Emotions</h4>
+        <p class="en">“AI may use emotional words, but it does not truly feel emotions.”</p>
+        <div class="masri">«ممكن يستخدم كلام فيه مشاعر، لكنه مش بيحس فعلًا.»</div>
+        <h4 class="sub-h">Bias</h4>
+        <p class="en">“If the training data is unfair or incomplete, the AI result may also be unfair.”</p>
+        <div class="masri">«لو البيانات اللي اتعلم منها ناقصة أو منحازة، النتيجة ممكن تطلع منحازة برضه.»</div>
+        <h4 class="sub-h">Privacy</h4>
+        <p class="en">“AI tools may process personal data such as photos, voice, location, or messages.” Tell students never to share: Passwords · Home address · Bank information · Private photographs · Personal identification numbers.</p>
+        <div class="masri">«أدوات AI ممكن تتعامل مع معلومات شخصية زي الصور والصوت والموقع والرسائل» — متشاركش باسورد ولا عنوان بيت ولا معلومات بنكية ولا صور خاصة ولا أرقام هوية.</div>
+        <h4 class="sub-h">Jobs</h4>
+        <p class="en">“AI may automate some repeated tasks, so some jobs may change.” But: “AI can also create new jobs and new skills.”</p>
+        <div class="masri">«الـAI ممكن يعمل بعض المهام المتكررة، وده ممكن يغير شكل بعض الوظائف» — وفي نفس الوقت ممكن يعمل وظائف ومهارات جديدة.</div>
+        <div class="summary">التحديات المذكورة تشمل الأخطاء، عدم وجود فهم أو مشاعر حقيقية، تغيّر بعض الوظائف، والخصوصية.</div>
+      </div>
+    </section>
+
+    <!-- 12 -->
+    <section class="topic" id="s-12" data-title="12 · The AI Timeline">
+      <div class="th"><h3>12. The AI Timeline ⏳</h3></div>
+      <div class="body">
+        <ul class="list">
+          <li><b>1950s — The Big Question:</b> “Scientists began asking: Can machines think?” <div class="masri">«العلماء بدأوا يسألوا: هل الآلات ممكن تفكر؟»</div></li>
+          <li><b>1960s–1970s — Rule-Based Systems:</b> “Early AI systems followed rules written by programmers.” <div class="masri">«أنظمة AI القديمة كانت بتمشي على Rules المبرمج كاتبها.»</div></li>
+          <li><b>1997 — Deep Blue:</b> “IBM Deep Blue defeated the world chess champion.” <div class="masri">«كمبيوتر Deep Blue كسب بطل العالم في الشطرنج» — كان شاطر جدًا في الشطرنج، لكن مش ذكي في كل المجالات.</div></li>
+          <li><b>2000s — Learning from Data:</b> “AI systems started using larger datasets and Machine Learning.” <div class="masri">«أنظمة AI بدأت تتعلم من بيانات أكبر باستخدام Machine Learning.»</div></li>
+          <li><b>Today:</b> “AI is used in phones, schools, hospitals, cars, games, and businesses.” <div class="masri">«دلوقتي AI موجود في الموبايلات والمدارس والمستشفيات والعربيات والألعاب والشركات.»</div></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 13 -->
+    <section class="topic" id="s-13" data-title="13 · Why Did AI Improve So Quickly?">
+      <div class="th"><h3>13. Why Did AI Improve So Quickly? 🚀</h3></div>
+      <div class="body">
+        <ul class="list">
+          <li><b>Faster Computers:</b> “Modern computers can perform huge numbers of calculations quickly.” <div class="masri">«الأجهزة الحديثة تقدر تعمل حسابات كتير جدًا بسرعة.»</div></li>
+          <li><b>More Data:</b> “The internet created enormous amounts of images, text, sound, and video.” <div class="masri">«الإنترنت وفر كميات ضخمة من الصور والنصوص والأصوات والفيديوهات.»</div></li>
+          <li><b>Better Learning Methods:</b> “Scientists developed improved training methods such as neural networks.” <div class="masri">«العلماء طوروا طرق تعلم أقوى زي Neural Networks.»</div></li>
+        </ul>
+        <div class="summary">المادة تحدد الأسباب الأساسية في أجهزة أسرع، بيانات أكثر، وطرق تعلم أحدث.</div>
+      </div>
+    </section>
+
+    <!-- 14 -->
+    <section class="topic" id="s-14" data-title="14 · Fields of AI">
+      <div class="th"><h3>14. Fields of Artificial Intelligence 🧩</h3></div>
+      <div class="body">
+        <ul class="list">
+          <li><b>Machine Learning — ML:</b> “Machine Learning allows computers to learn patterns from data.” <div class="masri">«Machine Learning بيخلي الكمبيوتر يتعلم Patterns من البيانات.»</div></li>
+          <li><b>Computer Vision — CV:</b> “Computer Vision helps computers understand images and videos.” <div class="masri">«Computer Vision بيساعد الكمبيوتر يفهم الصور والفيديو.»</div></li>
+          <li><b>Natural Language Processing — NLP:</b> “NLP helps computers understand and generate human language.” <div class="masri">«NLP بيساعد الكمبيوتر يفهم ويولد لغة البشر.»</div></li>
+          <li><b>Speech Recognition:</b> “Speech Recognition converts spoken words into text or commands.” <div class="masri">«Speech Recognition بيحوّل الكلام المنطوق لنص أو أوامر.»</div></li>
+          <li><b>Robotics:</b> “Robotics combines software with machines that can move and interact with the real world.” <div class="masri">«Robotics بيجمع البرامج مع أجهزة وروبوتات بتتحرك في العالم الحقيقي.»</div></li>
+          <li><b>Generative AI:</b> “Generative AI creates new content such as text, images, music, video, or code.” <div class="masri">«Generative AI بيعمل محتوى جديد زي نصوص وصور وموسيقى وفيديو وكود.»</div></li>
+        </ul>
+        <div class="summary">المجالات الأساسية في السيشن تشمل ML وCV وNLP وSpeech Recognition وRobotics وGenerative AI.</div>
+      </div>
+    </section>
+
+    <!-- 15 -->
+    <section class="topic" id="s-15" data-title="15 · AI Fields Work Together">
+      <div class="th"><h3>15. AI Fields Work Together 🤝</h3></div>
+      <div class="body">
+        <p class="en lead"><b>Delivery Robot Example:</b> “A delivery robot may use several AI fields at the same time.”</p>
+        <div class="masri">«روبوت التوصيل ممكن يستخدم أكتر من مجال AI في نفس الوقت.»</div>
+        <ul class="list">
+          <li><b>Computer Vision:</b> “It uses cameras to see roads, people, and objects.” <div class="masri">«يستخدم الكاميرا عشان يشوف الطريق والناس والحاجات.»</div></li>
+          <li><b>Speech Recognition:</b> “It converts a spoken command into text.” <div class="masri">«يحوّل الأمر الصوتي لنص.»</div></li>
+          <li><b>NLP:</b> “It understands what the command means.” <div class="masri">«يفهم معنى الأمر.»</div></li>
+          <li><b>Machine Learning:</b> “It improves its decisions using previous data and experience.” <div class="masri">«يحسن قراراته باستخدام البيانات والتجارب القديمة.»</div></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 16 -->
+    <section class="topic" id="s-16" data-title="16 · What Is PictoBlox?">
+      <div class="th"><h3>16. What Is PictoBlox? 🧱</h3></div>
+      <div class="body">
+        <p class="en">“PictoBlox is a block-based programming platform. Instead of writing long lines of code, students drag and connect blocks.”</p>
+        <div class="masri">«PictoBlox منصة برمجة باستخدام Blocks. بدل ما الطلبة يكتبوا كود طويل، بيسحبوا Blocks ويركبوها مع بعض.»</div>
+        <div class="analogy"><span class="lbl">🧱 LEGO</span>“Programming blocks are like LEGO pieces.”<div class="masri">«الـBlocks زي قطع LEGO، كل قطعة ليها وظيفة وبنركبهم بالترتيب.»</div></div>
+        <h4 class="sub-h">PictoBlox AI Extensions</h4>
+        <ul class="list">
+          <li><b>Machine Learning Extension:</b> “It can train models using images, sounds, numbers, or other data.” <div class="masri">«يقدر يدرب Models على صور أو أصوات أو أرقام.»</div></li>
+          <li><b>Computer Vision Extension:</b> “It allows projects to detect faces and objects using a camera.” <div class="masri">«يخلي المشروع يكتشف وشوش وحاجات باستخدام الكاميرا.»</div></li>
+          <li><b>NLP Extension:</b> “It allows projects to work with text, language, and chatbots.” <div class="masri">«يخلي المشروع يتعامل مع النصوص واللغة والـChatbots.»</div></li>
+        </ul>
+        <div class="summary">PictoBlox يوفر Extensions وBlocks جاهزة لبناء تطبيقات AI من غير كتابة كل النظام من الصفر.</div>
+      </div>
+    </section>
+
+    <div class="part-divider" id="part-2"><span class="pn">PART 2</span><h2>Machine Learning 🧠</h2><span class="pm">تعلُّم الآلة</span></div>
+
+    <!-- 17 -->
+    <section class="topic" id="s-17" data-title="17 · What Is Machine Learning?">
+      <div class="th"><h3>17. What Is Machine Learning?</h3></div>
+      <div class="body">
+        <p class="en lead">“Machine Learning means teaching computers to learn from data and examples. The computer can improve without a programmer writing every single rule.”</p>
+        <div class="masri">«Machine Learning يعني نعلم الكمبيوتر من خلال البيانات والأمثلة. الكمبيوتر يقدر يتحسن من غير ما المبرمج يكتبله كل Rule بنفسه.»</div>
+      </div>
+    </section>
+
+    <!-- 18 -->
+    <section class="topic" id="s-18" data-title="18 · Traditional Programming vs ML">
+      <div class="th"><h3>18. Traditional Programming vs. Machine Learning</h3></div>
+      <div class="body">
+        <h4 class="sub-h">Traditional Programming</h4>
+        <p class="en">“In traditional programming, the programmer writes the rules.”</p>
+        <div class="masri">«في البرمجة العادية، المبرمج هو اللي بيكتب القواعد.»</div>
+        <pre class="code">IF the animal has fur
+AND it has whiskers
+AND it has pointed ears
+THEN it is a cat</pre>
+        <div class="masri">«لو عنده فرو وشوارب وودان مدببة، اعتبره قطة.»</div>
+        <div class="warn"><span class="lbl">PROBLEM</span>“An unusual cat may not match all the written rules.”<div class="masri">«قطة شكلها مختلف ممكن متطابقش القواعد، فالبرنامج يتلخبط.»</div></div>
+        <h4 class="sub-h">Machine Learning</h4>
+        <p class="en">“In Machine Learning, we show the computer many examples of cats and dogs. The computer learns the patterns from the examples.”</p>
+        <div class="masri">«في ML بنعرض على الكمبيوتر صور كتير لقطط وكلاب، وهو يتعلم الـPatterns من الأمثلة.»</div>
+        <div class="summary">تعريف ML والمقارنة مع كتابة القواعد يدويًا موجودان في الجزء الخاص بتعليم الكمبيوتر التعرف على القطط.</div>
+      </div>
+    </section>
+
+    <!-- 19 -->
+    <section class="topic" id="s-19" data-title="19 · Why Do We Need ML?">
+      <div class="th"><h3>19. Why Do We Need Machine Learning?</h3></div>
+      <div class="body">
+        <ul class="list">
+          <li><b>Too Much Data:</b> “Humans cannot manually organize millions of images quickly.” <div class="masri">«الإنسان صعب يرتب ملايين الصور يدويًا بسرعة.»</div></li>
+          <li><b>Too Many Rules:</b> “Some problems are too complicated to describe using simple rules.” <div class="masri">«بعض المشكلات معقدة جدًا ومينفعش نكتب كل قواعدها واحدة واحدة.»</div></li>
+          <li><b>Improvement:</b> “A model can improve after receiving better data and more training.” <div class="masri">«الـModel ممكن يتحسن لما نديله بيانات أحسن وتدريب أكتر.»</div></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 20 -->
+    <section class="topic" id="s-20" data-title="20 · AI vs Machine Learning">
+      <div class="th"><h3>20. AI vs. Machine Learning</h3></div>
+      <div class="body">
+        <p class="en">“Artificial Intelligence is the larger field. Machine Learning is one method used to build AI systems.”</p>
+        <div class="masri">«Artificial Intelligence هو المجال الكبير، وMachine Learning طريقة من الطرق اللي بنبني بيها أنظمة AI.»</div>
+        <div class="memq">“All Machine Learning is part of AI, but not all AI systems use Machine Learning.”<div class="masri">«كل Machine Learning يعتبر جزء من AI، لكن مش كل AI لازم يكون Machine Learning.»</div></div>
+      </div>
+    </section>
+
+    <!-- 21 -->
+    <section class="topic" id="s-21" data-title="21 · Machine Learning Applications">
+      <div class="th"><h3>21. Machine Learning Applications</h3></div>
+      <div class="body">
+        <h4 class="sub-h">Classification 📦</h4>
+        <p class="en">“Classification places an item into the correct category.” Examples: Cat or Dog · Spam or Not Spam · Safe or Unsafe · Healthy or Needs Review.</p>
+        <div class="masri">«Classification يعني نحط الحاجة في المجموعة الصح.»</div>
+        <h4 class="sub-h">Prediction 📈</h4>
+        <p class="en">“Prediction estimates a future value or result using previous data.” Examples: Weather · Delivery time · Number of customers · Energy usage.</p>
+        <div class="masri">«Prediction بيعمل توقع لنتيجة جاية باستخدام معلومات قديمة.»</div>
+        <h4 class="sub-h">Recommendation 🎯</h4>
+        <p class="en">“Recommendation systems suggest items that a user may like.” Examples: YouTube videos · Spotify songs · Netflix films · Amazon products.</p>
+        <div class="masri">«Recommendation Systems بتقترح حاجات المستخدم ممكن يحبها.»</div>
+        <h4 class="sub-h">Detection 👁️</h4>
+        <p class="en">“Detection finds whether an object, face, sound, or pattern is present.”</p>
+        <div class="masri">«Detection يكتشف هل الحاجة موجودة ولا لأ، وأحيانًا مكانها فين.»</div>
+        <div class="summary">التطبيقات الأربعة المذكورة هي Classification وPrediction وRecommendation وDetection.</div>
+      </div>
+    </section>
+
+    <!-- 22 -->
+    <section class="topic" id="s-22" data-title="22 · The Machine Learning Process">
+      <div class="th"><h3>22. The Machine Learning Process 🔄</h3></div>
+      <div class="body">
+        <div class="memq">Remember: <b>Collect → Train → Test → Use</b><div class="masri">«نجمع بيانات ← ندرب ← نختبر ← نستخدم.»</div></div>
+        <h4 class="sub-h">Step 1: Collect Data 📸</h4>
+        <p class="en">“We collect many examples for the computer to learn from. The examples should be clear, correct, and properly labeled.”</p>
+        <div class="masri">«بنجمع أمثلة كتير عشان الكمبيوتر يتعلم منها، ولازم تكون واضحة وصحيحة وعليها Labels صح.»</div>
+        <div class="ex"><span class="lbl">EXAMPLE</span>Image 1: Healthy · Image 2: Healthy · Image 3: Lung Problem.</div>
+        <h4 class="sub-h">Step 2: Train the Model 🧠</h4>
+        <p class="en">“During training, the computer studies the data and searches for patterns. The result of training is called a model.”</p>
+        <div class="masri">«أثناء Training، الكمبيوتر يدرس البيانات ويدور على Patterns، والناتج اسمه Model.»</div>
+        <div class="analogy"><span class="lbl">🎓 ANALOGY</span>“Training is like studying before an exam.”<div class="masri">«Training زي المذاكرة قبل الامتحان.»</div></div>
+        <h4 class="sub-h">Step 3: Test the Model 🧪</h4>
+        <p class="en">“We test the model using new data that it did not see during training.” Why? “We want to know whether the model learned the idea or only memorized the examples.”</p>
+        <div class="masri">«بنختبر الـModel ببيانات جديدة مشافهاش وقت التدريب، عشان نعرف هو فهم الفكرة فعلًا ولا حفظ الصور القديمة بس.»</div>
+        <div class="analogy"><span class="lbl">🎓 ANALOGY</span>“Testing is like solving new questions in a practice exam.”<div class="masri">«Testing زي ما تحل أسئلة جديدة في امتحان تجريبي.»</div></div>
+        <h4 class="sub-h">Step 4: Use the Model ✅</h4>
+        <p class="en">“When the model works well, we place it inside a real application.” This is called <b>Deployment</b>.</p>
+        <div class="masri">«لما الـModel يشتغل كويس، بنحطه جوه برنامج حقيقي — وده اسمه Deployment.»</div>
+        <div class="summary">المراحل الأربع هي Collect Data وTrain Model وTest Model وUse Model.</div>
+      </div>
+    </section>
+
+    <!-- 23 -->
+    <section class="topic" id="s-23" data-title="23 · Data Quality">
+      <div class="th"><h3>23. Data Quality</h3></div>
+      <div class="body">
+        <p class="en lead">“A model is only as good as the data used to train it.”</p>
+        <div class="masri">«جودة الـModel بتعتمد على جودة البيانات اللي اتدرب عليها.»</div>
+        <h4 class="sub-h">Poor Data</h4>
+        <p class="en">Blurry images · Wrong labels · Very few examples · Bad lighting · Repeated identical examples.</p>
+        <div class="masri">صور مشوشة، Labels غلط، أمثلة قليلة، إضاءة وحشة، وأمثلة شبه بعض جدًا.</div>
+        <p class="en">Result: “Poor data can produce poor and unreliable predictions.”</p>
+        <div class="memq"><b>“Garbage In, Garbage Out.”</b><div class="masri">«لو دخلت بيانات تعبانة، هتطلع نتائج تعبانة.»</div></div>
+        <div class="summary">المادة تؤكد أن البيانات الخاطئة أو غير الواضحة تؤدي إلى نتائج ضعيفة وغير موثوقة.</div>
+      </div>
+    </section>
+
+    <!-- 24 -->
+    <section class="topic" id="s-24" data-title="24 · Types of Machine Learning">
+      <div class="th"><h3>24. Types of Machine Learning</h3></div>
+      <div class="body">
+        <h4 class="sub-h">Supervised Learning 📚</h4>
+        <p class="en">“Supervised Learning uses labeled data.” Example: Cat image → Cat · Dog image → Dog · Spam email → Spam.</p>
+        <div class="masri">«Supervised Learning بيستخدم بيانات عليها الإجابات.»</div>
+        <div class="analogy"><span class="lbl">🎓 ANALOGY</span>“It is like learning with a teacher who gives you the correct answers.”<div class="masri">«زي ما تتعلم مع مدرس بيديك الإجابات الصحيحة.»</div></div>
+        <h4 class="sub-h">Unsupervised Learning 🔍</h4>
+        <p class="en">“Unsupervised Learning uses data without labels. The computer groups similar items together.”</p>
+        <div class="masri">«Unsupervised Learning بياخد بيانات من غير أسماء أو إجابات، والكمبيوتر يجمع الحاجات الشبه بعض.»</div>
+        <div class="analogy"><span class="lbl">🍬 CANDY</span>“Imagine receiving mixed candy and grouping it by color or shape without knowing its name.”<div class="masri">«تخيل عندك حلويات مختلفة وبتقسمها حسب اللون أو الشكل من غير ما تعرف اسم كل نوع.»</div></div>
+        <h4 class="sub-h">Semi-Supervised Learning 📝</h4>
+        <p class="en">“Semi-Supervised Learning uses a small amount of labeled data and a large amount of unlabeled data.” Example: “You label five pictures of a person, and the application finds the same person in hundreds of other pictures.”</p>
+        <div class="masri">«بياخد شوية بيانات عليها الإجابات، وبيانات كتير من غير إجابات. تسمي خمس صور لشخص، والتطبيق يحاول يلاقي نفس الشخص في مئات الصور التانية.»</div>
+        <h4 class="sub-h">Reinforcement Learning 🎮</h4>
+        <p class="en">“Reinforcement Learning teaches a system using rewards and penalties.” Correct action → Reward · Wrong action → Penalty · Try again → Improve.</p>
+        <div class="masri">«Reinforcement Learning بيعلم النظام باستخدام مكافآت وعقوبات.»</div>
+        <div class="analogy"><span class="lbl">🎮 GAME</span>“You receive points when you make a good move and lose a life when you make a bad move.”<div class="masri">«زي اللعبة، بتاخد Points لما تعمل حركة صح، وتخسر Life لما تعمل حركة غلط.»</div></div>
+        <div class="summary">الأنواع الأربعة في السيشن هي Supervised وUnsupervised وSemi-Supervised وReinforcement Learning.</div>
+      </div>
+    </section>
+
+    <!-- 25 -->
+    <section class="topic" id="s-25" data-title="25 · ML in PictoBlox">
+      <div class="th"><h3>25. Machine Learning in PictoBlox 👍👎</h3></div>
+      <div class="body">
+        <p class="en"><b>Project:</b> “Build a model that recognizes Thumbs Up and Thumbs Down.”</p>
+        <div class="masri">«هنعمل Model يفرق بين Thumbs Up وThumbs Down.»</div>
+        <h4 class="sub-h">Collect</h4>
+        <p class="en">Create two classes: Thumbs Up · Thumbs Down. Capture many examples using different angles, distances, backgrounds and lighting.</p>
+        <div class="masri">اعمل كلاسين واتصور أمثلة كتير بزوايا ومسافات وخلفيات وإضاءة مختلفة.</div>
+        <h4 class="sub-h">Train</h4>
+        <p class="en">“Click Train Model.” <span class="masri" style="display:inline-block">«اضغط Train Model عشان يبدأ التدريب.»</span></p>
+        <h4 class="sub-h">Test</h4>
+        <p class="en">Show a new gesture. The program may display: <b>Thumbs Up: 92%</b>. “The confidence score shows how confident the model is in its prediction.”</p>
+        <div class="masri">«Confidence Score بيبين الـModel واثق قد إيه في توقعه.»</div>
+        <h4 class="sub-h">Use</h4>
+        <p class="en">Thumbs Up → Sprite says: “Great job!” · Thumbs Down → Sprite says: “Try again!”</p>
+        <div class="summary">خطوات مشروع PictoBlox هي Collect وTrain وTest وUse.</div>
+      </div>
+    </section>
+
+    <div class="part-divider" id="part-3"><span class="pn">PART 3</span><h2>Computer Vision 👁️</h2><span class="pm">رؤية الكمبيوتر</span></div>
+
+    <!-- 26 -->
+    <section class="topic" id="s-26" data-title="26 · What Is Computer Vision?">
+      <div class="th"><h3>26. What Is Computer Vision?</h3></div>
+      <div class="body">
+        <p class="en lead">“Computer Vision is a field of AI that helps computers understand images and videos.”</p>
+        <div class="masri">«Computer Vision مجال من AI بيساعد الكمبيوتر يفهم الصور والفيديوهات.»</div>
+        <div class="analogy"><span class="lbl">👁️ ANALOGY</span>“The camera works like the eyes, and the AI model works like the brain.”<div class="masri">«الكاميرا زي العين، والـAI Model زي المخ اللي بيحلل اللي العين شافته.»</div></div>
+        <p class="en">Computer Vision can: Detect objects · Recognize faces · Read text in images · Track movement · Analyze video.</p>
+        <div class="summary">تعريف Computer Vision في السيشن هو تعليم الكمبيوتر فهم الصور والفيديوهات باستخدام الكاميرا والبرامج الذكية.</div>
+      </div>
+    </section>
+
+    <!-- 27 -->
+    <section class="topic" id="s-27" data-title="27 · Human vs Computer Vision">
+      <div class="th"><h3>27. Human Vision vs. Computer Vision</h3></div>
+      <div class="body">
+        <h4 class="sub-h">Human Vision</h4>
+        <p class="en">“Human eyes capture the image, and the brain understands it.” Humans learn from: Experience · Memory · Emotions · Context · Common sense.</p>
+        <div class="masri">«عين الإنسان تشوف الصورة، والمخ يفهمها.»</div>
+        <h4 class="sub-h">Computer Vision</h4>
+        <p class="en">“A camera captures the image, and software analyzes it.” It learns from: Training images · Videos · Labels · Machine Learning.</p>
+        <div class="masri">«الكاميرا تصور، والبرنامج يحلل الصورة.»</div>
+      </div>
+    </section>
+
+    <!-- 28 -->
+    <section class="topic" id="s-28" data-title="28 · The Common Sense Gap">
+      <div class="th"><h3>28. The Common Sense Gap</h3></div>
+      <div class="body">
+        <p class="en">“Humans can understand the meaning of a situation using context and common sense.”</p>
+        <div class="masri">«الإنسان يقدر يفهم معنى الموقف باستخدام السياق والمنطق الطبيعي.»</div>
+        <div class="ex"><span class="lbl">EXAMPLE</span>A person is holding coffee and running. A human may think: “The person is probably late.” <div class="masri">«الشخص غالبًا متأخر.»</div> A computer may only detect: Person · Coffee cup · Fast movement — but not necessarily understand the reason for running.</div>
+        <p class="en">“Computers need specific training to understand deeper meaning.”</p>
+        <div class="masri">«الكمبيوتر محتاج تدريب مخصوص عشان يفهم المعنى الأعمق.»</div>
+      </div>
+    </section>
+
+    <!-- 29 -->
+    <section class="topic" id="s-29" data-title="29 · How Are Images Stored?">
+      <div class="th"><h3>29. How Are Images Stored?</h3></div>
+      <div class="body">
+        <p class="en lead">“A digital image is a grid of very small squares called pixels.”</p>
+        <div class="masri">«الصورة الرقمية عبارة عن شبكة مربعات صغيرة جدًا اسمها Pixels.»</div>
+        <p class="en"><b>Pixel</b> means “picture element.” <span class="masri" style="display:inline-block">«Pixel اختصار Picture Element، وهو أصغر جزء في الصورة.»</span></p>
+        <p class="en">When you zoom into an image: “You may start seeing the individual square pixels.”</p>
+        <div class="masri">«لما تعمل Zoom قوي، هتبدأ تشوف المربعات الصغيرة.»</div>
+      </div>
+    </section>
+
+    <!-- 30 -->
+    <section class="topic" id="s-30" data-title="30 · Resolution">
+      <div class="th"><h3>30. Resolution</h3></div>
+      <div class="body">
+        <p class="en">“Resolution means the number of pixels in an image.” Example: <b>1920 × 1080</b> = 1920 pixels wide and 1080 pixels high.</p>
+        <div class="masri">«Resolution يعني عدد الـPixels الموجودة في الصورة.»</div>
+        <p class="en">Generally: “More pixels can provide more image detail.”</p>
+        <div class="masri">«عدد Pixels أكبر ممكن يدي تفاصيل أكتر.»</div>
+      </div>
+    </section>
+
+    <!-- 31 -->
+    <section class="topic" id="s-31" data-title="31 · RGB Color">
+      <div class="th"><h3>31. RGB Color</h3></div>
+      <div class="body">
+        <p class="en">Each pixel may store three main values: <b>R — Red · G — Green · B — Blue</b>.</p>
+        <p class="en">“By mixing Red, Green, and Blue at different levels, a computer creates millions of colors.”</p>
+        <div class="masri">«الكمبيوتر بيخلط الأحمر والأخضر والأزرق بنسب مختلفة عشان يعمل ملايين الألوان.»</div>
+        <div class="summary">المادة تشرح Pixels وResolution وتمثيل الألوان باستخدام RGB.</div>
+      </div>
+    </section>
+
+    <!-- 32 -->
+    <section class="topic" id="s-32" data-title="32 · Images vs Videos">
+      <div class="th"><h3>32. Images vs. Videos</h3></div>
+      <div class="body">
+        <p class="en"><b>Image:</b> “An image is one still grid of pixels.” <span class="masri" style="display:inline-block">«الصورة لحظة ثابتة مكوّنة من Pixels.»</span></p>
+        <p class="en"><b>Video:</b> “A video is a sequence of images called frames.” <span class="masri" style="display:inline-block">«الفيديو عبارة عن مجموعة صور اسمها Frames بتظهر بسرعة ورا بعض.»</span></p>
+        <div class="ex"><span class="lbl">EXAMPLE</span>“Thirty frames per second means thirty images are shown every second.” <div class="masri">«30 Frames Per Second يعني 30 صورة بتظهر في كل ثانية.»</div></div>
+        <p class="en">“Video analysis is more difficult because objects move across different frames.”</p>
+        <div class="masri">«تحليل الفيديو أصعب لأن الحاجات بتتحرك من Frame للتاني.»</div>
+      </div>
+    </section>
+
+    <!-- 33 -->
+    <section class="topic" id="s-33" data-title="33 · Computer Vision Applications">
+      <div class="th"><h3>33. Computer Vision Applications</h3></div>
+      <div class="body">
+        <ul class="list">
+          <li><b>Face Recognition:</b> “A phone compares your face with saved face information before unlocking.” <div class="masri">«الموبايل يقارن وشك بمعلومات الوش المخزنة قبل ما يفتح.»</div></li>
+          <li><b>Social Media Filters:</b> “The application finds facial points such as the eyes, nose, and mouth.” <div class="masri">«التطبيق يحدد العين والأنف والفم عشان يحط الفلتر في المكان الصح.»</div></li>
+          <li><b>Barcode Scanners:</b> “A scanner reads a barcode to identify the product and its information.” <div class="masri">«الماسح يقرأ الـBarcode عشان يعرف المنتج ومعلوماته.»</div></li>
+          <li><b>Self-Driving Cars:</b> “Cars use cameras to detect roads, traffic lights, vehicles, and pedestrians.” <div class="masri">«العربيات بتستخدم الكاميرات عشان تكتشف الطريق والإشارات والعربيات والمشاة.»</div></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 34 -->
+    <section class="topic" id="s-34" data-title="34 · Detection vs Recognition">
+      <div class="th"><h3>34. Detection vs. Recognition</h3></div>
+      <div class="body">
+        <p class="en"><b>Object Detection:</b> “Object Detection finds where an object is located in an image.” It may draw a <b>Bounding Box</b>.</p>
+        <div class="masri">«Object Detection يحدد إن فيه حاجة ومكانها فين» — ويرسم مربع حوالين الحاجة (Bounding Box).</div>
+        <p class="en"><b>Object Recognition:</b> “Object Recognition identifies what the object is.”</p>
+        <div class="masri">«Object Recognition يقول الحاجة دي إيه.»</div>
+        <div class="memq">Easy rule: Detection asks <b>“Where is it?”</b> · Recognition asks <b>“What is it?”</b><div class="masri">Detection بيسأل: الحاجة فين؟ &nbsp;|&nbsp; Recognition بيسأل: الحاجة إيه؟</div></div>
+        <div class="ex"><span class="lbl">FACE EXAMPLE</span>Face Detection: There is a face. · Face Recognition: This face belongs to Ahmed.</div>
+        <div class="summary">المادة تفرّق بين تحديد وجود ومكان الشيء، وبين معرفة نوعه أو هويته.</div>
+      </div>
+    </section>
+
+    <!-- 35 -->
+    <section class="topic" id="s-35" data-title="35 · Object Tracking">
+      <div class="th"><h3>35. Object Tracking</h3></div>
+      <div class="body">
+        <p class="en lead">“Object Tracking follows a moving object across video frames.”</p>
+        <div class="masri">«Object Tracking بيتابع الحاجة وهي بتتحرك من Frame للتاني.»</div>
+        <ul class="list">
+          <li><b>Find It:</b> “Locate the object in the first frame.” <div class="masri">«حدد مكان الحاجة في أول Frame.»</div></li>
+          <li><b>Follow It:</b> “Track the object while it moves.” <div class="masri">«تابعها وهي بتتحرك.»</div></li>
+          <li><b>Remember It:</b> “Keep identifying it as the same object.” <div class="masri">«افتكر إنها نفس الحاجة حتى مع وجود حاجات كتير بتتحرك.»</div></li>
+        </ul>
+        <div class="ex"><span class="lbl">EXAMPLE</span>“A football tracking system follows the ball during a match.” <div class="masri">«نظام تتبع الكورة يتابع مكانها أثناء الماتش.»</div></div>
+      </div>
+    </section>
+
+    <!-- 36 -->
+    <section class="topic" id="s-36" data-title="36 · Computer Vision in PictoBlox">
+      <div class="th"><h3>36. Computer Vision in PictoBlox</h3></div>
+      <div class="body">
+        <div class="memq">The system follows: <b>Capture → Analyze → Detect → React</b><div class="masri">«نصور ← نحلل ← نكتشف ← نعمل رد فعل.»</div></div>
+        <ul class="list">
+          <li><b>Capture:</b> “The webcam captures a frame.” <div class="masri">«الكاميرا تصور Frame.»</div></li>
+          <li><b>Analyze:</b> “The AI model analyzes the pixels.” <div class="masri">«الـModel يحلل الـPixels.»</div></li>
+          <li><b>Detect:</b> “The model detects a face or object.” <div class="masri">«الـModel يكتشف وش أو حاجة.»</div></li>
+          <li><b>React:</b> “The sprite performs an action.” <div class="masri">«الـSprite يعمل رد فعل.»</div></li>
+        </ul>
+        <pre class="code">If a face is detected
+say “Hello!”</pre>
+        <div class="masri">«لو اكتشف وش، خلي الـSprite يقول Hello.»</div>
+      </div>
+    </section>
+
+    <!-- @@MORE@@ -->
+
+  </main>
+</div>
+
+<button class="totop" id="toTop" aria-label="Back to top">↑</button>
+
+<script>
+(function(){
+"use strict";
+var $=function(s,c){return (c||document).querySelector(s);};
+var $$=function(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s));};
+var STORE='ai_study_reviewed_v1';
+
+/* ---------- build TOC (grouped by part dividers) ---------- */
+var content=$('#content'), toc=$('#toc');
+function buildTOC(){
+  toc.innerHTML='';
+  var kids=Array.prototype.slice.call(content.children);
+  var curList=null;
+  kids.forEach(function(el){
+    if(el.classList.contains('part-divider')){
+      var h=document.createElement('h2'); h.textContent=el.querySelector('h2').textContent; toc.appendChild(h);
+    } else if(el.classList.contains('topic')){
+      var a=document.createElement('a'); a.href='#'+el.id; a.textContent=el.getAttribute('data-title')||el.id;
+      a.dataset.target=el.id; toc.appendChild(a);
+    }
+  });
+}
+buildTOC();
+
+/* active link on scroll */
+var links={}; $$('.toc a').forEach(function(a){links[a.dataset.target]=a;});
+var obs=new IntersectionObserver(function(es){
+  es.forEach(function(e){ if(e.isIntersecting){ $$('.toc a').forEach(function(x){x.classList.remove('active');}); var a=links[e.target.id]; if(a){a.classList.add('active'); a.scrollIntoView({block:'nearest'});} } });
+},{rootMargin:'-70px 0px -75% 0px'});
+$$('.topic').forEach(function(t){obs.observe(t);});
+
+/* TOC click closes mobile drawer */
+toc.addEventListener('click',function(e){ if(e.target.tagName==='A'){ toc.classList.remove('open'); } });
+$('#tocToggle').addEventListener('click',function(){ toc.classList.toggle('open'); });
+
+/* ---------- reviewed + progress ---------- */
+var reviewed={}; try{reviewed=JSON.parse(localStorage.getItem(STORE))||{};}catch(e){}
+var topics=$$('.topic');
+topics.forEach(function(t){
+  var th=$('.th',t);
+  var b=document.createElement('button'); b.className='rev'; b.type='button';
+  b.innerHTML='<span class="bx"></span> Reviewed';
+  b.setAttribute('aria-pressed', reviewed[t.id]?'true':'false');
+  if(reviewed[t.id]){ b.querySelector('.bx').textContent='✓'; if(links[t.id])links[t.id].classList.add('done'); }
+  b.addEventListener('click',function(){
+    var on=b.getAttribute('aria-pressed')!=='true'; b.setAttribute('aria-pressed',on?'true':'false');
+    b.querySelector('.bx').textContent=on?'✓':''; reviewed[t.id]=on; if(!on)delete reviewed[t.id];
+    if(links[t.id])links[t.id].classList.toggle('done',on);
+    try{localStorage.setItem(STORE,JSON.stringify(reviewed));}catch(e){}
+    paintProgress();
+  });
+  th.appendChild(b);
+});
+function paintProgress(){
+  var done=topics.filter(function(t){return reviewed[t.id];}).length;
+  $('#progBar').style.width=(topics.length?Math.round(done/topics.length*100):0)+'%';
+}
+paintProgress();
+
+/* ---------- language toggle ---------- */
+$$('.langtg button').forEach(function(b){
+  b.addEventListener('click',function(){
+    $$('.langtg button').forEach(function(x){x.classList.remove('on');}); b.classList.add('on');
+    document.body.className='lang-'+b.dataset.lang;
+  });
+});
+
+/* ---------- search ---------- */
+var search=$('#search');
+search.addEventListener('input',function(){
+  var q=this.value.trim().toLowerCase();
+  var anyVisible=false;
+  topics.forEach(function(t){
+    var match=!q || (t.textContent.toLowerCase().indexOf(q)>=0) || ((t.getAttribute('data-title')||'').toLowerCase().indexOf(q)>=0);
+    t.classList.toggle('hidden',!match); if(match)anyVisible=true;
+  });
+  // hide part dividers whose following topics are all hidden
+  $$('.part-divider').forEach(function(pd){
+    var el=pd.nextElementSibling, show=false;
+    while(el && !el.classList.contains('part-divider')){ if(el.classList.contains('topic') && !el.classList.contains('hidden')){show=true;break;} el=el.nextElementSibling; }
+    pd.classList.toggle('hidden',!!q && !show);
+  });
+  var nr=$('#noRes'); if(!anyVisible){ if(!nr){nr=document.createElement('div');nr.id='noRes';nr.className='no-results';nr.textContent='No matching notes. Try another word.';content.appendChild(nr);} } else if(nr){nr.remove();}
+});
+
+/* ---------- back to top ---------- */
+var toTop=$('#toTop');
+addEventListener('scroll',function(){ toTop.classList.toggle('show',scrollY>500); },{passive:true});
+toTop.addEventListener('click',function(){ scrollTo({top:0,behavior:'smooth'}); });
+
+/* keyboard: / focuses search */
+addEventListener('keydown',function(e){ if(e.key==='/' && document.activeElement!==search){ e.preventDefault(); search.focus(); } });
+})();
+</script>
+</body>
+</html>
