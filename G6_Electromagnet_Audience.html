@@ -743,6 +743,24 @@ body.no-motion *{transition:none!important;animation-duration:.001s!important;an
       </div>
     </section>
 
+    <!-- ⭐ NESTED LOOP MACHINE — the big interactive -->
+    <section class="scene wide" data-sec="5" data-title="⭐ Nested Loop Machine" data-src="TG nested loops" data-hint="Watch the two counters: the inner one races, the outer one waits.">
+      <div class="scene-inner">
+        <div class="center">
+          <span class="stamp">SEE IT MOVE 🤖</span>
+          <h2 class="title" style="margin-top:10px">The Nested Loop Machine</h2>
+          <p class="sub" style="margin:8px auto 0">Change the numbers, press <b>Run</b>, and watch the robot. Use <b>⏭ Step</b> to go one action at a time — that is when it really clicks!</p>
+        </div>
+        <div class="lab" data-act="nestedLoop"><div data-mount></div></div>
+        <div class="grid g3" style="margin-top:6px">
+          <div class="tile" style="border-color:var(--blue);background:var(--blue-l)"><span class="ic">🟦</span><h4>The OUTER loop</h4><p>Counts the <b>columns</b>. It is <b>patient</b> — it waits for the whole inner loop to finish before it moves on.</p></div>
+          <div class="tile" style="border-color:var(--amber);background:var(--amber-l)"><span class="ic">🟨</span><h4>The INNER loop</h4><p>Counts the <b>disks</b> in one column. It is <b>fast</b> — it runs all the way through, again and again.</p></div>
+          <div class="tile" style="border-color:var(--green);background:var(--green-l)"><span class="ic">✖️</span><h4>The magic</h4><p>Outer <b>×</b> inner = total actions. 3 × 3 = <b>9 jobs</b> from just <b>3 lines</b> of code.</p></div>
+        </div>
+        <div class="note warn">🧠 <b>Ask the class while it runs:</b> “Which counter changes <b>more often</b>?” (the inner 🟨) · “When does the blue one finally move?” (only when the yellow one finishes a full column) · “If I make it 4 × 5, how many actions?” (<b>20</b> — and the code stays exactly the same length!)</div>
+      </div>
+    </section>
+
     <!-- ORDER #3 -->
     <section class="scene" data-sec="5" data-title="Order: one full disk trip" data-src="TG block by block">
       <div class="scene-inner">
@@ -1536,6 +1554,146 @@ BUILDERS.cipher=function(mount,cfg){
   row.appendChild(enc); row.appendChild(dec);
   mount.appendChild(inp); mount.appendChild(out); mount.appendChild(row);
   if(asym) mount.appendChild(el('div','note info','🔁 Anyone can lock a message with your <b>public</b> key, but only your <b>private</b> key can open it — perfect for secure key exchange &amp; identity.'));
+};
+
+/* ---------- NESTED LOOP MACHINE (live grid + moving robot + code highlight) ---------- */
+BUILDERS.nestedLoop=function(mount){
+  let cols=3, rows=3, speed=700;
+  let order=[], idx=-1, timer=null, playing=false;
+
+  /* ---- layout ---- */
+  const top=el('div'); top.style.cssText='display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:10px';
+  const cOut=el('span','chip'), cIn=el('span','chip'), cTot=el('span','chip');
+  top.appendChild(cOut); top.appendChild(cIn); top.appendChild(cTot);
+
+  const stageWrap=el('div'); stageWrap.style.cssText='display:flex;gap:20px;flex-wrap:wrap;justify-content:center;align-items:flex-start';
+  const gridBox=el('div'); gridBox.style.cssText='position:relative;border:2px solid var(--ink);border-radius:14px;background:#EAF3FA;padding:14px;box-shadow:var(--shadow-xs)';
+  const grid=el('div'); grid.style.cssText='display:grid;gap:10px';
+  const robot=el('div'); robot.textContent='🤖';
+  robot.style.cssText='position:absolute;font-size:26px;line-height:1;transform:translate(-50%,-50%);transition:left .38s ease,top .38s ease;left:-100px;top:-100px;z-index:4;pointer-events:none;filter:drop-shadow(2px 2px 0 rgba(0,0,0,.25))';
+  gridBox.appendChild(grid); gridBox.appendChild(robot);
+
+  const codeBox=el('pre','code'); codeBox.style.cssText='margin:0;min-width:min(300px,88vw);font-size:14px;line-height:1.9';
+
+  stageWrap.appendChild(gridBox); stageWrap.appendChild(codeBox);
+
+  const status=el('div','fb neutral'); status.style.cssText='text-align:center;margin-top:12px;min-height:26px;font-size:16px';
+
+  /* ---- controls ---- */
+  const ctl=el('div'); ctl.style.cssText='display:flex;gap:14px;flex-wrap:wrap;justify-content:center;align-items:center;margin-top:12px';
+  function slider(lab,min,max,val,onch){
+    const w=el('div'); w.style.cssText='display:flex;gap:8px;align-items:center';
+    const l=el('span','chip'); l.style.minWidth='118px'; l.textContent=lab+': '+val;
+    const r=el('input'); r.type='range'; r.min=min; r.max=max; r.value=val; r.style.width='104px';
+    r.setAttribute('aria-label',lab);
+    r.addEventListener('input',()=>{ l.textContent=lab+': '+r.value; onch(+r.value); });
+    w.appendChild(l); w.appendChild(r); return w;
+  }
+  ctl.appendChild(slider('🟦 Outer (columns)',1,4,cols,v=>{cols=v;build();}));
+  ctl.appendChild(slider('🟨 Inner (per column)',1,5,rows,v=>{rows=v;build();}));
+
+  const row=el('div','btnrow'); row.style.justifyContent='center';
+  const bPlay=el('button','btn solid','▶ Run'); bPlay.type='button';
+  const bStep=el('button','btn','⏭ Step'); bStep.type='button';
+  const bReset=el('button','btn mini','↺ Reset'); bReset.type='button';
+  const bSpeed=el('button','btn mini','🐢 Slow'); bSpeed.type='button';
+  row.appendChild(bPlay); row.appendChild(bStep); row.appendChild(bReset); row.appendChild(bSpeed);
+
+  /* ---- build grid & order ---- */
+  function build(){
+    stop();
+    idx=-1; order=[];
+    for(let c=0;c<cols;c++) for(let r=0;r<rows;r++) order.push({c,r});
+    grid.style.gridTemplateColumns='repeat('+cols+',44px)';
+    grid.style.gridTemplateRows='repeat('+rows+',44px)';
+    grid.innerHTML='';
+    for(let r=0;r<rows;r++) for(let c=0;c<cols;c++){
+      const cell=el('div'); cell.dataset.c=c; cell.dataset.r=r;
+      cell.style.cssText='grid-column:'+(c+1)+';grid-row:'+(r+1)+
+        ';width:44px;height:44px;border:2px dashed var(--ink);border-radius:9px;background:#fff;display:grid;place-items:center;font-size:20px;transition:background .25s,transform .25s,border-style .25s';
+      grid.appendChild(cell);
+    }
+    robot.style.left='-100px'; robot.style.top='-100px';
+    paintCode(-1); paintCounters(); status.className='fb neutral';
+    status.innerHTML='Press <b>▶ Run</b> — or <b>⏭ Step</b> to go one action at a time.';
+  }
+  function cellAt(c,r){ return grid.querySelector('[data-c="'+c+'"][data-r="'+r+'"]'); }
+
+  function paintCounters(){
+    const done=idx+1;
+    const cur=idx>=0?order[idx]:null;
+    cOut.innerHTML='🟦 Outer: <b>'+(cur?cur.c+1:0)+' / '+cols+'</b>';
+    cIn.innerHTML='🟨 Inner: <b>'+(cur?cur.r+1:0)+' / '+rows+'</b>';
+    cTot.innerHTML='✅ Actions: <b>'+done+' / '+(cols*rows)+'</b>';
+    cOut.style.background=cur?'var(--blue-l)':'#fff';
+    cIn.style.background=cur?'var(--amber-l)':'#fff';
+    cTot.style.background=done&&done===cols*rows?'var(--green-l)':'#fff';
+  }
+  function paintCode(active){
+    // active: -1 none, 0 outer, 1 inner, 2 action
+    const hi=(n,txt)=> active===n
+      ? '<span style="background:#FFE873;color:#1C2434;border-radius:4px;padding:1px 5px;font-weight:700">'+txt+'</span>'
+      : txt;
+    codeBox.innerHTML=
+      hi(0,'repeat '+cols)+'          <span class="cm">// for each column</span>\n'+
+      '   '+hi(1,'repeat '+rows)+'       <span class="cm">// for each disk</span>\n'+
+      '      '+hi(2,'do the job ✅')+'\n'+
+      '   <span class="cm">}</span>\n'+
+      '<span class="cm">}</span>';
+  }
+
+  /* ---- one action ---- */
+  function doStep(){
+    if(idx>=order.length-1){ finish(); return false; }
+    idx++;
+    const {c,r}=order[idx];
+    const cell=cellAt(c,r);
+    // move robot over the cell
+    const gb=gridBox.getBoundingClientRect(), cb=cell.getBoundingClientRect();
+    robot.style.left=(cb.left-gb.left+cb.width/2)+'px';
+    robot.style.top=(cb.top-gb.top+cb.height/2-14)+'px';
+    // fill it
+    cell.style.background='var(--green-l)'; cell.style.borderStyle='solid'; cell.style.borderColor='var(--green)';
+    cell.textContent='✅'; cell.style.transform='scale(1.12)';
+    setTimeout(()=>{cell.style.transform='scale(1)';},220);
+    paintCounters(); paintCode(2); blip(520+r*40+c*15);
+    const newColumn = r===0;
+    status.className='fb neutral';
+    status.innerHTML = newColumn && idx>0
+      ? '🟦 Inner loop finished — <b>outer</b> moves to column '+(c+1)+', and the inner loop starts again!'
+      : '🟨 Inner loop: disk <b>'+(r+1)+'</b> of '+rows+' in column <b>'+(c+1)+'</b>';
+    if(idx===order.length-1){ setTimeout(finish,speed); return false; }
+    return true;
+  }
+  function finish(){
+    stop();
+    paintCode(-1);
+    status.className='fb ok';
+    status.innerHTML='🎉 Done! The robot did <b>'+(cols*rows)+' actions</b> — but you only wrote <b>3 lines</b> of code. That is a nested loop! 🔁';
+    celebrate();
+  }
+  function play(){
+    if(playing) { stop(); return; }
+    if(idx>=order.length-1) build();
+    playing=true; bPlay.textContent='⏸ Pause';
+    timer=setInterval(()=>{ if(!doStep()) { /* finish handles stop */ } },speed);
+    doStep();
+  }
+  function stop(){ playing=false; clearInterval(timer); timer=null; bPlay.textContent='▶ Run'; }
+
+  bPlay.addEventListener('click',play);
+  bStep.addEventListener('click',()=>{ stop(); if(idx>=order.length-1){build();} doStep(); });
+  bReset.addEventListener('click',build);
+  const speeds=[{t:'🐢 Slow',v:1000},{t:'🚶 Normal',v:650},{t:'🐇 Fast',v:330}];
+  let si=1; speed=speeds[si].v; bSpeed.textContent=speeds[si].t;
+  bSpeed.addEventListener('click',()=>{ si=(si+1)%speeds.length; speed=speeds[si].v; bSpeed.textContent=speeds[si].t;
+    if(playing){ stop(); play(); } });
+
+  mount.appendChild(top); mount.appendChild(stageWrap); mount.appendChild(status);
+  mount.appendChild(ctl); mount.appendChild(row);
+  mount.appendChild(el('div','note info','👀 <b>Watch the two counters.</b> The 🟨 <b>inner</b> one races 1→'+rows+' again and again. The 🟦 <b>outer</b> one only moves <b>once</b> the inner has finished a whole column. That is the whole secret of nested loops!'));
+  build();
+  node_reset(mount,build);
 };
 
 /* ---------- MAGNET SIM (power switch → field → metal) ---------- */
