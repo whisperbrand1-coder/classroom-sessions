@@ -6,16 +6,28 @@ The G5 track is **Python inside mBlock**, not drag-and-drop blocks. Click a spri
 switch the editor tab to **Python** to see the code. (Deck slide 2 says "Advanced Python
 Programming"; the Teaching Guide's Preparation line says "Familiar with Python syntax".)
 
-## What to open in class
+## One file per stage
 
-| File | State | Use it for |
+Each file is the project up to that stage, and each one **runs on its own**. Teach from
+`0_START` and add lines as you go; if a student falls behind or breaks their project,
+hand them the file for the stage the class is on and they carry on without catching up.
+
+| File | StudyPal | What works |
 |---|---|---|
-| `StudyPal_L4_TEACHER.mblock` | everything works | the 2-minute demo at the start, and as your own reference |
-| `StudyPal_L4_START.mblock` | schedule works, To-Do is missing | this is the one you code live with the class |
+| `StudyPal_0_START.mblock` | empty | schedule only — **open this one in class** |
+| `StudyPal_1_it_talks.mblock` | 4 lines | click the robot, it speaks |
+| `StudyPal_2_it_asks.mblock` | 5 lines | it asks a question and echoes the answer |
+| `StudyPal_3_add.mblock` | 9 lines | `add` stores a task in a list |
+| `StudyPal_4_show.mblock` | 12 lines | `show` reads the list back, numbered |
+| `StudyPal_5_done.mblock` | 16 lines | `done` removes one — **this is the goal** |
+| `StudyPal_6_FINAL.mblock` | 31 lines | plus the `else` branch and the two buttons |
 
-Both start with the day buttons hidden and the To-Do buttons visible. Green flag →
-StudyPal says hello. Click **StudyPal** for the schedule, the **green** button to add a
-task, the **red** button to tick one off.
+Every stage keeps the Lesson-3 schedule working, so a lost project can be restored from
+any of them.
+
+All the code lives on **one sprite** (StudyPal). Click the robot, then type `add`, `show`
+or `done`. That is deliberate: in mBlock each sprite has its own scope, so a list kept on
+a button is invisible to every other button.
 
 ## Why these exist
 
@@ -36,5 +48,5 @@ Three failures were reproduced by running the code:
 3. `statusList[status]` indexes a list with the string returned by `input()`, raising
    `TypeError: list indices must be integers or slices, not str`.
 
-The rebuilt files above fix all three, and move the task list onto a single sprite so
-every button shares one list instead of each button keeping a private copy.
+The staged files fix all three, and the teaching notes in `MY_CHATBOT_GUIDE.html` turn
+bugs 1 and 3 into deliberate lesson moments rather than accidents.

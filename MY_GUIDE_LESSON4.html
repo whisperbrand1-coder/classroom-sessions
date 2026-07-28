@@ -465,24 +465,19 @@ statusList[status]
     </section>
 
     <section class="topic" id="g5-files" data-title="G5 — الملفات اللي هتفتحها">
-      <div class="th"><h3>📂 ملفين جاهزين — افتحهم قبل الحصة</h3></div>
+      <div class="th"><h3>📂 سبع ملفات — واحد لكل مرحلة</h3></div>
       <div class="body">
+        <div class="note good">📗 <b>الشرح الكامل للشات بوت في ملف لوحده:</b> <a href="MY_CHATBOT_GUIDE.html"><b>MY_CHATBOT_GUIDE.html</b></a> — فيه الكود سطر سطر، شيك بوينت بعد كل مرحلة، وكل رسالة خطأ ومعناها. اللي تحت ده ملخّص بس.</div>
         <div class="tbwrap"><table class="tb">
-          <thead><tr><th>الملف</th><th>فيه إيه</th><th>تستخدمه إمتى</th></tr></thead>
+          <thead><tr><th>الملف</th><th>StudyPal فيه</th><th>تستخدمه إمتى</th></tr></thead>
           <tbody>
-            <tr>
-              <td><span class="mono">StudyPal_L4_START</span></td>
-              <td>الجدول شغّال بالكامل، والـTo-Do <b>ناقص</b></td>
-              <td><b>ده اللي تفتحه قدامهم</b> وتكتب الكود معاهم</td>
-            </tr>
-            <tr>
-              <td><span class="mono">StudyPal_L4_TEACHER</span></td>
-              <td>كل حاجة شغّالة</td>
-              <td>تفرجهم عليه <b>الأول</b> عشان يشوفوا الهدف · ولو اتلغبطت</td>
-            </tr>
+            <tr><td><span class="mono">StudyPal_0_START</span></td><td>فاضي</td><td><b>ده اللي تفتحه قدامهم</b></td></tr>
+            <tr><td><span class="mono">StudyPal_1</span> … <span class="mono">4</span></td><td>4 → 12 سطر</td><td>شبكة الأمان للمتأخرين</td></tr>
+            <tr><td><span class="mono">StudyPal_5_done</span></td><td>16 سطر</td><td>✅ <b>المشروع المطلوب</b> — ورّيهم إياه في الأول كديمو</td></tr>
+            <tr><td><span class="mono">StudyPal_6_FINAL</span></td><td>31 سطر</td><td>الزيادة + مرجعك إنت</td></tr>
           </tbody>
         </table></div>
-        <p>الملفين في فولدر <span class="mono">mblock</span> جنب المواقع. من mBlock: <span class="ui">File</span> ← <span class="ui">Open</span> ← اختار الملف.</p>
+        <p>الملفات في فولدر <span class="mono">mblock</span> جنب المواقع. من mBlock: <span class="ui">File</span> ← <span class="ui">Open</span> ← اختار الملف.</p>
 
         <h4 class="sub-h">شكل المشروع</h4>
         <div class="tbwrap"><table class="tb">
@@ -584,7 +579,7 @@ tasks = []
     <section class="topic" id="g5-rescue" data-title="G5 — خطة إنقاذ ومشاكل متوقّعة">
       <div class="th"><h3>🧯 لو حاجة باظت</h3></div>
       <div class="body">
-        <div class="note warn">🆘 <b>عيّل مشروعه ضايع أو باظ؟</b> ادّيله <span class="mono">StudyPal_L4_START</span> على فلاشة أو شير. هو نفس مشروعهم بالظبط بالخطوة الجاية بس ناقصة — فهو مش هيبقى متأخّر عن الباقيين.</div>
+        <div class="note warn">🆘 <b>عيّل مشروعه ضايع أو باظ؟</b> ادّيله ملف <b>المرحلة اللي إنتوا فيها</b> من فولدر <span class="mono">mblock</span> (فيه 7 ملفات، واحد لكل مرحلة). يفتحه ويكمّل فورًا من غير ما يتأخّر. حُطهم على فلاشة قبل الحصة.</div>
 
         <details class="faq"><summary>«شغّلت وميحصلش حاجة»</summary>
           <div class="a">99% الكود اتكتب على <b>سبرايت غلط</b>. الليست والدوال لازم تبقى على <b>StudyPal</b> (الروبوت)، والـ<span class="mono">broadcast</span> على الأزرار. شيّك على السبرايت المختار فوق.</div>
@@ -770,7 +765,7 @@ tasks = []
       <div class="body">
         <div class="grid g2">
           <div class="tile"><span class="ic">🧠</span><h4>Grade 6</h4><p>✔️ فتحت <span class="mono">vr.vex.com</span><br>✔️ لقيت ملعبي <b>Dynamic Castle Crasher</b> و<b>Coral Reef Cleanup</b><br>✔️ جرّبت الكود وشُفت الروبوت بيتحرك<br>✔️ جهّزت كراسي/أقماع للنشاط<br>✔️ فتحت محاكاة Fixed vs Smart</p></div>
-          <div class="tile"><span class="ic">🤖</span><h4>Grade 5</h4><p>✔️ فتحت <span class="mono">StudyPal_L4_TEACHER</span> وجرّبت الديمو<br>✔️ فتحت <span class="mono">StudyPal_L4_START</span> — ده اللي هتشرح منه<br>✔️ عارف تلاقي تبويب <b>Python</b> في mBlock<br>✔️ نسخت الملفين على فلاشة (للإنقاذ)<br>✔️ جهّزت 5 كروت المهام<br>✔️ جرّبت مقارنة البوتين في الموقع</p></div>
+          <div class="tile"><span class="ic">🤖</span><h4>Grade 5</h4><p>✔️ قريت <a href="MY_CHATBOT_GUIDE.html">شرح الشات بوت</a> كامل<br>✔️ فتحت <span class="mono">StudyPal_5_done</span> وجرّبت الديمو<br>✔️ فتحت <span class="mono">StudyPal_0_START</span> — ده اللي هتشرح منه<br>✔️ نسخت السبع ملفات على فلاشة (للإنقاذ)<br>✔️ جهّزت 5 كروت المهام<br>✔️ جرّبت مقارنة البوتين في الموقع</p></div>
           <div class="tile"><span class="ic">🎨</span><h4>Grade 4</h4><p>✔️ فتحت App Lab ومشروع الحصة اللي فاتت<br>✔️ راجعت <span class="mono">onEvent</span> و<span class="mono">setScreen</span><br>✔️ جهّزت ظروف ورق للنشاط<br>✔️ قرّرت: متغيرات ولا قصص تفاعلية؟<br>✔️ جرّبت Colour Lab</p></div>
           <div class="tile accent"><span class="ic">🎒</span><h4>عام</h4><p>✔️ البروجيكتور والصوت شغالين<br>✔️ ورق وأقلام<br>✔️ فتحت مواقع الدروس التلاتة في تابات<br>✔️ عارف هتقسّمهم فرق إزاي</p></div>
         </div>

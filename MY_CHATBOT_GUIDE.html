@@ -1,0 +1,609 @@
+<!doctype html>
+<!-- ============================================================
+     دليل ألفريد الخاص — الدرس الرابع (G4 · G5 · G6)
+     PRIVATE. ملف شخصي للمدرّس فقط. نفس الديزاين النيو-بروتاليست.
+     ============================================================ -->
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<meta name="robots" content="noindex,nofollow">
+<title>🔒 شرح الشات بوت كامل — StudyPal (G5)</title>
+<meta name="description" content="شرح كامل لمشروع الشات بوت StudyPal بالبايثون في mBlock — مرحلة بمرحلة.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
+<style>
+:root{
+  --paper:#FBF9F3; --ink:#1C2434; --muted:#5C6478; --line:#E6E2D4; --hl:#FFE873;
+  --teal:#0F6E56; --teal-l:#E1F5EE; --coral:#993C1D; --coral-mid:#D85A30; --coral-l:#FAECE7;
+  --violet:#463A9C; --violet-l:#ECEAFB; --blue:#1D5B9E; --blue-l:#E7F0FA;
+  --green:#2C7A3E; --green-l:#E7F4EA; --red:#B02A2A; --red-l:#FBE9E9;
+  --amber:#8A5A12; --amber-l:#FBF0DA;
+  --disp:'Baloo Bhaijaan 2','Trebuchet MS',system-ui,sans-serif;
+  --body:'IBM Plex Sans Arabic',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,Consolas,monospace;
+  --shadow:6px 6px 0 rgba(28,36,52,.9); --shadow-s:3px 3px 0 var(--ink); --shadow-xs:2px 2px 0 var(--ink);
+  --accent:var(--violet); --accent-l:var(--violet-l);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);color:var(--ink);background:var(--paper);line-height:1.9;font-size:16.5px;
+  background-image:linear-gradient(rgba(28,36,52,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(28,36,52,.04) 1px,transparent 1px);
+  background-size:26px 26px;-webkit-text-size-adjust:100%}
+h1,h2,h3,h4{font-family:var(--disp);line-height:1.4;font-weight:700}
+a{color:var(--blue)}
+:focus-visible{outline:3px solid var(--violet);outline-offset:2px;border-radius:6px}
+.hl{background:linear-gradient(100deg,transparent 1%,var(--hl) 4%,var(--hl) 96%,transparent 99%);padding:0 6px;border-radius:5px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.mono,code{font-family:var(--mono);direction:ltr;unicode-bidi:isolate;display:inline-block;background:#F1EFE6;border:1px solid var(--line);border-radius:6px;padding:1px 7px;font-size:14px}
+.en{direction:ltr;unicode-bidi:isolate;display:inline-block;font-family:var(--mono);font-size:14.5px}
+.topbar{position:sticky;top:0;z-index:30;display:flex;align-items:center;gap:10px;padding:9px 16px;
+  background:rgba(251,249,243,.96);backdrop-filter:blur(6px);border-bottom:2px solid var(--ink);flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:9px;font-family:var(--disp);font-weight:800;font-size:16px;white-space:nowrap}
+.lock{font-family:var(--mono);font-size:11.5px;font-weight:600;background:var(--red);color:#fff;padding:4px 10px;border-radius:999px;border:2px solid var(--ink);white-space:nowrap}
+.tb-sp{flex:1 1 auto}
+.search{position:relative;flex:1 1 200px;max-width:330px;min-width:150px}
+.search input{width:100%;font-family:var(--body);font-size:14.5px;padding:8px 32px 8px 12px;border:2px solid var(--ink);border-radius:10px;background:#fff}
+.search::before{content:"🔎";position:absolute;right:9px;top:50%;transform:translateY(-50%);font-size:14px}
+.icon-btn{width:36px;height:36px;flex:0 0 auto;display:grid;place-items:center;background:#fff;border:2px solid var(--ink);border-radius:9px;cursor:pointer;font-size:15px;box-shadow:var(--shadow-xs);color:var(--ink)}
+.home{font-family:var(--mono);font-size:12px;font-weight:600;border:2px solid var(--ink);border-radius:9px;padding:5px 11px;background:#fff;box-shadow:var(--shadow-xs);text-decoration:none;color:var(--ink)}
+.prog{height:7px;background:#EFEBDD;border-bottom:2px solid var(--ink);position:sticky;top:53px;z-index:29}
+.prog>span{display:block;height:100%;width:0;background:var(--accent);transition:width .4s}
+.layout{display:grid;grid-template-columns:280px 1fr;gap:26px;max-width:1240px;margin:0 auto;padding:0 20px 90px;align-items:start}
+.toc{position:sticky;top:74px;max-height:calc(100vh - 92px);overflow:auto;padding:16px 4px 20px;border-inline-start:2px dashed var(--line)}
+.toc h2{font-size:12.5px;letter-spacing:.1em;color:var(--muted);font-family:var(--mono);margin:14px 6px 8px}
+.toc h2:first-child{margin-top:0}
+.toc a{display:block;font-size:13.5px;font-weight:600;color:var(--ink);text-decoration:none;padding:6px 10px;border-radius:8px;border:1.5px solid transparent;line-height:1.5}
+.toc a:hover{background:#fff;border-color:var(--line)}
+.toc a.active{background:var(--accent-l);border-color:var(--accent);color:var(--accent)}
+.toc a.done::after{content:" ✓";color:var(--green);font-weight:800}
+.content{min-width:0}
+.hero{padding:40px 0 8px}
+.stamp{display:inline-block;font-family:var(--mono);font-size:12px;letter-spacing:1px;border:2px dashed var(--accent);
+  color:var(--accent);padding:5px 14px;border-radius:8px;transform:rotate(-1.2deg);background:#fff;box-shadow:var(--shadow-xs);direction:ltr}
+.hero h1{font-size:clamp(28px,5vw,44px);margin:16px 0 6px}
+.hero .sub{color:var(--muted);font-size:17px;max-width:62ch}
+.part{margin:34px 0 8px;padding:14px 18px;border:2px solid var(--ink);border-radius:14px;background:var(--ink);color:#fff;box-shadow:var(--shadow-s);display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.part .pn{font-family:var(--mono);font-size:12px;background:var(--hl);color:var(--ink);padding:3px 10px;border-radius:7px;font-weight:700}
+.part h2{font-size:clamp(19px,3.4vw,27px)}
+.topic{background:#fff;border:2px solid var(--ink);border-radius:16px;box-shadow:var(--shadow);margin:20px 0;overflow:hidden;scroll-margin-top:78px}
+.topic>.th{display:flex;align-items:center;gap:12px;padding:15px 20px 13px;border-bottom:2px solid var(--ink);background:var(--accent-l);flex-wrap:wrap}
+.topic>.th h3{font-size:clamp(18px,3vw,24px);flex:1 1 200px}
+.topic>.th .rev{margin-inline-start:auto;display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:12px;font-weight:600;
+  border:2px solid var(--ink);background:#fff;border-radius:999px;padding:5px 12px;cursor:pointer;box-shadow:var(--shadow-xs);white-space:nowrap;color:var(--ink)}
+.topic>.th .rev[aria-pressed="true"]{background:var(--green-l);border-color:var(--green);color:var(--green)}
+.topic>.th .rev .bx{width:15px;height:15px;border:2px solid currentColor;border-radius:4px;display:grid;place-items:center;font-size:10px}
+.topic>.body{padding:18px 20px 22px}
+h4.sub-h{font-size:17px;margin:18px 0 6px;color:var(--accent);border-inline-start:5px solid var(--accent);padding-inline-start:10px}
+p{margin:0 0 10px}
+ul.list,ol.list{margin:8px 22px 12px;line-height:2}
+.steps{counter-reset:st 0;margin:12px 0}
+.step{position:relative;padding:12px 58px 12px 16px;margin:9px 0;background:#fff;border:2px solid var(--line);border-radius:11px;font-size:15.5px;line-height:1.85}
+.step::before{counter-increment:st 1;content:counter(st);position:absolute;right:12px;top:11px;width:30px;height:30px;border-radius:50%;background:var(--accent);color:#fff;font-family:var(--mono);font-weight:600;font-size:14px;display:flex;align-items:center;justify-content:center}
+.note{border-inline-start:5px solid var(--hl);background:#FFFBE8;padding:12px 16px;border-radius:9px;margin:12px 0;font-size:15px}
+.note.warn{border-inline-start-color:var(--coral-mid);background:var(--coral-l)}
+.note.info{border-inline-start-color:var(--blue);background:var(--blue-l)}
+.note.good{border-inline-start-color:var(--green);background:var(--green-l)}
+.note.bad{border-inline-start-color:var(--red);background:var(--red-l)}
+pre.code{background:#0E1524;color:#D7E5D8;font-family:var(--mono);font-size:13.5px;line-height:1.7;padding:14px 16px;border-radius:10px;border:2px solid var(--ink);overflow-x:auto;margin:12px 0;box-shadow:var(--shadow-xs);direction:ltr;text-align:left}
+pre.code .cm{color:#7C8CA0}
+pre.code .kw{color:#FFE873}
+pre.code .str{color:#9BE7A8}
+pre.code .er{color:#FF9B9B;font-weight:700}
+pre.code .new{background:rgba(255,232,115,.14);display:inline-block;width:100%;box-shadow:inset 4px 0 0 #FFE873}
+pre.code b{color:#fff;font-weight:700}
+.tbwrap{overflow-x:auto;margin:14px 0}
+table.tb{width:100%;border-collapse:collapse;font-size:15px;background:#fff;min-width:420px}
+table.tb th,table.tb td{border:1.6px solid var(--ink);padding:9px 11px;text-align:start;vertical-align:top}
+table.tb th{background:var(--ink);color:#fff;font-weight:600;font-size:14px;font-family:var(--disp)}
+table.tb td.ok{background:var(--green-l)} table.tb td.bad{background:var(--red-l)}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.tile{background:#fff;border:2px solid var(--ink);border-radius:12px;padding:14px 16px;box-shadow:var(--shadow-xs)}
+.tile .ic{font-size:26px;display:block;margin-bottom:6px;line-height:1}
+.tile h4{font-size:16px;margin-bottom:4px}
+.tile p{font-size:14.5px;color:var(--muted);margin:0}
+.tile.accent{background:var(--accent-l)}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;border-radius:999px;padding:5px 13px;font-weight:600;border:2px solid var(--ink);background:#fff;box-shadow:var(--shadow-xs);margin:3px 3px 3px 0}
+.ui{display:inline-block;font-family:var(--disp);font-weight:700;font-size:14px;background:var(--ink);color:#fff;border-radius:7px;padding:2px 10px;margin:0 2px;direction:ltr}
+details.faq{border:2px solid var(--ink);border-radius:11px;margin:10px 0;overflow:hidden;box-shadow:var(--shadow-xs);background:#fff}
+details.faq summary{cursor:pointer;list-style:none;padding:11px 15px;font-weight:700;background:var(--paper);display:flex;gap:9px;align-items:center;font-family:var(--disp)}
+details.faq summary::-webkit-details-marker{display:none}
+details.faq[open] summary{border-bottom:2px solid var(--ink)}
+details.faq .a{padding:12px 15px;background:var(--green-l)}
+.hidden{display:none!important}
+.no-results{padding:30px;text-align:center;color:var(--muted)}
+.totop{position:fixed;left:18px;bottom:18px;z-index:20;width:46px;height:46px;border-radius:50%;border:2px solid var(--ink);
+  background:var(--accent);color:#fff;font-size:20px;cursor:pointer;box-shadow:var(--shadow-s);display:none}
+.totop.show{display:grid;place-items:center}
+.toc-toggle{display:none}
+@media(max-width:900px){
+  .layout{grid-template-columns:1fr}
+  .toc{position:fixed;inset:53px 0 auto 0;z-index:28;max-height:70vh;background:var(--paper);border-bottom:2px solid var(--ink);
+    border-inline-start:none;padding:14px 18px;display:none;box-shadow:var(--shadow)}
+  .toc.open{display:block}
+  .toc-toggle{display:grid}
+}
+@media print{.topbar,.toc,.prog,.totop{display:none!important}.topic{box-shadow:none;break-inside:avoid}body{background:#fff}}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <span class="brand">
+    <svg width="26" height="26" viewBox="0 0 40 40" aria-hidden="true"><rect x="8" y="17" width="24" height="18" rx="4" fill="#ECEAFB" stroke="#1C2434" stroke-width="2.4"/><path d="M14 17v-4a6 6 0 0 1 12 0v4" fill="none" stroke="#1C2434" stroke-width="2.4"/><circle cx="20" cy="25" r="2.6" fill="#463A9C"/></svg>
+    <span>الشات بوت — StudyPal</span>
+  </span>
+  <span class="lock">🔒 PRIVATE — ليّا أنا بس</span>
+  <button class="icon-btn toc-toggle" id="tocToggle" aria-label="المحتويات">☰</button>
+  <div class="search"><input id="search" type="text" placeholder="دوّر على أي حاجة…" aria-label="بحث" autocomplete="off"></div>
+  <span class="tb-sp"></span>
+  <a class="home" href="MY_PRIVATE_GUIDE.html">📘 دليل الأدوات</a>
+  <a class="home" href="index.html">🏠 الرئيسية</a>
+</header>
+<div class="prog"><span id="progBar"></span></div>
+
+<div class="layout">
+  <nav class="toc" id="toc" aria-label="المحتويات"></nav>
+
+  <main class="content" id="content">
+    <div class="hero">
+      <span class="stamp">PRIVATE · GRADE 5 · STUDYPAL CHATBOT</span>
+      <h1>الشات بوت — <span class="hl">مرحلة بمرحلة</span></h1>
+      <p>مصمّم على أساس إن أضعف عيّل في الفصل يخلّص. كل مرحلة بتشتغل لوحدها، ومعاك ملف جاهز لكل مرحلة.</p>
+    </div>
+
+    <div class="part" id="p-start"><span class="pn">ابدأ من هنا</span><h2>🎯 الخلاصة</h2></div>
+
+    <section class="topic" id="tldr" data-title="الخلاصة في نص صفحة">
+      <div class="th"><h3>🎯 لو مش هتقرا غير حاجة واحدة</h3></div>
+      <div class="body">
+        <div class="tbwrap"><table class="tb">
+          <tbody>
+            <tr><td><b>بيبنوا إيه؟</b></td><td>شات بوت اسمه <b>StudyPal</b> بيمسك قايمة مهام: يضيف، يعرض، يشطب.</td></tr>
+            <tr><td><b>بأي لغة؟</b></td><td><b>بايثون</b> جوه mBlock. مش بلوكات.</td></tr>
+            <tr><td><b>كام سطر؟</b></td><td><b>16 سطر.</b> على <b>سبرايت واحد</b> بس.</td></tr>
+            <tr><td><b>الفكرة الجديدة؟</b></td><td>واحدة بس: <b>الليست</b> — علبة بتشيل حاجات كتير.</td></tr>
+            <tr><td><b>الوقت</b></td><td>50 دقيقة كتابة + 20 دقيقة حر.</td></tr>
+            <tr><td><b>لو عيّل اتعطّل؟</b></td><td>ادّيله ملف المرحلة اللي هو فيها — ويكمّل من غير ما يتأخّر.</td></tr>
+          </tbody>
+        </table></div>
+        <div class="note good">🔑 <b>السر كله في جملة واحدة:</b> كل مرحلة <b>بتزوّد سطور تحت</b> — محدش هيرجع يعدّل سطر كتبه قبل كده، ومحدش هيحتاج يظبّط المسافات من أول وجديد. <b>ده اللي بيمنع 90% من الفشل.</b></div>
+      </div>
+    </section>
+
+    <section class="topic" id="story" data-title="قصة StudyPal — إحنا فين">
+      <div class="th"><h3>📖 المشروع بدأ إمتى — وإيه اللي معاهم</h3></div>
+      <div class="body">
+        <p>المشروع ده بيتبني على 3 حصص. مهم تعرف هما واقفين فين عشان متبدأش من الصفر ولا تفترض حاجة مش موجودة.</p>
+        <div class="tbwrap"><table class="tb">
+          <thead><tr><th>الحصة</th><th>اسمه في الـTG</th><th>اللي اتعمل</th><th>كود؟</th></tr></thead>
+          <tbody>
+            <tr><td>الدرس 2</td><td>Chatbot part 1</td><td>اختاروا صور أزرار ورفعوها وظبّطوا شكلها</td><td>❌ <b>صفر</b></td></tr>
+            <tr><td>الدرس 3</td><td>Chatbot part 2</td><td>الجدول: تدوس على يوم تكتب موادك</td><td>✅</td></tr>
+            <tr><td><b>الدرس 4 (النهارده)</b></td><td>Chatbot part 3</td><td><b>قايمة المهام</b></td><td>✅</td></tr>
+          </tbody>
+        </table></div>
+        <div class="note warn">⚠️ <b>خد بالك:</b> الدرس التاني كان <b>تصميم بس</b> — من غير أي سطر كود. يعني ممكن يكون ده أول احتكاك حقيقي ليهم بالبرمجة في المشروع ده. متفترضش إنهم فاكرين حاجة.</div>
+        <div class="note info">📌 <b>الجملة اللي تفتح بيها:</b> «الحصة اللي فاتت خلّينا StudyPal يعرف جدولنا. النهارده هنخلّيه <b>يفتكرلنا اللي علينا</b>.»</div>
+      </div>
+    </section>
+
+    <section class="topic" id="design" data-title="القرار اللي بيخلّي الحل مضمون">
+      <div class="th"><h3>🧠 ليه الحل ده بالذات</h3></div>
+      <div class="body">
+        <p>فيه أكتر من طريقة تعمل بيها التاسك دي. اخترت أسهل واحدة على العيال — مش أشيك واحدة.</p>
+        <div class="grid g2">
+          <div class="tile"><span class="ic">✅</span><h4>اللي هنعمله</h4><p><b>كل الكود على سبرايت واحد</b> (StudyPal).<br>تدوس على الروبوت → يسألك عايز إيه → تكتب <span class="mono">add</span> أو <span class="mono">show</span> أو <span class="mono">done</span>.</p></div>
+          <div class="tile"><span class="ic">❌</span><h4>اللي مش هنعمله</h4><p>كود موزّع على أزرار مختلفة، وكل زرار بيبعت رسايل للتاني.</p></div>
+        </div>
+        <h4 class="sub-h">ليه؟ 3 أسباب</h4>
+        <ul class="list">
+          <li><b>الليست لازم تكون في مكان واحد.</b> في mBlock كل سبرايت ليه ذاكرته لوحده — لو الليست على زرار، الزرار التاني <b>مش هيشوفها</b>. ودي بالظبط الغلطة اللي في الملف الرسمي.</li>
+          <li><b>سبرايت واحد = مكان واحد تدوّر فيه</b> لما حاجة تبوظ. مش هتلف على 12 سبرايت تدوّر على الغلط.</li>
+          <li><b>مفيش رسايل (broadcast)</b> = مفهوم أقل يتشرح. المفاهيم الجديدة النهارده تبقى <b>واحد</b>: الليست.</li>
+        </ul>
+        <div class="note good">🎁 والأزرار الخضرا والحمرا؟ سيبها <b>لآخر الحصة</b> كزيادة للي خلّص بدري (المرحلة 6). مش أساسية.</div>
+      </div>
+    </section>
+
+    <section class="topic" id="files" data-title="السبع ملفات — شبكة الأمان">
+      <div class="th"><h3>📂 ملف لكل مرحلة</h3></div>
+      <div class="body">
+        <p>في فولدر <span class="mono">mblock</span>. كل ملف = المشروع لحد المرحلة دي، <b>شغّال</b>. من mBlock: <span class="ui">File</span> ← <span class="ui">Open</span>.</p>
+        <div class="tbwrap"><table class="tb">
+          <thead><tr><th>الملف</th><th>StudyPal فيه</th><th>تستخدمه إمتى</th></tr></thead>
+          <tbody>
+            <tr><td><span class="mono">StudyPal_0_START</span></td><td>فاضي</td><td><b>ده اللي تفتحه في الأول</b></td></tr>
+            <tr><td><span class="mono">StudyPal_1_it_talks</span></td><td>4 سطور</td><td>عيّل اتأخّر في مرحلة 1</td></tr>
+            <tr><td><span class="mono">StudyPal_2_it_asks</span></td><td>5 سطور</td><td>عيّل اتأخّر في مرحلة 2</td></tr>
+            <tr><td><span class="mono">StudyPal_3_add</span></td><td>9 سطور</td><td>عيّل اتأخّر في مرحلة 3</td></tr>
+            <tr><td><span class="mono">StudyPal_4_show</span></td><td>12 سطر</td><td>عيّل اتأخّر في مرحلة 4</td></tr>
+            <tr><td><span class="mono">StudyPal_5_done</span></td><td>16 سطر</td><td>✅ <b>ده المطلوب — المشروع كامل</b></td></tr>
+            <tr><td><span class="mono">StudyPal_6_FINAL</span></td><td>31 سطر</td><td>الزيادة + مرجعك إنت</td></tr>
+          </tbody>
+        </table></div>
+        <div class="note bad">🆘 <b>إزاي تستخدم شبكة الأمان:</b> لو عيّل قال «أنا اتلغبطت» أو «الكود بتاعي باظ» — <b>متضيّعش وقت في تصليحه</b>. ادّيله ملف المرحلة اللي إنتوا فيها، يفتحه، ويكمّل معاكم فورًا. حُط الملفات على فلاشة أو على الدسكتوب قبل الحصة.</div>
+        <div class="note info">💡 <b>كل الملفات فيها الجدول شغّال</b> (شغل الدرس التالت) — فلو عيّل ضيّع مشروعه خالص، الملف بيرجّعله كل حاجة.</div>
+      </div>
+    </section>
+
+    <div class="part" id="p-py"><span class="pn">قبل ما تبدأ</span><h2>🐍 4 حاجات في بايثون</h2></div>
+
+    <section class="topic" id="py4" data-title="4 حاجات لازم تقولها الأول">
+      <div class="th"><h3>🐍 الأربع قواعد — اكتبهم على السبورة</h3></div>
+      <div class="body">
+        <p>الأربعة دول سبب <b>كل</b> الأخطاء اللي هتقابلك. اكتبهم على السبورة وسيبهم طول الحصة.</p>
+
+        <h4 class="sub-h">1) المسافات البادئة معناها «جوه»</h4>
+        <pre class="code"><span class="kw">def</span> on_clicked():
+    sprite.say(<span class="str">'hi'</span>, 2)     <span class="cm">← 4 مسافات = جوه الدالة</span>
+sprite.say(<span class="str">'hi'</span>, 2)         <span class="cm">← غلط! برّه الدالة</span></pre>
+        <div class="note warn">⚠️ قولهم: <b>«دوس Tab مرة واحدة، متعملش مسافات بإيدك.»</b> mBlock بيعمل 4 مسافات. لو حد عمل مسافات بإيده وطلعت 3، هيجيله خطأ مش هيعرف سببه.</div>
+
+        <h4 class="sub-h">2) النقطتين آخر السطر</h4>
+        <p>أي سطر بيبدأ بـ<span class="mono">def</span> أو <span class="mono">if</span> أو <span class="mono">elif</span> أو <span class="mono">else</span> أو <span class="mono">for</span> — <b>لازم</b> ينتهي بـ<span class="mono">:</span></p>
+
+        <h4 class="sub-h">3) علامة واحدة = تخزين، علامتين = مقارنة</h4>
+        <pre class="code">choice = <span class="str">'add'</span>      <span class="cm"># حُط كلمة add في choice</span>
+choice == <span class="str">'add'</span>     <span class="cm"># هو choice فيه add؟ (آه/لأ)</span></pre>
+
+        <h4 class="sub-h">4) الكلام بين علامتين تنصيص</h4>
+        <p><span class="mono">'add'</span> كلمة. <span class="mono">add</span> من غير علامات = بايثون هيدوّر على متغير اسمه add ومش هيلاقيه.</p>
+
+        <div class="note good">🎯 <b>خمس دقايق بس على الأربعة دول</b> قبل ما تفتح mBlock. هيوفّروا عليك نص ساعة تصليح.</div>
+      </div>
+    </section>
+
+    <div class="part" id="p-stages"><span class="pn">الشرح</span><h2>▶️ الست مراحل</h2></div>
+
+    <section class="topic" id="s1" data-title="مرحلة 1 — الروبوت بيتكلم (5 د)">
+      <div class="th"><h3>1️⃣ الروبوت بيتكلم</h3></div>
+      <div class="body">
+        <div class="note info">🎯 <b>هدف المرحلة دي مش تعليمي — هدفه نفسي.</b> عايز كل عيّل في الفصل يعمل حاجة <b>تشتغل</b> في أول 5 دقايق. النجاح الأول ده بيخلّيهم مستنيين الباقي.</div>
+        <h4 class="sub-h">الخطوات</h4>
+        <div class="steps">
+          <div class="step">افتح <span class="mono">StudyPal_0_START</span>.</div>
+          <div class="step">دوس على سبرايت <b>StudyPal</b> (الروبوت اللي على اليمين).</div>
+          <div class="step">فوق خالص، دوس تبويب <span class="ui">Python</span>.</div>
+          <div class="step">هتلاقي سطر واحد <span class="mono">from mblock import event</span> — <b>سيبه</b>، وامسح الكومنت اللي تحته.</div>
+          <div class="step">اكتب التلات سطور دول.</div>
+        </div>
+        <pre class="code"><span class="kw">from</span> mblock <span class="kw">import</span> event
+
+<span class="new"><span class="kw">@event.clicked</span></span>
+<span class="new"><span class="kw">def</span> on_clicked():</span>
+<span class="new">    sprite.say(<span class="str">'Hi! I am StudyPal.'</span>, 2)</span></pre>
+        <div class="note good">✅ <b>الشيك بوينت:</b> دوس <b>العلم الأخضر</b>، وبعدين دوس على <b>الروبوت</b>. لازم تطلع فقاعة كلام. <b>متكمّلش قبل ما كل الفصل يوصل لهنا.</b></div>
+        <h4 class="sub-h">اللي هتقوله</h4>
+        <p>«<span class="mono">@event.clicked</span> معناها: <b>لما حد يدوس على السبرايت ده</b>. واللي تحتيها بالمسافات، ده اللي هيحصل.»</p>
+        <details class="faq"><summary>🐛 دوست ومحصلش حاجة</summary><div class="a">
+          ① دُست العلم الأخضر الأول؟ ② إنت على سبرايت <b>StudyPal</b> ولا سبرايت تاني؟ شوف اللي متظلّل تحت. ③ تبويب <span class="ui">Python</span> ولا <span class="ui">Blocks</span>؟</div></details>
+      </div>
+    </section>
+
+    <section class="topic" id="s2" data-title="مرحلة 2 — الروبوت بيسأل (7 د)">
+      <div class="th"><h3>2️⃣ الروبوت بيسأل ويرد</h3></div>
+      <div class="body">
+        <p>دلوقتي بقى <b>محادثة</b>. غيّر السطر الأخير وزوّد سطر:</p>
+        <pre class="code"><span class="kw">from</span> mblock <span class="kw">import</span> event
+
+<span class="kw">@event.clicked</span>
+<span class="kw">def</span> on_clicked():
+<span class="new">    choice = input(<span class="str">'add / show / done'</span>)</span>
+<span class="new">    sprite.say(<span class="str">'You said: '</span> + choice, 2)</span></pre>
+        <div class="note good">✅ <b>الشيك بوينت:</b> دوس على الروبوت → هيطلع مربع تكتب فيه تحت الشاشة → اكتب أي حاجة → الروبوت يعيدها عليك.</div>
+        <h4 class="sub-h">اللي هتقوله</h4>
+        <ul class="list">
+          <li>«<span class="mono">input()</span> بيقف ويستنّاك تكتب. اللي بتكتبه بيتحط في <span class="mono">choice</span>.»</li>
+          <li>«علامة <span class="mono">+</span> بين كلامين بتلزّقهم في بعض.»</li>
+        </ul>
+        <div class="note warn">🎭 <b>لعبة سريعة (دقيقتين):</b> خليهم يكتبوا أسماءهم ويشوفوا الروبوت بيرد. الفصل هيتبسط، وإنت كسبت انتباههم قبل الجزء الصعب.</div>
+        <details class="faq"><summary>🐛 <span class="mono">TypeError: can only concatenate str</span></summary><div class="a">
+          حاول يجمع كلام مع رقم. <span class="mono">'You said: ' + choice</span> شغّالة لأن الاتنين كلام. لكن لو جمع رقم لازم <span class="mono">str(الرقم)</span>.</div></details>
+      </div>
+    </section>
+
+    <section class="topic" id="s3" data-title="مرحلة 3 — ضيف مهمة ⭐ (15 د)">
+      <div class="th"><h3>3️⃣ ضيف مهمة — ⭐ قلب الحصة</h3></div>
+      <div class="body">
+        <div class="note bad">⭐ <b>دي المرحلة الوحيدة اللي فيها فكرة جديدة.</b> خد وقتك فيها. اللي قبلها كان تسخين واللي بعدها تكرار.</div>
+
+        <h4 class="sub-h">اشرح الليست الأول — على السبورة، من غير كمبيوتر</h4>
+        <p><b>مثال حي:</b> هات ظرف واحد واكتب عليه <span class="mono">name</span> وحُط جواه ورقة واحدة. بعدين هات <b>علّاقة أو دوسيه</b> وقول: «ده الليست — بيشيل ورق كتير، وبترتيب.»</p>
+        <pre class="code"><span class="cm"># متغير = ظرف. حاجة واحدة.</span>
+name = <span class="str">'Omar'</span>
+
+<span class="cm"># ليست = دوسيه. حاجات كتير، بترتيب.</span>
+tasks = []
+tasks.append(<span class="str">'Math homework'</span>)
+tasks.append(<span class="str">'Read 10 pages'</span>)
+
+len(tasks)   <span class="cm"># -> 2   عددهم كام</span>
+tasks[0]     <span class="cm"># -> 'Math homework'</span></pre>
+        <div class="note warn">⚠️ <b>قول الجملة دي بصوت عالي:</b> «بايثون بيعُدّ من <b>صفر</b>. أول حاجة رقمها <span class="mono">0</span> مش <span class="mono">1</span>.» اكتبها على السبورة وسيبها. <b>هترجعلها في المرحلة 5.</b></div>
+
+        <h4 class="sub-h">الكود</h4>
+        <pre class="code"><span class="kw">from</span> mblock <span class="kw">import</span> event
+
+<span class="new">tasks = []</span>
+
+
+<span class="kw">@event.clicked</span>
+<span class="kw">def</span> on_clicked():
+    choice = input(<span class="str">'add / show / done'</span>)
+
+<span class="new">    <span class="kw">if</span> choice == <span class="str">'add'</span>:</span>
+<span class="new">        task = input(<span class="str">'What do you need to do?'</span>)</span>
+<span class="new">        tasks.append(task)</span>
+<span class="new">        sprite.say(<span class="str">'Added!'</span>, 2)</span></pre>
+        <div class="note info">📌 <b>السطر <span class="mono">sprite.say('You said: ...')</span> اتشال.</b> ده السطر <b>الوحيد</b> اللي هيتشال في الحصة كلها.</div>
+        <div class="note warn">⚠️ <b>خد بالك من مكان <span class="mono">tasks = []</span>:</b> لازم يكون <b>برّه الدالة</b>، مالزق على الشمال خالص. لو حطّه جوه، الليست هتترسم من أول وجديد كل مرة والمهام هتضيع. <b>ده أشهر غلط.</b></div>
+
+        <div class="note good">✅ <b>الشيك بوينت:</b> دوس على الروبوت → اكتب <span class="mono">add</span> → اكتب «حل الرياضة» → لازم يقول <b>Added!</b>. كرّرها 3 مرات.</div>
+        <div class="note">🤔 <b>السؤال الذكي اللي تسأله هنا:</b> «طيب فين المهام دلوقتي؟ إحنا مش شايفينها!» — سيبهم يفكروا شوية، وده بيوصّلك للمرحلة الجاية طبيعي.</div>
+
+        <details class="faq"><summary>🐛 <span class="mono">IndentationError</span></summary><div class="a">
+          أشهر خطأ في الحصة. اللي جوه <span class="mono">if</span> لازم يبقى <b>8 مسافات</b> (Tab مرتين)، واللي جوه <span class="mono">def</span> بس <b>4</b> (Tab مرة). خليه يستخدم <b>Tab</b> مش المسطرة.</div></details>
+        <details class="faq"><summary>🐛 كتب <span class="mono">Add</span> بحرف كابيتال ومحصلش حاجة</summary><div class="a">
+          <b>ودي فرصة تعليمية ممتازة!</b> <span class="mono">'Add'</span> مش <span class="mono">'add'</span> عند الكمبيوتر. قوله: «شوفت؟ الكمبيوتر بيفرّق بين الكبير والصغير.» الحل الأنضف: <span class="mono">input(...).lower()</span> — تقدر تزوّدها كزيادة.</div></details>
+      </div>
+    </section>
+
+    <section class="topic" id="s4" data-title="مرحلة 4 — اعرض القايمة (10 د)">
+      <div class="th"><h3>4️⃣ اعرض القايمة</h3></div>
+      <div class="body">
+        <p><b>زوّد تحت</b> — من غير ما تلمس أي سطر فوق:</p>
+        <pre class="code">        sprite.say(<span class="str">'Added!'</span>, 2)
+
+<span class="new">    <span class="kw">elif</span> choice == <span class="str">'show'</span>:</span>
+<span class="new">        <span class="kw">for</span> i <span class="kw">in</span> range(len(tasks)):</span>
+<span class="new">            sprite.say(str(i + 1) + <span class="str">'. '</span> + tasks[i], 2)</span></pre>
+        <div class="note info">📌 <span class="mono">elif</span> يعني <b>«وإلّا لو»</b>. لازم تبقى على نفس مستوى <span class="mono">if</span> بالظبط — <b>4 مسافات</b>.</div>
+
+        <h4 class="sub-h">اشرح اللوب بالتمثيل</h4>
+        <p>قف قدامهم و«نفّذ» اللوب بصوت عالي وإنت ماشي:</p>
+        <div class="steps">
+          <div class="step">«<span class="mono">i</span> = 0 … اطبع 1. حل الرياضة»</div>
+          <div class="step">«<span class="mono">i</span> = 1 … اطبع 2. اقرا 10 صفحات»</div>
+          <div class="step">«خلصت الليست → اقف.»</div>
+        </div>
+        <div class="note warn">🔢 <b>ليه <span class="mono">i + 1</span>؟</b> لأن الكمبيوتر بيعُدّ 0، 1، 2 — وإحنا كبني آدمين بنعُدّ 1، 2، 3. فبنزوّد واحد <b>عشان بس تبقى مقروءة</b>. ارجع للسبورة.</div>
+        <div class="note good">✅ <b>الشيك بوينت:</b> ضيف مهمتين، بعدين اكتب <span class="mono">show</span> → لازم يقولهم بالترتيب مرقّمين 1 و 2.</div>
+        <details class="faq"><summary>🐛 بيقول مهمة واحدة بس / مبيقولش حاجة</summary><div class="a">
+          لو مفيش ولا مهمة، اللوب مش هيلف ولا مرة — ده طبيعي مش عطل. خليه يضيف الأول. ولو بيقول واحدة بس: غالبًا <span class="mono">tasks = []</span> جوه الدالة (مرحلة 3).</div></details>
+      </div>
+    </section>
+
+    <section class="topic" id="s5" data-title="مرحلة 5 — اشطب مهمة ✅ (13 د)">
+      <div class="th"><h3>5️⃣ اشطب مهمة — وبكده خلصنا</h3></div>
+      <div class="body">
+        <p><b>زوّد تحت</b> تاني:</p>
+        <pre class="code">            sprite.say(str(i + 1) + <span class="str">'. '</span> + tasks[i], 2)
+
+<span class="new">    <span class="kw">elif</span> choice == <span class="str">'done'</span>:</span>
+<span class="new">        number = int(input(<span class="str">'Which number is done?'</span>))</span>
+<span class="new">        tasks.pop(number - 1)</span>
+<span class="new">        sprite.say(<span class="str">'Well done!'</span>, 2)</span></pre>
+
+        <div class="note bad">🚨 <b>السطرين دول هما أهم حاجة في الحصة كلها. اشرحهم واحدة واحدة:</b></div>
+        <div class="tbwrap"><table class="tb">
+          <thead><tr><th>الحتة</th><th>ليه</th></tr></thead>
+          <tbody>
+            <tr><td><span class="mono">int(...)</span></td><td><span class="mono">input</span> بيدّي <b>كلام</b> دايمًا. لو كتبت <b>1</b> هو شايفها كلمة <span class="mono">'1'</span> مش رقم. <span class="mono">int</span> بيحوّلها لرقم.<br><b>من غيرها البرنامج بيقع.</b></td></tr>
+            <tr><td><span class="mono">number - 1</span></td><td>هو كتب <b>1</b> وهو قاصد الأولانية. والأولانية عند الكمبيوتر رقمها <b>0</b>. فبنطرح واحد.<br>ارجع للسبورة — <b>دي تالت مرة تقولها النهارده</b>.</td></tr>
+          </tbody>
+        </table></div>
+
+        <div class="note good">✅ <b>الشيك بوينت النهائي:</b> ضيف 3 مهام → <span class="mono">show</span> → <span class="mono">done</span> واكتب 2 → <span class="mono">show</span> تاني.<br>لازم التانية تختفي، <b>والباقيين يترقّموا من أول وجديد 1 و 2</b>. لو ده حصل → <b>المشروع خلص ✅</b></div>
+
+        <details class="faq"><summary>🐛 <span class="mono">TypeError: list indices must be integers</span></summary><div class="a">
+          نسي <span class="mono">int()</span>. <b>ده أشهر خطأ في الحصة</b> — ومتفاجئش، هو نفس الخطأ الموجود في ملف الحل الرسمي.</div></details>
+        <details class="faq"><summary>🐛 <span class="mono">IndexError: pop index out of range</span></summary><div class="a">
+          كتب رقم أكبر من عدد المهام (زي 5 وعنده 2). طبيعي. لو عايز تحميه، دي حتة ممتازة للي خلّص بدري:
+          <pre class="code"><span class="kw">if</span> number &gt;= 1 <span class="kw">and</span> number &lt;= len(tasks):
+    tasks.pop(number - 1)
+<span class="kw">else</span>:
+    sprite.say(<span class="str">'No task with that number'</span>, 2)</pre></div></details>
+        <details class="faq"><summary>🐛 بيشطب المهمة الغلط</summary><div class="a">
+          كاتب <span class="mono">tasks.pop(number)</span> من غير <span class="mono">- 1</span>. ده أحلى وقت تثبّت فيه فكرة العدّ من صفر — <b>خليه يجرّب بنفسه ويشوف</b>.</div></details>
+      </div>
+    </section>
+
+    <section class="topic" id="s6" data-title="مرحلة 6 — الزيادة (للي خلّص)">
+      <div class="th"><h3>⭐ للي خلّص بدري</h3></div>
+      <div class="body">
+        <p>الـTG بيقول صراحةً: <i>«allow the students to develop any of their ideas»</i>. فدي مش تسالي — ده مطلوب.</p>
+
+        <h4 class="sub-h">أ) الروبوت يرد لو مفهمش (سطرين)</h4>
+        <pre class="code">    <span class="kw">else</span>:
+        sprite.say(<span class="str">'I only know: add, show, done'</span>, 2)</pre>
+        <p class="muted">دي أحسن زيادة — سريعة، وبتعلّمهم إن البرنامج الكويس بيتعامل مع اللي متوقعوش.</p>
+
+        <h4 class="sub-h">ب) شغّل الزرار الأخضر والأحمر</h4>
+        <p>دلوقتي بس نقدر نقدّم فكرة <b>الرسايل</b>. على الزرار الأخضر:</p>
+        <pre class="code"><span class="kw">@event.clicked</span>
+<span class="kw">def</span> on_clicked():
+    sprite.broadcast(<span class="str">'add task'</span>)</pre>
+        <p>وعلى StudyPal:</p>
+        <pre class="code"><span class="kw">@event.received</span>(<span class="str">'add task'</span>)
+<span class="kw">def</span> on_add_task():
+    task = input(<span class="str">'What do you need to do?'</span>)
+    tasks.append(task)
+    sprite.say(<span class="str">'Added!'</span>, 2)</pre>
+        <div class="note info">🗣️ <b>التشبيه:</b> «الزرار زي جرس الباب. هو مش بيعمل الشغل — هو بينادي على StudyPal عشان يعمله.» كله موجود جاهز في <span class="mono">StudyPal_6_FINAL</span>.</div>
+
+        <h4 class="sub-h">ج) أفكارهم هما</h4>
+        <ul class="list">
+          <li>بوت <b>آلة حاسبة</b> — <span class="mono">int()</span> مرتين وجمع</li>
+          <li>بوت بيجاوب عن <b>مادة</b> — <span class="mono">if/elif</span> على أسئلة</li>
+          <li>يخلّي الرد <span class="mono">.lower()</span> عشان يقبل أي شكل كتابة</li>
+          <li>يزوّد اختيار <span class="mono">clear</span> بـ<span class="mono">tasks.clear()</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="part" id="p-ref"><span class="pn">مراجع سريعة</span><h2>🧯 وقت الحصة</h2></div>
+
+    <section class="topic" id="time" data-title="⏱️ جدول الـ70 دقيقة">
+      <div class="th"><h3>⏱️ الوقت مقسّم بالدقيقة</h3></div>
+      <div class="body">
+        <div class="tbwrap"><table class="tb">
+          <thead><tr><th>الوقت</th><th>المرحلة</th><th>إنت بتعمل إيه</th></tr></thead>
+          <tbody>
+            <tr><td>0–3</td><td>ديمو</td><td>افتح <span class="mono">5_done</span> وورّيهم الهدف. <b>متشرحش</b>.</td></tr>
+            <tr><td>3–8</td><td>سبورة</td><td>الأربع قواعد بتاعت بايثون</td></tr>
+            <tr><td>8–13</td><td><b>1</b></td><td>الروبوت بيتكلم — <b>استنّى الكل</b></td></tr>
+            <tr><td>13–20</td><td><b>2</b></td><td>الروبوت بيسأل</td></tr>
+            <tr><td>20–35</td><td><b>3</b> ⭐</td><td>الليست + ضيف مهمة</td></tr>
+            <tr><td>35–45</td><td><b>4</b></td><td>اعرض القايمة</td></tr>
+            <tr><td>45–58</td><td><b>5</b> ✅</td><td>اشطب — <b>وهنا المشروع خلص</b></td></tr>
+            <tr><td>58–68</td><td><b>6</b></td><td>وقت حر + مساعدة المتأخرين</td></tr>
+            <tr><td>68–70</td><td>عرض</td><td>2 يعرضوا شغلهم</td></tr>
+          </tbody>
+        </table></div>
+        <div class="note warn">⏰ <b>لو الوقت ضيق:</b> اقفل بعد <b>المرحلة 5</b>. دي حدّ المطلوب. المرحلة 6 كلها زيادة.<br>
+          <b>لو الوقت واسع:</b> متزوّدش شرح — سيبهم يزوّدوا أفكارهم هما.</div>
+        <div class="note good">🎯 <b>أهم عادة تعلّمهالهم:</b> شغّل بعد <b>كل مرحلة</b>. اللي بيكتب 16 سطر وبعدين بيشغّل، أول خطأ بياخد منه نص ساعة.</div>
+      </div>
+    </section>
+
+    <section class="topic" id="errors" data-title="🧯 كل رسالة خطأ ومعناها">
+      <div class="th"><h3>🧯 لو ظهرت رسالة حمرا</h3></div>
+      <div class="body">
+        <div class="tbwrap"><table class="tb">
+          <thead><tr><th>الرسالة</th><th>معناها</th><th>الحل</th></tr></thead>
+          <tbody>
+            <tr><td><span class="mono">IndentationError</span></td><td>المسافات غلط</td><td>Tab مرة جوه <span class="mono">def</span>، مرتين جوه <span class="mono">if</span></td></tr>
+            <tr><td><span class="mono">SyntaxError: invalid syntax</span></td><td>ناسي <span class="mono">:</span> أو علامة تنصيص</td><td>بُصّ على السطر اللي فوق اللي مأشّر عليه</td></tr>
+            <tr><td><span class="mono">TypeError: list indices must be integers</span></td><td>ناسي <span class="mono">int()</span></td><td><span class="mono">int(input(...))</span></td></tr>
+            <tr><td><span class="mono">TypeError: can only concatenate str</span></td><td>بيجمع كلام + رقم</td><td>لُف الرقم بـ<span class="mono">str()</span></td></tr>
+            <tr><td><span class="mono">IndexError: out of range</span></td><td>رقم أكبر من عدد المهام</td><td>طبيعي — أو ضيف شرط</td></tr>
+            <tr><td><span class="mono">NameError: name ... not defined</span></td><td>كتب كلمة من غير علامات تنصيص</td><td><span class="mono">'add'</span> مش <span class="mono">add</span></td></tr>
+          </tbody>
+        </table></div>
+        <div class="note bad">🚑 <b>قاعدة الدقيقتين:</b> لو عيّل واقف أكتر من دقيقتين — <b>متصلّحش كوده</b>. ادّيله ملف المرحلة وخليه يكمّل. تصليح كود عيّل واحد بيوقّف الفصل كله.</div>
+        <div class="note info">🔎 <b>علّمهم يقروا الخطأ:</b> mBlock بيقول رقم السطر. قوله: «اقرا الرقم، روح للسطر ده، وبُصّ على اللي قبله.» ده بيبني استقلالية أسرع من أي كلام.</div>
+      </div>
+    </section>
+
+    <section class="topic" id="cheat" data-title="🖨️ ورقة الغش (اطبعها)">
+      <div class="th"><h3>🖨️ الكود كامل — اطبعه أو اعرضه</h3></div>
+      <div class="body">
+        <p>اعرضه على البروجيكتور طول الوقت، أو اطبع نسخة لكل عيّل. الأخضر = المرحلة اللي إنتوا فيها.</p>
+        <pre class="code"><span class="kw">from</span> mblock <span class="kw">import</span> event
+
+tasks = []
+
+
+<span class="kw">@event.clicked</span>
+<span class="kw">def</span> on_clicked():
+    choice = input(<span class="str">'add / show / done'</span>)
+
+    <span class="kw">if</span> choice == <span class="str">'add'</span>:
+        task = input(<span class="str">'What do you need to do?'</span>)
+        tasks.append(task)
+        sprite.say(<span class="str">'Added!'</span>, 2)
+
+    <span class="kw">elif</span> choice == <span class="str">'show'</span>:
+        <span class="kw">for</span> i <span class="kw">in</span> range(len(tasks)):
+            sprite.say(str(i + 1) + <span class="str">'. '</span> + tasks[i], 2)
+
+    <span class="kw">elif</span> choice == <span class="str">'done'</span>:
+        number = int(input(<span class="str">'Which number is done?'</span>))
+        tasks.pop(number - 1)
+        sprite.say(<span class="str">'Well done!'</span>, 2)</pre>
+        <div class="note good">📏 <b>16 سطر.</b> ده المشروع كله. لو عيّل شاف الصفحة دي من أول الحصة، هيبقى عارف إن الموضوع مش مرعب.</div>
+      </div>
+    </section>
+
+    <section class="topic" id="check" data-title="✅ شيك ليست قبل الحصة">
+      <div class="th"><h3>✅ قبل ما تدخل الفصل</h3></div>
+      <div class="body">
+        <div class="grid g2">
+          <div class="tile"><span class="ic">💻</span><h4>على جهازك</h4><p>✔️ mBlock 5 متسطّب وفاتح<br>✔️ فتحت <span class="mono">5_done</span> وجرّبت: ضيف، اعرض، اشطب<br>✔️ عارف تحوّل بين <span class="ui">Blocks</span> و<span class="ui">Python</span><br>✔️ عارف تعرض <b>الكود</b> و<b>المسرح</b> مع بعض</p></div>
+          <div class="tile"><span class="ic">💾</span><h4>شبكة الأمان</h4><p>✔️ السبع ملفات على <b>فلاشة</b><br>✔️ أو على الدسكتوب في فولدر واضح<br>✔️ أو مشيّرهم على جروب الفصل</p></div>
+          <div class="tile"><span class="ic">🖍️</span><h4>على السبورة</h4><p>✔️ الأربع قواعد بتاعت بايثون<br>✔️ «الكمبيوتر بيعُدّ من صفر»<br>✔️ ظرف + دوسيه للمثال الحي</p></div>
+          <div class="tile accent"><span class="ic">🎯</span><h4>في دماغك</h4><p>✔️ المطلوب = <b>المرحلة 5</b>، مش 6<br>✔️ قاعدة الدقيقتين: ادّي ملف، متصلّحش<br>✔️ شغّل بعد كل مرحلة</p></div>
+        </div>
+        <div class="note good" style="margin-top:14px">🏁 لو التلات مراحل الأولى مشيت في أول نص ساعة، الباقي بيمشي لوحده — لأن 4 و 5 <b>تكرار</b> لنفس الشكل اللي اتعلّموه في 3.</div>
+      </div>
+    </section>
+</main>
+</div>
+
+<button class="totop" id="toTop" aria-label="لأعلى">↑</button>
+
+<script>
+(function(){
+"use strict";
+var $=function(s,c){return (c||document).querySelector(s);};
+var $$=function(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s));};
+var STORE='myguide_l3_read_v1';
+var content=$('#content'), toc=$('#toc');
+function buildTOC(){
+  toc.innerHTML='';
+  Array.prototype.slice.call(content.children).forEach(function(el){
+    if(el.classList.contains('part')){
+      var h=document.createElement('h2'); h.textContent=el.querySelector('h2').textContent; toc.appendChild(h);
+    } else if(el.classList.contains('topic')){
+      var a=document.createElement('a'); a.href='#'+el.id; a.textContent=el.getAttribute('data-title')||el.id;
+      a.dataset.target=el.id; toc.appendChild(a);
+    }
+  });
+}
+buildTOC();
+var links={}; $$('.toc a').forEach(function(a){links[a.dataset.target]=a;});
+var obs=new IntersectionObserver(function(es){
+  es.forEach(function(e){ if(e.isIntersecting){ $$('.toc a').forEach(function(x){x.classList.remove('active');});
+    var a=links[e.target.id]; if(a){a.classList.add('active'); a.scrollIntoView({block:'nearest'});} } });
+},{rootMargin:'-70px 0px -75% 0px'});
+$$('.topic').forEach(function(t){obs.observe(t);});
+toc.addEventListener('click',function(e){ if(e.target.tagName==='A') toc.classList.remove('open'); });
+$('#tocToggle').addEventListener('click',function(){ toc.classList.toggle('open'); });
+
+var read={}; try{read=JSON.parse(localStorage.getItem(STORE))||{};}catch(e){}
+var topics=$$('.topic');
+topics.forEach(function(t){
+  var b=document.createElement('button'); b.className='rev'; b.type='button';
+  b.innerHTML='<span class="bx"></span> قرأته';
+  b.setAttribute('aria-pressed', read[t.id]?'true':'false');
+  if(read[t.id]){ b.querySelector('.bx').textContent='✓'; if(links[t.id])links[t.id].classList.add('done'); }
+  b.addEventListener('click',function(){
+    var on=b.getAttribute('aria-pressed')!=='true'; b.setAttribute('aria-pressed',on?'true':'false');
+    b.querySelector('.bx').textContent=on?'✓':''; read[t.id]=on; if(!on)delete read[t.id];
+    if(links[t.id])links[t.id].classList.toggle('done',on);
+    try{localStorage.setItem(STORE,JSON.stringify(read));}catch(e){}
+    paint();
+  });
+  $('.th',t).appendChild(b);
+});
+function paint(){ var d=topics.filter(function(t){return read[t.id];}).length;
+  $('#progBar').style.width=(topics.length?Math.round(d/topics.length*100):0)+'%'; }
+paint();
+
+$('#search').addEventListener('input',function(){
+  var q=this.value.trim().toLowerCase(), any=false;
+  topics.forEach(function(t){
+    var m=!q || t.textContent.toLowerCase().indexOf(q)>=0 || (t.getAttribute('data-title')||'').toLowerCase().indexOf(q)>=0;
+    t.classList.toggle('hidden',!m); if(m)any=true;
+  });
+  $$('.part').forEach(function(pd){
+    var el=pd.nextElementSibling, show=false;
+    while(el && !el.classList.contains('part')){ if(el.classList.contains('topic') && !el.classList.contains('hidden')){show=true;break;} el=el.nextElementSibling; }
+    pd.classList.toggle('hidden',!!q && !show);
+  });
+  var nr=$('#noRes');
+  if(!any){ if(!nr){nr=document.createElement('div');nr.id='noRes';nr.className='no-results';nr.textContent='مفيش نتايج — جرّب كلمة تانية.';content.appendChild(nr);} }
+  else if(nr){nr.remove();}
+});
+var toTop=$('#toTop');
+addEventListener('scroll',function(){ toTop.classList.toggle('show',scrollY>500); },{passive:true});
+toTop.addEventListener('click',function(){ scrollTo({top:0,behavior:'smooth'}); });
+addEventListener('keydown',function(e){ if(e.key==='/' && document.activeElement!==$('#search')){ e.preventDefault(); $('#search').focus(); } });
+})();
+</script>
+</body>
+</html>
