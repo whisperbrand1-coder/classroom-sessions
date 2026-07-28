@@ -77,6 +77,8 @@ a{color:inherit;text-decoration:none}
 .card .masri{margin-top:2px}
 .card .meta{display:flex;gap:7px;flex-wrap:wrap;margin-top:4px}
 .chip{font-size:12px;font-weight:600;border:1.6px solid var(--muted);color:var(--muted);border-radius:999px;padding:3px 10px}
+a.chip.dl{border-color:var(--ink);color:var(--ink);background:#fff;text-decoration:none;padding:6px 13px;font-size:13px;box-shadow:2px 2px 0 var(--ink)}
+a.chip.dl:hover{background:var(--hl);transform:translate(1px,1px);box-shadow:1px 1px 0 var(--ink)}
 .card .go{margin-top:auto;align-self:flex-start;display:inline-flex;align-items:center;gap:8px;font-family:var(--disp);font-weight:700;font-size:15px;
   background:var(--ink);color:#fff;border:2px solid var(--ink);border-radius:10px;padding:9px 18px;box-shadow:var(--shadow-s)}
 .card.ai .top{background:var(--violet-l)} .card.cy .top{background:var(--teal-l)}
@@ -281,11 +283,23 @@ footer{text-align:center;color:var(--muted);font-size:13px;margin-top:34px;font-
         <div class="top" style="background:#FBE9E9"><span class="ic">🔒</span><span class="kind" style="background:#fff">PRIVATE</span></div>
         <div class="body">
           <h3>دليلي — الدرس الرابع (G6 · G5 · G4)</h3>
-          <p class="masri">مرتّب من G6 لـG4 زي ما بتشتغل: الخوارزميات وملعب Castle Crasher اللي بيتغيّر كل مرة، الشات بوت ونشاط الخوارزميات، والـUI/UX وقاعدة 60-30-10 — وفيه <b>تنبيهين مهمين</b> في الـTG لازم تقرأهم قبل الحصة.</p>
-          <div class="meta"><span class="chip">🧩 كود VEX كامل</span><span class="chip">🗣️ جمل جاهزة</span><span class="chip">🧯 7 مشاكل وحلولها</span></div>
+          <p class="masri">مرتّب من G6 لـG4 زي ما بتشتغل: الخوارزميات وملعب Castle Crasher اللي بيتغيّر كل مرة، الشات بوت ونشاط الخوارزميات، والـUI/UX وقاعدة 60-30-10.<br><b>🚨 اقرا قسم G5 قبل الحصة</b> — الدرس ده بايثون مش بلوكات، وملفات الحل الرسمية معطّلة.</p>
+          <div class="meta"><span class="chip">🐍 كود بايثون كامل</span><span class="chip">🧩 كود VEX كامل</span><span class="chip">⏱️ خطة بالدقيقة</span><span class="chip">🧯 مشاكل وحلولها</span></div>
           <span class="go">افتح الدليل ←</span>
         </div>
       </a>
+      <div class="card cy notes" style="grid-column:1/-1;max-width:560px;border-color:#0F6E56">
+        <div class="top" style="background:#E1F5EE"><span class="ic">🐍</span><span class="kind" style="background:#fff">mBLOCK</span></div>
+        <div class="body">
+          <h3>StudyPal — ملف mBlock جاهز (G5 · درس 4)</h3>
+          <p class="masri">مشروع الشات بوت كامل وشغّال، مكتوب بايثون ومجرّب سطر سطر. <b>TEACHER</b> = كل حاجة شغّالة (للديمو وللإنقاذ). <b>START</b> = الجدول شغّال والـTo-Do ناقص، ده اللي تكتبه قدامهم.</p>
+          <div class="meta">
+            <a class="chip dl" href="mblock/StudyPal_L4_TEACHER.mblock" download>⬇️ TEACHER</a>
+            <a class="chip dl" href="mblock/StudyPal_L4_START.mblock" download>⬇️ START</a>
+            <a class="chip dl" href="mblock/README.md">📄 README</a>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -389,8 +403,8 @@ footer{text-align:center;color:var(--muted);font-size:13px;margin-top:34px;font-
         <div class="top"><span class="ic">🤖</span><span class="kind">GRADE 5</span></div>
         <div class="body">
           <h3>Chatbots &amp; Algorithms</h3>
-          <p class="en">What chatbots do → a side-by-side <b>rule-based vs AI</b> chat you can type into → the <b>Literal Robot</b> that follows your steps exactly (and fails hilariously) → build the To-Do list.</p>
-          <p class="masri">الشات بوت، مقارنة حية بين القواعد والـAI، والروبوت الحرفي.</p>
+          <p class="en">What chatbots do → a side-by-side <b>rule-based vs AI</b> chat you can type into → the <b>Literal Robot</b> that follows your steps exactly (and fails hilariously) → then <b>Python</b>: lists, <span style="font-family:var(--mono)">.append()</span>, <span style="font-family:var(--mono)">.pop()</span>, and the two bugs everybody hits.</p>
+          <p class="masri">الشات بوت، مقارنة حية بين القواعد والـAI، الروبوت الحرفي، وكود بايثون لقايمة المهام.</p>
           <span class="go">Open lesson →</span>
         </div>
       </a>

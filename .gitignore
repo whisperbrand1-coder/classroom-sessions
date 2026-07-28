@@ -5,3 +5,7 @@ Thumbs.db
 
 .vercel
 .env*
+
+# scratch files from build/inspection scripts
+_*.txt
+_*.js

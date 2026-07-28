@@ -89,6 +89,8 @@ ul.list,ol.list{margin:8px 22px 12px;line-height:2}
 pre.code{background:#0E1524;color:#D7E5D8;font-family:var(--mono);font-size:13.5px;line-height:1.7;padding:14px 16px;border-radius:10px;border:2px solid var(--ink);overflow-x:auto;margin:12px 0;box-shadow:var(--shadow-xs);direction:ltr;text-align:left}
 pre.code .cm{color:#7C8CA0}
 pre.code .kw{color:#FFE873}
+pre.code .str{color:#9BE7A8}
+pre.code .er{color:#FF9B9B;font-weight:700}
 .tbwrap{overflow-x:auto;margin:14px 0}
 table.tb{width:100%;border-collapse:collapse;font-size:15px;background:#fff;min-width:420px}
 table.tb th,table.tb td{border:1.6px solid var(--ink);padding:9px 11px;text-align:start;vertical-align:top}
@@ -333,10 +335,11 @@ forever
             <tr><td>تطوير الشات بوت</td><td>20 د</td><td>يعني إيه شات بوت وأنواعه</td></tr>
             <tr><td><b>نشاط Algorithm Maker</b></td><td>40 د</td><td>كروت المهام — في أزواج</td></tr>
             <tr><td>استراحة + حضور</td><td>15 د</td><td>—</td></tr>
-            <tr><td><b>StudyPal — To-Do</b></td><td>70 د</td><td>mBlock</td></tr>
+            <tr><td><b>StudyPal — To-Do</b></td><td>70 د</td><td><b>بايثون</b> جوه mBlock</td></tr>
             <tr><td>أسئلة</td><td>10 د</td><td>—</td></tr>
           </tbody>
         </table></div>
+        <div class="note bad">🚨 اقرا قسم <b>«الدرس ده بايثون مش بلوكات»</b> قبل الحصة. الـG5 مش زي G4 و G6 — العيال بيكتبوا <b>كود بايثون</b> فعلًا.</div>
       </div>
     </section>
 
@@ -383,23 +386,229 @@ forever
       </div>
     </section>
 
-    <section class="topic" id="g5-todo" data-title="G5 — StudyPal: قائمة المهام (mBlock)">
-      <div class="th"><h3>✅ To-Do list — الخطوات في mBlock</h3></div>
+    <section class="topic" id="g5-python" data-title="G5 — ⚠️ الدرس ده بايثون مش بلوكات">
+      <div class="th"><h3>🐍 أهم حاجة تعرفها قبل الحصة</h3></div>
       <div class="body">
-        <div class="note info">📌 <b>فكّرهم بالسياق:</b> الحصة اللي فاتت عملوا الأزرار (التصميم) وبعدها الجدول. النهارده <b>قايمة المهام</b>. المشروع بيتبني على بعضه.</div>
-        <h4 class="sub-h">الخطوات بالترتيب</h4>
-        <div class="steps">
-          <div class="step">افتح مشروع <b>StudyPal</b> بتاعهم من الحصة اللي فاتت.</div>
-          <div class="step">دوس على سبرايت زرار <b>To-Do</b> — <b>مهم جدًا</b> عشان الكود يتحط على السبرايت الصح.</div>
-          <div class="step">روح لقسم <span class="ui">Variables</span> ← اضغط <b>Make a List</b> ← سمّيها <span class="mono">tasks</span>.<br><span class="muted">خلي بالك: <b>List</b> مش <b>Variable</b> — الليست بتشيل حاجات كتير.</span></div>
-          <div class="step">من <span class="ui">Events</span> اسحب <span class="mono">when this sprite clicked</span>.</div>
-          <div class="step">من <span class="ui">Sensing</span> اسحب <span class="mono">ask ( ) and wait</span> واكتب جواه: <span class="mono">What do you need to do?</span></div>
-          <div class="step">من <span class="ui">Variables</span> اسحب <span class="mono">add ( ) to [tasks]</span>، وحُط جواه بلوك <span class="mono">answer</span> (من Sensing).</div>
-          <div class="step">من <span class="ui">Looks</span> اسحب <span class="mono">say ( )</span>، وحُط جواه <span class="mono">join</span> عشان تجمع كلام + <span class="mono">length of tasks</span>.</div>
-          <div class="step">حُط علامة ✔️ جنب <span class="mono">tasks</span> في قسم Variables — عشان القايمة <b>تظهر على المسرح</b>.</div>
-        </div>
-        <div class="note good">💡 <b>الربط مع الحصة اللي فاتت:</b> لو خلّصوا بدري، فكّرهم بالـ<b>Functions</b> — الكود بتاع كل يوم في الجدول بيتكرّر، فينفع يتحوّل لدالة.</div>
-        <div class="note">🎁 <b>أفكار زيادة</b> (لو حد خلّص بسرعة): بوت <b>آلة حاسبة</b>، أو بوت بيجاوب أسئلة عن مادة معيّنة.</div>
+        <div class="note bad">🚨 <b>الـG5 كله مكتوب بايثون جوه mBlock — مش بلوكات سحب وإفلات.</b><br>
+          أنا فتحت مشاريع الـ<span class="mono">.mblock</span> الرسمية بنفسي. عدد البلوكات فيها = <b>صفر</b>. الكود كله موجود في تبويب <span class="ui">Python</span> جوه mBlock.</div>
+        <h4 class="sub-h">الدلائل التلاتة</h4>
+        <ul class="list">
+          <li>سلايد 2 في العرض عنوانها حرفيًا: <b>«Advanced Python Programming»</b>.</li>
+          <li>الـTG في خانة <b>Preparation</b> مكتوب: <b>«Familiar with Python syntax»</b>.</li>
+          <li>ملفات الحل الرسمية كل السبرايتات فيها <span class="mono">editorMode: "python"</span>.</li>
+        </ul>
+        <div class="note info">💡 <b>يعني إيه ده عمليًا؟</b> mBlock بيخليك تختار لكل سبرايت: بلوكات ولا بايثون. مشاريع العيال من الحصص اللي فاتت <b>على وضع بايثون</b>. فلو فتحت وقلتلهم «اسحب بلوك» مش هيلاقوا حاجة.</div>
+        <h4 class="sub-h">الأوامر اللي هيستخدموها — كلها</h4>
+        <div class="tbwrap"><table class="tb">
+          <thead><tr><th>الأمر</th><th>بيعمل إيه</th></tr></thead>
+          <tbody>
+            <tr><td><span class="mono">sprite.say('كلام', 2)</span></td><td>فقاعة كلام لمدة ثانيتين</td></tr>
+            <tr><td><span class="mono">input('سؤال')</span></td><td>يسأل المستخدم — <b>وبيرجّع نص دايمًا</b></td></tr>
+            <tr><td><span class="mono">sprite.show()</span> / <span class="mono">hide()</span></td><td>يظهر / يخفي السبرايت</td></tr>
+            <tr><td><span class="mono">sprite.broadcast('اسم')</span></td><td>يبعت رسالة لكل السبرايتات</td></tr>
+            <tr><td><span class="mono">@event.clicked</span></td><td>يشتغل لما السبرايت ده يتداس</td></tr>
+            <tr><td><span class="mono">@event.received('اسم')</span></td><td>يشتغل لما رسالة توصل</td></tr>
+            <tr><td><span class="mono">@event.greenflag</span></td><td>يشتغل مع العلم الأخضر</td></tr>
+          </tbody>
+        </table></div>
+        <p class="muted">دول <b>7 أوامر بس</b>. مفيش غيرهم في المشروع كله.</p>
+      </div>
+    </section>
+
+    <section class="topic" id="g5-broken" data-title="G5 — 🔴 ملفات الحل الرسمية معطّلة">
+      <div class="th"><h3>🔴 مهم: Chatbot 3.mblock مش شغّال</h3></div>
+      <div class="body">
+        <p>نزّلت ملفات الحل الرسمية من لينكات الدرايف اللي في الـTG (<b>Chatbot 2</b> و<b>Chatbot 3</b>) وشغّلت الكود بتاعهم. <b>فيهم 3 أعطال بتوقّف البرنامج.</b></p>
+
+        <details class="faq"><summary>عطل 1 — القايمة الرئيسية مستحيل تعديها</summary>
+          <div class="a">
+            <p>Codey بيسأل ويكتب على الشاشة <span class="mono">To Do</span> بحرف D كابيتال، لكن الشرط بيقارن بـ<span class="mono">'To do'</span> بحرف صغير:</p>
+            <pre class="code"><span class="cm"># المكتوب على الشاشة:</span>
+option = input(<span class="str">'To Do  - Schedule'</span>)
+
+<span class="cm"># اللي بيتقارن فعلًا:</span>
+<span class="kw">if</span> option == <span class="str">'To do'</span>:</pre>
+            <p>يعني لو كتبت اللي مكتوب قدامك بالظبط → <b>«Error, wrong option»</b> وتفضل في مكانك.</p>
+          </div>
+        </details>
+
+        <details class="faq"><summary>عطل 2 — 4 أزرار من 5 مش بيعملوا حاجة</summary>
+          <div class="a">
+            <p>زرار الأحد فيه كلمة <span class="mono">global</span>، والأربعة التانيين لأ. من غيرها بايثون بيعمل <b>نسخة محلية</b> والمتغير الأصلي بيفضل فاضي:</p>
+            <pre class="code"><span class="cm"># Sunday — شغّال ✅</span>
+<span class="kw">def</span> on_receivedToDo():
+    <span class="kw">global</span> task
+    task = <span class="str">'ToDo'</span>
+
+<span class="cm"># باقي الأربعة أيام — مش شغّال ❌</span>
+<span class="kw">def</span> on_receivedToDo():
+    task = <span class="str">'ToDo'</span>       <span class="cm"># نسخة محلية، بتموت فورًا</span></pre>
+            <p>شغّلت ده فعلًا: دوست على <b>الاتنين</b> → مفيش أي حاجة حصلت غير إن باقي الأزرار اختفت.</p>
+          </div>
+        </details>
+
+        <details class="faq"><summary>عطل 3 — البرنامج بيقع لما تحاول تشطب مهمة</summary>
+          <div class="a">
+            <p><span class="mono">input()</span> بيرجّع <b>نص</b>، والليست مش بتقبل نص كرقم:</p>
+            <pre class="code">status = input(<span class="str">'Enter number between 0 to 2'</span>)
+statusList[status]
+
+<span class="er">TypeError: list indices must be integers,
+            or slices, not str</span></pre>
+            <p>ده مش تحذير — ده <b>وقوع كامل</b>. جربته وطلعلي بالظبط.</p>
+          </div>
+        </details>
+
+        <div class="note warn">⚠️ كمان: <b>Chatbot 3 نسخة طبق الأصل من Chatbot 2</b> — نفس الكود بالحرف، بس متزوّد عليه زرارين مخفيين (Confirm و Delete) من غير أي كود. يعني <b>مفيش حل رسمي للدرس الرابع أصلًا</b>.</div>
+        <div class="note good">✅ <b>الحل:</b> عملتلك نسخة نضيفة شغّالة، ومجرّبة سطر سطر. تحت 👇</div>
+      </div>
+    </section>
+
+    <section class="topic" id="g5-files" data-title="G5 — الملفات اللي هتفتحها">
+      <div class="th"><h3>📂 ملفين جاهزين — افتحهم قبل الحصة</h3></div>
+      <div class="body">
+        <div class="tbwrap"><table class="tb">
+          <thead><tr><th>الملف</th><th>فيه إيه</th><th>تستخدمه إمتى</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><span class="mono">StudyPal_L4_START</span></td>
+              <td>الجدول شغّال بالكامل، والـTo-Do <b>ناقص</b></td>
+              <td><b>ده اللي تفتحه قدامهم</b> وتكتب الكود معاهم</td>
+            </tr>
+            <tr>
+              <td><span class="mono">StudyPal_L4_TEACHER</span></td>
+              <td>كل حاجة شغّالة</td>
+              <td>تفرجهم عليه <b>الأول</b> عشان يشوفوا الهدف · ولو اتلغبطت</td>
+            </tr>
+          </tbody>
+        </table></div>
+        <p>الملفين في فولدر <span class="mono">mblock</span> جنب المواقع. من mBlock: <span class="ui">File</span> ← <span class="ui">Open</span> ← اختار الملف.</p>
+
+        <h4 class="sub-h">شكل المشروع</h4>
+        <div class="tbwrap"><table class="tb">
+          <thead><tr><th>السبرايت</th><th>مكانه</th><th>دوره</th></tr></thead>
+          <tbody>
+            <tr><td><b>StudyPal</b> (الروبوت)</td><td>يمين</td><td>بيتكلم، و<b>ماسك قايمة المهام</b></td></tr>
+            <tr><td>5 أزرار أيام</td><td>عمود شمال</td><td>الجدول (درس 3)</td></tr>
+            <tr><td>3 أزرار مواد</td><td>النص</td><td>بتظهر لما تدوس على يوم</td></tr>
+            <tr><td>🟢 <b>الزرار الأخضر</b></td><td>تحت</td><td><b>ضيف مهمة</b></td></tr>
+            <tr><td>🔴 <b>الزرار الأحمر</b></td><td>تحت</td><td><b>مهمة خلصت</b></td></tr>
+            <tr><td>زرار Back</td><td>فوق يمين</td><td>يخفي الجدول</td></tr>
+          </tbody>
+        </table></div>
+        <div class="note info">🔑 <b>القرار المعماري اللي صلّح كل حاجة:</b> في الملف الرسمي كل زرار كان ماسك ليست بتاعته لوحده — فالمهام اللي بتضيفها من زرار مش بتبان في زرار تاني. عندنا <b>الليست على سبرايت واحد بس (StudyPal)</b>، والأزرار بتبعتله رسايل. ده الفرق بين برنامج شغّال وبرنامج لأ.</div>
+      </div>
+    </section>
+
+    <section class="topic" id="g5-todo" data-title="G5 — الكود اللي هتكتبه معاهم">
+      <div class="th"><h3>⌨️ كود الـTo-Do — سطر سطر</h3></div>
+      <div class="body">
+        <div class="note info">📌 <b>ابدأ بالسياق:</b> «الحصة اللي فاتت عملتوا الأزرار وبعدين الجدول. النهارده <b>قايمة المهام</b> — نفس المشروع، ميزة جديدة.»</div>
+
+        <h4 class="sub-h">1) الفكرة الجديدة الوحيدة: الليست</h4>
+        <p>قبل ما تكتب أي حاجة، اشرح ده على السبورة. <b>دي الفكرة الوحيدة الجديدة في الحصة كلها.</b></p>
+        <pre class="code"><span class="cm"># متغير = علبة، بتشيل حاجة واحدة</span>
+name = <span class="str">'Omar'</span>
+
+<span class="cm"># ليست = رفّ، بيشيل حاجات كتير بترتيب</span>
+tasks = []
+tasks.append(<span class="str">'Math homework'</span>)
+tasks.append(<span class="str">'Read 10 pages'</span>)
+
+len(tasks)   <span class="cm"># -> 2</span>
+tasks[0]     <span class="cm"># -> 'Math homework'</span></pre>
+        <div class="note warn">⚠️ <b>العدّ بيبدأ من صفر.</b> أول مهمة هي <span class="mono">tasks[0]</span> مش <span class="mono">tasks[1]</span>. عشان كده الكود بيقول <span class="mono">tasks[number - 1]</span>. قول الجملة دي بصوت عالي — <b>90% من الأخطاء بعد كده سببها دي</b>.</div>
+
+        <h4 class="sub-h">2) الزرارين (سطرين لكل واحد)</h4>
+        <p>دوس على <b>الزرار الأخضر</b> ← تبويب <span class="ui">Python</span>:</p>
+        <pre class="code"><span class="kw">@event.clicked</span>
+<span class="kw">def</span> on_clicked():
+    sprite.broadcast(<span class="str">'add task'</span>)</pre>
+        <p>ونفس الحكاية على <b>الزرار الأحمر</b> بس الرسالة <span class="mono">'finish task'</span>.</p>
+        <div class="note">🗣️ <b>قولهم:</b> «الزرار ده زي جرس. هو مش بيعمل الشغل — هو بينادي على StudyPal.»</div>
+
+        <h4 class="sub-h">3) سبرايت StudyPal — الشغل الحقيقي</h4>
+        <pre class="code"><span class="kw">from</span> mblock <span class="kw">import</span> event
+
+<span class="cm"># الليست هنا، على سبرايت واحد بس</span>
+tasks = []
+
+<span class="kw">@event.received</span>(<span class="str">'add task'</span>)
+<span class="kw">def</span> on_add_task():
+    task = input(<span class="str">'What do you need to do?'</span>)
+    tasks.append(task)
+    sprite.say(<span class="str">'Added! '</span> + str(len(tasks)), 2)
+
+<span class="kw">@event.received</span>(<span class="str">'finish task'</span>)
+<span class="kw">def</span> on_finish_task():
+    <span class="kw">if</span> len(tasks) == 0:
+        sprite.say(<span class="str">'Your list is empty!'</span>, 2)
+    <span class="kw">else</span>:
+        number = int(input(<span class="str">'Which one is done?'</span>))
+        sprite.say(<span class="str">'Well done!'</span>, 2)
+        tasks.pop(number - 1)</pre>
+
+        <h4 class="sub-h">4) لو الوقت سمح — دالة تقرا القايمة</h4>
+        <div class="note good">🔗 <b>ربطة حلوة مع الدرس اللي فات:</b> درس 3 كان عن <b>الدوال</b>. هنا بتتكرّر «اقرا كل المهام» تلات مرات → حوّلها لدالة. ده بيثبّت درسين مع بعض.</div>
+        <pre class="code"><span class="kw">def</span> read_tasks():
+    <span class="kw">if</span> len(tasks) == 0:
+        sprite.say(<span class="str">'Your list is empty.'</span>, 2)
+    <span class="kw">else</span>:
+        <span class="kw">for</span> i <span class="kw">in</span> range(len(tasks)):
+            sprite.say(str(i + 1) + <span class="str">'. '</span> + tasks[i], 2)</pre>
+        <p>وبعدين ناديها بـ<span class="mono">read_tasks()</span> بعد كل إضافة وحذف. موجودة جاهزة في ملف <span class="mono">TEACHER</span>.</p>
+
+        <div class="note">🎁 <b>أفكار زيادة</b> (لو حد خلّص بدري — والـTG بيسمح بكده صراحةً): بوت <b>آلة حاسبة</b>، أو بوت بيجاوب أسئلة عن مادة معيّنة.</div>
+      </div>
+    </section>
+
+    <section class="topic" id="g5-plan" data-title="G5 — خطة الـ70 دقيقة">
+      <div class="th"><h3>⏱️ الـ70 دقيقة — مقسّمة</h3></div>
+      <div class="body">
+        <div class="note bad">🚨 <b>المشكلة:</b> الـTG مديك <b>3 جمل</b> لـ70 دقيقة، والسلايد بولت واحدة: «Continue your Chatbot by developing a To-Do list option». مفيش أي خطوات. التقسيمة دي أنا عملتها — <b>الكود نفسه مياخدش أكتر من 25 دقيقة</b>.</div>
+        <div class="tbwrap"><table class="tb">
+          <thead><tr><th>الوقت</th><th>بتعمل إيه</th></tr></thead>
+          <tbody>
+            <tr><td><b>0–5</b></td><td>افتح <span class="mono">TEACHER</span> واعمل ديمو: ضيف مهمتين، اشطب واحدة. <b>متشرحش</b> — خليهم يشوفوا الهدف بس.</td></tr>
+            <tr><td><b>5–15</b></td><td>الليست على السبورة (العلبة ضد الرفّ) + إن العدّ بيبدأ من صفر.</td></tr>
+            <tr><td><b>15–25</b></td><td>افتح <span class="mono">START</span> واكتب كود الزرارين معاهم. شغّل — لسه مفيش حاجة بتحصل. اسألهم: «ليه؟»</td></tr>
+            <tr><td><b>25–45</b></td><td>اكتبوا كود StudyPal مع بعض. <b>شغّل بعد كل دالة</b>، مش في الآخر.</td></tr>
+            <tr><td><b>45–60</b></td><td>وقت حر — كل واحد يزوّد فكرته (حاسبة / دالة القراية / يزوّد أزرار).</td></tr>
+            <tr><td><b>60–70</b></td><td>2–3 عيال يعرضوا. Q&amp;A.</td></tr>
+          </tbody>
+        </table></div>
+        <div class="note info">🎯 <b>أهم عادة تعلّمهالهم:</b> شغّل بعد <b>كل</b> دالة. لو كتبوا الكود كله وبعدين شغّلوا، أول خطأ هيضيّع نص الحصة في التصحيح.</div>
+      </div>
+    </section>
+
+    <section class="topic" id="g5-rescue" data-title="G5 — خطة إنقاذ ومشاكل متوقّعة">
+      <div class="th"><h3>🧯 لو حاجة باظت</h3></div>
+      <div class="body">
+        <div class="note warn">🆘 <b>عيّل مشروعه ضايع أو باظ؟</b> ادّيله <span class="mono">StudyPal_L4_START</span> على فلاشة أو شير. هو نفس مشروعهم بالظبط بالخطوة الجاية بس ناقصة — فهو مش هيبقى متأخّر عن الباقيين.</div>
+
+        <details class="faq"><summary>«شغّلت وميحصلش حاجة»</summary>
+          <div class="a">99% الكود اتكتب على <b>سبرايت غلط</b>. الليست والدوال لازم تبقى على <b>StudyPal</b> (الروبوت)، والـ<span class="mono">broadcast</span> على الأزرار. شيّك على السبرايت المختار فوق.</div>
+        </details>
+
+        <details class="faq"><summary>TypeError: list indices must be integers</summary>
+          <div class="a">نسي <span class="mono">int()</span>. لازم <span class="mono">int(input(...))</span> مش <span class="mono">input(...)</span> لوحدها. <b>ده أشيع خطأ في الحصة</b> — وهو نفس الخطأ اللي في الملف الرسمي.</div>
+        </details>
+
+        <details class="faq"><summary>IndexError: list index out of range</summary>
+          <div class="a">كتب رقم أكبر من عدد المهام (أو كتب 3 وعنده مهمتين). ضيف الشرط: <span class="mono">if number &gt;= 1 and number &lt;= len(tasks):</span></div>
+        </details>
+
+        <details class="faq"><summary>«مضيف مهام بس القايمة بتفضل فاضية»</summary>
+          <div class="a">غالبًا كاتب <span class="mono">tasks = []</span> <b>جوه</b> الدالة، فالليست بتترسم من أول وجديد كل مرة. لازم تكون <b>برّه</b> الدالة، في أول الملف.</div>
+        </details>
+
+        <details class="faq"><summary>«أنا بستخدم بلوكات مش بايثون»</summary>
+          <div class="a">مفيش مشكلة — نفس المنطق بالظبط: <span class="ui">Variables</span> ← <b>Make a List</b> ← <span class="mono">tasks</span>، وبعدين <span class="mono">when this sprite clicked</span> + <span class="mono">ask and wait</span> + <span class="mono">add (answer) to [tasks]</span>. بس خلي بالك إن مشروعهم من الحصص اللي فاتت على <b>وضع بايثون</b>، فالتحويل هيمسح الكود القديم.</div>
+        </details>
+
+        <details class="faq"><summary>مفيش نت / mBlock مش راضي يفتح</summary>
+          <div class="a">النشاط الورقي (Algorithm Maker) ممكن يمتد. أو اكتبوا الكود على الورق وشغّلوه المرة الجاية — «كتابة الكود على ورق» ده تمرين حقيقي بيتعمل في الجامعات.</div>
+        </details>
       </div>
     </section>
 
@@ -537,8 +746,13 @@ forever
         <details class="faq"><summary>🧩 مش لاقي بلوك في VEXcode VR</summary><div class="a">
           البلوكات مقسّمة بالألوان على الشمال: <b>Drivetrain</b> (الحركة) · <b>Control</b> (اللوبات والـif) · <b>Sensing</b> (الحسّاسات) · <b>Operators</b> (المقارنات) · <b>My Blocks</b> (الدوال). بلوك <span class="en">FrontDistance</span> في <b>Sensing</b>.</div></details>
 
-        <details class="faq"><summary>📋 في mBlock عملت Variable بدل List</summary><div class="a">
-          الـ<b>Variable</b> بتشيل حاجة واحدة، والـ<b>List</b> بتشيل حاجات كتير. لقايمة المهام لازم <b>List</b>. امسح المتغيّر واعمل <span class="ui">Make a List</span> من نفس القسم.</div></details>
+        <details class="faq"><summary>🐍 فتحت mBlock ومش لاقي بلوكات في مشروع G5</summary><div class="a">
+          ده طبيعي — مشاريع StudyPal على <b>وضع بايثون</b>. دوس على السبرايت وشوف التبويب فوق: هتلاقي <span class="ui">Blocks</span> و<span class="ui">Python</span>. الكود في تبويب <b>Python</b>.<br>
+          👈 التفاصيل كاملة في قسم <b>«الدرس ده بايثون مش بلوكات»</b> فوق.</div></details>
+
+        <details class="faq"><summary>💥 TypeError: list indices must be integers</summary><div class="a">
+          أشيع خطأ في حصة G5. <span class="mono">input()</span> بيرجّع <b>نص</b>، فلازم تلفّه: <span class="mono">int(input(...))</span>.<br>
+          <b>ملاحظة:</b> نفس الخطأ ده موجود في ملف الحل الرسمي — فلو نسخت منه هتقع فيه.</div></details>
 
         <details class="faq"><summary>💻 الطالب بيقول «الزرار مش شغال» في App Lab</summary><div class="a">
           اسأله 3 أسئلة بالترتيب: ① دُست Run؟ ② اسم الزرار في الكود مطابق للـ<span class="mono">id</span> بالظبط؟ ③ اسم الشاشة في <span class="mono">setScreen</span> مكتوب صح؟ — 95% من المشاكل من التلاتة دول.</div></details>
@@ -556,7 +770,7 @@ forever
       <div class="body">
         <div class="grid g2">
           <div class="tile"><span class="ic">🧠</span><h4>Grade 6</h4><p>✔️ فتحت <span class="mono">vr.vex.com</span><br>✔️ لقيت ملعبي <b>Dynamic Castle Crasher</b> و<b>Coral Reef Cleanup</b><br>✔️ جرّبت الكود وشُفت الروبوت بيتحرك<br>✔️ جهّزت كراسي/أقماع للنشاط<br>✔️ فتحت محاكاة Fixed vs Smart</p></div>
-          <div class="tile"><span class="ic">🤖</span><h4>Grade 5</h4><p>✔️ فتحت mBlock ومشروع StudyPal<br>✔️ عارف تعمل <b>Make a List</b><br>✔️ جرّبت <span class="mono">ask and wait</span> + <span class="mono">add to list</span><br>✔️ جهّزت 5 كروت المهام<br>✔️ جرّبت مقارنة البوتين في الموقع</p></div>
+          <div class="tile"><span class="ic">🤖</span><h4>Grade 5</h4><p>✔️ فتحت <span class="mono">StudyPal_L4_TEACHER</span> وجرّبت الديمو<br>✔️ فتحت <span class="mono">StudyPal_L4_START</span> — ده اللي هتشرح منه<br>✔️ عارف تلاقي تبويب <b>Python</b> في mBlock<br>✔️ نسخت الملفين على فلاشة (للإنقاذ)<br>✔️ جهّزت 5 كروت المهام<br>✔️ جرّبت مقارنة البوتين في الموقع</p></div>
           <div class="tile"><span class="ic">🎨</span><h4>Grade 4</h4><p>✔️ فتحت App Lab ومشروع الحصة اللي فاتت<br>✔️ راجعت <span class="mono">onEvent</span> و<span class="mono">setScreen</span><br>✔️ جهّزت ظروف ورق للنشاط<br>✔️ قرّرت: متغيرات ولا قصص تفاعلية؟<br>✔️ جرّبت Colour Lab</p></div>
           <div class="tile accent"><span class="ic">🎒</span><h4>عام</h4><p>✔️ البروجيكتور والصوت شغالين<br>✔️ ورق وأقلام<br>✔️ فتحت مواقع الدروس التلاتة في تابات<br>✔️ عارف هتقسّمهم فرق إزاي</p></div>
         </div>
