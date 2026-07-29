@@ -607,6 +607,70 @@ body.no-motion *{transition:none!important;animation-duration:.001s!important;an
   .l5-node,.l5-sensor,.l5-pblk{transition:none}
 }
 
+
+/* ===== arcade games ===== */
+.l5-arena{position:relative;width:100%;max-width:460px;margin:12px auto;background:linear-gradient(#EEF3FA,#E3EAF4);
+  border:2.5px solid var(--ink);border-radius:14px;overflow:hidden;box-shadow:var(--shadow);touch-action:none;outline:none}
+.l5-arena:focus-visible{outline:3px solid var(--indigo);outline-offset:2px}
+.l5-bins{position:absolute;left:0;right:0;bottom:0;height:48px;display:flex}
+.l5-bin{flex:1;border-top:3px solid var(--ink);display:grid;place-items:center}
+.l5-bin+.l5-bin{border-inline-start:3px solid var(--ink)}
+.l5-bin span{font-family:var(--mono);font-size:11.5px;font-weight:700;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.45)}
+.l5-robot{position:absolute;bottom:48px;transform:translateX(-50%);width:56px;text-align:center;transition:none}
+.l5-rbody{font-size:32px;line-height:1}
+.l5-coil{display:block;height:6px;margin:1px auto 0;width:34px;border-radius:3px;background:#9AA3B0;border:2px solid var(--ink)}
+.l5-coil.on{background:#FFB020;box-shadow:0 0 0 4px rgba(255,176,32,.35)}
+.l5-hold{position:absolute;top:-16px;left:50%;transform:translateX(-50%);width:22px;height:22px;border-radius:50%;border:2.4px solid var(--ink)}
+.l5-fall{position:absolute;width:26px;height:26px;border-radius:50%;border:2.4px solid var(--ink);transform:translateX(-50%)}
+
+/* precision stop */
+.l5-lane{position:relative;width:100%;max-width:520px;height:104px;margin:12px auto;background:#EEF3FA;
+  border:2.5px solid var(--ink);border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
+.l5-wallbig{position:absolute;top:0;bottom:0;right:0;width:34px;background:#8B6A4A;border-inline-start:3px solid var(--ink)}
+.l5-zone{position:absolute;top:0;bottom:0;right:34px;width:80px;background:rgba(55,160,90,.28);border-inline-start:2px dashed var(--green)}
+.l5-runner{position:absolute;bottom:26px;font-size:30px;transform:translateX(-50%)}
+.l5-dist{position:absolute;top:8px;left:10px;font-family:var(--mono);font-size:15px;background:#fff;
+  border:2px solid var(--ink);border-radius:8px;padding:2px 10px;box-shadow:var(--shadow-xs)}
+.l5-dist.safe{background:var(--green-l);border-color:var(--green)}
+.l5-dist.danger{background:var(--red-l);border-color:var(--red)}
+
+/* magnet power rig */
+.l5-rig{display:flex;align-items:flex-end;justify-content:center;gap:26px;margin:14px 0;min-height:150px}
+.l5-coilbox{display:flex;flex-direction:column;align-items:center}
+.l5-turns{display:flex;flex-direction:column;gap:2px;width:56px}
+.l5-turns i{display:block;height:4px;border-radius:2px;background:#C0602F;border:1px solid var(--ink)}
+.l5-core{width:22px;height:34px;background:#D8D2C0;border:2.4px solid var(--ink);border-radius:0 0 5px 5px}
+.l5-core.on{background:#8E96A3;box-shadow:0 0 0 3px rgba(255,176,32,.4)}
+.l5-stack{display:flex;flex-direction:column-reverse;gap:3px;min-width:64px}
+.l5-pdisk{display:block;width:60px;height:11px;border-radius:5px;background:#B7BDC7;border:2px solid var(--ink);
+  transition:transform .35s ease,background .35s}
+.l5-pdisk.up{transform:translateY(-6px) scaleX(.9);background:#8E96A3}
+.l5-ctrls{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;margin:10px 0}
+.l5-ctrl{background:#fff;border:2px solid var(--ink);border-radius:11px;padding:9px 13px;box-shadow:var(--shadow-xs);
+  display:flex;flex-direction:column;gap:5px;font-size:14px;font-weight:600}
+.l5-ctrl input[type=range]{width:100%;accent-color:var(--coral-mid)}
+.l5-switch{flex-direction:row;align-items:center;justify-content:space-between}
+.l5-switch input{width:22px;height:22px;accent-color:var(--green)}
+
+/* sensor sort card */
+.l5-card2{background:#fff;border:2.5px solid var(--ink);border-radius:14px;box-shadow:var(--shadow);
+  margin:12px auto;max-width:560px;overflow:hidden}
+.l5-card2 p{font-size:clamp(16px,2.6vw,21px);font-family:var(--disp);font-weight:600;margin:0;padding:20px 18px;text-align:center}
+.l5-cbar{height:8px;background:var(--ink-l);border-bottom:2px solid var(--ink)}
+.l5-cbar i{display:block;height:100%;width:100%;background:var(--hl);transition:width .06s linear}
+
+
+/* down-eye comparison */
+.l5-floor2{position:relative;width:100%;max-width:480px;height:84px;margin:14px auto;background:#EEF3FA;
+  border:2.5px solid var(--ink);border-radius:12px;overflow:hidden;box-shadow:var(--shadow)}
+.l5-sq{position:absolute;bottom:0;height:44px;border:2.4px solid var(--ink);border-bottom:none;
+  border-radius:7px 7px 0 0;display:grid;place-items:center}
+.l5-sq i{font-family:var(--mono);font-size:11px;font-weight:700;color:#fff;font-style:normal;text-shadow:0 1px 2px rgba(0,0,0,.5)}
+.l5-rob2{position:absolute;top:6px;font-size:24px;line-height:1;transition:none}
+.l5-carry{position:absolute;top:-9px;left:50%;transform:translateX(-50%);width:15px;height:15px;
+  border-radius:50%;border:2.2px solid var(--ink);display:block}
+.l5-eye{position:absolute;top:40px;left:8px;font-size:13px;opacity:.55}
+
 </style>
 </head>
 <body class="lang-en">
@@ -728,12 +792,19 @@ body.no-motion *{transition:none!important;animation-duration:.001s!important;an
       </div>
     </section>
 
-    <section class="scene wide" data-sec="1" data-title="🎮 Sense → Think → Act" data-src="Slide 8" data-nokeys>
+    <section class="scene" data-sec="1" data-title="Sense → Think → Act" data-src="Slide 8">
       <div class="scene-inner">
-        <div class="center"><span class="stamp">GAME 1 🔁</span><h2 class="title" style="margin-top:10px">The Sense-Think-Act loop</h2><p class="sub" style="margin:8px auto 0">Pick a situation and step the robot through its own thinking.</p></div>
-        <div class="lab" data-act="staLoop">
-          <h3><span class="tag">STEP IT</span> One loop at a time</h3>
-          <div data-mount></div>
+        <div class="card">
+          <div class="head"><span class="badge">THE LOOP</span><h2>Sense → Think → Act 🔁</h2></div>
+          <div class="body">
+            <p class="sub">Every robot ever built runs this loop, thousands of times a second, for as long as it is switched on.</p>
+            <div class="grid g3">
+              <div class="tile"><span class="ic">📡</span><h4>1 · Sense</h4><p>Read the world. <span class="mono">"Object 60 mm ahead."</span><br>At this point the robot has no idea what that <i>means</i>.</p></div>
+              <div class="tile"><span class="ic">🧠</span><h4>2 · Think</h4><p>Compare the reading to your rule. <span class="mono">"Closer than 100? → YES."</span><br>This is the only place a decision happens.</p></div>
+              <div class="tile"><span class="ic">🦾</span><h4>3 · Act</h4><p>Move, turn, or switch the magnet. <span class="mono">"Stop and turn right."</span><br>Then straight back to sensing.</p></div>
+            </div>
+            <div class="note info">🔑 <b>Take away the middle step and you have a machine, not a robot.</b> Sensing without thinking is just data; acting without sensing is just a wind-up toy.</div>
+          </div>
         </div>
       </div>
     </section>
@@ -770,9 +841,19 @@ body.no-motion *{transition:none!important;animation-duration:.001s!important;an
       </div>
     </section>
 
+    <section class="scene wide" data-sec="1" data-title="🎮 Precision Stop" data-src="Slides 9-12" data-nokeys>
+      <div class="scene-inner">
+        <div class="center"><span class="stamp">GAME 2 🎯</span><h2 class="title" style="margin-top:10px">Precision Stop</h2><p class="sub" style="margin:8px auto 0">Six runs, each one faster. Stop in the green zone — as close to the wall as you dare, without touching it.</p></div>
+        <div class="lab" data-act="precisionStop">
+          <h3><span class="tag">NERVE TEST</span> Closer = more points · touching = zero</h3>
+          <div data-mount></div>
+        </div>
+      </div>
+    </section>
+
     <section class="scene wide" data-sec="1" data-title="🎮 Boolean Blitz" data-src="Slide 12" data-nokeys>
       <div class="scene-inner">
-        <div class="center"><span class="stamp">GAME 2 ⚡</span><h2 class="title" style="margin-top:10px">Boolean Blitz — 30 seconds</h2><p class="sub" style="margin:8px auto 0">Read the sensor, read the block. TRUE or FALSE? Go fast.</p></div>
+        <div class="center"><span class="stamp">GAME 1 ⚡</span><h2 class="title" style="margin-top:10px">Boolean Blitz — 30 seconds</h2><p class="sub" style="margin:8px auto 0">Read the sensor, read the block. TRUE or FALSE? Go fast.</p></div>
         <div class="lab" data-act="boolBlitz">
           <h3><span class="tag">BEAT THE CLOCK</span> How many can you get?</h3>
           <div data-mount></div>
@@ -804,11 +885,11 @@ body.no-motion *{transition:none!important;animation-duration:.001s!important;an
       </div>
     </section>
 
-    <section class="scene wide" data-sec="2" data-title="🎮 Which sensor for the job?" data-src="Course recap" data-nokeys>
+    <section class="scene wide" data-sec="2" data-title="🎮 Sensor Sort" data-src="Course recap" data-nokeys>
       <div class="scene-inner">
-        <div class="center"><span class="stamp">GAME 3 🔍</span><h2 class="title" style="margin-top:10px">Pick the right sensor</h2><p class="sub" style="margin:8px auto 0">Eight jobs, four sensors. This is the whole course in one game.</p></div>
-        <div class="lab" data-act="sensorPick">
-          <h3><span class="tag">CHOOSE</span> Which one would you use?</h3>
+        <div class="center"><span class="stamp">GAME 3 🃏</span><h2 class="title" style="margin-top:10px">Sensor Sort</h2><p class="sub" style="margin:8px auto 0">45 seconds. Every job needs a sensor. Get them right in a row and your combo multiplies.</p></div>
+        <div class="lab" data-act="sensorSort">
+          <h3><span class="tag">BEAT THE BAR</span> Answer before the yellow runs out</h3>
           <div data-mount></div>
         </div>
       </div>
@@ -840,11 +921,21 @@ body.no-motion *{transition:none!important;animation-duration:.001s!important;an
       </div>
     </section>
 
-    <section class="scene wide" data-sec="3" data-title="🎮 The Electromagnet Lab" data-src="Slides 18-19" data-nokeys>
+    <section class="scene wide" data-sec="3" data-title="🎮 Magnet Power Lab" data-src="Slides 16-19" data-nokeys>
       <div class="scene-inner">
-        <div class="center"><span class="stamp">GAME 4 🧲</span><h2 class="title" style="margin-top:10px">The Electromagnet Lab</h2><p class="sub" style="margin:8px auto 0">Flip the switch. Watch the current, the field, and the disk.</p></div>
-        <div class="lab" data-act="magnetLab">
-          <h3><span class="tag">TRY IT</span> ON picks up · OFF lets go</h3>
+        <div class="center"><span class="stamp">GAME 4 ⚡</span><h2 class="title" style="margin-top:10px">Magnet Power Lab</h2><p class="sub" style="margin:8px auto 0">Your mission: lift <b>all 10 disks</b>. Three things you can change — find out which one matters most.</p></div>
+        <div class="lab" data-act="magnetPower">
+          <h3><span class="tag">EXPERIMENT</span> Change one thing, then test</h3>
+          <div data-mount></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="scene wide" data-sec="3" data-title="🎮 Magnet Catch" data-src="Make" data-nokeys>
+      <div class="scene-inner">
+        <div class="center"><span class="stamp">GAME 5 🧲</span><h2 class="title" style="margin-top:10px">Magnet Catch</h2><p class="sub" style="margin:8px auto 0">Disks are falling. Catch them with the magnet <b>ON</b> and drop them in the matching bin with the magnet <b>OFF</b>.</p></div>
+        <div class="lab" data-act="magnetCatch">
+          <h3><span class="tag">60 SECONDS</span> ON to grab · OFF to release</h3>
           <div data-mount></div>
         </div>
       </div>
@@ -933,7 +1024,7 @@ body.no-motion *{transition:none!important;animation-duration:.001s!important;an
 
     <section class="scene wide" data-sec="5" data-title="🎮 Blindfold Bot" data-src="Warm-up" data-nokeys>
       <div class="scene-inner">
-        <div class="center"><span class="stamp">GAME 5 🙈</span><h2 class="title" style="margin-top:10px">Blindfold Bot</h2><p class="sub" style="margin:8px auto 0">Plan <b>every</b> move before you press Run. No peeking, no fixing halfway.</p></div>
+        <div class="center"><span class="stamp">GAME 6 🙈</span><h2 class="title" style="margin-top:10px">Blindfold Bot</h2><p class="sub" style="margin:8px auto 0">Plan <b>every</b> move before you press Run. No peeking, no fixing halfway.</p></div>
         <div class="lab" data-act="blindBot">
           <h3><span class="tag">PLAN IT BLIND</span> Reach the 🏁 without hitting the 🪨</h3>
           <div data-mount></div>
@@ -1048,7 +1139,7 @@ body.no-motion *{transition:none!important;animation-duration:.001s!important;an
     <!-- ============ SECTION 8 — THE SIMULATOR ============ -->
     <section class="scene wide" data-sec="8" data-title="★ Disk Mover Simulator" data-src="Slide 28" data-nokeys>
       <div class="scene-inner">
-        <div class="center"><span class="stamp">GAME 6 ★ THE BIG ONE 🤖</span><h2 class="title" style="margin-top:10px">Disk Mover Simulator</h2><p class="sub" style="margin:8px auto 0">Build a program, press Run, watch it happen. Rehearse it here before you touch VEXcode VR.</p></div>
+        <div class="center"><span class="stamp">GAME 7 ★ THE BIG ONE 🤖</span><h2 class="title" style="margin-top:10px">Disk Mover Simulator</h2><p class="sub" style="margin:8px auto 0">Build a program, press Run, watch it happen. Rehearse it here before you touch VEXcode VR.</p></div>
         <div class="lab" data-act="diskMover">
           <h3><span class="tag">PROGRAM IT</span> Three disks into three goals</h3>
           <div data-mount></div>
@@ -1073,9 +1164,76 @@ body.no-motion *{transition:none!important;animation-duration:.001s!important;an
     </section>
 
     <!-- ============ SECTION 9 — DEBUG &amp; SAVE ============ -->
+    <!-- deck slide 30 shows the official solution: three functions of fixed distances, ~49 blocks -->
+    <section class="scene" data-sec="8" data-title="The official code — 49 blocks" data-src="Slide 30">
+      <div class="scene-inner">
+        <div class="card">
+          <div class="head"><span class="badge">THE LONG WAY</span><h2>The solution you were given 📏</h2></div>
+          <div class="body">
+            <p class="sub">Three functions, each one a list of exact measurements. This is just <b>one</b> of the three:</p>
+            <pre class="code">define <b>getBlue</b>
+    drive forward 700 mm
+    turn left 90 degrees
+    drive forward 300 mm
+    energize Magnet to <b>boost</b>
+    drive reverse 200 mm
+    turn right 90 degrees
+    drive reverse 400 mm
+    turn left 90 degrees
+    drive forward 800 mm
+    turn left 90 degrees
+    drive forward 200 mm
+    energize Magnet to <b>drop</b></pre>
+            <div class="note bad">😰 <b>Now multiply that by three</b> — getBlue, getGreen, getRed — plus the main program. That is about <b>49 blocks</b>, and <b>every single number has to be right</b>. Miss by 20 mm on the first turn and every step after it is wrong.</div>
+            <div class="note info">🤔 <b>So here is the question:</b> the robot has a <b>Down Eye</b> that reads the colour of the floor. Why are we counting millimetres to find a goal we could simply <i>look</i> at?</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="scene wide" data-sec="8" data-title="🎮 Down Eye vs fixed distance" data-src="Slides 5 + 30" data-nokeys>
+      <div class="scene-inner">
+        <div class="center"><span class="stamp">GAME 8 👀</span><h2 class="title" style="margin-top:10px">Down Eye vs Fixed Distance</h2><p class="sub" style="margin:8px auto 0">Same job, two programs. Nudge the starting position, then run them both.</p></div>
+        <div class="lab" data-act="downEye">
+          <h3><span class="tag">TRY TO BREAK IT</span> Move the start, then run each program</h3>
+          <div data-mount></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="scene" data-sec="8" data-title="The short way — the Down-Eye code" data-src="Slides 5 + 30">
+      <div class="scene-inner">
+        <div class="card">
+          <div class="head"><span class="badge">THE SHORT WAY</span><h2>The same mission in a fraction of the blocks 👀</h2></div>
+          <div class="body">
+            <p class="sub">One function instead of three, because the colour is now something you <b>pass in</b> rather than something baked into the numbers.</p>
+            <pre class="code">define <b>deliver</b> (colour)
+    energize Magnet to <b>boost</b>            <span class="cm">// grab the disk</span>
+    drive forward
+    <b>wait until</b> DownEye detects (colour)   <span class="cm">// look, do not count</span>
+    stop driving
+    energize Magnet to <b>drop</b>             <span class="cm">// let go, right on the goal</span>
+
+
+<b>when started</b>
+    drive forward
+    wait until FrontEye detects an object
+    stop driving
+    deliver (FrontEye colour)              <span class="cm">// then repeat for the next disk</span></pre>
+            <div class="grid g2">
+              <div class="tile"><span class="ic">📏</span><h4>Fixed distances</h4><p><b>~49 blocks</b><br>Breaks if anything drifts a few millimetres.<br>Three near-identical functions.</p></div>
+              <div class="tile"><span class="ic">👀</span><h4>Down Eye</h4><p><b>~11 blocks</b><br>Drift does not matter — it stops on the colour.<br><b>One</b> function for all three disks.</p></div>
+            </div>
+            <div class="note good">🎯 <b>This is the whole course in one comparison.</b> Lesson 4 said a fixed path breaks when the world changes. Here is the proof, inside the final project: <b>ask the sensor instead of trusting a number.</b></div>
+            <div class="note warn">⚙️ <b>In VEXcode VR:</b> the magnet blocks are <span class="mono">energize Magnet to boost</span> and <span class="mono">energize Magnet to drop</span>; the eye blocks are under <b>Sensing</b>. Build the long version first so it works, then rebuild it the short way — running both side by side is what makes the lesson land.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="scene wide" data-sec="9" data-title="🎮 Hunt the bug" data-src="Debug" data-nokeys>
       <div class="scene-inner">
-        <div class="center"><span class="stamp">GAME 7 🐛</span><h2 class="title" style="margin-top:10px">Hunt the bug</h2><p class="sub" style="margin:8px auto 0">Three broken programs. Find the wrong line, then choose the fix.</p></div>
+        <div class="center"><span class="stamp">GAME 9 🐛</span><h2 class="title" style="margin-top:10px">Hunt the bug</h2><p class="sub" style="margin:8px auto 0">Three broken programs. Find the wrong line, then choose the fix.</p></div>
         <div class="lab" data-act="bugHunt">
           <h3><span class="tag">DEBUG</span> Read the goal, then read every line against it</h3>
           <div data-mount></div>
@@ -1129,26 +1287,31 @@ body.no-motion *{transition:none!important;animation-duration:.001s!important;an
       </div>
     </section>
 
-    <section class="scene wide" data-sec="10" data-title="🏆 The Final Boss quiz" data-src="Assessment" data-nokeys>
+    <section class="scene wide" data-sec="10" data-title="Round 1 — Sensors & Sensing" data-src="Assessment" data-nokeys>
       <div class="scene-inner">
-        <div class="center"><span class="stamp">GAME 8 🏆</span><h2 class="title" style="margin-top:10px">The Final Boss</h2></div>
-        <div class="lab" data-act="quiz" data-config='{
-          "id":"g6l5boss",
-          "questions":[
-            {"q":"What does a sensor actually do for a robot?","choices":["Lets it find something out about the world","Makes it drive faster","Stores its program","Charges the battery"],"answer":0,"explain":"A sensor is how a robot gathers information. Without one it can only repeat fixed movements."},
-            {"q":"Put the robot control loop in order.","choices":["Sense → Think → Act","Act → Sense → Think","Think → Sense → Act","Sense → Act → Think"],"answer":0,"explain":"Read the world, decide using your rules, then move — and immediately go back to reading."},
-            {"q":"“FrontDistance found an object?” gives back…","choices":["TRUE or FALSE","A distance in millimetres","A colour","A speed"],"answer":0,"explain":"It is a Boolean block: the answer is only ever TRUE or FALSE."},
-            {"q":"Which sensor tells you how FAR away a wall is?","choices":["The distance sensor","The bumper","The down eye","The electromagnet"],"answer":0,"explain":"Only the distance sensor gives you a number that changes as you get closer."},
-            {"q":"You need to know if you are standing on the green goal. Which sensor?","choices":["Down Eye","Front Eye","Distance","Bumper"],"answer":0,"explain":"The goal is painted on the floor, so you need the eye that looks down."},
-            {"q":"The Front Eye sensor is best at…","choices":["Seeing the colour of something ahead","Reading the floor","Measuring millimetres","Detecting a crash"],"answer":0,"explain":"It looks straight ahead to see what is coming."},
-            {"q":"What makes an electromagnet magnetic?","choices":["Electricity flowing through a coil of wire","Its colour","Its weight","Sunlight"],"answer":0,"explain":"Current through the coil creates a magnetic field. No current, no field."},
-            {"q":"Why use an electromagnet instead of a normal magnet?","choices":["Because you can switch it off and let go","Because it is stronger","Because it is cheaper","Because it is lighter"],"answer":0,"explain":"A normal magnet can pick a disk up but can never release it. Being able to let go is the whole point."},
-            {"q":"Which block do you use the moment you arrive at the correct goal?","choices":["Electromagnet OFF","Electromagnet ON","Turn right","Drive forward"],"answer":0,"explain":"OFF releases the field, so the disk drops exactly where you want it."},
-            {"q":"An algorithm is…","choices":["A precise, ordered set of steps that always gives the correct result","A kind of sensor","A robot part","A type of battery"],"answer":0,"explain":"Precise and ordered — that is what separates an algorithm from a rough idea."},
-            {"q":"Your program worked yesterday but the playground changed and now it fails. Why?","choices":["It used fixed distances instead of reading sensors","The battery is flat","The robot is broken","Algorithms stop working after a day"],"answer":0,"explain":"A fixed path only fits one layout. Sensor-driven code adapts to whatever it finds — the core idea of Lesson 4."},
-            {"q":"Your robot drove into the wall. What is the FIRST debugging step?","choices":["Run it again and watch exactly where it goes wrong","Delete the whole program","Change five blocks at once","Ask for a new robot"],"answer":0,"explain":"Watch first, find the first step that does not match your plan, then change ONE thing."}
-          ]}'>
-          <h3><span class="tag">12 QUESTIONS</span> Show what you know</h3>
+        <div class="center"><span class="stamp">FINAL BOSS · ROUND 1 📡</span><h2 class="title" style="margin-top:10px">Round 1 — Sensors & Sensing</h2><p class="sub" style="margin:8px auto 0">Ten questions on how a robot finds things out. An explanation appears under every answer.</p></div>
+        <div class="lab" data-act="quiz" data-config='{"id": "g6l5boss1", "questions": [{"q": "What does a sensor actually do for a robot?", "choices": ["Lets it find something out about the world around it", "Makes it drive faster", "Stores its program", "Charges its battery"], "answer": 0, "explain": "A sensor is the robot&#39;s only way of gathering information. Without one it can only repeat fixed movements and has no idea what is around it."}, {"q": "Put the robot control loop in the right order.", "choices": ["Sense → Think → Act", "Act → Sense → Think", "Think → Sense → Act", "Sense → Act → Think"], "answer": 0, "explain": "Read the world (sense), compare the reading to your rule (think), then move (act) — and immediately go back to sensing. Take away the thinking step and you have a wind-up toy, not a robot."}, {"q": "How does a distance sensor measure a gap?", "choices": ["It sends a signal out and times how long the echo takes to come back", "It touches the object", "It photographs the object", "It weighs the object"], "answer": 0, "explain": "It works like a bat or a dolphin. The signal bounces off the object and the time it takes to return tells the robot how far away that object is."}, {"q": "“FrontDistance found an object?” gives back…", "choices": ["TRUE or FALSE", "A distance in millimetres", "A colour", "A speed"], "answer": 0, "explain": "This is a Boolean block, so the answer is only ever TRUE or FALSE. If you want the actual number of millimetres you need the “FrontDistance in mm” block instead."}, {"q": "A value that can only be TRUE or FALSE is called…", "choices": ["A Boolean", "A variable", "A loop", "An algorithm"], "answer": 0, "explain": "Booleans are what every “if” and every “wait until” is really asking for. The block asks a yes/no question and the answer decides which way the program goes."}, {"q": "Which sensor tells you HOW FAR away a wall is?", "choices": ["The distance sensor", "The bumper", "The down eye", "The electromagnet"], "answer": 0, "explain": "Only the distance sensor gives you a number that changes smoothly as you get closer. The bumper just says “touched / not touched”."}, {"q": "You need to know if you are standing on the green goal. Which sensor?", "choices": ["Down Eye", "Front Eye", "Distance", "Bumper"], "answer": 0, "explain": "The goal is painted on the floor, so you need the eye that looks down at the surface underneath the robot."}, {"q": "The Front Eye sensor is best at…", "choices": ["Seeing the colour of something ahead of the robot", "Reading the floor underneath", "Measuring millimetres", "Detecting a crash"], "answer": 0, "explain": "It looks straight ahead, so it can identify something before the robot has reached it — perfect for checking a disk&#39;s colour before you grab it."}, {"q": "Why is a distance sensor better than a bumper for avoiding a wall?", "choices": ["It reacts before contact, so the robot never touches the wall", "It is cheaper", "It works in the dark", "It is faster to program"], "answer": 0, "explain": "A bumper only tells you AFTER you have hit something. A distance sensor warns you while there is still room to stop, which is the difference between avoiding a crash and reporting one."}, {"q": "Your program says “drive forward 500 mm” and the room changes. What happens?", "choices": ["It may crash, because 500 mm only fitted the old layout", "Nothing, it adapts automatically", "It stops early to be safe", "It asks the user what to do"], "answer": 0, "explain": "A fixed number only fits one layout. Reading a sensor and reacting to what it finds is what lets the same program work in a room it has never seen."}]}'>
+          <h3><span class="tag">10 QUESTIONS</span> Read the explanation after every answer</h3>
+          <div data-mount></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="scene wide" data-sec="10" data-title="Round 2 — Electromagnet & the Mission" data-src="Assessment" data-nokeys>
+      <div class="scene-inner">
+        <div class="center"><span class="stamp">FINAL BOSS · ROUND 2 🧲</span><h2 class="title" style="margin-top:10px">Round 2 — Electromagnet & the Mission</h2><p class="sub" style="margin:8px auto 0">Ten questions on picking things up, putting them down, and completing the Disk Mover challenge.</p></div>
+        <div class="lab" data-act="quiz" data-config='{"id": "g6l5boss2", "questions": [{"q": "What makes an electromagnet magnetic?", "choices": ["Electricity flowing through a coil of wire", "Its colour", "Its weight", "Sunlight falling on it"], "answer": 0, "explain": "Current running round the coil creates a magnetic field. No current means no field — which is exactly why you can switch it off."}, {"q": "Why use an electromagnet instead of an ordinary magnet?", "choices": ["Because you can switch it off and let go of the disk", "Because it is stronger", "Because it is cheaper", "Because it is lighter"], "answer": 0, "explain": "A fridge magnet can pick a disk up but can never release it. Being able to let go on command is the whole reason robots use electromagnets."}, {"q": "In the Magnet Power Lab, which single change made the biggest difference?", "choices": ["Adding the iron core", "Adding one more coil turn", "Changing the disk colour", "Making the wire longer"], "answer": 0, "explain": "The iron core multiplied the strength by three all on its own. That is why every real electromagnet is wound around an iron core rather than around nothing."}, {"q": "Which block do you use the moment you arrive at the correct goal?", "choices": ["Electromagnet OFF", "Electromagnet ON", "Turn right", "Drive forward"], "answer": 0, "explain": "OFF collapses the magnetic field, so the disk drops exactly where you want it. Switching it ON again would just pick the disk straight back up."}, {"q": "You switch the magnet ON while there is no disk underneath. What happens?", "choices": ["Nothing at all — the robot carries on empty-handed", "The disk teleports to the robot", "The program crashes", "The robot reverses"], "answer": 0, "explain": "The magnet only affects metal that is actually within reach. This is the classic Disk Mover bug: switching ON before you have arrived."}, {"q": "What is the correct order for moving one disk?", "choices": ["Arrive → magnet ON → travel to the goal → magnet OFF", "Magnet ON → arrive → magnet OFF → travel", "Travel → magnet OFF → arrive → magnet ON", "Magnet OFF → travel → magnet ON → arrive"], "answer": 0, "explain": "Get there first, then grab; carry it across, then release. Every other order fails, and the blocks themselves are easy — the sequence is the challenge."}, {"q": "You drop the red disk on the blue goal. What happens?", "choices": ["Nothing scores — the disk just sits there and you must fetch it again", "It counts as half a point", "The disk changes colour", "The blue goal moves"], "answer": 0, "explain": "Only a matching colour scores. Dropping a disk on the wrong goal simply parks it in a new place, and you still have to come back for it."}, {"q": "In the Disk Mover challenge, where are the coloured goals?", "choices": ["Outside the castle walls", "In the middle of the castle", "On top of the robot", "There are no goals"], "answer": 0, "explain": "The goals sit outside the walls, so you have to carry each disk out through a gap without crashing — which is where the distance sensor earns its keep."}, {"q": "You picked up a disk and immediately press magnet ON again. What happens?", "choices": ["Nothing new — you cannot hold two disks at once", "You pick up a second disk", "The first disk drops", "The magnet breaks"], "answer": 0, "explain": "The magnet is already holding something. You have to release the first disk before you can collect another one."}, {"q": "Which sensor pair would you use to complete the mission?", "choices": ["Front Eye to identify the disk, Down Eye to find the goal", "Bumper for both", "Distance for both", "No sensors are needed"], "answer": 0, "explain": "The front eye looks ahead to check a disk&#39;s colour before you grab it; the down eye reads the painted goal underneath you so you know when to let go."}]}'>
+          <h3><span class="tag">10 QUESTIONS</span> Read the explanation after every answer</h3>
+          <div data-mount></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="scene wide" data-sec="10" data-title="Round 3 — Algorithms, Loops & Debugging" data-src="Assessment" data-nokeys>
+      <div class="scene-inner">
+        <div class="center"><span class="stamp">FINAL BOSS · ROUND 3 📜</span><h2 class="title" style="margin-top:10px">Round 3 — Algorithms, Loops & Debugging</h2><p class="sub" style="margin:8px auto 0">Ten questions on planning a program and fixing it when it goes wrong.</p></div>
+        <div class="lab" data-act="quiz" data-config='{"id": "g6l5boss3", "questions": [{"q": "An algorithm is…", "choices": ["A precise, ordered set of steps that always gives the correct result", "A kind of sensor", "A robot part", "A type of battery"], "answer": 0, "explain": "Precise and ordered are the two words that matter. A rough idea is not an algorithm — a computer cannot fill in anything you left out."}, {"q": "“If FrontDistance found an object, then turn right” is an example of…", "choices": ["Selection", "Sequence", "Iteration", "A variable"], "answer": 0, "explain": "Selection means the program chooses between two paths depending on whether something is true. Sequence is doing steps in order; iteration is repeating them."}, {"q": "“Repeat 4 times: drive forward, turn right” is an example of…", "choices": ["Iteration", "Selection", "A sensor", "A Boolean"], "answer": 0, "explain": "Iteration means repeating steps instead of writing them out again and again. Those four repeats draw a square."}, {"q": "Why write pseudocode before you drag any blocks?", "choices": ["Because it is much faster to fix a plan than to fix a program", "Because the robot reads pseudocode", "Because blocks are not allowed", "Because it makes the program run faster"], "answer": 0, "explain": "Changing a line of plain English costs seconds. Rebuilding a wrong stack of blocks costs the rest of the lesson."}, {"q": "Your program worked yesterday, the playground changed, and now it fails. Why?", "choices": ["It used fixed distances instead of reading sensors", "The battery is flat", "The robot is broken", "Algorithms expire after a day"], "answer": 0, "explain": "A fixed path only fits one layout. This is the whole point of Lesson 4: sensor-driven code adapts to whatever it finds."}, {"q": "Your robot drove into a wall. What is the FIRST debugging step?", "choices": ["Run it again and watch exactly where it goes wrong", "Delete the whole program", "Change five blocks at once", "Ask for a different robot"], "answer": 0, "explain": "Watch first. Find the first step that does not match your plan, understand why, and only then change something."}, {"q": "How many things should you change at a time when debugging?", "choices": ["One", "Two", "As many as you like", "None"], "answer": 0, "explain": "Change one thing and re-run. If you change five things and it works, you have no idea which one fixed it — and if it breaks worse, no idea which one broke it."}, {"q": "You used ten “drive forward” blocks in a row. What is the better way?", "choices": ["A repeat loop", "Ten blocks is fine", "Ten separate programs", "Delete nine of them"], "answer": 0, "explain": "A loop gives the same result with far less code, and it is much easier to change later — that is optimization, the Lesson 4 idea."}, {"q": "In the Human Disk Transport game, why was the blindfolded robot so hard to direct?", "choices": ["Because “go forward a bit” means nothing precise", "Because the robot was slow", "Because the pens were heavy", "Because the room was dark"], "answer": 0, "explain": "You knew what you meant, but your teammate only knew what you said. A computer is exactly the same: endlessly obedient and completely literal."}, {"q": "What is the single most useful habit when writing a long program?", "choices": ["Run it after every few blocks instead of only at the end", "Write it all first, then run once", "Never run it until it is finished", "Copy someone else&#39;s"], "answer": 0, "explain": "If you run often, a new bug can only be in the handful of blocks you just added. If you run once at the end, the bug could be anywhere."}]}'>
+          <h3><span class="tag">10 QUESTIONS</span> Read the explanation after every answer</h3>
           <div data-mount></div>
         </div>
       </div>
@@ -1342,69 +1505,465 @@ function pauseAnimations(){
    ============================================================ */
 const BUILDERS={};
 
+/* ---------- 👀 DOWN-EYE vs FIXED DISTANCE — the short way ---------- */
+BUILDERS.downEye=function(mount){
+  /* The real playground has three painted goals along the bottom:
+     BLUE on the left, RED in the middle, GREEN on the right. */
+  const GOALS=[{k:'B',n:'BLUE',hex:'#3B78D8',x0:30,x1:150},
+               {k:'R',n:'RED',  hex:'#E24B4B',x0:180,x1:300},
+               {k:'G',n:'GREEN',hex:'#37A05A',x0:330,x1:450}];
+  const W=480, FIXED_MM=240;              // what the fixed-distance program drives
+  let carry='R', offset=0, running=false, raf=null, x=0, mode='';
+
+  const pick=el('div','btnrow');
+  GOALS.forEach(g=>{
+    const b=el('button','btn','Carrying the '+g.n+' disk'); b.type='button';
+    b.addEventListener('click',()=>{carry=g.k;reset();blip(560);});
+    pick.appendChild(b);
+  });
+  mount.appendChild(pick);
+
+  const slide=el('div','l5-ctrl');
+  slide.innerHTML='<span>Start position nudged by <b id="deO">0</b> mm '+
+    '<span class="muted" style="font-weight:400">(a real robot never starts in exactly the same spot)</span></span>'+
+    '<input type="range" id="deOff" min="-90" max="90" step="10" value="0">';
+  mount.appendChild(slide);
+
+  const floor=el('div','l5-floor2');
+  floor.innerHTML=GOALS.map(g=>'<span class="l5-sq" style="left:'+g.x0+'px;width:'+(g.x1-g.x0)+'px;background:'+g.hex+'"><i>'+g.n+'</i></span>').join('')+
+    '<span class="l5-rob2">🤖<i class="l5-carry"></i></span><span class="l5-eye">👀</span>';
+  mount.appendChild(floor);
+  const rob=floor.querySelector('.l5-rob2'), carryDot=floor.querySelector('.l5-carry');
+
+  const row=el('div','btnrow');
+  const bFix=el('button','btn','▶ Run the FIXED-distance code'); bFix.type='button';
+  const bEye=el('button','btn solid','▶ Run the DOWN-EYE code'); bEye.type='button';
+  row.appendChild(bFix); row.appendChild(bEye); mount.appendChild(row);
+  const fb=el('div','note'); mount.appendChild(fb);
+
+  slide.querySelector('#deOff').addEventListener('input',e=>{
+    offset=+e.target.value; slide.querySelector('#deO').textContent=offset; reset(); blip(500);
+  });
+
+  function goalUnder(px){ return GOALS.find(g=>px>=g.x0&&px<=g.x1)||null; }
+  function reset(msg){
+    running=false; cancelAnimationFrame(raf); x=offset;
+    const g=GOALS.find(v=>v.k===carry);
+    carryDot.style.background=g.hex;
+    paint();
+    bFix.disabled=false; bEye.disabled=false;
+    fb.className='note';
+    fb.innerHTML=msg||('Carrying the <b>'+g.n+'</b> disk, starting <b>'+offset+' mm</b> off. Run each program and watch what happens.');
+  }
+  function paint(){ rob.style.left=Math.max(0,Math.min(W-26,x))+'px'; }
+
+  function run(kind){
+    if(running) return;
+    running=true; mode=kind; x=offset; paint();
+    bFix.disabled=true; bEye.disabled=true;
+    const target=GOALS.find(g=>g.k===carry);
+    fb.className='note';
+    fb.innerHTML=kind==='fix'
+      ? '🚗 Fixed code running: <span class="mono">drive forward 240 mm → drop</span>. It is not looking at anything.'
+      : '👀 Down-Eye code running: <span class="mono">drive forward → wait until DownEye detects '+target.n+' → drop</span>.';
+    function step(){
+      if(!running) return;
+      if(!visible(mount)){ raf=requestAnimationFrame(step); return; }
+      x+=3.2;
+      paint();
+      const mid=x+13;
+      if(kind==='fix'){
+        if(x-offset>=FIXED_MM){ return land(mid,target); }
+      } else {
+        const g=goalUnder(mid);
+        if(g && g.k===carry){ return land(mid,target); }
+        if(x>W-26){ return land(mid,target); }
+      }
+      raf=requestAnimationFrame(step);
+    }
+    raf=requestAnimationFrame(step);
+  }
+  function land(mid,target){
+    running=false; cancelAnimationFrame(raf);
+    bFix.disabled=false; bEye.disabled=false;
+    const g=goalUnder(mid);
+    if(g && g.k===target.k){ blip(880); celebrate();
+      fb.className='note good';
+      fb.innerHTML='✅ <b>Dropped on the '+g.n+' goal — correct!</b>'+
+        (mode==='eye'?' The Down Eye <b>looked at the floor</b> and stopped on the right colour, so the starting nudge made no difference at all.'
+                     :' It worked this time because the nudge happened to be small enough.');
+    } else if(g){ blip(220);
+      fb.className='note bad';
+      fb.innerHTML='❌ <b>Dropped on the '+g.n+' goal — wrong colour.</b> The fixed code drove exactly 240 mm and never checked where it actually was. '+
+        'A '+offset+' mm nudge at the start is a '+offset+' mm error at the end.';
+    } else { blip(220);
+      fb.className='note bad';
+      fb.innerHTML='❌ <b>Dropped on bare floor — no goal at all.</b> Fixed distances only work if every single measurement before them was perfect.';
+    }
+  }
+  bFix.addEventListener('click',()=>run('fix'));
+  bEye.addEventListener('click',()=>run('eye'));
+  reset();
+};
+
+
+/* ==================================================================
+   LESSON 5 — REAL ARCADE GAMES
+   ================================================================== */
+
+/* small helper: only run a loop while its scene is actually on screen */
+function visible(node){ const s=node.closest('.scene'); return s && s.classList.contains('active'); }
+function bestOf(key){ try{ return +localStorage.getItem(key)||0; }catch(e){ return 0; } }
+function saveBest(key,v){ try{ localStorage.setItem(key,String(v)); }catch(e){} }
+
+/* ---------- 🧲 MAGNET CATCH — arcade catcher ---------- */
+BUILDERS.magnetCatch=function(mount){
+  const W=460,H=310,ROBOT_W=56,BIN_H=48,R=13;
+  const COL={R:'#E24B4B',G:'#37A05A',B:'#3B78D8'}, KEYS=['R','G','B'];
+  const SKEY='g6l5_catch';
+  let x=W/2, magnet=false, carry=null, disks=[], score=0, miss=0, left=60,
+      playing=false, raf=null, timer=null, spawn=0, best=bestOf(SKEY);
+
+  const hud=el('div','l5-hud');
+  hud.innerHTML='<span class="l5-pill">⏱ <b id="mcT">60</b>s</span><span class="l5-pill">⭐ <b id="mcS">0</b></span>'+
+                '<span class="l5-pill">💨 <b id="mcM">0</b></span><span class="l5-pill">🏆 <b id="mcB">'+best+'</b></span>';
+  mount.appendChild(hud);
+
+  const arena=el('div','l5-arena'); arena.style.height=H+'px';
+  arena.innerHTML='<div class="l5-bins"></div><div class="l5-robot"><span class="l5-rbody">🤖</span><span class="l5-coil"></span><span class="l5-hold"></span></div>';
+  mount.appendChild(arena);
+  const bins=arena.querySelector('.l5-bins');
+  KEYS.forEach(k=>{ const b=el('div','l5-bin'); b.dataset.k=k; b.style.background=COL[k];
+    b.innerHTML='<span>'+({R:'RED',G:'GREEN',B:'BLUE'}[k])+'</span>'; bins.appendChild(b); });
+  const robot=arena.querySelector('.l5-robot'), hold=arena.querySelector('.l5-hold'),
+        coil=arena.querySelector('.l5-coil');
+
+  const pad=el('div','btnrow');
+  const bL=el('button','btn','◀'); bL.type='button';
+  const bMag=el('button','btn solid','🧲 MAGNET'); bMag.type='button'; bMag.style.minWidth='150px';
+  const bR=el('button','btn','▶'); bR.type='button';
+  const bGo=el('button','btn','▶ Start'); bGo.type='button';
+  [bGo,bL,bMag,bR].forEach(b=>pad.appendChild(b));
+  mount.appendChild(pad);
+  const fb=el('div','note','Catch a falling disk with the magnet <b>ON</b>, carry it to the bin of the <b>same colour</b>, then switch the magnet <b>OFF</b> to drop it in.<br>Arrow keys to move · <b>Space</b> for the magnet.');
+  mount.appendChild(fb);
+
+  let dirL=false, dirR=false;
+  const press=(b,fn)=>{ b.addEventListener('pointerdown',e=>{e.preventDefault();fn(true);});
+    ['pointerup','pointerleave','pointercancel'].forEach(ev=>b.addEventListener(ev,()=>fn(false))); };
+  press(bL,v=>dirL=v); press(bR,v=>dirR=v);
+  bMag.addEventListener('click',toggle);
+  arena.addEventListener('pointermove',e=>{ if(!playing) return;
+    const r=arena.getBoundingClientRect(); if(!r.width) return;
+    const nx=(e.clientX-r.left)/r.width*W;
+    if(isFinite(nx)) x=Math.max(ROBOT_W/2,Math.min(W-ROBOT_W/2,nx)); });
+  arena.addEventListener('pointerdown',()=>{ if(playing) toggle(); });
+  mount.addEventListener('keydown',key); arena.tabIndex=0; arena.addEventListener('keydown',key);
+  function key(e){
+    if(!playing) return;
+    if(e.key==='ArrowLeft'){dirL=true;dirR=false;e.preventDefault();}
+    if(e.key==='ArrowRight'){dirR=true;dirL=false;e.preventDefault();}
+    if(e.key===' '||e.key==='Spacebar'){toggle();e.preventDefault();e.stopPropagation();}
+  }
+  arena.addEventListener('keyup',e=>{ if(e.key==='ArrowLeft')dirL=false; if(e.key==='ArrowRight')dirR=false; });
+
+  function toggle(){
+    if(!playing) return;
+    magnet=!magnet;
+    coil.classList.toggle('on',magnet);
+    if(!magnet && carry){
+      const bi=Math.floor(x/(W/3)), want=KEYS[Math.max(0,Math.min(2,bi))];
+      if(want===carry){ score+=10; blip(880);
+        fb.className='note good'; fb.innerHTML='🎯 <b>'+carry+' disk in the '+want+' bin — +10!</b>'; }
+      else { miss++; blip(220);
+        fb.className='note bad'; fb.innerHTML='❌ That was the <b>'+carry+'</b> disk but you dropped it in the <b>'+want+'</b> bin.'; }
+      carry=null; hold.style.display='none'; set();
+    }
+  }
+  function set(){ const g=id=>document.getElementById(id);
+    if(g('mcS'))g('mcS').textContent=score; if(g('mcM'))g('mcM').textContent=miss;
+    if(g('mcT'))g('mcT').textContent=left; if(g('mcB'))g('mcB').textContent=best; }
+
+  function frame(){
+    if(!playing) return;
+    if(!visible(mount)){ raf=requestAnimationFrame(frame); return; }
+    if(dirL) x=Math.max(ROBOT_W/2,x-4.6);
+    if(dirR) x=Math.min(W-ROBOT_W/2,x+4.6);
+    robot.style.left=x+'px';
+    const speed=1.35+Math.min(score,120)*0.012;
+    spawn--;
+    if(spawn<=0){ spawn=42+Math.random()*34;
+      const k=KEYS[Math.floor(Math.random()*3)];
+      const d=el('div','l5-fall'); d.style.background=COL[k]; d.dataset.k=k;
+      d.__x=R+Math.random()*(W-2*R); d.__y=-R*2; d.style.left=d.__x+'px';
+      arena.appendChild(d); disks.push(d);
+    }
+    const robotTop=H-BIN_H-34;
+    for(let i=disks.length-1;i>=0;i--){
+      const d=disks[i]; d.__y+=speed; d.style.top=d.__y+'px';
+      if(magnet && !carry && d.__y+R>=robotTop && d.__y<robotTop+26 && Math.abs(d.__x-x)<ROBOT_W/2+R){
+        carry=d.dataset.k; hold.style.display='block'; hold.style.background=COL[carry];
+        d.remove(); disks.splice(i,1); blip(700);
+        fb.className='note good'; fb.innerHTML='🧲 Got the <b>'+carry+'</b> disk — now take it to the '+carry+' bin and switch <b>OFF</b>.';
+        continue;
+      }
+      if(d.__y>H-BIN_H+6){ d.remove(); disks.splice(i,1); miss++; blip(200); set(); }
+    }
+    raf=requestAnimationFrame(frame);
+  }
+  bGo.addEventListener('click',()=>{
+    if(playing) return;
+    disks.forEach(d=>d.remove()); disks=[];
+    score=0; miss=0; left=60; carry=null; magnet=false; coil.classList.remove('on');
+    hold.style.display='none'; playing=true; spawn=0; set();
+    bGo.textContent='⏱ Playing…'; arena.focus();
+    fb.className='note'; fb.innerHTML='Go! Magnet <b>ON</b> to catch, <b>OFF</b> over the matching bin to score.';
+    raf=requestAnimationFrame(frame);
+    timer=setInterval(()=>{
+      if(!visible(mount)) return;
+      left--; set();
+      if(left<=0){
+        clearInterval(timer); playing=false; cancelAnimationFrame(raf);
+        disks.forEach(d=>d.remove()); disks=[];
+        bGo.textContent='▶ Play again';
+        if(score>best){ best=score; saveBest(SKEY,best); set(); celebrate();
+          fb.className='note good'; fb.innerHTML='🏆 <b>New record: '+score+'!</b>'; }
+        else { fb.className='note'; fb.innerHTML='⏱ Time! You scored <b>'+score+'</b>. Record is '+best+'.'; }
+      }
+    },1000);
+  });
+  robot.style.left=x+'px'; hold.style.display='none'; set();
+};
+
+/* ---------- 🎯 PRECISION STOP — reflex + judgement ---------- */
+BUILDERS.precisionStop=function(mount){
+  const SKEY='g6l5_stop', ROUNDS=6;
+  let round=0, total=0, dist=0, speed=0, running=false, raf=null, best=bestOf(SKEY);
+
+  const hud=el('div','l5-hud');
+  hud.innerHTML='<span class="l5-pill">Run <b id="psR">0</b>/'+ROUNDS+'</span><span class="l5-pill">⭐ <b id="psS">0</b></span>'+
+                '<span class="l5-pill">🏆 <b id="psB">'+best+'</b></span>';
+  mount.appendChild(hud);
+
+  const lane=el('div','l5-lane');
+  lane.innerHTML='<div class="l5-zone"></div><div class="l5-wallbig"></div><div class="l5-runner">🤖</div><div class="l5-dist"><b>—</b> mm</div>';
+  mount.appendChild(lane);
+  const runner=lane.querySelector('.l5-runner'), read=lane.querySelector('.l5-dist b');
+
+  const row=el('div','btnrow');
+  const bGo=el('button','btn solid','▶ Start driving'); bGo.type='button';
+  const bStop=el('button','btn','🛑 STOP'); bStop.type='button'; bStop.style.minWidth='150px'; bStop.disabled=true;
+  row.appendChild(bGo); row.appendChild(bStop); mount.appendChild(row);
+  const fb=el('div','note','The robot drives at the wall. Stop it inside the <b>green safe zone</b> — between <b>40 mm</b> and <b>140 mm</b>. Closer scores more. Touch the wall and you lose the run.');
+  mount.appendChild(fb);
+
+  function paint(){
+    const pct=Math.max(0,Math.min(1,(600-dist)/600));
+    runner.style.left=(4+pct*76)+'%';
+    read.textContent=Math.round(dist);
+    read.parentElement.className='l5-dist'+(dist<=140&&dist>=40?' safe':'')+(dist<40?' danger':'');
+  }
+  function frame(){
+    if(!running) return;
+    if(!visible(mount)){ raf=requestAnimationFrame(frame); return; }
+    dist-=speed;
+    if(dist<=0){ dist=0; paint(); crash(); return; }
+    paint(); raf=requestAnimationFrame(frame);
+  }
+  function crash(){
+    running=false; bStop.disabled=true; cancelAnimationFrame(raf); blip(180);
+    fb.className='note bad';
+    fb.innerHTML='💥 <b>CRASH.</b> You touched the wall — zero for this run. In VEXcode VR this is exactly why you read <span class="mono">FrontDistance</span> instead of guessing a number of millimetres.';
+    nextBtn();
+  }
+  function stop(){
+    if(!running) return;
+    running=false; bStop.disabled=true; cancelAnimationFrame(raf);
+    let pts=0;
+    if(dist<40){ blip(200); fb.className='note bad';
+      fb.innerHTML='😬 <b>'+Math.round(dist)+' mm — too close!</b> Safe starts at 40 mm. A real robot would have clipped the wall.'; }
+    else if(dist>140){ blip(300); fb.className='note warn';
+      fb.innerHTML='🐢 <b>'+Math.round(dist)+' mm — too early.</b> Safe, but you stopped well short of the zone. Points come from getting close <i>without</i> touching.'; }
+    else { pts=Math.round(100-(dist-40)); total+=pts; blip(760+pts*2);
+      fb.className='note good';
+      fb.innerHTML='🎯 <b>'+Math.round(dist)+' mm — in the zone! +'+pts+'</b>'+(dist<60?' Nerves of steel. 🧊':''); }
+    document.getElementById('psS').textContent=total;
+    nextBtn();
+  }
+  function nextBtn(){
+    if(round>=ROUNDS){
+      bGo.textContent='▶ Play again'; bGo.disabled=false; round=0;
+      if(total>best){ best=total; saveBest(SKEY,best); document.getElementById('psB').textContent=best; celebrate();
+        fb.innerHTML+='<br>🏆 <b>New record: '+total+'!</b>'; }
+      fb.innerHTML+='<br><b>Final score: '+total+'.</b>';
+      total=0;
+    } else { bGo.textContent='▶ Next run ('+(round+1)+'/'+ROUNDS+')'; bGo.disabled=false; }
+  }
+  bGo.addEventListener('click',()=>{
+    if(running) return;
+    if(round===0){ total=0; document.getElementById('psS').textContent=0; }
+    round++; document.getElementById('psR').textContent=round;
+    dist=600; speed=1.6+round*0.75; running=true;
+    bGo.disabled=true; bStop.disabled=false;
+    fb.className='note'; fb.innerHTML='🚗 Driving… speed <b>'+speed.toFixed(1)+'</b>. Hit STOP in the green zone.';
+    paint(); raf=requestAnimationFrame(frame);
+  });
+  bStop.addEventListener('click',stop);
+  paint();
+};
+
+/* ---------- ⚡ MAGNET POWER — an experiment with a goal ---------- */
+BUILDERS.magnetPower=function(mount){
+  const SKEY='g6l5_power';
+  let turns=3, volts=2, core=false, best=bestOf(SKEY);
+
+  const hud=el('div','l5-hud');
+  hud.innerHTML='<span class="l5-pill">💪 strength <b id="mpS">0</b></span><span class="l5-pill">🏋️ lifted <b id="mpL">0</b>/10</span>'+
+                '<span class="l5-pill">🏆 best <b id="mpB">'+best+'</b></span>';
+  mount.appendChild(hud);
+
+  const rig=el('div','l5-rig');
+  rig.innerHTML='<div class="l5-coilbox"><div class="l5-turns"></div><div class="l5-core"></div></div><div class="l5-stack"></div>';
+  mount.appendChild(rig);
+  const turnsEl=rig.querySelector('.l5-turns'), coreEl=rig.querySelector('.l5-core'), stack=rig.querySelector('.l5-stack');
+
+  const ctrl=el('div','l5-ctrls');
+  ctrl.innerHTML=
+    '<label class="l5-ctrl"><span>Coil turns: <b id="mpT">3</b></span><input type="range" id="mpTurns" min="1" max="20" value="3"></label>'+
+    '<label class="l5-ctrl"><span>Battery: <b id="mpV">2</b> V</span><input type="range" id="mpVolts" min="1" max="9" value="2"></label>'+
+    '<label class="l5-ctrl l5-switch"><span>Iron core</span><input type="checkbox" id="mpCore"></label>';
+  mount.appendChild(ctrl);
+
+  const row=el('div','btnrow');
+  const bTest=el('button','btn solid','⚡ TEST LIFT'); bTest.type='button';
+  row.appendChild(bTest); mount.appendChild(row);
+  const fb=el('div','note','Your job: lift <b>all 10 disks</b>. Change one thing at a time and test — that is how real scientists work.');
+  mount.appendChild(fb);
+
+  const strength=()=>turns*volts*(core?3:1);
+  function paint(){
+    turnsEl.innerHTML=Array.from({length:turns},()=>'<i></i>').join('');
+    coreEl.classList.toggle('on',core);
+    document.getElementById('mpS').textContent=strength();
+    document.getElementById('mpT').textContent=turns;
+    document.getElementById('mpV').textContent=volts;
+  }
+  ctrl.querySelector('#mpTurns').addEventListener('input',e=>{turns=+e.target.value;paint();blip(500);});
+  ctrl.querySelector('#mpVolts').addEventListener('input',e=>{volts=+e.target.value;paint();blip(540);});
+  ctrl.querySelector('#mpCore').addEventListener('change',e=>{core=e.target.checked;paint();blip(core?700:400);});
+
+  bTest.addEventListener('click',()=>{
+    const s=strength(), lifted=Math.max(0,Math.min(10,Math.floor(s/30)));
+    document.getElementById('mpL').textContent=lifted;
+    stack.innerHTML=Array.from({length:10},(_,i)=>
+      '<span class="l5-pdisk'+(i<lifted?' up':'')+'" style="transition-delay:'+(i*45)+'ms"></span>').join('');
+    blip(400+lifted*60);
+    if(lifted>best){ best=lifted; saveBest(SKEY,best); document.getElementById('mpB').textContent=best; }
+    if(lifted===10){ celebrate(); fb.className='note good';
+      fb.innerHTML='🏆 <b>All ten! Strength '+s+'.</b> You found it: <b>more turns</b> × <b>more current</b> × <b>an iron core</b>. The core alone multiplies the field by three — that is why every real electromagnet has one.'; }
+    else if(lifted===0){ fb.className='note bad';
+      fb.innerHTML='😐 <b>Nothing moved.</b> Strength '+s+' is far too weak. Try turning something up.'; }
+    else { fb.className='note warn';
+      fb.innerHTML='🔧 Lifted <b>'+lifted+'</b> of 10 at strength <b>'+s+'</b>. '+
+        (!core?'You have <b>no iron core</b>. Even at maximum turns and voltage you can only reach 180 — <b>you cannot lift all ten without it.</b>':'Now push the turns or the voltage higher.'); }
+  });
+  paint();
+  stack.innerHTML=Array.from({length:10},()=>'<span class="l5-pdisk"></span>').join('');
+};
+
+/* ---------- 🃏 SENSOR SORT — timed, with a combo multiplier ---------- */
+BUILDERS.sensorSort=function(mount){
+  const SKEY='g6l5_sort';
+  const S=[{id:'bump',n:'Bumper',e:'🛡️'},{id:'dist',n:'Distance',e:'📡'},
+           {id:'front',n:'Front Eye',e:'👁️'},{id:'down',n:'Down Eye',e:'👀'}];
+  const JOBS=[
+    {t:'Stop <b>before</b> touching the castle wall',a:'dist'},
+    {t:'Know the instant you <b>bump</b> something',a:'bump'},
+    {t:'Is the disk ahead red or blue?',a:'front'},
+    {t:'Am I standing on the green goal?',a:'down'},
+    {t:'Follow a coloured line on the floor',a:'down'},
+    {t:'Slow down as the wall gets nearer',a:'dist'},
+    {t:'Spot a disk further down the corridor',a:'front'},
+    {t:'A wall pushed me from the side',a:'bump'},
+    {t:'How many millimetres to that box?',a:'dist'},
+    {t:'Has the floor colour changed under me?',a:'down'},
+    {t:'Did I just hit something?',a:'bump'},
+    {t:'What colour is the goal in front of me?',a:'front'}
+  ];
+  let i=0, score=0, combo=0, left=45, playing=false, timer=null, cardT=null, best=bestOf(SKEY);
+
+  const hud=el('div','l5-hud');
+  hud.innerHTML='<span class="l5-pill">⏱ <b id="ssT">45</b>s</span><span class="l5-pill">⭐ <b id="ssS">0</b></span>'+
+                '<span class="l5-pill">🔥 combo <b id="ssC">×1</b></span><span class="l5-pill">🏆 <b id="ssB">'+best+'</b></span>';
+  mount.appendChild(hud);
+
+  const card=el('div','l5-card2');
+  card.innerHTML='<div class="l5-cbar"><i></i></div><p>Press start</p>';
+  mount.appendChild(card);
+  const bar=card.querySelector('.l5-cbar i'), txt=card.querySelector('p');
+
+  const grid=el('div','l5-sensors');
+  const btns={};
+  S.forEach(s=>{ const b=el('button','l5-sensor'); b.type='button';
+    b.innerHTML='<span class="l5-se">'+s.e+'</span><b>'+s.n+'</b>';
+    b.addEventListener('click',()=>pick(s.id,b)); btns[s.id]=b; grid.appendChild(b); });
+  mount.appendChild(grid);
+
+  const row=el('div','btnrow');
+  const bGo=el('button','btn solid','▶ Start 45-second sort'); bGo.type='button';
+  row.appendChild(bGo); mount.appendChild(row);
+  const fb=el('div','note','A job appears. Tap the sensor that does it — <b>fast</b>. Every correct answer in a row raises your combo. One mistake and the combo resets to ×1.');
+  mount.appendChild(fb);
+
+  function g(id){ return document.getElementById(id); }
+  function deal(){
+    const j=JOBS[i%JOBS.length]; i++;
+    txt.innerHTML=j.t; card.dataset.a=j.a;
+    let t=100; bar.style.width='100%';
+    clearInterval(cardT);
+    cardT=setInterval(()=>{
+      if(!visible(mount)) return;
+      t-=2.2; bar.style.width=Math.max(0,t)+'%';
+      if(t<=0){ clearInterval(cardT); combo=0; g('ssC').textContent='×1'; blip(200);
+        fb.className='note warn'; fb.innerHTML='⌛ Too slow — combo reset.'; deal(); }
+    },60);
+  }
+  function pick(id,b){
+    if(!playing) return;
+    const ok=id===card.dataset.a;
+    if(ok){ combo=Math.min(5,combo+1); const pts=10*combo; score+=pts;
+      b.classList.add('ok'); setTimeout(()=>b.classList.remove('ok'),260); blip(700+combo*60);
+      fb.className='note good'; fb.innerHTML='✅ +'+pts+(combo>1?' <b>(×'+combo+' combo!)</b>':''); }
+    else { combo=0; b.classList.add('no'); setTimeout(()=>b.classList.remove('no'),260); blip(220);
+      const right=S.find(s=>s.id===card.dataset.a).n;
+      fb.className='note bad'; fb.innerHTML='❌ That one is the <b>'+right+'</b> sensor’s job.'; }
+    g('ssS').textContent=score; g('ssC').textContent='×'+Math.max(1,combo);
+    deal();
+  }
+  bGo.addEventListener('click',()=>{
+    if(playing) return;
+    playing=true; score=0; combo=0; left=45; i=Math.floor(Math.random()*JOBS.length);
+    g('ssS').textContent=0; g('ssC').textContent='×1'; g('ssT').textContent=45;
+    bGo.textContent='⏱ Sorting…'; fb.className='note'; fb.innerHTML='Go!';
+    deal();
+    timer=setInterval(()=>{
+      if(!visible(mount)) return;
+      left--; g('ssT').textContent=left;
+      if(left<=0){ clearInterval(timer); clearInterval(cardT); playing=false;
+        bGo.textContent='▶ Play again'; txt.textContent='Time!'; bar.style.width='0%';
+        if(score>best){ best=score; saveBest(SKEY,best); g('ssB').textContent=best; celebrate();
+          fb.className='note good'; fb.innerHTML='🏆 <b>New record: '+score+'!</b>'; }
+        else { fb.className='note'; fb.innerHTML='⏱ Time! You scored <b>'+score+'</b>. Record is '+best+'.'; } }
+    },1000);
+  });
+};
+
+
 /* ==================================================================
    LESSON 5 — FINAL DAY ACTIVITIES
    ================================================================== */
 
 /* ---------- SENSE → THINK → ACT, stepped ---------- */
-BUILDERS.staLoop=function(mount){
-  const CASES=[
-    {n:'🧱 A wall ahead', s:'Distance sensor: <b>object 60 mm ahead</b>', t:'Is anything closer than 100 mm?<br><b>YES</b>', a:'Stop, then turn right 90°'},
-    {n:'🔴 A red disk',   s:'Front Eye sensor: <b>colour = RED</b>',      t:'Is this the disk I want?<br><b>YES</b>',        a:'Electromagnet <b>ON</b> — pick it up'},
-    {n:'🎯 The blue goal',s:'Down Eye sensor: <b>floor = BLUE</b>',       t:'Am I standing on the blue goal?<br><b>YES</b>', a:'Electromagnet <b>OFF</b> — drop it'},
-    {n:'🛣️ Clear road',   s:'Distance sensor: <b>nothing ahead</b>',      t:'Is anything closer than 100 mm?<br><b>NO</b>',  a:'Keep driving forward'}
-  ];
-  let ci=0, step=-1, laps=0;
-  const pick=el('div','btnrow');
-  CASES.forEach((c,i)=>{
-    const b=el('button','btn',c.n); b.type='button';
-    b.addEventListener('click',()=>{ci=i;step=-1;draw();blip(560);});
-    pick.appendChild(b);
-  });
-  mount.appendChild(pick);
-
-  const ring=el('div','l5-sta');
-  ring.innerHTML=
-    '<div class="l5-node" data-k="0"><span class="l5-nk">1 · SENSE</span><span class="l5-ne">📡</span><p></p></div>'+
-    '<div class="l5-arw">→</div>'+
-    '<div class="l5-node" data-k="1"><span class="l5-nk">2 · THINK</span><span class="l5-ne">🧠</span><p></p></div>'+
-    '<div class="l5-arw">→</div>'+
-    '<div class="l5-node" data-k="2"><span class="l5-nk">3 · ACT</span><span class="l5-ne">🦾</span><p></p></div>';
-  mount.appendChild(ring);
-
-  const status=el('div','note','Pick a situation, then press <b>Step</b> to walk the robot through its thinking.');
-  const row=el('div','btnrow');
-  const go=el('button','btn solid','▶ Step'); go.type='button';
-  const rs=el('button','btn','↺ Reset'); rs.type='button';
-  row.appendChild(go); row.appendChild(rs);
-  mount.appendChild(row); mount.appendChild(status);
-
-  function draw(){
-    const c=CASES[ci], txt=[c.s,c.t,c.a];
-    ring.querySelectorAll('.l5-node').forEach((n,i)=>{
-      n.classList.toggle('on',i===step);
-      n.classList.toggle('past',i<step);
-      n.querySelector('p').innerHTML = i<=step ? txt[i] : '…';
-    });
-    pick.querySelectorAll('.btn').forEach((b,i)=>b.classList.toggle('solid',i===ci));
-    if(step<0) status.innerHTML='Situation: <b>'+CASES[ci].n+'</b>. Press <b>Step</b>.';
-  }
-  go.addEventListener('click',()=>{
-    step++;
-    if(step>2){ step=0; laps++;
-      status.innerHTML='🔁 <b>Round the loop again — lap '+(laps+1)+'.</b> A robot never stops sensing. It does this many times a second, forever.';
-      blip(880); draw(); return;
-    }
-    blip(520+step*120);
-    const c=CASES[ci];
-    status.innerHTML=['📡 <b>SENSE</b> — the robot reads the world. It has no idea what anything <i>means</i> yet.',
-                      '🧠 <b>THINK</b> — your code compares the reading to a rule. This is the only place a decision happens.',
-                      '🦾 <b>ACT</b> — the robot moves, turns, or switches the magnet. Then it goes straight back to sensing.'][step];
-    draw();
-  });
-  rs.addEventListener('click',()=>{step=-1;laps=0;draw();blip(440);});
-  draw();
-};
 
 /* ---------- BOOLEAN BLITZ — timed TRUE/FALSE ---------- */
 BUILDERS.boolBlitz=function(mount){
@@ -1495,128 +2054,8 @@ BUILDERS.boolBlitz=function(mount){
 };
 
 /* ---------- WHICH SENSOR FOR THE JOB? ---------- */
-BUILDERS.sensorPick=function(mount){
-  const S=[
-    {id:'bump', n:'Bumper',     e:'🛡️', d:'feels a touch'},
-    {id:'dist', n:'Distance',   e:'📡', d:'measures the gap ahead'},
-    {id:'front',n:'Front Eye',  e:'👁️', d:'sees colour ahead'},
-    {id:'down', n:'Down Eye',   e:'👀', d:'reads the floor'}
-  ];
-  const JOBS=[
-    {t:'Stop <b>before</b> you hit the castle wall — do not touch it.', a:'dist', why:'The distance sensor measures the gap while you are still far away. A bumper only knows <i>after</i> the crash.'},
-    {t:'Know the moment you <b>bump into</b> something.', a:'bump', why:'That is exactly what a bumper is: a switch that flips when it is pressed.'},
-    {t:'Find out if the disk in front of you is <b>red or blue</b>.', a:'front', why:'The front eye looks straight ahead and reads colour — perfect for identifying a disk before you grab it.'},
-    {t:'Check whether you are standing on the <b>green goal</b>.', a:'down', why:'The goal is painted on the floor, so you need the eye that looks <i>down</i>.'},
-    {t:'Follow a coloured line painted on the ground.', a:'down', why:'Line following is the classic down-eye job — it reads the surface under the robot.'},
-    {t:'Slow down as you get closer and closer to a wall.', a:'dist', why:'Only the distance sensor gives you a <i>number</i> that changes smoothly. The others just say yes/no.'},
-    {t:'Spot a coloured disk further down the corridor.', a:'front', why:'The front eye looks ahead, so it can see things you have not reached yet.'},
-    {t:'Detect that a wall has pushed the robot from the side.', a:'bump', why:'Contact = bumper. No contact, no signal.'}
-  ];
-  let i=0, right=0;
-  const prog=el('div','l5-hud'); mount.appendChild(prog);
-  const card=el('div','l5-job'); mount.appendChild(card);
-  const grid=el('div','l5-sensors'); mount.appendChild(grid);
-  const fb=el('div','note'); mount.appendChild(fb);
-  const btns={};
-  S.forEach(s=>{
-    const b=el('button','l5-sensor'); b.type='button';
-    b.innerHTML='<span class="l5-se">'+s.e+'</span><b>'+s.n+'</b><span class="l5-sd">'+s.d+'</span>';
-    b.addEventListener('click',()=>choose(s.id,b));
-    btns[s.id]=b; grid.appendChild(b);
-  });
-  function render(){
-    prog.innerHTML='<span class="l5-pill">Job <b>'+(i+1)+'</b> / '+JOBS.length+'</span><span class="l5-pill">✅ <b>'+right+'</b></span>';
-    if(i>=JOBS.length){
-      card.innerHTML='<h4>🎓 All eight done!</h4><p>You scored <b>'+right+' / '+JOBS.length+'</b>.</p>';
-      grid.style.display='none';
-      fb.className='note good';
-      fb.innerHTML=right===JOBS.length
-        ? '🏆 <b>Perfect.</b> You can pick the right sensor for any job — that is the whole of robotics in one skill.'
-        : 'Good work. The rule to remember: <b>touch → bumper · gap → distance · colour ahead → front eye · floor → down eye.</b>';
-      if(right===JOBS.length) celebrate();
-      return;
-    }
-    card.innerHTML='<span class="l5-jk">THE JOB</span><p>'+JOBS[i].t+'</p>';
-    Object.values(btns).forEach(b=>b.className='l5-sensor');
-  }
-  function choose(id,b){
-    if(i>=JOBS.length) return;
-    const j=JOBS[i];
-    if(id===j.a){ right++; b.classList.add('ok'); blip(760);
-      fb.className='note good'; fb.innerHTML='✅ <b>Yes.</b> '+j.why; }
-    else { b.classList.add('no'); btns[j.a].classList.add('ok'); blip(220);
-      fb.className='note bad'; fb.innerHTML='❌ The <b>'+S.find(s=>s.id===j.a).n+'</b> sensor. '+j.why; }
-    i++;
-    setTimeout(render,1500);
-  }
-  render();
-};
 
 /* ---------- ELECTROMAGNET LAB ---------- */
-BUILDERS.magnetLab=function(mount){
-  let on=false, held=false, picks=0, drops=0;
-  const wrap=el('div','l5-mag');
-  wrap.innerHTML=
-    '<svg viewBox="0 0 340 220" class="l5-magsvg" role="img" aria-label="An electromagnet above a metal disk">'+
-      '<rect x="18" y="150" width="304" height="10" rx="4" fill="#D8D2C0" stroke="#1C2434" stroke-width="2.4"/>'+
-      '<g id="mgCoil">'+
-        '<rect x="128" y="30" width="84" height="52" rx="9" fill="#EFEBDD" stroke="#1C2434" stroke-width="2.6"/>'+
-        '<path d="M136 40h68M136 52h68M136 64h68" stroke="#993C1D" stroke-width="5" stroke-linecap="round"/>'+
-        '<rect x="152" y="82" width="36" height="16" rx="4" fill="#9AA3B0" stroke="#1C2434" stroke-width="2.4"/>'+
-      '</g>'+
-      '<g id="mgField" opacity="0">'+
-        '<ellipse cx="170" cy="100" rx="46" ry="30" fill="none" stroke="#FFB020" stroke-width="2.6" stroke-dasharray="5 5"/>'+
-        '<ellipse cx="170" cy="100" rx="70" ry="46" fill="none" stroke="#FFB020" stroke-width="2.2" stroke-dasharray="5 6" opacity=".7"/>'+
-        '<ellipse cx="170" cy="100" rx="94" ry="62" fill="none" stroke="#FFB020" stroke-width="1.8" stroke-dasharray="4 7" opacity=".45"/>'+
-      '</g>'+
-      '<g id="mgWire">'+
-        '<path d="M128 56 H70 V186 H150" fill="none" stroke="#1C2434" stroke-width="2.6"/>'+
-        '<rect x="150" y="176" width="46" height="22" rx="5" fill="#FFE873" stroke="#1C2434" stroke-width="2.4"/>'+
-        '<path d="M212 56 H272 V186 H196" fill="none" stroke="#1C2434" stroke-width="2.6"/>'+
-        '<circle id="mgSpark" cx="70" cy="120" r="5" fill="#FFB020" opacity="0"/>'+
-      '</g>'+
-      '<circle id="mgDisk" cx="170" cy="138" r="15" fill="#B7BDC7" stroke="#1C2434" stroke-width="2.6"/>'+
-      '<text x="173" y="192" font-size="12" font-family="monospace" fill="#1C2434" text-anchor="middle">battery</text>'+
-    '</svg>';
-  mount.appendChild(wrap);
-
-  const row=el('div','btnrow');
-  const b=el('button','btn solid','🧲 Electromagnet ON'); b.type='button';
-  row.appendChild(b); mount.appendChild(row);
-  const hud=el('div','l5-hud'); mount.appendChild(hud);
-  const note=el('div','note','Press the button. Watch the disk — and watch the wire.');
-  mount.appendChild(note);
-
-  let anim=null;
-  function render(){
-    const coil=wrap.querySelector('#mgCoil'), field=wrap.querySelector('#mgField'),
-          disk=wrap.querySelector('#mgDisk'), spark=wrap.querySelector('#mgSpark');
-    field.setAttribute('opacity',on?'1':'0');
-    coil.querySelectorAll('path')[0].setAttribute('stroke',on?'#D85A30':'#993C1D');
-    disk.setAttribute('cy',held?'112':'138');
-    disk.setAttribute('fill',held?'#8E96A3':'#B7BDC7');
-    b.textContent=on?'⭕ Electromagnet OFF':'🧲 Electromagnet ON';
-    b.className=on?'btn':'btn solid';
-    hud.innerHTML='<span class="l5-pill">state <b>'+(on?'ON':'OFF')+'</b></span>'+
-                  '<span class="l5-pill">🧲 picked up <b>'+picks+'</b></span>'+
-                  '<span class="l5-pill">⬇️ dropped <b>'+drops+'</b></span>';
-    if(anim){clearInterval(anim);anim=null;}
-    if(on){ let p=0; anim=setInterval(()=>{ p=(p+1)%4;
-      spark.setAttribute('opacity','1'); spark.setAttribute('cy',String(70+p*30)); },160); }
-    else spark.setAttribute('opacity','0');
-  }
-  b.addEventListener('click',()=>{
-    on=!on;
-    if(on){ held=true; picks++; blip(680);
-      note.className='note good';
-      note.innerHTML='🧲 <b>ON.</b> Electricity is running round the coil, and that current makes a magnetic field. The steel disk jumps up and sticks. <b>No current, no magnet</b> — that is the whole trick.'; }
-    else { held=false; drops++; blip(300);
-      note.className='note warn';
-      note.innerHTML='⭕ <b>OFF.</b> The current stops, the field vanishes, and the disk drops <b>instantly</b>. This is why a robot uses an electromagnet and not a fridge magnet: <b>you can let go.</b>'; }
-    render();
-  });
-  render();
-};
 
 /* ---------- BLINDFOLD BOT ---------- */
 BUILDERS.blindBot=function(mount){
