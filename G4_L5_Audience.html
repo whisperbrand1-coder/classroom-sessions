@@ -1,0 +1,2678 @@
+<!doctype html>
+<!--
+  ============================================================================
+  Organizational Security, Risk, Forensics & Cryptography — AUDIENCE EDITION
+  Level 4 Cybersecurity Session · Single standalone file · No build, no backend
+  Design family: neo-brutalist (ref: alfredo-last-lecture.vercel.app) + cyber
+  ----------------------------------------------------------------------------
+  FILE MAP (one file, labelled sections):
+    1. Metadata / <head>            2. Design Tokens (:root)
+    3. Global Styles                4. Presentation Layout (engine)
+    5. Components                   6. Activities
+    7. FakeBank Game                8. Quizzes
+    9. Navigation                   10. Accessibility   11. Initialization
+  ----------------------------------------------------------------------------
+  SOURCE-SLIDE COVERAGE: every scene carries a data-src="p.." note and an
+  HTML comment mapping it back to the original 58-page deck / activity PDF.
+  ============================================================================
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<meta name="description" content="Grade 4 Lesson 5 final presentation: a UI vs UX recap game, finishing the Egyptian Food Bank page, a full PowerPoint walkthrough with a live text-formatting lab, sixteen ready-made 10-slide project plans, presentation skills and a five-minute pacer.">
+<title>📊🎤 Final Presentation — Grade 4</title>
+
+<!-- Fonts: progressive enhancement, NON render-blocking (offline → instant system fallbacks). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap"></noscript>
+
+<style>
+/* ============================================================
+   2. DESIGN TOKENS  (extracted 1:1 from the reference site,
+      then extended with extra accent families + cyber vars)
+   ============================================================ */
+:root{
+  --paper:#FBF9F3; --ink:#1C2434; --muted:#5C6478; --line:#E6E2D4;
+  --teal:#0F6E56;  --teal-mid:#1D9E75;  --teal-l:#E1F5EE;
+  --coral:#993C1D; --coral-mid:#D85A30; --coral-l:#FAECE7;
+  --purple:#3C3489;--purple-mid:#534AB7;--purple-l:#EEEDFE;
+  --pink:#C0356A;  --pink-mid:#D4537E;  --pink-l:#FBEAF0;
+  --blue:#1D5B9E;  --blue-mid:#2E7BC4;  --blue-l:#E7F0FA;
+  --amber:#96590F; --amber-mid:#DE8A22; --amber-l:#FBF0DA;
+  --cyan:#0C6C79;  --cyan-mid:#149DAD;  --cyan-l:#E0F4F6;
+  --green:#2C7A3E; --green-mid:#3FA057; --green-l:#E7F4EA;
+  --red:#B02A2A;   --red-mid:#DC4B4B;   --red-l:#FBE9E9;
+  --indigo:#463A9C;--indigo-mid:#6355C9;--indigo-l:#ECEAFB;
+  --ink-l:#F1EFE6;
+  --hl:#FFE873; --ok:#1D9E75; --bad:#C23B3B; --warn:#DE8A22;
+  --r:14px; --mono:'IBM Plex Mono',ui-monospace,Consolas,monospace;
+  --disp:'Baloo 2','Trebuchet MS',system-ui,sans-serif;
+  --body:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --term-bg:#0E1524; --term-fg:#D7E5D8; --term-dim:#7C8CA0;
+  --shadow:6px 6px 0 rgba(28,36,52,.9);
+  --shadow-s:3px 3px 0 var(--ink);
+  --shadow-xs:2px 2px 0 var(--ink);
+  /* per-section accent, overridden per scene below */
+  --sfg:var(--ink); --smid:var(--ink); --sl:var(--ink-l);
+}
+
+/* ============================================================
+   3. GLOBAL STYLES
+   ============================================================ */
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+html,body{height:100%}
+body{
+  font-family:var(--body); color:var(--ink); background-color:var(--paper);
+  background-image:
+    linear-gradient(rgba(28,36,52,.045) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(28,36,52,.045) 1px,transparent 1px);
+  background-size:26px 26px;
+  font-size:17px; line-height:1.7; overflow:hidden;
+  -webkit-text-size-adjust:100%;
+}
+h1,h2,h3,h4{font-family:var(--disp); line-height:1.22; font-weight:700}
+p{margin:0 0 12px} p:last-child{margin-bottom:0}
+b,strong{font-weight:600}
+a{color:var(--blue)}
+.num,.mono{font-family:var(--mono)}
+.en-hidden{display:none}
+:focus-visible{outline:3px solid var(--purple-mid); outline-offset:2px; border-radius:4px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.hl{background:linear-gradient(100deg,transparent 1%,var(--hl) 4%,var(--hl) 96%,transparent 99%);padding:0 6px;border-radius:5px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.tealtx{color:var(--teal)} .coraltx{color:var(--coral)} .purpletx{color:var(--purple)}
+.redtx{color:var(--red)} .greentx{color:var(--green)} .bluetx{color:var(--blue)}
+.muted{color:var(--muted)}
+.center{text-align:center}
+
+/* ============================================================
+   4. PRESENTATION LAYOUT (engine chrome + scenes)
+   ============================================================ */
+.app{display:flex;flex-direction:column;height:100dvh;height:100vh}
+
+/* --- Top bar --- */
+.topbar{
+  flex:0 0 auto; display:flex; align-items:center; gap:10px;
+  padding:8px 14px; background:rgba(251,249,243,.95); backdrop-filter:blur(6px);
+  border-bottom:2px solid var(--ink); z-index:40;
+}
+.brand{display:flex;align-items:center;gap:9px;font-family:var(--disp);font-weight:800;font-size:17px;white-space:nowrap}
+.brand .mk{width:26px;height:26px;flex:0 0 auto}
+.sec-label{
+  font-family:var(--mono); font-size:12.5px; font-weight:600; color:#fff;
+  background:var(--sfg); padding:4px 11px; border-radius:999px; white-space:nowrap;
+  border:2px solid var(--ink); box-shadow:var(--shadow-xs);
+  max-width:38vw; overflow:hidden; text-overflow:ellipsis;
+}
+.spacer{flex:1 1 auto}
+.tools{display:flex;gap:6px;align-items:center}
+.tool{
+  width:38px;height:38px;flex:0 0 auto; display:grid;place-items:center;
+  background:#fff;border:2px solid var(--ink);border-radius:10px;cursor:pointer;
+  font-size:16px;box-shadow:var(--shadow-xs);transition:transform .1s,box-shadow .1s;color:var(--ink);
+}
+.tool:hover{transform:translate(-1px,-1px);box-shadow:3px 3px 0 var(--ink)}
+.tool:active{transform:translate(2px,2px);box-shadow:0 0 0 var(--ink)}
+.tool.on{background:var(--ink);color:#fff}
+.tool svg{width:19px;height:19px;display:block}
+
+/* --- Progress --- */
+.progress{flex:0 0 auto;height:6px;background:var(--ink-l);border-bottom:2px solid var(--ink);position:relative}
+.progress .bar{position:absolute;inset:0 auto 0 0;width:0;background:var(--sfg);transition:width .35s ease}
+
+/* --- Stage / scenes --- */
+.stage{position:relative;flex:1 1 auto;overflow:hidden}
+.scene{
+  position:absolute; inset:0; display:none; overflow-y:auto; overflow-x:hidden;
+  padding:26px 20px 34px; -webkit-overflow-scrolling:touch;
+}
+.scene.active{display:flex}
+.scene-inner{margin:auto;width:100%;max-width:1060px}
+.scene.wide .scene-inner{max-width:1200px}
+.scene.active .scene-inner{animation:rise .4s cubic-bezier(.2,.7,.3,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+/* section accent per scene */
+.scene[data-sec="0"],.scene[data-sec="11"]{--sfg:var(--ink);--smid:#39415a;--sl:var(--ink-l)}
+.scene[data-sec="1"]{--sfg:var(--teal);--smid:var(--teal-mid);--sl:var(--teal-l)}
+.scene[data-sec="2"]{--sfg:var(--coral);--smid:var(--coral-mid);--sl:var(--coral-l)}
+.scene[data-sec="3"]{--sfg:var(--purple);--smid:var(--purple-mid);--sl:var(--purple-l)}
+.scene[data-sec="4"]{--sfg:var(--amber);--smid:var(--amber-mid);--sl:var(--amber-l)}
+.scene[data-sec="5"]{--sfg:var(--blue);--smid:var(--blue-mid);--sl:var(--blue-l)}
+.scene[data-sec="6"]{--sfg:var(--red);--smid:var(--red-mid);--sl:var(--red-l)}
+.scene[data-sec="7"]{--sfg:var(--pink);--smid:var(--pink-mid);--sl:var(--pink-l)}
+.scene[data-sec="8"]{--sfg:var(--cyan);--smid:var(--cyan-mid);--sl:var(--cyan-l)}
+.scene[data-sec="9"]{--sfg:var(--green);--smid:var(--green-mid);--sl:var(--green-l)}
+.scene[data-sec="10"]{--sfg:var(--indigo);--smid:var(--indigo-mid);--sl:var(--indigo-l)}
+
+/* --- Bottom controls --- */
+.controls{
+  flex:0 0 auto; display:flex; align-items:center; gap:12px;
+  padding:9px 16px; background:rgba(251,249,243,.95); backdrop-filter:blur(6px);
+  border-top:2px solid var(--ink); z-index:40;
+}
+.nav-btn{
+  display:flex;align-items:center;gap:8px; font-family:var(--disp);font-weight:700;font-size:15px;
+  background:#fff;border:2px solid var(--ink);border-radius:10px;padding:8px 16px;cursor:pointer;
+  color:var(--ink); box-shadow:var(--shadow-s);transition:transform .1s,box-shadow .1s;
+}
+.nav-btn:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--ink)}
+.nav-btn:active{transform:translate(2px,2px);box-shadow:0 0 0 var(--ink)}
+.nav-btn[disabled]{opacity:.4;cursor:not-allowed;box-shadow:var(--shadow-xs);transform:none}
+.nav-btn.solid{background:var(--sfg);color:#fff}
+.counter{flex:1 1 auto;display:flex;flex-direction:column;align-items:center;gap:5px;min-width:0}
+.counter .cnum{font-family:var(--mono);font-size:12.5px;color:var(--muted);font-weight:600}
+.dots{display:flex;gap:5px;flex-wrap:wrap;justify-content:center;max-width:100%}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--line);border:1.5px solid var(--ink);cursor:pointer;padding:0;transition:transform .12s}
+.dot.done{background:var(--muted)}
+.dot.here{background:var(--sfg);transform:scale(1.45)}
+.dot:hover{transform:scale(1.4)}
+
+/* ============================================================
+   5. COMPONENTS
+   ============================================================ */
+.stamp{
+  display:inline-block;font-family:var(--mono);font-size:12.5px;letter-spacing:1px;
+  border:2px dashed var(--coral-mid);color:var(--coral);padding:4px 14px;border-radius:8px;
+  transform:rotate(-1.5deg);background:#fff;box-shadow:var(--shadow-xs);
+}
+h1.big{font-size:clamp(30px,6vw,52px);letter-spacing:-.5px}
+h2.title{font-size:clamp(26px,4.6vw,40px)}
+p.sub{color:var(--muted);font-size:clamp(16px,2.4vw,20px);max-width:720px}
+.center p.sub{margin-left:auto;margin-right:auto}
+
+/* Card (= reference section.topic) */
+.card{background:#fff;border:2px solid var(--ink);border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden;margin:18px 0}
+.card>.head{padding:16px 22px 13px;border-bottom:2px solid var(--ink);display:flex;align-items:center;gap:13px;flex-wrap:wrap;background:var(--sl)}
+.card>.head .badge{font-family:var(--mono);font-weight:600;font-size:13px;color:#fff;background:var(--sfg);padding:4px 12px;border-radius:8px;flex:0 0 auto;border:2px solid var(--ink)}
+.card>.head h2,.card>.head h3{font-size:clamp(19px,3.2vw,27px);flex:1 1 220px}
+.card>.body{padding:20px 22px 24px}
+.card.flat{box-shadow:var(--shadow-xs)}
+
+/* generic grid of tiles */
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
+.g4{grid-template-columns:repeat(auto-fit,minmax(165px,1fr))}
+.tile{background:#fff;border:2px solid var(--ink);border-radius:12px;padding:15px 16px;box-shadow:var(--shadow-xs)}
+.tile .ic{font-size:26px;display:block;margin-bottom:6px;line-height:1}
+.tile h3,.tile h4{font-size:17px;margin-bottom:5px}
+.tile p{font-size:14.5px;color:var(--muted);margin:0}
+.tile.accent{background:var(--sl)}
+
+/* note / callout */
+.note{border-inline-start:5px solid var(--hl);background:#FFFBE8;padding:12px 16px;border-radius:8px;margin:14px 0;font-size:15.5px}
+.note.warn{border-inline-start-color:var(--coral-mid);background:var(--coral-l)}
+.note.info{border-inline-start-color:var(--blue-mid);background:var(--blue-l)}
+.note.good{border-inline-start-color:var(--green-mid);background:var(--green-l)}
+.note b{font-weight:600}
+
+/* pills / chips / terms */
+.terms{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.term{font-size:13.5px;border-radius:999px;padding:4px 13px;font-weight:600;border:1.6px solid var(--sfg);background:#fff;color:var(--sfg)}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;border-radius:999px;padding:5px 13px;font-weight:600;border:2px solid var(--ink);background:#fff;box-shadow:var(--shadow-xs)}
+
+/* lab / activity container */
+.lab{border:2px dashed var(--muted);border-radius:var(--r);padding:18px;margin:18px 0;background:#FCFBF7}
+.lab>h3{font-size:19px;margin-bottom:6px;display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.lab>h3 .tag{font-family:var(--mono);font-size:11.5px;background:var(--ink);color:#fff;padding:3px 10px;border-radius:6px;letter-spacing:.5px}
+.lab .instr{font-size:15px;color:var(--muted);margin-bottom:12px}
+
+/* buttons */
+.btn{font-family:var(--disp);font-weight:700;font-size:15px;border:2px solid var(--ink);background:#fff;color:var(--ink);border-radius:10px;padding:8px 16px;cursor:pointer;box-shadow:var(--shadow-s);transition:transform .1s,box-shadow .1s;line-height:1.2}
+.btn:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--ink)}
+.btn:active{transform:translate(2px,2px);box-shadow:0 0 0 var(--ink)}
+.btn[disabled]{opacity:.45;cursor:not-allowed;transform:none;box-shadow:var(--shadow-xs)}
+.btn.solid{background:var(--sfg);color:#fff}
+.btn.mini{font-size:13px;padding:5px 12px;box-shadow:var(--shadow-xs)}
+.btn.ok{background:var(--ok);border-color:var(--ok);color:#fff}
+.btn.bad{background:var(--bad);border-color:var(--bad);color:#fff}
+.btnrow{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:12px}
+
+/* feedback line */
+.fb{font-weight:700;font-size:15px;min-height:22px;display:block;margin-top:10px}
+.fb.ok{color:var(--ok)} .fb.bad{color:var(--bad)} .fb.neutral{color:var(--muted)}
+
+/* steps (numbered) */
+.steps{counter-reset:st 0;margin:12px 0}
+.step{position:relative;padding:10px 14px 10px 52px;margin:9px 0;background:#fff;border:1.6px solid var(--line);border-radius:10px;font-size:15.5px}
+.step::before{counter-increment:st 1;content:counter(st);position:absolute;left:11px;top:9px;width:28px;height:28px;border-radius:50%;background:var(--sfg);color:#fff;font-family:var(--mono);font-weight:600;font-size:14px;display:flex;align-items:center;justify-content:center}
+
+/* details / accordions */
+details.ex{border:2px solid var(--ink);border-radius:12px;background:#fff;margin:12px 0;overflow:hidden;box-shadow:var(--shadow-xs)}
+details.ex>summary{cursor:pointer;list-style:none;padding:12px 16px;font-weight:700;display:flex;align-items:center;gap:10px;background:var(--paper);font-family:var(--disp)}
+details.ex>summary::-webkit-details-marker{display:none}
+details.ex>summary .arr{margin-inline-start:auto;transition:transform .2s;font-family:var(--mono)}
+details.ex[open]>summary .arr{transform:rotate(90deg)}
+details.ex .ex-body{padding:14px 16px;border-top:1.5px dashed var(--line)}
+
+/* tables */
+.tbwrap{overflow-x:auto;margin:14px 0}
+table.tb{width:100%;border-collapse:collapse;font-size:15px;background:#fff;min-width:440px}
+table.tb th,table.tb td{border:1.6px solid var(--ink);padding:8px 10px;text-align:left;vertical-align:top}
+table.tb th{background:var(--ink);color:#fff;font-weight:500;font-size:13.5px;font-family:var(--disp)}
+table.tb td:first-child{font-weight:600}
+
+/* score box + ring */
+.scorebox{text-align:center;padding:20px;border:2px solid var(--ink);border-radius:var(--r);background:var(--sl);margin-top:16px;box-shadow:var(--shadow-xs)}
+.ring{--p:0;width:112px;height:112px;border-radius:50%;margin:6px auto 10px;display:grid;place-items:center;
+  background:conic-gradient(var(--sfg) calc(var(--p)*1%),var(--line) 0);position:relative}
+.ring::before{content:"";position:absolute;inset:9px;border-radius:50%;background:#fff;border:2px solid var(--ink)}
+.ring .rv{position:relative;font-family:var(--disp);font-weight:800;font-size:26px}
+.scorebox .big{font-family:var(--disp);font-size:34px;font-weight:800}
+
+/* SVG viz helper */
+svg.viz{width:100%;height:auto;display:block;margin:6px 0}
+
+/* ============================================================
+   6. ACTIVITIES (drag/sort/order/match/poll/hotspot shared)
+   ============================================================ */
+.sort-src{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:14px;min-height:20px}
+.buckets{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
+.bucket{border:2px solid var(--ink);border-radius:12px;background:#fff;min-height:96px;padding:10px;box-shadow:var(--shadow-xs)}
+.bucket>.bh{font-family:var(--disp);font-weight:700;font-size:15px;margin-bottom:8px;display:flex;gap:7px;align-items:center;padding-bottom:6px;border-bottom:2px dashed var(--line)}
+.bucket.dragover{background:var(--sl);border-style:dashed}
+.bucket .drop{display:flex;flex-wrap:wrap;gap:7px;min-height:34px}
+.item{display:inline-flex;align-items:center;gap:7px;background:#fff;border:2px solid var(--ink);border-radius:9px;padding:7px 11px;font-size:14px;font-weight:600;cursor:grab;box-shadow:var(--shadow-xs);user-select:none;transition:transform .08s}
+.item:active{cursor:grabbing}
+.item.sel{outline:3px solid var(--purple-mid);outline-offset:2px}
+.item.ph{opacity:.4}
+.item.right{background:var(--green-l);border-color:var(--green)}
+.item.wrong{background:var(--red-l);border-color:var(--red)}
+.item .gr{font-family:var(--mono);color:var(--muted);font-size:12px}
+
+/* ordering */
+.order-list{display:flex;flex-direction:column;gap:9px;margin:6px 0 4px}
+.oitem{display:flex;align-items:center;gap:12px;background:#fff;border:2px solid var(--ink);border-radius:11px;padding:10px 12px;box-shadow:var(--shadow-xs)}
+.oitem .oidx{font-family:var(--mono);font-weight:700;width:26px;height:26px;flex:0 0 auto;display:grid;place-items:center;background:var(--sfg);color:#fff;border-radius:7px;font-size:13px}
+.oitem .otx{flex:1 1 auto;font-size:15px;font-weight:600}
+.oitem .oarrows{display:flex;flex-direction:column;gap:3px}
+.oitem .oarrows button{width:30px;height:22px;border:2px solid var(--ink);background:#fff;border-radius:6px;cursor:pointer;font-size:11px;line-height:1;padding:0;box-shadow:1px 1px 0 var(--ink)}
+.oitem .oarrows button:active{transform:translate(1px,1px);box-shadow:none}
+.oitem.right{background:var(--green-l);border-color:var(--green)}
+.oitem.wrong{background:var(--red-l);border-color:var(--red)}
+
+/* poll */
+.poll .popt{display:flex;align-items:center;gap:12px;width:100%;text-align:left;background:#fff;border:2px solid var(--ink);border-radius:11px;padding:11px 14px;margin:9px 0;cursor:pointer;box-shadow:var(--shadow-xs);font-size:15.5px;font-weight:600;color:var(--ink);position:relative;overflow:hidden;transition:transform .1s}
+.poll .popt:hover{transform:translate(-1px,-1px);box-shadow:3px 3px 0 var(--ink)}
+.poll .popt .pfill{position:absolute;inset:0 auto 0 0;width:0;background:var(--sl);z-index:0;transition:width .5s ease}
+.poll .popt>*{position:relative;z-index:1}
+.poll .popt .pemoji{font-size:22px}
+.poll .popt .pcount{margin-inline-start:auto;font-family:var(--mono);font-weight:700;font-size:14px;background:var(--ink);color:#fff;border-radius:7px;padding:2px 9px;min-width:34px;text-align:center}
+.poll .popt.lead{border-color:var(--sfg);border-width:3px}
+
+/* match */
+.match{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.match .col{display:flex;flex-direction:column;gap:9px}
+.match .mopt{background:#fff;border:2px solid var(--ink);border-radius:10px;padding:10px 12px;cursor:pointer;font-size:14.5px;font-weight:600;box-shadow:var(--shadow-xs);text-align:left}
+.match .mopt.sel{background:var(--sl);outline:3px solid var(--purple-mid);outline-offset:1px}
+.match .mopt.done{opacity:.5;cursor:default;border-style:dashed}
+.match .mopt.right{background:var(--green-l);border-color:var(--green)}
+.match .mopt .tagn{font-family:var(--mono);font-size:11px;color:var(--muted);display:block}
+
+/* hotspot map */
+.hotwrap{position:relative;border:2px solid var(--ink);border-radius:var(--r);background:#fff;box-shadow:var(--shadow-xs);overflow:hidden}
+.hot{position:absolute;transform:translate(-50%,-50%);width:34px;height:34px;border-radius:50%;border:2px solid var(--ink);background:var(--sfg);color:#fff;cursor:pointer;font-size:15px;display:grid;place-items:center;box-shadow:var(--shadow-xs);animation:pulse 2.4s infinite}
+.hot.found{background:var(--green);animation:none}
+@keyframes pulse{0%,100%{box-shadow:2px 2px 0 var(--ink),0 0 0 0 rgba(15,110,86,.4)}50%{box-shadow:2px 2px 0 var(--ink),0 0 0 8px rgba(15,110,86,0)}}
+.hotinfo{margin-top:12px;border:2px solid var(--ink);border-radius:12px;background:var(--sl);padding:14px 16px;min-height:40px}
+
+/* progress meter (risk/quality) */
+.meter{height:14px;border:2px solid var(--ink);border-radius:999px;background:#fff;overflow:hidden;margin:6px 0}
+.meter>span{display:block;height:100%;width:0;background:var(--sfg);transition:width .5s ease}
+
+/* toggles for secure-redesign etc */
+.switchrow{display:flex;align-items:center;gap:12px;padding:10px 12px;border:2px solid var(--ink);border-radius:11px;background:#fff;margin:8px 0;box-shadow:var(--shadow-xs)}
+.switch{--on:0;flex:0 0 auto;width:48px;height:28px;border:2px solid var(--ink);border-radius:999px;background:#fff;cursor:pointer;position:relative;padding:0}
+.switch::after{content:"";position:absolute;top:2px;left:2px;width:20px;height:20px;border-radius:50%;background:var(--ink);transition:transform .18s}
+.switch[aria-checked="true"]{background:var(--green-l)}
+.switch[aria-checked="true"]::after{transform:translateX(20px);background:var(--green)}
+.switchrow .sw-tx{flex:1 1 auto;font-size:15px;font-weight:600}
+.switchrow .sw-tx small{display:block;font-weight:400;color:var(--muted);font-size:13px}
+.switchrow.insufficient[data-on="true"]{background:var(--red-l);border-color:var(--red)}
+
+/* ============================================================
+   7. FAKEBANK GAME  (styles added in game chapter build)
+   ============================================================ */
+.gamebar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:10px 0 4px}
+.taskpill{font-family:var(--mono);font-size:12px;font-weight:600;border:2px solid var(--ink);border-radius:999px;padding:4px 11px;background:#fff;display:flex;gap:6px;align-items:center}
+.taskpill.done{background:var(--green-l);border-color:var(--green)}
+.taskpill.active{background:var(--sfg);color:#fff}
+.gamehud{display:flex;gap:8px;flex-wrap:wrap;align-items:center;justify-content:center;margin-bottom:12px}
+.gamehud .restart{margin-inline-start:4px}
+
+/* ethics gate */
+.ethics-check{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border:2px solid var(--ink);border-radius:11px;background:#fff;cursor:pointer;box-shadow:var(--shadow-xs);font-weight:600}
+.ethics-check input{width:24px;height:24px;flex:0 0 auto;accent-color:var(--red);cursor:pointer;margin-top:1px}
+
+/* simulated desktop + browser */
+.desktop{border:2px solid var(--ink);border-radius:12px;overflow:hidden;box-shadow:var(--shadow);background:linear-gradient(135deg,#123 0%,#1b3a4b 60%,#0f6e56 140%);position:relative;min-height:360px}
+.desktop .wall-ic{position:absolute;top:14px;left:14px;display:flex;flex-direction:column;gap:14px}
+.desktop .wall-ic button{background:rgba(255,255,255,.12);border:1.5px solid rgba(255,255,255,.4);color:#fff;border-radius:10px;width:64px;height:64px;font-size:26px;cursor:pointer;display:grid;place-items:center;gap:0;line-height:1}
+.desktop .wall-ic .lbl{font-size:10px;font-family:var(--mono);margin-top:2px;text-shadow:0 1px 2px #000}
+.desktop .taskbar{position:absolute;left:0;right:0;bottom:0;height:38px;background:rgba(14,21,36,.92);display:flex;align-items:center;gap:8px;padding:0 12px;border-top:1.5px solid rgba(255,255,255,.2)}
+.desktop .taskbar .start{background:#0F6E56;color:#fff;border:none;border-radius:7px;padding:5px 12px;font-family:var(--disp);font-weight:700;font-size:12px;cursor:pointer}
+.desktop .taskbar .tb-ic{color:#cfe;font-size:16px;background:rgba(255,255,255,.1);border:none;border-radius:6px;width:30px;height:26px;cursor:pointer}
+.desktop .taskbar .clock{margin-inline-start:auto;color:#bcd;font-family:var(--mono);font-size:12px}
+.win{position:absolute;top:26px;left:96px;right:20px;bottom:56px;background:#fff;border:2px solid #000;border-radius:9px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 12px 30px rgba(0,0,0,.4)}
+.win .titlebar{background:var(--ink);color:#fff;display:flex;align-items:center;gap:8px;padding:6px 10px;font-size:12px;font-family:var(--mono)}
+.win .titlebar .dots{display:flex;gap:5px}
+.win .titlebar .dots i{width:11px;height:11px;border-radius:50%;display:block}
+.win .urlbar{display:flex;align-items:center;gap:7px;padding:6px 10px;background:#EEF0F2;border-bottom:1.5px solid #cdd3da;font-family:var(--mono);font-size:12.5px}
+.win .urlbar .lock{color:var(--muted)}
+.win .urlbar .u{flex:1 1 auto;background:#fff;border:1.5px solid #cdd3da;border-radius:999px;padding:3px 12px;color:#333;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.win .page{flex:1 1 auto;overflow:auto;background:#fff}
+.win.minimized{display:none}
+
+/* FakeBank page UI */
+.fb-top{background:linear-gradient(90deg,#0F6E56,#149DAD);color:#fff;padding:12px 16px;display:flex;align-items:center;gap:10px}
+.fb-top .logo{font-family:var(--disp);font-weight:800;font-size:18px;display:flex;align-items:center;gap:8px}
+.fb-nav{display:flex;gap:6px;margin-inline-start:auto;flex-wrap:wrap}
+.fb-nav span{font-size:12px;background:rgba(255,255,255,.18);padding:3px 10px;border-radius:999px}
+.fb-body{padding:16px}
+.fb-acct{border:2px solid var(--ink);border-radius:12px;padding:14px;background:var(--paper);box-shadow:var(--shadow-xs)}
+.fb-acct .rowln{display:flex;justify-content:space-between;gap:10px;padding:6px 0;border-bottom:1px dashed var(--line);font-size:14.5px}
+.fb-acct .rowln:last-child{border-bottom:none}
+.fb-acct .rowln b{font-family:var(--mono)}
+.fb-bal{font-family:var(--mono);font-weight:700;font-size:26px;color:var(--teal)}
+.fb-tx{margin-top:12px}
+.fb-tx h4{font-size:14px;margin-bottom:6px}
+.fb-tx .txln{display:flex;justify-content:space-between;font-family:var(--mono);font-size:13px;padding:4px 8px;border-radius:6px;background:var(--paper);margin:3px 0}
+.fb-tx .txln .neg{color:var(--red)} .fb-tx .txln .pos{color:var(--green)}
+.fb-sec{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-family:var(--mono);color:var(--green);border:1.5px solid var(--green);border-radius:999px;padding:2px 10px;margin-top:10px}
+.fb-warn-banner{background:var(--red);color:#fff;font-family:var(--mono);font-size:12.5px;padding:6px 12px;text-align:center;font-weight:600}
+
+/* terminal */
+.terminal{background:var(--term-bg);border:2px solid var(--ink);border-radius:12px;overflow:hidden;box-shadow:var(--shadow);font-family:var(--mono)}
+.terminal .tbar{background:#0a0f1a;color:#8fa;display:flex;align-items:center;gap:8px;padding:7px 12px;font-size:12px;border-bottom:1px solid #223}
+.terminal .tbar i{width:11px;height:11px;border-radius:50%;display:inline-block}
+.terminal .screen{padding:12px 14px;height:300px;overflow:auto;color:var(--term-fg);font-size:13.5px;line-height:1.55}
+.terminal .screen .cmd{color:#fff}
+.terminal .screen .ok{color:#7CE0A0}
+.terminal .screen .dim{color:var(--term-dim)}
+.terminal .screen .err{color:#FF9B9B}
+.terminal .screen .found{color:#FFE873}
+.terminal .inln{display:flex;align-items:center;gap:8px;padding:8px 14px;border-top:1px solid #223;background:#0b1220}
+.terminal .inln .ps{color:#7CE0A0;font-size:13.5px;white-space:nowrap}
+.terminal .inln input{flex:1 1 auto;background:transparent;border:none;color:#fff;font-family:var(--mono);font-size:13.5px;outline:none;padding:2px;width:100%;text-align:left;border-radius:0;box-shadow:none}
+.terminal .inln input:focus-visible{outline:none}
+
+/* transfer page */
+.xfer{border:2px solid var(--ink);border-radius:12px;overflow:hidden;box-shadow:var(--shadow);background:#fff}
+.xfer .xbody{padding:16px}
+.xfer .field{margin:10px 0}
+.xfer .field label{display:block;font-size:13px;font-weight:600;margin-bottom:4px}
+.xfer .field input{width:100%;text-align:left}
+.xfer .log{margin-top:12px;border:1.5px dashed var(--line);border-radius:9px;background:var(--paper);padding:10px;font-family:var(--mono);font-size:12.5px;max-height:120px;overflow:auto}
+.xfer .flag{margin-top:12px;background:#062;color:#7CFFA6;border:2px solid #0a5;border-radius:10px;padding:14px;text-align:center;font-family:var(--mono);font-weight:700;font-size:clamp(20px,5vw,30px);letter-spacing:2px;display:none}
+.xfer .flag.show{display:block;animation:flagpop .5s ease both}
+@keyframes flagpop{from{transform:scale(.8);opacity:0}to{transform:scale(1);opacity:1}}
+
+/* ============================================================
+   8. QUIZZES
+   ============================================================ */
+.quiz .q{border:2px solid var(--ink);border-radius:12px;background:#fff;padding:15px 16px;margin:13px 0;box-shadow:var(--shadow-xs)}
+.quiz .q .qt{font-weight:600;margin-bottom:11px;font-size:16px}
+.quiz .q .qt .qn{font-family:var(--mono);color:var(--sfg);margin-inline-end:6px}
+.mc{display:flex;flex-direction:column;gap:8px}
+.mc .opt{display:flex;gap:10px;align-items:flex-start;text-align:left;background:#fff;border:2px solid var(--ink);border-radius:10px;padding:10px 13px;cursor:pointer;box-shadow:var(--shadow-xs);font-size:15px;font-weight:500;color:var(--ink);transition:transform .08s}
+.mc .opt:hover{transform:translate(-1px,-1px);box-shadow:3px 3px 0 var(--ink)}
+.mc .opt .kbd{font-family:var(--mono);font-weight:700;font-size:12px;background:var(--ink-l);border:1.5px solid var(--ink);border-radius:5px;padding:1px 7px;flex:0 0 auto}
+.mc .opt.right{background:var(--green-l);border-color:var(--green)}
+.mc .opt.wrong{background:var(--red-l);border-color:var(--red)}
+.mc .opt.right .kbd{background:var(--green);color:#fff}
+.mc .opt.wrong .kbd{background:var(--red);color:#fff}
+.mc .opt[disabled]{cursor:default}
+.mc .opt.dim{opacity:.55}
+.explain{margin-top:11px;border-top:1.5px dashed var(--line);padding-top:10px;font-size:14.5px;display:none}
+.explain.show{display:block}
+.explain .lab-ok{color:var(--ok);font-weight:700}
+.explain .lab-bad{color:var(--bad);font-weight:700}
+
+/* ============================================================
+   9. NAVIGATION — modals (map, search, timer, hint)
+   ============================================================ */
+.modal{position:fixed;inset:0;z-index:80;display:none;align-items:flex-start;justify-content:center;padding:5vh 16px;background:rgba(28,36,52,.42);backdrop-filter:blur(3px)}
+.modal.open{display:flex}
+.sheet{background:var(--paper);border:2px solid var(--ink);border-radius:16px;box-shadow:var(--shadow);max-width:760px;width:100%;max-height:90dvh;overflow:auto}
+.sheet .sh-head{position:sticky;top:0;background:var(--paper);display:flex;align-items:center;gap:10px;padding:14px 18px;border-bottom:2px solid var(--ink);z-index:1}
+.sheet .sh-head h3{font-size:19px;flex:1 1 auto}
+.sheet .sh-body{padding:16px 18px 22px}
+.mapgrid{display:flex;flex-direction:column;gap:16px}
+.mapsec .msh{font-family:var(--disp);font-weight:700;font-size:14px;display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.mapsec .msh .sw{width:13px;height:13px;border-radius:4px;border:1.5px solid var(--ink)}
+.maplinks{display:flex;flex-wrap:wrap;gap:7px}
+.maplink{font-size:13px;font-weight:600;border:2px solid var(--ink);background:#fff;border-radius:8px;padding:5px 10px;cursor:pointer;box-shadow:1px 1px 0 var(--ink);text-align:left}
+.maplink:hover{background:var(--sl)}
+.maplink.here{background:var(--ink);color:#fff}
+#searchInput{width:100%;font-family:var(--body);font-size:16px;padding:11px 13px;border:2px solid var(--ink);border-radius:10px;background:#fff}
+.searchres{margin-top:12px;display:flex;flex-direction:column;gap:7px}
+.searchres .sr{border:2px solid var(--ink);background:#fff;border-radius:9px;padding:9px 12px;cursor:pointer;box-shadow:1px 1px 0 var(--ink)}
+.searchres .sr:hover{background:var(--sl)}
+.searchres .sr .st{font-weight:700;font-size:14.5px}
+.searchres .sr .sm{font-size:12.5px;color:var(--muted);font-family:var(--mono)}
+
+/* timer */
+.tclock{font-family:var(--mono);font-weight:600;font-size:clamp(48px,15vw,104px);text-align:center;letter-spacing:2px;line-height:1}
+.tpreset{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:14px 0}
+.returnat{text-align:center;font-size:15px;color:var(--muted);font-family:var(--mono)}
+.tbig{display:none}
+.tbig.on{display:flex;position:fixed;inset:0;z-index:90;background:var(--paper);flex-direction:column;align-items:center;justify-content:center;gap:22px;padding:20px;
+  background-image:linear-gradient(rgba(28,36,52,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(28,36,52,.05) 1px,transparent 1px);background-size:30px 30px}
+
+/* hint toast */
+.hintpop{position:fixed;left:50%;bottom:78px;transform:translateX(-50%) translateY(20px);z-index:70;max-width:min(560px,92vw);
+  background:#fff;border:2px solid var(--ink);border-radius:12px;box-shadow:var(--shadow);padding:13px 16px;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;font-size:15px}
+.hintpop.show{opacity:1;transform:translateX(-50%) translateY(0);pointer-events:auto}
+.hintpop b{display:flex;align-items:center;gap:7px;margin-bottom:3px;font-family:var(--disp)}
+
+/* toast */
+.toast{position:fixed;left:50%;bottom:78px;transform:translateX(-50%) translateY(16px);z-index:95;background:var(--ink);color:#fff;border-radius:11px;padding:10px 18px;font-weight:600;font-size:14.5px;box-shadow:var(--shadow);opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;max-width:90vw;text-align:center}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.toast.ok{background:var(--ok)} .toast.bad{background:var(--bad)}
+
+/* confetti */
+#confetti{position:fixed;inset:0;z-index:100;pointer-events:none;display:none}
+#confetti.on{display:block}
+
+/* cinematic bits */
+.hero-badges{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:8px}
+.net-deco{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.5}
+
+/* ============================================================
+   10. ACCESSIBILITY / RESPONSIVE / MOTION
+   ============================================================ */
+@media (max-width:640px){
+  body{font-size:16px}
+  .scene{padding:18px 13px 26px}
+  .card>.body{padding:16px 15px 18px}
+  .sec-label{max-width:30vw}
+  .tool{width:34px;height:34px}
+  .nav-btn{padding:7px 12px;font-size:14px}
+  .nav-btn .lbl{display:none}
+  .match{grid-template-columns:1fr}
+  .brand .txt{display:none}
+}
+@media (max-width:420px){
+  .tools .opt-tool{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:none!important;animation-duration:.001s!important;animation-iteration-count:1!important}
+}
+body.no-motion *{transition:none!important;animation-duration:.001s!important;animation-iteration-count:1!important}
+
+/* ===== G4 L5 — final presentation ===== */
+.g4-hud{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:10px 0}
+.g4-pill{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:13px;font-weight:600;
+  background:#fff;border:2px solid var(--ink);border-radius:999px;padding:4px 13px;box-shadow:var(--shadow-xs)}
+.g4-pill b{font-size:15px}
+
+/* text lab */
+.g4-preview{display:flex;justify-content:center;margin:10px 0}
+.g4-slide{width:min(100%,520px);aspect-ratio:16/9;background:#fff;border:2.5px solid var(--ink);border-radius:12px;
+  box-shadow:var(--shadow);display:grid;place-items:center;padding:20px;overflow:hidden}
+.g4-slide p{margin:0;text-align:center;line-height:1.25;outline:none;max-width:100%;word-break:break-word;
+  border-radius:6px;padding:2px 8px}
+.g4-slide p:focus{box-shadow:0 0 0 3px rgba(29,91,158,.35)}
+.g4-bar{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;background:var(--ink-l);
+  border:2px solid var(--ink);border-radius:11px;padding:8px;margin:10px auto;max-width:520px}
+.g4-tool{width:42px;height:38px;display:grid;place-items:center;background:#fff;border:2px solid var(--ink);
+  border-radius:8px;cursor:pointer;font-family:var(--body);font-size:16px;box-shadow:var(--shadow-xs)}
+.g4-tool:hover{background:var(--hl)}
+.g4-tool.on{background:var(--hl);transform:translate(1px,1px);box-shadow:none}
+.g4-rows{display:flex;flex-direction:column;gap:8px;align-items:center;margin:8px 0}
+.g4-row{display:flex;align-items:center;gap:7px;font-size:14px;font-weight:600}
+.g4-sw{width:26px;height:26px;border-radius:7px;border:2px solid var(--ink);cursor:pointer;display:grid;place-items:center;font-size:12px}
+.g4-sw:hover{transform:translateY(-2px)}
+
+/* powerpoint window */
+.g4-ppt{width:min(100%,520px);margin:12px auto;border:2.5px solid var(--ink);border-radius:12px;overflow:hidden;
+  box-shadow:var(--shadow);background:#fff}
+.g4-ribbon{background:#D8D2C0;border-bottom:2px solid var(--ink);padding:9px;display:flex;gap:6px;align-items:center;cursor:pointer;position:relative}
+.g4-ribbon i{width:26px;height:20px;background:#fff;border:2px solid var(--ink);border-radius:5px;display:block}
+.g4-mid{display:flex;min-height:150px}
+.g4-rail{flex:0 0 74px;background:var(--ink-l);border-inline-end:2px solid var(--ink);padding:8px;
+  display:flex;flex-direction:column;gap:6px;cursor:pointer;position:relative}
+.g4-rail b{background:#fff;border:2px solid var(--ink);border-radius:5px;height:34px;display:grid;place-items:center;font-family:var(--mono);font-size:12px}
+.g4-work{flex:1;display:grid;place-items:center;cursor:pointer;position:relative;background:#fff}
+.g4-work>span:first-child{font-family:var(--disp);font-weight:700;color:var(--muted);font-size:17px}
+.g4-tag{position:absolute;top:5px;inset-inline-end:6px;font-family:var(--mono);font-size:11.5px;font-weight:700;
+  background:var(--ink);color:#fff;border-radius:999px;padding:2px 9px}
+.got .g4-tag{background:var(--teal)}
+.got{outline:3px solid var(--teal);outline-offset:-3px}
+.g4-found{display:flex;gap:7px;flex-wrap:wrap;justify-content:center;margin:8px 0}
+.g4-chip{font-family:var(--mono);font-size:12.5px;font-weight:600;background:var(--teal-l);border:2px solid var(--teal);
+  color:var(--teal);border-radius:999px;padding:3px 11px}
+
+/* ui/ux sorter */
+.g4-card3{background:#fff;border:2.5px solid var(--ink);border-radius:14px;box-shadow:var(--shadow);
+  margin:12px auto;max-width:560px;padding:24px 18px}
+.g4-card3 p{font-size:clamp(16px,2.6vw,22px);font-family:var(--disp);font-weight:600;margin:0;text-align:center}
+
+/* talk timer */
+.g4-timer{width:min(100%,420px);margin:12px auto;background:#fff;border:2.5px solid var(--ink);border-radius:14px;
+  box-shadow:var(--shadow);padding:16px;text-align:center}
+.g4-clock b{display:block;font-family:var(--mono);font-size:clamp(34px,9vw,54px);font-weight:700;line-height:1}
+.g4-clock span{font-family:var(--mono);font-size:13.5px;color:var(--muted)}
+.g4-track{height:12px;background:var(--ink-l);border:2px solid var(--ink);border-radius:999px;margin-top:12px;overflow:hidden}
+.g4-track i{display:block;height:100%;width:0;background:var(--teal);transition:width 1s linear}
+.g4-timer.warn .g4-clock b{color:var(--coral-mid)}
+.g4-timer.warn .g4-track i{background:var(--coral-mid)}
+.g4-timer.over .g4-clock b{color:var(--red)}
+
+</style>
+</head>
+<body class="lang-en">
+
+<!-- ============================================================
+     APP SHELL
+     ============================================================ -->
+<div class="app">
+
+  <!-- Top bar -->
+  <header class="topbar">
+    <div class="brand">
+      <svg class="mk" viewBox="0 0 40 40" aria-hidden="true"><rect x="9" y="4" width="22" height="32" rx="5" fill="#FBF0DA" stroke="#1C2434" stroke-width="2.4"/><circle cx="15" cy="14" r="3" fill="#D85A30"/><circle cx="24" cy="14" r="3" fill="#1D9E75"/><rect x="14" y="23" width="12" height="5" rx="2.5" fill="#534AB7"/></svg>
+      <span class="txt">Final Presentation</span>
+    </div>
+    <span class="sec-label" id="secLabel" aria-live="polite">Opening</span>
+    <span class="spacer"></span>
+    <div class="tools">
+      <button class="tool" id="tSearch" title="Search topics (press /)" aria-label="Search topics">🔍</button>
+      <button class="tool" id="tMap" title="Section map (M)" aria-label="Open section map">🗺️</button>
+      <button class="tool opt-tool" id="tTimer" title="Timers (T)" aria-label="Open timers">⏱️</button>
+      <button class="tool opt-tool" id="tSound" title="Toggle sound" aria-label="Toggle sound" aria-pressed="false">🔈</button>
+      <button class="tool opt-tool" id="tMotion" title="Reduce motion" aria-label="Toggle reduced motion" aria-pressed="false">🎞️</button>
+      <button class="tool" id="tFull" title="Fullscreen (F)" aria-label="Toggle fullscreen">⛶</button>
+    </div>
+  </header>
+
+  <!-- Progress -->
+  <div class="progress" aria-hidden="true"><div class="bar" id="progBar"></div></div>
+
+  <!-- Stage -->
+  <main class="stage" id="stage" aria-live="polite">
+<!-- ============ 0 · OPEN ============ -->
+    <section class="scene center" data-sec="0" data-title="Welcome — Final Presentation" data-src="Slides 1-2">
+      <div class="scene-inner">
+        <span class="stamp">GRADE 4 · SESSION 3 · LESSON 5 🎤</span>
+        <div style="font-size:56px;margin:18px 0 4px" aria-hidden="true">📊 🎤 🏆</div>
+        <h1 class="big">Show the world <span class="hl">what you built</span></h1>
+        <p class="sub">Last lesson of the semester. Today you finish your app, learn PowerPoint, and present everything you have made. 🚀</p>
+        <div class="hero-badges"><span class="chip">🖥️ UI vs UX</span><span class="chip">🍚 Food Bank page</span><span class="chip">📊 PowerPoint</span><span class="chip">💡 16 ideas</span><span class="chip">🎤 5-minute talk</span></div>
+        <p class="mono" style="margin-top:18px;color:var(--muted);font-size:14px">Press <b>→</b> or <b>Space</b> to start.</p>
+      </div>
+    </section>
+
+    <section class="scene" data-sec="0" data-title="In this lesson you will…" data-src="Slide 4">
+      <div class="scene-inner">
+        <div class="card">
+          <div class="head"><span class="badge">TODAY</span><h2>Learn · Make · Share 🎯</h2></div>
+          <div class="body">
+            <div class="grid g3">
+              <div class="tile"><span class="ic">📚</span><h4>Learn</h4><p>How to use <b>PowerPoint</b> and build slides people actually enjoy watching — plus how to <b>present</b> your work.</p></div>
+              <div class="tile"><span class="ic">💻</span><h4>Make</h4><p>Finish coding the <b>Hunger Awareness</b> app, and build your group's presentation file.</p></div>
+              <div class="tile"><span class="ic">🎤</span><h4>Share</h4><p>Present this semester's projects to the class — <b>5 minutes</b> per group.</p></div>
+            </div>
+            <div class="note good">🏆 <b>Everything you made this semester counts today.</b> The Health app, the Hunger app, and everything you learned along the way.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="scene center" data-sec="0" data-title="Attendance" data-src="Slide 3">
+      <div class="scene-inner">
+        <div class="center"><span class="stamp">ATTENDANCE 📋</span><h2 class="title" style="margin-top:10px">Who is here?</h2></div>
+        <div class="lab" data-act="poll" data-config='{
+          "q":"Warm-up — which part of this semester did you enjoy most?",
+          "options":[
+            {"id":"health","label":"🩺 The Health app"},
+            {"id":"hunger","label":"🍚 The Hunger app"},
+            {"id":"design","label":"🎨 Designing the screens"},
+            {"id":"code","label":"💻 Writing the code"}
+          ]}'>
+          <h3><span class="tag">VOTE</span> Tap your favourite</h3>
+          <div data-mount></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 1 · UI vs UX ============ -->
+    <section class="scene center" data-sec="1" data-title="Part 1 — UI vs UX" data-src="Slide 6">
+      <div class="scene-inner">
+        <span class="stamp">PART 1 · RECAP 🖥️</span>
+        <h2 class="big">UI and UX — <span class="hl">one more time</span></h2>
+        <p class="sub">You will need both of these to talk about your app today.</p>
+      </div>
+    </section>
+
+    <section class="scene" data-sec="1" data-title="UI vs UX" data-src="Slide 7">
+      <div class="scene-inner">
+        <div class="card">
+          <div class="head"><span class="badge">TWO QUESTIONS</span><h2>The difference in one line each 🎯</h2></div>
+          <div class="body">
+            <div class="grid g2">
+              <div class="tile"><span class="ic">🖥️</span><h4>UI — User Interface</h4><p style="font-size:17px"><b>How would the product <span class="hl">look</span> to the user?</b></p><p>Colours · fonts · buttons · spacing · icons. Everything you can <b>see</b>.</p></div>
+              <div class="tile"><span class="ic">😊</span><h4>UX — User Experience</h4><p style="font-size:17px"><b>How would the user <span class="hl">feel</span> while using it?</b></p><p>Easy or confusing · fast or slow · calm or annoying. Everything you <b>feel</b>.</p></div>
+            </div>
+            <div class="note info">🍽️ <b>The restaurant test:</b> UI is how the plate looks when it arrives. UX is whether you enjoyed the whole evening — the waiting, the ordering, the food, the bill.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="scene wide" data-sec="1" data-title="🎮 UI or UX?" data-src="Slides 7-8" data-nokeys>
+      <div class="scene-inner">
+        <div class="center"><span class="stamp">GAME 1 🎭</span><h2 class="title" style="margin-top:10px">UI or UX?</h2><p class="sub" style="margin:8px auto 0">40 seconds. Read the sentence — is it about how it <b>looks</b>, or how it <b>feels</b>?</p></div>
+        <div class="lab" data-act="uiUxSort">
+          <h3><span class="tag">BEAT THE CLOCK</span> How many can you get?</h3>
+          <div data-mount></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 2 · FINISH THE APP ============ -->
+    <section class="scene center" data-sec="2" data-title="Part 2 — Finish your app" data-src="Slide 9">
+      <div class="scene-inner">
+        <span class="stamp">PART 2 · MAKE 🍚</span>
+        <h2 class="big">Finish the <span class="hl">Hunger Awareness</span> app</h2>
+        <p class="sub">One more page to build — and it is the most important one.</p>
+      </div>
+    </section>
+
+    <section class="scene" data-sec="2" data-title="The Egyptian Food Bank page" data-src="Slide 10">
+      <div class="scene-inner">
+        <div class="card">
+          <div class="head"><span class="badge">YOUR TASK</span><h2>Design and code a page about the Egyptian Food Bank 🍚</h2></div>
+          <div class="body">
+            <p class="sub">The Egyptian Food Bank is a charity that collects food and gives it to families who do not have enough. Your app should tell people about it.</p>
+            <h3 style="margin-top:14px">Put these four things on the page</h3>
+            <div class="steps">
+              <div class="step"><b>A title</b> — big, at the top. Something like "The Egyptian Food Bank".</div>
+              <div class="step"><b>A picture</b> — search for the Food Bank logo or a photo of volunteers.</div>
+              <div class="step"><b>Two or three sentences</b> — what the Food Bank does, in your own words.</div>
+              <div class="step"><b>A button</b> — "How to help" or "Donate". It does not need to really work today.</div>
+            </div>
+            <div class="note warn">🎨 <b>Use what you learned:</b> the <b>60-30-10</b> colour rule, and <b>no more than two fonts</b>. Your page should look like it belongs with your other screens, not like a different app.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="scene" data-sec="2" data-title="App checklist" data-src="Make">
+      <div class="scene-inner">
+        <div class="center"><span class="stamp">BEFORE YOU MOVE ON ✅</span><h2 class="title" style="margin-top:10px">Is your app finished?</h2></div>
+        <div class="lab" data-act="checklist" data-config='{"items":[
+          "🏠 My home screen works",
+          "🍚 My Food Bank page has a title, a picture and text",
+          "🔘 Every button goes to the right screen",
+          "🎨 All my screens use the same colours",
+          "🔤 I used two fonts at most",
+          "▶️ I pressed Run and clicked every single button",
+          "💾 My project is saved"
+        ]}'>
+          <h3><span class="tag">TICK EACH</span> Check before you present it</h3>
+          <div data-mount></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 3 · POWERPOINT ============ -->
+    <section class="scene center" data-sec="3" data-title="Part 3 — PowerPoint" data-src="Slide 12">
+      <div class="scene-inner">
+        <span class="stamp">PART 3 · LEARN 📊</span>
+        <h2 class="big">Now let's learn <span class="hl">PowerPoint</span></h2>
+        <p class="sub">The tool you will use to show everyone what you built.</p>
+      </div>
+    </section>
+
+    <section class="scene" data-sec="3" data-title="Opening PowerPoint" data-src="Slides 12-13">
+      <div class="scene-inner">
+        <div class="card">
+          <div class="head"><span class="badge">FIRST STEPS</span><h2>Starting a new presentation 📂</h2></div>
+          <div class="body">
+            <div class="steps">
+              <div class="step">Open <b>Microsoft PowerPoint</b>.</div>
+              <div class="step">Click <span class="ui">New</span> to start a brand-new file.</div>
+              <div class="step">Choose <b>Blank Presentation</b> — or pick a ready-made <b>theme</b> if you want colours chosen for you.</div>
+              <div class="step">Save it straight away with your group's name, before you type anything.</div>
+            </div>
+            <div class="note good">💡 <b>Which should you choose?</b> A <b>theme</b> is faster and always looks tidy. <b>Blank</b> gives you full control. For a five-minute talk, a theme is usually the smarter choice.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="scene wide" data-sec="3" data-title="🎮 The PowerPoint window" data-src="Slide 14" data-nokeys>
+      <div class="scene-inner">
+        <div class="center"><span class="stamp">GAME 2 🖥️</span><h2 class="title" style="margin-top:10px">Find the three areas</h2><p class="sub" style="margin:8px auto 0">Every PowerPoint window is made of the same three parts. Click each one.</p></div>
+        <div class="lab" data-act="pptTour">
+          <h3><span class="tag">CLICK TO NAME</span> Slides · Workspace · Tools</h3>
+          <div data-mount></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="scene" data-sec="3" data-title="The buttons you need" data-src="Slide 15">
+      <div class="scene-inner">
+        <div class="card">
+          <div class="head"><span class="badge">FIVE BUTTONS</span><h2>The only five you need today 🎛️</h2></div>
+          <div class="body">
+            <div class="grid g3">
+              <div class="tile"><span class="ic">➕</span><h4>New Slide</h4><p>Adds another slide. You will press this nine times.</p></div>
+              <div class="tile"><span class="ic">▶️</span><h4>Slide Show</h4><p>Makes the slide fill the whole screen. <b>Always press this before you present.</b></p></div>
+              <div class="tile"><span class="ic">🔍</span><h4>Zoom</h4><p>Makes the slide bigger or smaller <i>while you work</i>. It does not change the real slide.</p></div>
+              <div class="tile"><span class="ic">🔤</span><h4>Editing Text</h4><p>Bold, colours, sizes — the whole row along the top.</p></div>
+              <div class="tile"><span class="ic">⬛</span><h4>Editing Shapes</h4><p>Boxes, arrows and circles. Great for pointing at part of a screenshot.</p></div>
+            </div>
+            <div class="note warn">⚠️ <b>Zoom is not size.</b> Zooming in does not make your text bigger for the audience — it only makes it bigger on <i>your</i> screen while you work.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 4 · TEXT TOOLS ============ -->
+    <section class="scene wide" data-sec="4" data-title="✍️ The Text Lab" data-src="Slide 16" data-nokeys>
+      <div class="scene-inner">
+        <div class="center"><span class="stamp">GAME 3 ✍️</span><h2 class="title" style="margin-top:10px">The Text Lab</h2><p class="sub" style="margin:8px auto 0">This is the real PowerPoint text toolbar. Click the buttons — and type your own title straight into the slide.</p></div>
+        <div class="lab" data-act="textLab">
+          <h3><span class="tag">TRY EVERY BUTTON</span> Bold · Italic · Underline · Shadow · Size · Case · Colour · Highlight</h3>
+          <div data-mount></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="scene" data-sec="4" data-title="Text rules that always work" data-src="Slide 16">
+      <div class="scene-inner">
+        <div class="card">
+          <div class="head"><span class="badge">FOUR RULES</span><h2>How to make text people can actually read 👀</h2></div>
+          <div class="body">
+            <div class="grid g2">
+              <div class="tile"><span class="ic">1️⃣</span><h4>Big enough to read from the back</h4><p>If you would squint at it from the last row, it is too small. Titles around <b>40</b>, body text around <b>24</b>.</p></div>
+              <div class="tile"><span class="ic">2️⃣</span><h4>One way to stand out, not four</h4><p>Bold <b>or</b> a colour <b>or</b> a highlight. All of them at once just looks messy.</p></div>
+              <div class="tile"><span class="ic">3️⃣</span><h4>Six words per line, six lines per slide</h4><p>A slide is a poster, not a paragraph. The details come out of <b>your mouth</b>, not the screen.</p></div>
+              <div class="tile"><span class="ic">4️⃣</span><h4>Dark text on light, or light on dark</h4><p>Yellow on white is invisible from row three. Test it by standing back.</p></div>
+            </div>
+            <div class="note bad">🚫 <b>The number one mistake:</b> reading your slides out loud word for word. If everything is written down, the audience does not need you.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 5 · BREAK ============ -->
+    <section class="scene center" data-sec="5" data-title="Break" data-src="Slide 17">
+      <div class="scene-inner">
+        <div class="center"><span class="stamp">BREAK ☕</span><h2 class="title" style="margin-top:10px">15 minutes</h2></div>
+        <div class="lab" data-act="breakTimer" data-config='{"min":15}' style="max-width:560px;margin:0 auto;border-style:solid;border-color:var(--ink);background:#fff">
+          <div data-mount class="center"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="scene center" data-sec="5" data-title="Welcome back" data-src="Slide 18">
+      <div class="scene-inner">
+        <span class="stamp">ATTENDANCE 📋</span>
+        <h2 class="big">Welcome back — now we <span class="hl">build the slides</span></h2>
+        <p class="sub">Get into your groups. One laptop per group is enough.</p>
+      </div>
+    </section>
+
+    <!-- ============ 6 · YOUR SLIDES ============ -->
+    <section class="scene" data-sec="6" data-title="What your presentation must include" data-src="Slide 19">
+      <div class="scene-inner">
+        <div class="card">
+          <div class="head"><span class="badge">GROUP TASK</span><h2>Four things every group must show 📋</h2></div>
+          <div class="body">
+            <div class="grid g2">
+              <div class="tile"><span class="ic">👥</span><h4>1 · The team members</h4><p>Everyone's name. Say who did what — design, code, or presenting.</p></div>
+              <div class="tile"><span class="ic">🩺</span><h4>2 · The Health app</h4><p>What it does, a screenshot, and one thing you would change now.</p></div>
+              <div class="tile"><span class="ic">🍚</span><h4>3 · The Hunger Awareness app</h4><p>The problem, your screens, and your Food Bank page.</p></div>
+              <div class="tile"><span class="ic">🎓</span><h4>4 · What you learned</h4><p>The honest answer. What was hard? What clicked?</p></div>
+            </div>
+            <div class="note good">📄 <b>Ten slides is plenty.</b> Four things across ten slides is about two slides each, plus a title and a thank-you.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="scene" data-sec="6" data-title="Order 1 — the slide order" data-src="Make">
+      <div class="scene-inner">
+        <div class="center"><span class="stamp">ORDER CHALLENGE 1 🔢</span><h2 class="title" style="margin-top:10px">What order do the slides go in?</h2></div>
+        <div class="lab" data-act="order" data-config='{
+          "instr":"⭐ ORDER CHALLENGE 1 of 3 — put a presentation in the right order.",
+          "items":[
+            "📛 Title slide — the project name and your names",
+            "👥 Meet the team — who did what",
+            "❓ The problem we wanted to solve",
+            "🩺 Our first app — the Health app",
+            "🍚 Our second app — Hunger Awareness",
+            "🎨 The design choices we made",
+            "🎓 What we learned this semester",
+            "🙏 Thank you — any questions?"
+          ]}'>
+          <h3><span class="tag">ORDER 1 / 3</span> Who you are → what you built → what you learned</h3>
+          <div data-mount></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 7 · 16 IDEAS ============ -->
+    <section class="scene center" data-sec="7" data-title="💡 16 ready-made ideas" data-src="Project ideas">
+      <div class="scene-inner">
+        <span class="stamp">STUCK FOR AN IDEA? 💡</span>
+        <h2 class="big">Sixteen <span class="hl">ready-made plans</span></h2>
+        <p class="sub" style="margin-top:10px">Each one is about an app you already use — Talabat, Uber, YouTube, WhatsApp, Google Maps and more — and each one tells you <b>exactly what to put on all 10 slides</b>.</p>
+        <div class="hero-badges" style="margin-top:16px">
+          <span class="chip">🍔 Talabat</span><span class="chip">🚗 Uber</span><span class="chip">▶️ YouTube</span><span class="chip">💬 WhatsApp</span><span class="chip">🗺️ Maps</span><span class="chip">📸 Instagram</span><span class="chip">🎵 Anghami</span><span class="chip">🛒 Noon</span><span class="chip">🦉 Duolingo</span><span class="chip">💳 InstaPay</span><span class="chip">🎬 Netflix</span><span class="chip">🛵 Careem</span><span class="chip">🎶 TikTok</span><span class="chip">💻 Zoom</span><span class="chip">🍚 Food Bank</span><span class="chip">🩺 Health app</span>
+        </div>
+        <div class="btnrow" style="justify-content:center;margin-top:22px">
+          <a class="btn solid" href="G4_L5_ProjectIdeas.html" target="_blank" rel="noopener" style="text-decoration:none">💡 Open all 16 ideas →</a>
+        </div>
+        <p class="mono" style="margin-top:14px;color:var(--muted);font-size:13.5px">Opens in a new tab · you can have as many ideas open at once as you like</p>
+      </div>
+    </section>
+
+    <section class="scene" data-sec="7" data-title="How the plans work" data-src="Project ideas">
+      <div class="scene-inner">
+        <div class="card">
+          <div class="head"><span class="badge">HOW TO USE THEM</span><h2>Every slide is spelled out for you 📝</h2></div>
+          <div class="body">
+            <p class="sub">Open a plan and you get all ten slides. Each one tells you three things:</p>
+            <div class="grid g3">
+              <div class="tile"><span class="ic">📄</span><h4>What the slide is</h4><p>"Slide 3 — the problem it solves"</p></div>
+              <div class="tile"><span class="ic">🔍</span><h4>What to search for</h4><p>The exact words to type into Google Images.</p></div>
+              <div class="tile"><span class="ic">⌨️</span><h4>What to write</h4><p>The sentence to type — with <b>____</b> where your own idea goes.</p></div>
+            </div>
+            <div class="note info">✏️ <b>Every plan has blanks on purpose.</b> Where you see <b>____</b>, that is your group's own idea. Copying the plan is fine; copying someone's thinking is not.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 8 · PRESENTING ============ -->
+    <section class="scene center" data-sec="8" data-title="Part 4 — Presenting" data-src="Slide 20">
+      <div class="scene-inner">
+        <span class="stamp">PART 4 · SHARE 🎤</span>
+        <h2 class="big">Now the <span class="hl">scary</span> bit</h2>
+        <p class="sub">Standing up and talking. Here is how to make it easy.</p>
+      </div>
+    </section>
+
+    <section class="scene" data-sec="8" data-title="Five presentation rules" data-src="Presentation skills">
+      <div class="scene-inner">
+        <div class="card">
+          <div class="head"><span class="badge">FIVE RULES</span><h2>How to present so people listen 🎤</h2></div>
+          <div class="body">
+            <div class="steps">
+              <div class="step"><b>Look at the people, not the screen.</b> Glance at your slide, then turn back to the room.</div>
+              <div class="step"><b>Say more than is written.</b> The slide is the headline — you are the story.</div>
+              <div class="step"><b>Speak slower than feels normal.</b> When you are nervous you speed up without noticing.</div>
+              <div class="step"><b>Everyone in the group says something.</b> Decide who says what <i>before</i> you stand up.</div>
+              <div class="step"><b>Practise once out loud.</b> Once. Not in your head — out loud, with the timer running.</div>
+            </div>
+            <div class="note good">😊 <b>Nervous is normal.</b> Every single person who has ever presented anything felt it. It does not go away — you just learn to start anyway.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="scene" data-sec="8" data-title="Order 2 — how to present" data-src="Presentation skills">
+      <div class="scene-inner">
+        <div class="center"><span class="stamp">ORDER CHALLENGE 2 🔢</span><h2 class="title" style="margin-top:10px">Getting ready to present</h2></div>
+        <div class="lab" data-act="order" data-config='{
+          "instr":"⭐ ORDER CHALLENGE 2 of 3 — put the preparation in order.",
+          "items":[
+            "📝 Decide who says which slide",
+            "▶️ Press Slide Show so it fills the screen",
+            "🗣️ Practise once out loud with the timer",
+            "⏱️ Check you finished inside 5 minutes",
+            "✂️ Cut the words off any slide that is too full",
+            "🎤 Stand up and present it"
+          ]}'>
+          <h3><span class="tag">ORDER 2 / 3</span> Decide → practise → time it → fix it → present</h3>
+          <div data-mount></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 9 · PRESENT ============ -->
+    <section class="scene wide" data-sec="9" data-title="⏱️ The 5-minute pacer" data-src="Slide 21" data-nokeys>
+      <div class="scene-inner">
+        <div class="center"><span class="stamp">GAME 4 ⏱️</span><h2 class="title" style="margin-top:10px">Five minutes, ten slides</h2><p class="sub" style="margin:8px auto 0">Each group has <b>5 minutes</b>. Practise with this running and you will never run out of time.</p></div>
+        <div class="lab" data-act="talkTimer">
+          <h3><span class="tag">PRACTISE</span> It beeps every 30 seconds — that is one slide</h3>
+          <div data-mount></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="scene" data-sec="9" data-title="Order 3 — right before you start" data-src="Slide 21">
+      <div class="scene-inner">
+        <div class="center"><span class="stamp">ORDER CHALLENGE 3 🔢</span><h2 class="title" style="margin-top:10px">The last thirty seconds</h2></div>
+        <div class="lab" data-act="order" data-config='{
+          "instr":"⭐ ORDER CHALLENGE 3 of 3 — what you do just before you speak.",
+          "items":[
+            "💻 Open your file on the class computer",
+            "▶️ Press Slide Show",
+            "👀 Check slide 1 is showing, not slide 4",
+            "🧍 Stand where everyone can see you",
+            "😮‍💨 Take one slow breath",
+            "🗣️ Say hello and your names"
+          ]}'>
+          <h3><span class="tag">ORDER 3 / 3</span> Open → full screen → check → breathe → begin</h3>
+          <div data-mount></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="scene" data-sec="9" data-title="How you will be judged" data-src="Slide 22">
+      <div class="scene-inner">
+        <div class="card">
+          <div class="head"><span class="badge">EVALUATE</span><h2>What makes a presentation good 🏅</h2></div>
+          <div class="body">
+            <div class="tbwrap"><table class="tb">
+              <thead><tr><th>We look at</th><th>What that means</th></tr></thead>
+              <tbody>
+                <tr><td><b>Content</b></td><td>All four parts are there: team, Health app, Hunger app, what you learned.</td></tr>
+                <tr><td><b>Design</b></td><td>Readable text, tidy colours, and pictures that actually help.</td></tr>
+                <tr><td><b>Teamwork</b></td><td>Everybody speaks. Nobody stands silently at the side.</td></tr>
+                <tr><td><b>Timing</b></td><td>You finish inside 5 minutes without rushing the last three slides.</td></tr>
+                <tr><td><b>Honesty</b></td><td>You say what went wrong as well as what went right. <b>This one earns the most respect.</b></td></tr>
+              </tbody>
+            </table></div>
+            <div class="note info">🎯 <b>Nobody expects a perfect app.</b> They expect you to understand the one you built, and to explain it clearly.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 10 · QUIZ ============ -->
+    <section class="scene wide" data-sec="10" data-title="🏆 Final quiz" data-src="Assessment" data-nokeys>
+      <div class="scene-inner">
+        <div class="center"><span class="stamp">FINAL QUIZ 🏆</span><h2 class="title" style="margin-top:10px">Twelve questions</h2><p class="sub" style="margin:8px auto 0">An explanation appears under every answer.</p></div>
+        <div class="lab" data-act="quiz" data-config='{
+          "id":"g4l5quiz",
+          "questions":[
+            {"q":"UI answers which question?","choices":["How would the product look to the user?","How would the user feel?","How fast is the internet?","How much does it cost?"],"answer":0,"explain":"UI is everything you can see — colours, fonts, buttons and spacing."},
+            {"q":"UX answers which question?","choices":["How would the user feel while using it?","What colour is the button?","Which font is it?","How big is the logo?"],"answer":0,"explain":"UX is the whole feeling of using the app: easy or confusing, fast or slow, calm or annoying."},
+            {"q":"“I found the donate page in two seconds.” Is that UI or UX?","choices":["UX","UI","Neither","Both equally"],"answer":0,"explain":"It describes how the experience felt, not what it looked like. That is UX."},
+            {"q":"In PowerPoint, what does the Slides area on the left show you?","choices":["A small picture of every slide in your file","The internet","Your photos folder","The text tools"],"answer":0,"explain":"The rail on the left is your whole presentation in miniature. Click any one to open it in the middle."},
+            {"q":"What is the Workspace?","choices":["The big area in the middle where you edit the current slide","The row of buttons at the top","The list on the left","The Slide Show button"],"answer":0,"explain":"The workspace is the slide you are working on right now, shown large."},
+            {"q":"Which button makes your slide fill the whole screen for the audience?","choices":["Slide Show","Zoom","New Slide","Bold"],"answer":0,"explain":"Always press Slide Show before you present, otherwise the audience sees your editing tools."},
+            {"q":"Does Zoom make your text bigger for the audience?","choices":["No — it only changes your own view while you work","Yes, always","Only in Slide Show","Only for titles"],"answer":0,"explain":"Zoom is for you, not for them. To make text genuinely bigger you change the font size."},
+            {"q":"How many fonts should one presentation use?","choices":["Two at most","As many as possible","At least five","One per slide"],"answer":0,"explain":"Two fonts look designed. Five look like a ransom note. This is the same rule you used in your app."},
+            {"q":"You have 5 minutes and 10 slides. How long is each slide?","choices":["About 30 seconds","About 3 minutes","About 5 seconds","There is no way to know"],"answer":0,"explain":"300 seconds divided by 10 slides is 30 seconds each — which is why slides need few words."},
+            {"q":"What is the biggest presentation mistake?","choices":["Reading every word off the slide","Looking at the audience","Speaking slowly","Practising beforehand"],"answer":0,"explain":"If everything is written on the slide, the audience does not need you. The slide is the headline; you are the story."},
+            {"q":"Your slide has a paragraph of ten lines. What should you do?","choices":["Cut it down to a few short lines and say the rest out loud","Make the font smaller so it fits","Add more colour","Leave it and read it quickly"],"answer":0,"explain":"A slide is a poster, not a document. Shrinking the font only makes it unreadable as well as long."},
+            {"q":"Your app has a bug you never fixed. What should you do in the presentation?","choices":["Say what went wrong and what you tried","Hide that screen and hope nobody asks","Blame the computer","Skip the presentation"],"answer":0,"explain":"Explaining a problem honestly shows you understand your own project. That earns more respect than pretending it was perfect."}
+          ]}'>
+          <h3><span class="tag">12 QUESTIONS</span> Read the explanation after every answer</h3>
+          <div data-mount></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 11 · RECAP ============ -->
+    <section class="scene" data-sec="11" data-title="What you learned this semester" data-src="Slide 24">
+      <div class="scene-inner">
+        <div class="card">
+          <div class="head"><span class="badge">LOOK HOW FAR YOU CAME</span><h2>One semester ago you had never built an app 🎓</h2></div>
+          <div class="body">
+            <div class="grid g3">
+              <div class="tile"><span class="ic">🎨</span><h4>You can design</h4><p>UI and UX, the 60-30-10 colour rule, and why two fonts beat five.</p></div>
+              <div class="tile"><span class="ic">💻</span><h4>You can code</h4><p>Buttons, screens, events and variables — a real working app.</p></div>
+              <div class="tile"><span class="ic">🐛</span><h4>You can debug</h4><p>When it breaks you now look for <i>why</i> instead of giving up.</p></div>
+              <div class="tile"><span class="ic">🍚</span><h4>You can care</h4><p>You built something about a real problem — hunger in Egypt.</p></div>
+              <div class="tile"><span class="ic">📊</span><h4>You can present</h4><p>PowerPoint, slide design, and talking to a room.</p></div>
+              <div class="tile"><span class="ic">👥</span><h4>You can work as a team</h4><p>Splitting the work and putting it back together.</p></div>
+            </div>
+            <div class="note good">🔭 <b>Next session:</b> the characteristics of good UI, how to compare two designs and pick the better one, and the debugging process in more depth.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="scene center" data-sec="11" data-title="Thank you!" data-src="Slide 26">
+      <div class="scene-inner">
+        <div style="font-size:54px;margin:6px 0" aria-hidden="true">📊 🎤 🎓</div>
+        <h2 class="big" style="margin-top:6px">You did not just learn about apps — <span class="hl">you built them</span></h2>
+        <p class="sub" style="margin:12px auto 0">Well presented, all of you. 👏</p>
+        <div class="btnrow" style="justify-content:center;margin-top:18px">
+          <button class="btn solid" onclick="window.__cyber.celebrate&amp;&amp;window.__cyber.celebrate();">🎉 Celebrate</button>
+          <a class="btn" href="G4_L5_ProjectIdeas.html" target="_blank" rel="noopener" style="text-decoration:none">💡 The 16 ideas</a>
+          <button class="btn" onclick="window.__cyber.go(0)">↺ Start over</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Bottom controls -->
+  <nav class="controls" aria-label="Slide navigation">
+    <button class="nav-btn" id="prevBtn"><span aria-hidden="true">←</span> <span class="lbl">Prev</span></button>
+    <div class="counter">
+      <span class="cnum" id="counterNum">1 / 1</span>
+      <div class="dots" id="dots"></div>
+    </div>
+    <button class="nav-btn solid" id="nextBtn"><span class="lbl">Next</span> <span aria-hidden="true">→</span></button>
+  </nav>
+</div>
+
+<!-- ============================================================
+     MODALS
+     ============================================================ -->
+<div class="modal" id="mapModal" role="dialog" aria-modal="true" aria-label="Section map">
+  <div class="sheet">
+    <div class="sh-head"><h3>🗺️ Section map</h3><button class="tool" data-close aria-label="Close">✕</button></div>
+    <div class="sh-body"><div class="mapgrid" id="mapGrid"></div></div>
+  </div>
+</div>
+
+<div class="modal" id="searchModal" role="dialog" aria-modal="true" aria-label="Search topics">
+  <div class="sheet">
+    <div class="sh-head"><h3>🔍 Search topics</h3><button class="tool" data-close aria-label="Close">✕</button></div>
+    <div class="sh-body">
+      <input id="searchInput" type="text" placeholder="Type a topic… e.g. CIA, hashing, vendor, HTTPS" autocomplete="off" aria-label="Search topics">
+      <div class="searchres" id="searchRes"></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="timerModal" role="dialog" aria-modal="true" aria-label="Timers">
+  <div class="sheet">
+    <div class="sh-head"><h3>⏱️ Timers</h3><button class="tool" data-close aria-label="Close">✕</button></div>
+    <div class="sh-body">
+      <div class="center">
+        <div class="tclock" id="tClock">05:00</div>
+        <div class="returnat" id="returnAt"></div>
+        <div class="tpreset">
+          <button class="btn mini" data-min="3">3 min</button>
+          <button class="btn mini" data-min="5">5 min</button>
+          <button class="btn mini" data-min="10">10 min</button>
+          <button class="btn mini" data-min="15">15 min</button>
+        </div>
+        <div class="btnrow" style="justify-content:center">
+          <button class="btn solid" id="tStart">Start</button>
+          <button class="btn" id="tPause">Pause</button>
+          <button class="btn" id="tReset">Reset</button>
+          <button class="btn" id="tFullClock">Fullscreen clock</button>
+        </div>
+        <p class="muted" style="font-size:13px;margin-top:12px">A presenter countdown for breaks &amp; activities. It never collects any data.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Fullscreen break clock -->
+<div class="tbig" id="tBig">
+  <span class="stamp">BREAK ⏸️</span>
+  <div class="tclock" id="tBigClock" style="font-size:clamp(70px,22vw,200px)">05:00</div>
+  <div class="returnat" id="tBigReturn"></div>
+  <button class="btn solid" id="tBigClose">Back to session</button>
+</div>
+
+<div class="hintpop" id="hintPop" role="status" aria-live="polite"></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<canvas id="confetti"></canvas>
+
+<script>
+/* ============================================================
+   11. INITIALIZATION + ENGINE + COMPONENTS  (vanilla JS, IIFE)
+   ============================================================ */
+(function(){
+"use strict";
+/* ---------- tiny helpers ---------- */
+const $=(s,c)=>(c||document).querySelector(s);
+const $$=(s,c)=>Array.prototype.slice.call((c||document).querySelectorAll(s));
+const el=(t,cls,html)=>{const e=document.createElement(t);if(cls)e.className=cls;if(html!=null)e.innerHTML=html;return e;};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
+const store={get(k,d){try{const v=localStorage.getItem(k);return v==null?d:JSON.parse(v);}catch(e){return d;}},
+             set(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}};
+
+/* ---------- section metadata ---------- */
+const SECTIONS=[
+ {key:'open',   label:'Welcome',         emoji:'🎤', color:'#39415a'},
+ {key:'uiux',   label:'UI vs UX',        emoji:'🖥️', color:'#0F6E56'},
+ {key:'app',    label:'Finish the App',  emoji:'🍚', color:'#993C1D'},
+ {key:'ppt',    label:'PowerPoint',      emoji:'📊', color:'#C0356A'},
+ {key:'text',   label:'Text Tools',      emoji:'✍️', color:'#1D5B9E'},
+ {key:'brk',    label:'Break',           emoji:'☕', color:'#96590F'},
+ {key:'plan',   label:'Your Slides',     emoji:'📋', color:'#3C3489'},
+ {key:'ideas',  label:'16 Ideas',        emoji:'💡', color:'#0C6C79'},
+ {key:'skills', label:'Presenting',      emoji:'🗣️', color:'#B02A2A'},
+ {key:'show',   label:'Present!',        emoji:'⏱️', color:'#2C7A3E'},
+ {key:'quiz',   label:'Final Quiz',      emoji:'🏆', color:'#463A9C'},
+ {key:'recap',  label:'Graduation',      emoji:'🎓', color:'#39415a'}
+];
+
+/* ---------- engine state ---------- */
+const stage=$('#stage');
+let scenes=[], cur=0;
+const KEY_POS='g4l5_pos_v1', KEY_QUIZ='g4l5_quiz_v1';
+
+function collectScenes(){ scenes=$$('.scene',stage); }
+
+function sceneSection(i){ return parseInt(scenes[i].getAttribute('data-sec')||'0',10); }
+
+function go(i,opts){
+  opts=opts||{};
+  i=clamp(i,0,scenes.length-1);
+  if(scenes[cur]) scenes[cur].classList.remove('active');
+  cur=i;
+  const sc=scenes[cur];
+  sc.classList.add('active');
+  sc.scrollTop=0;
+  // chrome
+  const sec=sceneSection(cur);
+  const meta=SECTIONS[sec]||SECTIONS[0];
+  $('#secLabel').textContent=meta.emoji+' '+meta.label;
+  document.documentElement.style.setProperty('--sfg-live',meta.color);
+  $('#progBar').style.width=((cur+1)/scenes.length*100)+'%';
+  $('#counterNum').textContent=(cur+1)+' / '+scenes.length;
+  $('#prevBtn').disabled=cur===0;
+  $('#nextBtn').disabled=cur===scenes.length-1;
+  buildDots();
+  initSceneActivities(sc);
+  store.set(KEY_POS,cur);
+  // focus management for a11y (without stealing on load)
+  if(!opts.silent){ sc.setAttribute('tabindex','-1'); }
+  pauseAnimations();
+}
+function next(){ if(cur<scenes.length-1) go(cur+1); }
+function prev(){ if(cur>0) go(cur-1); }
+
+function buildDots(){
+  const wrap=$('#dots'); wrap.innerHTML='';
+  scenes.forEach((s,i)=>{
+    const d=el('button','dot'); d.type='button';
+    d.setAttribute('aria-label','Go to scene '+(i+1));
+    if(i<cur)d.classList.add('done'); if(i===cur)d.classList.add('here');
+    d.addEventListener('click',()=>go(i));
+    wrap.appendChild(d);
+  });
+}
+/* pause offscreen CSS animations for performance */
+function pauseAnimations(){
+  scenes.forEach((s,i)=>{ s.style.animationPlayState = (i===cur)?'':'paused'; });
+}
+
+/* ============================================================
+   COMPONENT DISPATCHER — init any [data-act] once, on first show
+   ============================================================ */
+const BUILDERS={};
+
+/* ==================================================================
+   G4 LESSON 5 — FINAL PRESENTATION
+   ================================================================== */
+function g4best(k){ try{return +localStorage.getItem(k)||0;}catch(e){return 0;} }
+function g4save(k,v){ try{localStorage.setItem(k,String(v));}catch(e){} }
+
+/* ---------- ✍️ TEXT LAB — every button on the PowerPoint text toolbar ---------- */
+BUILDERS.textLab=function(mount){
+  const st={bold:false,italic:false,under:false,shadow:false,size:34,colour:'#1C2434',hi:'',font:'var(--disp)',caps:0};
+  const preview=el('div','g4-preview');
+  preview.innerHTML='<div class="g4-slide"><p id="tlTxt" contenteditable="true" spellcheck="false">Our Hunger Awareness App</p></div>';
+  mount.appendChild(preview);
+  const txt=preview.querySelector('#tlTxt');
+  const original=txt.textContent;
+
+  const bar=el('div','g4-bar');
+  const TOOLS=[
+    {k:'bold',   l:'<b>B</b>',           t:'Bold'},
+    {k:'italic', l:'<i>I</i>',           t:'Italic'},
+    {k:'under',  l:'<u>U</u>',           t:'Underline'},
+    {k:'shadow', l:'<span style="text-shadow:2px 2px 0 #aaa">S</span>', t:'Shadow'},
+    {k:'inc',    l:'A<sup>+</sup>',      t:'Increase size'},
+    {k:'dec',    l:'A<sup>−</sup>',      t:'Decrease size'},
+    {k:'caps',   l:'Aa',                 t:'Change case'},
+    {k:'font',   l:'F',                  t:'Font name'}
+  ];
+  TOOLS.forEach(o=>{
+    const b=el('button','g4-tool',o.l); b.type='button'; b.title=o.t;
+    b.setAttribute('aria-label',o.t);
+    b.addEventListener('click',()=>hit(o.k,b)); bar.appendChild(b);
+  });
+  mount.appendChild(bar);
+
+  const rows=el('div','g4-rows');
+  rows.innerHTML='<div class="g4-row"><span>Text colour</span><span class="g4-sw" data-c="#1C2434" style="background:#1C2434"></span>'+
+    '<span class="g4-sw" data-c="#B02A2A" style="background:#B02A2A"></span><span class="g4-sw" data-c="#0F6E56" style="background:#0F6E56"></span>'+
+    '<span class="g4-sw" data-c="#1D5B9E" style="background:#1D5B9E"></span><span class="g4-sw" data-c="#993C1D" style="background:#993C1D"></span></div>'+
+    '<div class="g4-row"><span>Highlight</span><span class="g4-sw" data-h="" style="background:#fff">✕</span>'+
+    '<span class="g4-sw" data-h="#FFE873" style="background:#FFE873"></span><span class="g4-sw" data-h="#BFE8CF" style="background:#BFE8CF"></span>'+
+    '<span class="g4-sw" data-h="#CFE0F7" style="background:#CFE0F7"></span></div>';
+  mount.appendChild(rows);
+  rows.querySelectorAll('[data-c]').forEach(x=>x.addEventListener('click',()=>{st.colour=x.dataset.c;paint();blip(600);}));
+  rows.querySelectorAll('[data-h]').forEach(x=>x.addEventListener('click',()=>{st.hi=x.dataset.h;paint();blip(600);}));
+
+  const row=el('div','btnrow');
+  const rs=el('button','btn','↺ Reset'); rs.type='button';
+  rs.addEventListener('click',()=>{Object.assign(st,{bold:false,italic:false,under:false,shadow:false,size:34,colour:'#1C2434',hi:'',font:'var(--disp)',caps:0});
+    txt.textContent=original; paint(); blip(400);});
+  row.appendChild(rs); mount.appendChild(row);
+  const fb=el('div','note','This is the exact toolbar you will use in PowerPoint. Click the buttons — and you can <b>type your own title</b> straight into the slide above.');
+  mount.appendChild(fb);
+
+  function hit(k,b){
+    if(k==='inc') st.size=Math.min(64,st.size+4);
+    else if(k==='dec') st.size=Math.max(14,st.size-4);
+    else if(k==='caps') st.caps=(st.caps+1)%3;
+    else if(k==='font') st.font = st.font==='var(--disp)' ? 'var(--mono)' : (st.font==='var(--mono)' ? 'Georgia, serif' : 'var(--disp)');
+    else { st[k]=!st[k]; b.classList.toggle('on',st[k]); }
+    blip(560); paint();
+    if(st.size>=56) fb.innerHTML='📏 <b>Careful — that is very big.</b> A title that fills the whole slide leaves no room for anything else.';
+    else if(st.bold&&st.italic&&st.under&&st.shadow) fb.innerHTML='😵 <b>All four at once is too much.</b> Real designers pick <b>one</b> way to make a word stand out, not four.';
+  }
+  function paint(){
+    txt.style.fontWeight=st.bold?'800':'500';
+    txt.style.fontStyle=st.italic?'italic':'normal';
+    txt.style.textDecoration=st.under?'underline':'none';
+    txt.style.textShadow=st.shadow?'3px 3px 0 rgba(28,36,52,.28)':'none';
+    txt.style.fontSize=st.size+'px';
+    txt.style.color=st.colour;
+    txt.style.background=st.hi||'transparent';
+    txt.style.fontFamily=st.font;
+    txt.style.textTransform=['none','uppercase','lowercase'][st.caps];
+  }
+  paint();
+};
+
+/* ---------- 🖥️ THE POWERPOINT WINDOW — click to name the parts ---------- */
+BUILDERS.pptTour=function(mount){
+  const PARTS=[
+    {id:'slides',n:'Slides',   d:'The little pictures down the left. Every one is a slide. Click one to open it.'},
+    {id:'work',  n:'Workspace',d:'The big area in the middle. This is the slide you are editing right now.'},
+    {id:'tools', n:'Tools',    d:'The ribbon along the top. Every button that changes something lives here.'}
+  ];
+  let found=0;
+  const win=el('div','g4-ppt');
+  win.innerHTML=
+    '<div class="g4-ribbon" data-p="tools"><i></i><i></i><i></i><i></i><i></i><i></i><span class="g4-tag">?</span></div>'+
+    '<div class="g4-mid">'+
+      '<div class="g4-rail" data-p="slides"><b>1</b><b>2</b><b>3</b><span class="g4-tag">?</span></div>'+
+      '<div class="g4-work" data-p="work"><span>Click me</span><span class="g4-tag">?</span></div>'+
+    '</div>';
+  mount.appendChild(win);
+  const list=el('div','g4-found'); mount.appendChild(list);
+  const fb=el('div','note','A PowerPoint window has <b>three</b> areas. Click each one and I will tell you its name.');
+  mount.appendChild(fb);
+
+  win.querySelectorAll('[data-p]').forEach(z=>{
+    z.addEventListener('click',()=>{
+      if(z.classList.contains('got')) return;
+      const p=PARTS.find(v=>v.id===z.dataset.p);
+      z.classList.add('got'); z.querySelector('.g4-tag').textContent=p.n;
+      found++; blip(700+found*80);
+      list.innerHTML+='<span class="g4-chip">✅ '+p.n+'</span>';
+      fb.className='note good'; fb.innerHTML='<b>'+p.n+'</b> — '+p.d;
+      if(found===PARTS.length){ celebrate();
+        fb.className='note good';
+        fb.innerHTML='🎉 <b>All three found.</b> Slides on the left, your slide in the middle, tools along the top. That is every PowerPoint you will ever open.'; }
+    });
+  });
+};
+
+/* ---------- 🎭 UI or UX? — timed sort ---------- */
+BUILDERS.uiUxSort=function(mount){
+  const KEY='g4l5_uiux';
+  const CARDS=[
+    {t:'The button is bright orange',a:'ui'},
+    {t:'I found the donate page in two seconds',a:'ux'},
+    {t:'The title uses a big rounded font',a:'ui'},
+    {t:'I felt confused about where to tap next',a:'ux'},
+    {t:'The app uses three colours only',a:'ui'},
+    {t:'It remembered my name so I did not retype it',a:'ux'},
+    {t:'The icons are all the same size',a:'ui'},
+    {t:'Finishing the order took only three taps',a:'ux'},
+    {t:'The background is dark with white text',a:'ui'},
+    {t:'I gave up because it kept asking me questions',a:'ux'},
+    {t:'The photo has rounded corners',a:'ui'},
+    {t:'It told me clearly what went wrong',a:'ux'}
+  ];
+  let i=0, score=0, best=g4best(KEY), left=40, playing=false, timer=null;
+  const hud=el('div','g4-hud');
+  hud.innerHTML='<span class="g4-pill">⏱ <b id="uxT">40</b>s</span><span class="g4-pill">⭐ <b id="uxS">0</b></span><span class="g4-pill">🏆 <b id="uxB">'+best+'</b></span>';
+  mount.appendChild(hud);
+  const card=el('div','g4-card3'); card.innerHTML='<p>Press start</p>'; mount.appendChild(card);
+  const row=el('div','btnrow');
+  const bUI=el('button','btn solid','🖥️ UI — how it LOOKS'); bUI.type='button';
+  const bUX=el('button','btn solid','😊 UX — how it FEELS'); bUX.type='button';
+  const bGo=el('button','btn','▶ Start'); bGo.type='button';
+  [bGo,bUI,bUX].forEach(b=>row.appendChild(b)); mount.appendChild(row);
+  const fb=el('div','note','<b>UI</b> = how would the product <b>look</b> to the user. <b>UX</b> = how would the user <b>feel</b> while using it.');
+  mount.appendChild(fb);
+  function g(id){return document.getElementById(id);}
+  function deal(){ const c=CARDS[i%CARDS.length]; i++; card.dataset.a=c.a; card.querySelector('p').textContent=c.t; }
+  function pick(v){
+    if(!playing) return;
+    const ok=v===card.dataset.a;
+    if(ok){ score++; blip(720); fb.className='note good'; fb.innerHTML='✅ Yes — that is <b>'+v.toUpperCase()+'</b>.'; }
+    else { blip(220); fb.className='note bad';
+      fb.innerHTML='❌ That one is <b>'+card.dataset.a.toUpperCase()+'</b>. Ask yourself: is this about how it <i>looks</i>, or how it <i>feels</i>?'; }
+    g('uxS').textContent=score; deal();
+  }
+  bUI.addEventListener('click',()=>pick('ui'));
+  bUX.addEventListener('click',()=>pick('ux'));
+  bGo.addEventListener('click',()=>{
+    if(playing) return;
+    playing=true; score=0; left=40; i=Math.floor(Math.random()*CARDS.length);
+    g('uxS').textContent=0; g('uxT').textContent=40; bGo.textContent='⏱ Playing…';
+    fb.className='note'; fb.innerHTML='Go!'; deal();
+    timer=setInterval(()=>{
+      left--; g('uxT').textContent=left;
+      if(left<=0){ clearInterval(timer); playing=false; bGo.textContent='▶ Play again';
+        card.querySelector('p').textContent='Time!';
+        if(score>best){ best=score; g4save(KEY,best); g('uxB').textContent=best; celebrate();
+          fb.className='note good'; fb.innerHTML='🏆 <b>New record: '+score+'!</b>'; }
+        else { fb.className='note'; fb.innerHTML='⏱ Time! You scored <b>'+score+'</b>. Record is '+best+'.'; } }
+    },1000);
+  });
+};
+
+/* ---------- ⏱️ FIVE-MINUTE PACER ---------- */
+BUILDERS.talkTimer=function(mount){
+  const TOTAL=300, SLIDES=10;
+  let t=TOTAL, run=false, id=null;
+  const face=el('div','g4-timer');
+  face.innerHTML='<div class="g4-clock"><b id="ttM">5:00</b><span id="ttS">Slide 1 of 10</span></div><div class="g4-track"><i id="ttBar"></i></div>';
+  mount.appendChild(face);
+  const row=el('div','btnrow');
+  const b1=el('button','btn solid','▶ Start the 5 minutes'); b1.type='button';
+  const b2=el('button','btn','↺ Reset'); b2.type='button';
+  row.appendChild(b1); row.appendChild(b2); mount.appendChild(row);
+  const fb=el('div','note','Five minutes, ten slides — that is <b>30 seconds each</b>. Practise once with this timer before you stand up.');
+  mount.appendChild(fb);
+  function paint(){
+    const m=Math.floor(t/60), s=t%60;
+    document.getElementById('ttM').textContent=m+':'+(s<10?'0':'')+s;
+    const done=TOTAL-t, slide=Math.min(SLIDES,Math.floor(done/30)+1);
+    document.getElementById('ttS').textContent='Slide '+slide+' of '+SLIDES;
+    document.getElementById('ttBar').style.width=(done/TOTAL*100)+'%';
+    face.classList.toggle('warn',t<=60); face.classList.toggle('over',t<=0);
+  }
+  b1.addEventListener('click',()=>{
+    if(run) return; run=true; b1.textContent='⏱ Running…';
+    id=setInterval(()=>{
+      t--; paint();
+      if(t%30===0 && t>0){ blip(680); }
+      if(t<=0){ clearInterval(id); run=false; b1.textContent='▶ Start again'; blip(240);
+        fb.className='note warn'; fb.innerHTML='⏰ <b>Five minutes are up.</b> If you did not reach slide 10, your slides have too many words on them.'; }
+    },1000);
+  });
+  b2.addEventListener('click',()=>{ clearInterval(id); run=false; t=TOTAL; b1.textContent='▶ Start the 5 minutes';
+    fb.className='note'; fb.innerHTML='Five minutes, ten slides — <b>30 seconds each</b>.'; paint(); });
+  paint();
+};
+
+function initSceneActivities(sc){
+  $$('[data-act]',sc).forEach(node=>{
+    if(node._init) return; node._init=true;
+    const name=node.getAttribute('data-act');
+    let cfg={}; const raw=node.getAttribute('data-config');
+    if(raw){ try{ cfg=JSON.parse(raw); }catch(e){ console.warn('bad config',name,e); } }
+    const mount=$('[data-mount]',node)||node;
+    try{ (BUILDERS[name]||function(){})(mount,cfg,node); }catch(e){ console.warn('activity',name,e); }
+  });
+}
+
+/* ---------- CHECKLIST ---------- */
+BUILDERS.checklist=function(mount,cfg){
+  const done=new Set();
+  cfg.items.forEach((t,i)=>{
+    const b=el('button','switchrow'); b.type='button'; b.style.cursor='pointer';
+    b.innerHTML='<span class="switch" aria-hidden="true"></span><span class="sw-tx">'+t+'</span>';
+    b.setAttribute('aria-pressed','false');
+    b.addEventListener('click',()=>{
+      const on=!done.has(i); if(on){done.add(i);}else{done.delete(i);}
+      b.querySelector('.switch').setAttribute('aria-checked',on?'true':'false');
+      b.setAttribute('aria-pressed',on?'true':'false');
+      blip(on?660:440);
+      if(done.size===cfg.items.length) toast('✅ All set — let\'s go!','ok');
+    });
+    mount.appendChild(b);
+  });
+};
+
+/* ---------- POLL ---------- */
+BUILDERS.poll=function(mount,cfg){
+  const counts={}; cfg.options.forEach(o=>counts[o.id]=0);
+  const q=el('p','instr',cfg.q); mount.appendChild(q);
+  const box=el('div','poll'); mount.appendChild(box);
+  const btns={};
+  function render(){
+    const total=Object.values(counts).reduce((a,b)=>a+b,0)||0;
+    const max=Math.max(1,...Object.values(counts));
+    cfg.options.forEach(o=>{
+      const b=btns[o.id], c=counts[o.id];
+      b.querySelector('.pcount').textContent=c;
+      b.querySelector('.pfill').style.width=(total?Math.round(c/max*100):0)+'%';
+      b.classList.toggle('lead',c>0 && c===max);
+    });
+  }
+  cfg.options.forEach(o=>{
+    const b=el('button','popt'); b.type='button';
+    b.innerHTML='<span class="pfill"></span><span class="pemoji">'+o.emoji+'</span><span>'+o.label+'</span><span class="pcount">0</span>';
+    b.addEventListener('click',()=>{counts[o.id]++;blip(560);render();});
+    btns[o.id]=b; box.appendChild(b);
+  });
+  const row=el('div','btnrow');
+  const rb=el('button','btn mini','↺ Reset votes'); rb.type='button';
+  rb.addEventListener('click',()=>{cfg.options.forEach(o=>counts[o.id]=0);render();});
+  const rv=el('button','btn solid mini','💡 Reveal insight'); rv.type='button';
+  const reveal=el('div','note info'); reveal.style.display='none'; reveal.innerHTML=cfg.reveal;
+  rv.addEventListener('click',()=>{reveal.style.display=reveal.style.display==='none'?'block':'none';});
+  row.appendChild(rv); row.appendChild(rb); mount.appendChild(row); mount.appendChild(reveal);
+  render();
+};
+
+/* ---------- REVEAL (predict → presenter reveal) ---------- */
+BUILDERS.reveal=function(mount,cfg){
+  if(cfg.prompt) mount.appendChild(el('p','instr',cfg.prompt));
+  if(cfg.items){ const ul=el('div','steps'); cfg.items.forEach(t=>ul.appendChild(el('div','step',t))); mount.appendChild(ul); }
+  const row=el('div','btnrow');
+  const b=el('button','btn solid','👁️ Reveal answer'); b.type='button';
+  const box=el('div','note good'); box.style.display='none'; box.innerHTML=cfg.revealHTML;
+  b.addEventListener('click',()=>{const open=box.style.display==='none';box.style.display=open?'block':'none';b.textContent=open?'🙈 Hide answer':'👁️ Reveal answer';if(open)blip(720);});
+  row.appendChild(b); mount.appendChild(row); mount.appendChild(box);
+};
+
+/* ---------- CLICKMAP (tap assets to protect) ---------- */
+BUILDERS.clickmap=function(mount,cfg){
+  if(cfg.instr) mount.appendChild(el('p','instr',cfg.instr));
+  let n=0,total=0;
+  const tally=el('div','chip'); tally.style.marginBottom='10px';
+  cfg.groups.forEach(gr=>{
+    mount.appendChild(el('h4',null,gr.title)).style.margin='12px 0 6px';
+    const wrap=el('div','terms');
+    gr.items.forEach(it=>{
+      total++;
+      const b=el('button','item'); b.type='button'; b.style.cursor='pointer';
+      b.innerHTML='<span>'+it.e+'</span> '+esc(it.t)+' <span class="gr">🔓</span>';
+      b.addEventListener('click',()=>{
+        const on=b.classList.toggle('right');
+        b.querySelector('.gr').textContent=on?'🛡️':'🔓';
+        n+=on?1:-1; blip(on?600:440); paint();
+      });
+      wrap.appendChild(b);
+    });
+    mount.appendChild(wrap);
+  });
+  function paint(){tally.textContent='🛡️ Protected: '+n+' / '+total;}
+  paint(); mount.insertBefore(tally,mount.children[cfg.instr?1:0]);
+  const row=el('div','btnrow');
+  const rv=el('button','btn solid','💡 Reveal insight'); rv.type='button';
+  const note=el('div','note info'); note.style.display='none'; note.innerHTML=cfg.reveal;
+  rv.addEventListener('click',()=>{note.style.display=note.style.display==='none'?'block':'none';});
+  row.appendChild(rv); mount.appendChild(row); mount.appendChild(note);
+};
+
+/* ---------- HOTSPOT (clickable diagram) ---------- */
+const HOTBG={
+  campus:'<svg viewBox="0 0 800 420" class="viz" aria-hidden="true"><rect width="800" height="420" fill="#F1EFE6"/><g stroke="#C9C7BA" stroke-width="1">'+Array.from({length:16}).map((_,i)=>'<line x1="'+(i*50)+'" y1="0" x2="'+(i*50)+'" y2="420"/>').join('')+Array.from({length:9}).map((_,i)=>'<line x1="0" y1="'+(i*50)+'" x2="800" y2="'+(i*50)+'"/>').join('')+'</g><g opacity=".5" stroke="#1C2434" stroke-width="2" stroke-dasharray="5 6" fill="none"><path d="M128 126 L400 84 M400 84 L672 126 M208 302 L400 336 M400 336 L592 302 M400 84 L400 336"/></g><g font-family="IBM Plex Sans,sans-serif"><rect x="330" y="180" width="140" height="70" rx="10" fill="#fff" stroke="#1C2434" stroke-width="2.5"/><text x="400" y="222" text-anchor="middle" font-size="30">🏫</text></g></svg>',
+  scene:'<svg viewBox="0 0 800 420" class="viz" aria-hidden="true"><rect width="800" height="420" fill="#12161f"/><g stroke="#2b3444" stroke-width="1">'+Array.from({length:16}).map((_,i)=>'<line x1="'+(i*50)+'" y1="0" x2="'+(i*50)+'" y2="420"/>').join('')+Array.from({length:9}).map((_,i)=>'<line x1="0" y1="'+(i*50)+'" x2="800" y2="'+(i*50)+'"/>').join('')+'</g><rect x="40" y="60" width="720" height="300" rx="12" fill="#1a2130" stroke="#2b3444" stroke-width="1"/><text x="400" y="40" text-anchor="middle" fill="#7C8CA0" font-size="15" font-family="IBM Plex Mono,monospace">DIGITAL CRIME SCENE — do not power off</text></svg>'
+};
+BUILDERS.hotspot=function(mount,cfg){
+  const wrap=el('div','hotwrap'); wrap.style.position='relative';
+  wrap.innerHTML=HOTBG[cfg.bg]||HOTBG.campus;
+  const found=new Set();
+  cfg.spots.forEach((s,i)=>{
+    const b=el('button','hot'); b.type='button';
+    b.style.left=s.x+'%'; b.style.top=s.y+'%'; b.textContent=s.e;
+    b.setAttribute('aria-label',s.label);
+    b.addEventListener('click',()=>{
+      found.add(i); b.classList.add('found');
+      info.innerHTML='<b style="font-family:var(--disp)">'+esc(s.label)+'</b><br>'+s.asset+'<br>'+s.threat+'<br>'+s.control;
+      blip(620);
+      if(found.size===cfg.spots.length && cfg.done){ setTimeout(()=>{info.innerHTML='<b>'+cfg.done+'</b>';celebrate();},400); }
+    });
+    wrap.appendChild(b);
+  });
+  mount.appendChild(wrap);
+  const info=el('div','hotinfo'); info.innerHTML='<span class="muted">👆 Click a glowing node to investigate it…</span>';
+  mount.appendChild(info);
+};
+
+/* ---------- MULTI (select all that apply) ---------- */
+BUILDERS.multi=function(mount,cfg){
+  // cfg:{instr, options:[{t,ok}], reveal}
+  if(cfg.instr) mount.appendChild(el('p','instr',cfg.instr));
+  const box=el('div','mc'); const chosen=new Set();
+  cfg.options.forEach((o,i)=>{
+    const b=el('button','opt'); b.type='button';
+    b.innerHTML='<span class="kbd">'+(chosen.has(i)?'✓':'　')+'</span><span>'+esc(o.t)+'</span>';
+    b.addEventListener('click',()=>{ if(b.disabled)return; const on=chosen.has(i)?(chosen.delete(i),false):(chosen.add(i),true); b.querySelector('.kbd').textContent=on?'✓':'　'; b.classList.toggle('sel',on); blip(on?600:440); });
+    box.appendChild(b);
+  });
+  mount.appendChild(box);
+  const fb=el('div','fb neutral'); const row=el('div','btnrow');
+  const check=el('button','btn solid','✔ Check'); check.type='button';
+  const reset=el('button','btn mini','↺ Reset'); reset.type='button';
+  check.addEventListener('click',()=>{
+    let ok=0,bad=0,miss=0;
+    $$('.opt',box).forEach((b,i)=>{
+      b.disabled=true; const should=cfg.options[i].ok, picked=chosen.has(i);
+      if(should&&picked){b.classList.add('right');ok++;}
+      else if(!should&&picked){b.classList.add('wrong');bad++;}
+      else if(should&&!picked){b.classList.add('right');b.classList.add('dim');miss++;}
+    });
+    const need=cfg.options.filter(o=>o.ok).length;
+    if(ok===need&&bad===0){fb.className='fb ok';fb.textContent='🎉 Perfect — all correct choices selected!';celebrate();}
+    else{fb.className='fb bad';fb.textContent=ok+'/'+need+' correct'+(bad?', '+bad+' wrong pick(s)':'')+(miss?', '+miss+' missed':'')+'.';}
+    if(cfg.reveal){const n=el('div','note info');n.innerHTML=cfg.reveal;mount.appendChild(n);}
+  });
+  reset.addEventListener('click',()=>{chosen.clear();$$('.opt',box).forEach(b=>{b.disabled=false;b.className='opt';b.querySelector('.kbd').textContent='　';});fb.className='fb neutral';fb.textContent='';$$('.note',mount).forEach(n=>n.remove());});
+  row.appendChild(check);row.appendChild(reset);mount.appendChild(row);mount.appendChild(fb);
+  node_reset(mount,()=>reset.click());
+};
+function node_reset(mount,fn){ const sc=mount.closest('[data-act]'); if(sc)sc._reset=fn; }
+
+/* ---------- ACCESS CONTROL SIMULATOR (least privilege matrix) ---------- */
+BUILDERS.accessSim=function(mount,cfg){
+  const fb=el('div','fb neutral');
+  const tbwrap=el('div','tbwrap'); const tb=el('table','tb');
+  const head='<tr><th style="text-align:left">Permission</th>'+cfg.roles.map(r=>'<th>'+r+'</th>').join('')+'</tr>';
+  tb.innerHTML='<thead>'+head+'</thead>';
+  const body=el('tbody');
+  cfg.perms.forEach((p,pi)=>{
+    const tr=el('tr'); tr.innerHTML='<td style="text-align:left">'+esc(p.t)+'</td>';
+    cfg.roles.forEach((r,ri)=>{
+      const td=el('td'); const btn=el('button','switch'); btn.type='button';
+      btn.setAttribute('aria-checked','false'); btn.setAttribute('aria-label',r+' — '+p.t);
+      btn.addEventListener('click',()=>{
+        const on=btn.getAttribute('aria-checked')!=='true';
+        btn.setAttribute('aria-checked',on?'true':'false');
+        td.style.background='';
+        if(on){
+          if(p.allow.indexOf(ri)<0){ td.style.background='var(--red-l)'; btn.style.borderColor='var(--red)'; toast('⚠️ Excessive: '+cfg.roles[ri]+' should not "'+p.t+'"','bad'); blip(240); }
+          else{ td.style.background='var(--green-l)'; btn.style.borderColor='var(--green)'; blip(660); }
+        } else { btn.style.borderColor='var(--ink)'; }
+        score();
+      });
+      td.appendChild(btn); tr.appendChild(td);
+    });
+    body.appendChild(tr);
+  });
+  tb.appendChild(body); tbwrap.appendChild(tb); mount.appendChild(tbwrap);
+  function score(){
+    let over=0,good=0;
+    $$('.switch',tb).forEach(b=>{ if(b.getAttribute('aria-checked')==='true'){ if(b.style.borderColor.indexOf('red')>=0||getComputedStyle(b).borderColor==='rgb(176, 42, 42)')over++; else good++; } });
+    if(over===0&&good>0){fb.className='fb ok';fb.textContent='👍 So far, every grant follows least privilege ('+good+' granted).';}
+    else if(over>0){fb.className='fb bad';fb.textContent='⚠️ '+over+' excessive permission(s) granted. Least privilege = only what the role needs.';}
+    else{fb.className='fb neutral';fb.textContent='';}
+  }
+  const row=el('div','btnrow');
+  const reset=el('button','btn mini','↺ Reset'); reset.type='button';
+  reset.addEventListener('click',()=>{$$('.switch',tb).forEach(b=>{b.setAttribute('aria-checked','false');b.style.borderColor='var(--ink)';b.closest('td').style.background='';});fb.className='fb neutral';fb.textContent='';});
+  row.appendChild(reset); mount.appendChild(row); mount.appendChild(fb);
+  mount.appendChild(el('div','note info','💡 <b>Least privilege:</b> a Student should only view their own grades; only IT should configure the firewall. Every extra permission is extra risk.'));
+  node_reset(mount,()=>reset.click());
+};
+
+/* ---------- STATEMENT (dropdown sentence builder) ---------- */
+BUILDERS.statement=function(mount,cfg){
+  if(cfg.instr) mount.appendChild(el('p','instr',cfg.instr));
+  const sent=el('div'); sent.style.cssText='font-size:19px;line-height:2.2;font-family:var(--disp);font-weight:600;margin:6px 0';
+  const selects=[];
+  cfg.sentence.forEach(part=>{
+    if(typeof part==='string'){ sent.appendChild(document.createTextNode(part)); }
+    else if(part.text){ sent.appendChild(document.createTextNode(part.text)); }
+    else if(part.options){
+      const s=el('select'); s.style.cssText='font-family:var(--mono);font-size:15px;font-weight:600;padding:4px 8px;border:2px solid var(--ink);border-radius:8px;background:var(--hl);margin:0 3px;box-shadow:2px 2px 0 var(--ink);cursor:pointer';
+      s.appendChild(el('option',null,'— choose —')); s.firstChild.value='';
+      part.options.forEach((o,i)=>{const op=el('option',null,esc(o));op.value=i;s.appendChild(op);});
+      s.dataset.answer=part.answer; selects.push(s); sent.appendChild(s);
+    }
+  });
+  mount.appendChild(sent);
+  const fb=el('div','fb neutral'); const row=el('div','btnrow');
+  const check=el('button','btn solid','✔ Check statement'); check.type='button';
+  const reset=el('button','btn mini','↺ Reset'); reset.type='button';
+  const note=el('div','note info'); note.style.display='none'; note.innerHTML=cfg.reveal||'';
+  check.addEventListener('click',()=>{
+    let ok=0,filled=0;
+    selects.forEach(s=>{ s.style.background='var(--hl)'; if(s.value!==''){filled++; if(s.value===s.dataset.answer){s.style.background='var(--green-l)';ok++;}else{s.style.background='var(--red-l)';}} });
+    if(filled<selects.length){fb.className='fb neutral';fb.textContent='Fill every dropdown first.';return;}
+    if(ok===selects.length){fb.className='fb ok';fb.textContent='🎉 Correct — that is a professional risk statement!';note.style.display='block';celebrate();}
+    else{fb.className='fb bad';fb.textContent=ok+'/'+selects.length+' correct. Red dropdowns need another choice.';}
+  });
+  reset.addEventListener('click',()=>{selects.forEach(s=>{s.value='';s.style.background='var(--hl)';});fb.className='fb neutral';fb.textContent='';note.style.display='none';});
+  row.appendChild(check);row.appendChild(reset);mount.appendChild(row);mount.appendChild(fb);mount.appendChild(note);
+  node_reset(mount,()=>reset.click());
+};
+
+/* ---------- SORT (drag + keyboard) ---------- */
+BUILDERS.sort=function(mount,cfg){
+  // cfg: {instr, items:[{t,cat,emoji}], cats:[{id,label,emoji}]}
+  let sel=null;
+  const src=el('div','sort-src');
+  const items=cfg.items.map((it,i)=>{
+    const e=el('div','item'); e.setAttribute('draggable','true'); e.tabIndex=0;
+    e.dataset.cat=it.cat; e.dataset.i=i;
+    e.innerHTML=(it.emoji?'<span>'+it.emoji+'</span> ':'')+esc(it.t);
+    e.addEventListener('dragstart',ev=>{ev.dataTransfer.setData('text',i);e.classList.add('ph');});
+    e.addEventListener('dragend',()=>e.classList.remove('ph'));
+    e.addEventListener('click',()=>{ if(sel===e){sel.classList.remove('sel');sel=null;} else{ if(sel)sel.classList.remove('sel'); sel=e; e.classList.add('sel'); } });
+    e.addEventListener('keydown',ev=>{ if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();e.click();}});
+    return e;
+  });
+  items.forEach(e=>src.appendChild(e));
+  if(cfg.instr) mount.appendChild(el('p','instr',cfg.instr+' <b>Tip:</b> drag a card, or tap a card then tap a box.'));
+  mount.appendChild(src);
+  const bwrap=el('div','buckets');
+  cfg.cats.forEach(cat=>{
+    const b=el('div','bucket'); b.dataset.id=cat.id;
+    b.innerHTML='<div class="bh">'+(cat.emoji?cat.emoji+' ':'')+esc(cat.label)+'</div>';
+    const drop=el('div','drop'); b.appendChild(drop);
+    b.addEventListener('dragover',ev=>{ev.preventDefault();b.classList.add('dragover');});
+    b.addEventListener('dragleave',()=>b.classList.remove('dragover'));
+    b.addEventListener('drop',ev=>{ev.preventDefault();b.classList.remove('dragover');const i=ev.dataTransfer.getData('text');drop.appendChild(items[i]);});
+    b.addEventListener('click',()=>{ if(sel){drop.appendChild(sel);sel.classList.remove('sel');sel=null;blip(520);} });
+    bwrap.appendChild(b);
+  });
+  mount.appendChild(bwrap);
+  const fb=el('div','fb neutral'); const row=el('div','btnrow');
+  const check=el('button','btn solid','✔ Check'); check.type='button';
+  const reset=el('button','btn mini','↺ Reset'); reset.type='button';
+  check.addEventListener('click',()=>{
+    let ok=0,placed=0;
+    items.forEach(e=>{
+      e.classList.remove('right','wrong');
+      const parent=e.closest('.bucket');
+      if(parent){placed++; if(parent.dataset.id===e.dataset.cat){e.classList.add('right');ok++;}else{e.classList.add('wrong');}}
+    });
+    if(placed<items.length){fb.className='fb neutral';fb.textContent='Place all '+items.length+' cards first ('+placed+'/'+items.length+').';return;}
+    if(ok===items.length){fb.className='fb ok';fb.textContent='🎉 Perfect — all '+ok+' correct!';celebrate();}
+    else{fb.className='fb bad';fb.textContent=ok+' / '+items.length+' correct. Red cards are misplaced — try again.';}
+  });
+  reset.addEventListener('click',()=>{items.forEach(e=>{e.classList.remove('right','wrong');src.appendChild(e);});fb.className='fb neutral';fb.textContent='';});
+  row.appendChild(check); row.appendChild(reset); mount.appendChild(row); mount.appendChild(fb);
+};
+
+/* ---------- ORDER (arrange sequence) ---------- */
+BUILDERS.order=function(mount,cfg){
+  // cfg: {instr, items:[...strings in correct order], shuffle:true}
+  const correct=cfg.items.slice();
+  let arr=correct.map((t,i)=>({t,i}));
+  // deterministic shuffle (no Math.random dependency issues): rotate + swap
+  arr=arr.map((v,i)=>({v,k:(i*7+3)%arr.length})).sort((a,b)=>a.k-b.k).map(o=>o.v);
+  if(cfg.instr) mount.appendChild(el('p','instr',cfg.instr+' Use ▲▼ to reorder.'));
+  const list=el('div','order-list'); mount.appendChild(list);
+  function paint(){
+    list.innerHTML='';
+    arr.forEach((o,idx)=>{
+      const r=el('div','oitem');
+      r.innerHTML='<span class="oidx">'+(idx+1)+'</span><span class="otx">'+esc(o.t)+'</span>';
+      const ar=el('div','oarrows');
+      const up=el('button',null,'▲'); up.type='button'; up.setAttribute('aria-label','Move up'); up.disabled=idx===0;
+      const dn=el('button',null,'▼'); dn.type='button'; dn.setAttribute('aria-label','Move down'); dn.disabled=idx===arr.length-1;
+      up.addEventListener('click',()=>{[arr[idx-1],arr[idx]]=[arr[idx],arr[idx-1]];paint();});
+      dn.addEventListener('click',()=>{[arr[idx+1],arr[idx]]=[arr[idx],arr[idx+1]];paint();});
+      ar.appendChild(up); ar.appendChild(dn); r.appendChild(ar); list.appendChild(r);
+    });
+  }
+  paint();
+  const fb=el('div','fb neutral'); const row=el('div','btnrow');
+  const check=el('button','btn solid','✔ Check order'); check.type='button';
+  const reset=el('button','btn mini','↺ Shuffle'); reset.type='button';
+  check.addEventListener('click',()=>{
+    let ok=true; $$('.oitem',list).forEach((r,idx)=>{r.classList.remove('right','wrong');const good=arr[idx].i===idx;r.classList.add(good?'right':'wrong');if(!good)ok=false;});
+    if(ok){fb.className='fb ok';fb.textContent='🎉 Correct order!';celebrate();}else{fb.className='fb bad';fb.textContent='Not yet — green rows are in the right place. Keep going.';}
+  });
+  reset.addEventListener('click',()=>{arr=arr.map((v,i)=>({v,k:(i*5+2)%arr.length})).sort((a,b)=>a.k-b.k).map(o=>o.v);paint();fb.textContent='';fb.className='fb neutral';});
+  row.appendChild(check); row.appendChild(reset); mount.appendChild(row); mount.appendChild(fb);
+};
+
+/* ---------- MATCH (connect pairs) ---------- */
+BUILDERS.match=function(mount,cfg){
+  // cfg:{instr, pairs:[{l,r}]}
+  if(cfg.instr) mount.appendChild(el('p','instr',cfg.instr+' Tap a left item, then its match on the right.'));
+  const wrap=el('div','match');
+  const L=el('div','col'), R=el('div','col');
+  const rights=cfg.pairs.map((p,i)=>({p,i})).map((v,i)=>({v,k:(i*3+1)%cfg.pairs.length})).sort((a,b)=>a.k-b.k).map(o=>o.v);
+  let selL=null, matched=0;
+  cfg.pairs.forEach((p,i)=>{
+    const b=el('button','mopt'); b.type='button'; b.dataset.i=i;
+    b.innerHTML='<span class="tagn">match ▸</span>'+esc(p.l);
+    b.addEventListener('click',()=>{ if(b.classList.contains('done'))return; if(selL)selL.classList.remove('sel'); selL=b; b.classList.add('sel'); });
+    L.appendChild(b);
+  });
+  rights.forEach(o=>{
+    const b=el('button','mopt'); b.type='button'; b.dataset.i=o.i;
+    b.innerHTML='<span class="tagn">▸ answer</span>'+esc(o.p.r);
+    b.addEventListener('click',()=>{
+      if(b.classList.contains('done')||!selL)return;
+      if(selL.dataset.i===b.dataset.i){ selL.classList.add('done','right');b.classList.add('done','right');selL.classList.remove('sel');selL=null;matched++;blip(680);
+        if(matched===cfg.pairs.length){fb.className='fb ok';fb.textContent='🎉 All matched!';celebrate();}}
+      else{ b.classList.add('wrong'); const bad=selL; setTimeout(()=>{b.classList.remove('wrong');},450); fb.className='fb bad';fb.textContent='Not a match — try again.'; }
+    });
+    R.appendChild(b);
+  });
+  wrap.appendChild(L); wrap.appendChild(R); mount.appendChild(wrap);
+  const fb=el('div','fb neutral'); const row=el('div','btnrow');
+  const reset=el('button','btn mini','↺ Reset'); reset.type='button';
+  reset.addEventListener('click',()=>{$$('.mopt',wrap).forEach(b=>b.classList.remove('done','right','wrong','sel'));selL=null;matched=0;fb.textContent='';fb.className='fb neutral';});
+  row.appendChild(reset); mount.appendChild(row); mount.appendChild(fb);
+};
+
+/* ---------- MATRIX (2x2 risk grid) ---------- */
+BUILDERS.matrix=function(mount,cfg){
+  if(cfg.instr) mount.appendChild(el('p','instr',cfg.instr+' Drag a card, or tap a card then a cell.'));
+  let sel=null;
+  const src=el('div','sort-src');
+  const items=cfg.items.map((it,i)=>{
+    const e=el('div','item'); e.draggable=true; e.tabIndex=0; e.dataset.cell=it.cell; e.dataset.i=i;
+    e.innerHTML=(it.emoji?'<span>'+it.emoji+'</span> ':'')+esc(it.t);
+    e.addEventListener('dragstart',ev=>{ev.dataTransfer.setData('text',i);e.classList.add('ph');});
+    e.addEventListener('dragend',()=>e.classList.remove('ph'));
+    e.addEventListener('click',()=>{ if(sel===e){e.classList.remove('sel');sel=null;}else{if(sel)sel.classList.remove('sel');sel=e;e.classList.add('sel');} });
+    e.addEventListener('keydown',ev=>{if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();e.click();}});
+    return e;
+  });
+  items.forEach(e=>src.appendChild(e));
+  mount.appendChild(src);
+  mount.appendChild(el('div','mono','▲ Higher impact  ·  ▶ Higher likelihood')).style.cssText='font-size:12px;color:var(--muted);margin:4px 0';
+  const grid=el('div'); grid.style.cssText='display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:4px';
+  const meta={hh:{l:'🔴 High likelihood · High impact — fix first',c:'var(--red-l)',b:'var(--red)'},lh:{l:'🟠 Low likelihood · High impact',c:'var(--amber-l)',b:'var(--amber)'},hl:{l:'🔵 High likelihood · Low impact',c:'var(--blue-l)',b:'var(--blue)'},ll:{l:'🟢 Low likelihood · Low impact — monitor',c:'var(--green-l)',b:'var(--green)'}};
+  ['lh','hh','ll','hl'].forEach(id=>{
+    const b=el('div','bucket'); b.dataset.id=id; b.style.background=meta[id].c; b.style.borderColor=meta[id].b;
+    b.innerHTML='<div class="bh">'+meta[id].l+'</div>'; const drop=el('div','drop'); b.appendChild(drop);
+    b.addEventListener('dragover',ev=>{ev.preventDefault();b.classList.add('dragover');});
+    b.addEventListener('dragleave',()=>b.classList.remove('dragover'));
+    b.addEventListener('drop',ev=>{ev.preventDefault();b.classList.remove('dragover');drop.appendChild(items[ev.dataTransfer.getData('text')]);});
+    b.addEventListener('click',()=>{ if(sel){drop.appendChild(sel);sel.classList.remove('sel');sel=null;blip(520);} });
+    grid.appendChild(b);
+  });
+  mount.appendChild(grid);
+  const fb=el('div','fb neutral'); const row=el('div','btnrow');
+  const check=el('button','btn solid','✔ Check'); check.type='button';
+  const reset=el('button','btn mini','↺ Reset'); reset.type='button';
+  check.addEventListener('click',()=>{
+    let ok=0,placed=0;
+    items.forEach(e=>{e.classList.remove('right','wrong');const p=e.closest('.bucket');if(p){placed++;if(p.dataset.id===e.dataset.cell){e.classList.add('right');ok++;}else{e.classList.add('wrong');}}});
+    if(placed<items.length){fb.className='fb neutral';fb.textContent='Place all '+items.length+' risks first.';return;}
+    if(ok===items.length){fb.className='fb ok';fb.textContent='🎉 Perfect risk map — the red cell is your top priority!';celebrate();}
+    else{fb.className='fb bad';fb.textContent=ok+'/'+items.length+' correct. Red cards are misplaced.';}
+  });
+  reset.addEventListener('click',()=>{items.forEach(e=>{e.classList.remove('right','wrong');src.appendChild(e);});fb.className='fb neutral';fb.textContent='';});
+  row.appendChild(check);row.appendChild(reset);mount.appendChild(row);mount.appendChild(fb);
+  node_reset(mount,()=>reset.click());
+};
+
+/* ---------- SLIDER (risk appetite) ---------- */
+BUILDERS.slider=function(mount,cfg){
+  if(cfg.instr)mount.appendChild(el('p','instr',cfg.instr));
+  const val=el('input');val.type='range';val.min=0;val.max=100;val.value=50;val.style.width='100%';val.setAttribute('aria-label','Risk appetite level');
+  const meter=el('div','meter');const fill=el('span');meter.appendChild(fill);
+  const card=el('div','tile accent');card.style.marginTop='10px';
+  function paint(){const v=+val.value;fill.style.width=v+'%';fill.style.background=v<33?'var(--green)':v<66?'var(--amber)':'var(--red)';const z=cfg.zones.find(z=>v<z.upto)||cfg.zones[cfg.zones.length-1];card.innerHTML='<span class="ic">'+z.emoji+'</span><h4>'+z.label+' — '+z.who+'</h4><p>'+z.desc+'</p>';}
+  val.addEventListener('input',paint);
+  mount.appendChild(val);mount.appendChild(meter);mount.appendChild(card);paint();
+};
+
+/* ---------- VENDOR (approve/review/reject) ---------- */
+BUILDERS.vendor=function(mount,cfg){
+  if(cfg.instr)mount.appendChild(el('p','instr',cfg.instr));
+  cfg.vendors.forEach(v=>{
+    const card=el('div','tile');card.style.marginBottom='12px';
+    card.innerHTML='<h4>'+v.name+'</h4><ul style="margin:6px 0 8px;padding-inline-start:18px;font-size:14px;line-height:1.6">'+v.facts.map(f=>'<li>'+esc(f)+'</li>').join('')+'</ul>';
+    const row=el('div','btnrow');
+    [['approve','✅ Approve'],['review','🔎 Review'],['reject','⛔ Reject']].forEach(o=>{
+      const b=el('button','btn mini',o[1]);b.type='button';
+      b.addEventListener('click',()=>{ if(card._done)return;card._done=true;
+        const ok=o[0]===v.correct; $$('.btn',row).forEach(x=>x.disabled=true);
+        b.style.cssText='background:'+(ok?'var(--green)':'var(--red)')+';color:#fff;border-color:'+(ok?'var(--green)':'var(--red)');
+        const fb=el('div','fb '+(ok?'ok':'bad'));fb.textContent=(ok?'✅ Correct. ':'❌ Best answer: '+v.correct.toUpperCase()+'. ')+v.why;
+        card.appendChild(fb);blip(ok?720:280);
+      });
+      row.appendChild(b);
+    });
+    card.appendChild(row);mount.appendChild(card);
+  });
+};
+
+/* ---------- BUDGET (spend within cap) ---------- */
+BUILDERS.budget=function(mount,cfg){
+  const cap=cfg.budget,on={};
+  const bar=el('div','chip');bar.style.marginBottom='10px';mount.appendChild(bar);
+  cfg.items.forEach((it,i)=>{
+    const r=el('div','switchrow');
+    r.innerHTML='<button class="switch" aria-checked="false" aria-label="'+esc(it.t)+'"></button><span class="sw-tx">'+esc(it.t)+' <small>Cost '+it.cost+' credits · Impact: '+it.impact+'</small></span>';
+    const sw=r.querySelector('.switch');
+    sw.addEventListener('click',()=>{const v=sw.getAttribute('aria-checked')!=='true';sw.setAttribute('aria-checked',v?'true':'false');on[i]=v;paint();blip(v?640:440);});
+    mount.appendChild(r);
+  });
+  function spent(){return cfg.items.reduce((s,it,i)=>s+(on[i]?it.cost:0),0);}
+  function paint(){const s=spent();bar.textContent='💰 Spent: '+s+' / '+cap+(s>cap?' — OVER BUDGET!':'');bar.style.borderColor=s>cap?'var(--red)':'var(--ink)';}
+  const fb=el('div','fb neutral');const row=el('div','btnrow');const check=el('button','btn solid','✔ Check plan');check.type='button';
+  check.addEventListener('click',()=>{
+    const s=spent();
+    if(s>cap){fb.className='fb bad';fb.textContent='Over budget by '+(s-cap)+' credits. Cut low-impact spending.';return;}
+    const goodTotal=cfg.items.filter(it=>it.good).length;
+    const fundedGood=cfg.items.filter((it,i)=>on[i]&&it.good).length;
+    const fundedBad=cfg.items.some((it,i)=>on[i]&&!it.good);
+    if(fundedGood===goodTotal&&!fundedBad){fb.className='fb ok';fb.textContent='🎉 Excellent — every high-impact fix funded within budget, no money wasted on cosmetics!';celebrate();}
+    else if(fundedBad){fb.className='fb bad';fb.textContent='You funded low/no-impact items (logo, button color). Prioritize security impact.';}
+    else{fb.className='fb neutral';fb.textContent='Funded '+fundedGood+'/'+goodTotal+' high-impact fixes. Can you cover them all within '+cap+'?';}
+  });
+  row.appendChild(check);mount.appendChild(row);mount.appendChild(fb);paint();
+  node_reset(mount,()=>{cfg.items.forEach((it,i)=>{on[i]=false;});$$('.switch',mount).forEach(s=>s.setAttribute('aria-checked','false'));paint();fb.className='fb neutral';fb.textContent='';});
+};
+
+/* ---------- KRI DASHBOARD ---------- */
+BUILDERS.kriDash=function(mount,cfg){
+  const grid=el('div','grid g2');
+  const rows=cfg.kris.map(k=>{
+    const t=el('div','tile');t.innerHTML='<h4 style="font-size:15px">'+esc(k.t)+'</h4>';
+    const meter=el('div','meter');const fill=el('span');meter.appendChild(fill);
+    const stat=el('div');stat.style.cssText='font-family:var(--mono);font-size:13px;margin-top:4px';
+    t.appendChild(meter);t.appendChild(stat);grid.appendChild(t);
+    return {k,fill,stat,cur:k.val};
+  });
+  function paintRow(r){const pct=Math.min(100,r.cur);r.fill.style.width=pct+'%';const hi=r.cur>=r.k.warn;r.fill.style.background=hi?'var(--red)':r.cur>=r.k.warn*0.6?'var(--amber)':'var(--green)';r.stat.textContent=(hi?'🔴 HIGH · ':r.cur>=r.k.warn*0.6?'🟠 Watch · ':'🟢 Normal · ')+Math.round(r.cur)+r.k.unit;}
+  rows.forEach(paintRow);mount.appendChild(grid);
+  const row=el('div','btnrow');
+  const sim=el('button','btn solid','▶ Simulate a risk spike');sim.type='button';
+  sim.addEventListener('click',()=>{rows[0].cur=Math.min(100,rows[0].cur+45);rows[3].cur=Math.min(100,rows[3].cur+35);paintRow(rows[0]);paintRow(rows[3]);toast('🔴 Failed logins & traffic spiked — investigate!','bad');blip(300);});
+  const reset=el('button','btn mini','↺ Reset');reset.type='button';
+  reset.addEventListener('click',()=>{rows.forEach(r=>{r.cur=r.k.val;paintRow(r);});});
+  row.appendChild(sim);row.appendChild(reset);mount.appendChild(row);
+  mount.appendChild(el('div','note info','📈 When a KRI climbs into the red, it is an early warning to act <b>before</b> it becomes an incident.'));
+};
+
+/* ---------- CUSTODY (chain-of-custody form) ---------- */
+BUILDERS.custody=function(mount,cfg){
+  mount.appendChild(el('p','instr','Record the chain-of-custody entry to transfer the USB drive. Every handoff must be logged, or the evidence cannot be trusted.'));
+  const grid=el('div'); grid.style.cssText='display:grid;grid-template-columns:1fr 1fr;gap:10px';
+  const defs=[['name','👤 Handler name'],['date','📅 Date'],['time','⏰ Time'],['purpose','🎯 Reason for access']];
+  const inputs={};
+  defs.forEach(d=>{ const w=el('div'); w.innerHTML='<label style="display:block;font-size:13px;font-weight:600;margin-bottom:3px">'+d[1]+'</label>'; const inp=el('input'); inp.type='text'; inp.style.cssText='width:100%;text-align:left'; inp.setAttribute('aria-label',d[1]); inputs[d[0]]=inp; w.appendChild(inp); grid.appendChild(w); });
+  mount.appendChild(grid);
+  const fb=el('div','fb neutral'); const row=el('div','btnrow');
+  const rec=el('button','btn solid','✍️ Record & transfer'); rec.type='button';
+  const tbwrap=el('div','tbwrap'); const tb=el('table','tb'); tb.innerHTML='<thead><tr><th>Handler</th><th>Date</th><th>Time</th><th>Reason</th></tr></thead><tbody></tbody>'; tbwrap.appendChild(tb);
+  rec.addEventListener('click',()=>{
+    const vals=defs.map(d=>inputs[d[0]].value.trim());
+    if(vals.some(v=>!v)){ fb.className='fb bad'; fb.textContent='Fill every field — an incomplete log breaks the chain of custody.'; blip(280); return; }
+    const tr=el('tr'); tr.innerHTML=vals.map(v=>'<td>'+esc(v)+'</td>').join(''); $('tbody',tb).appendChild(tr);
+    fb.className='fb ok'; fb.textContent='✅ Logged. The evidence is now traceable and tamper-evident.'; blip(720); celebrate();
+    defs.forEach(d=>inputs[d[0]].value='');
+  });
+  row.appendChild(rec); mount.appendChild(row); mount.appendChild(fb);
+  const h=el('h4',null,'Chain-of-custody log'); h.style.cssText='margin:12px 0 4px;font-size:15px'; mount.appendChild(h); mount.appendChild(tbwrap);
+};
+
+/* ---------- HASH LAB (real Web Crypto SHA-256) ---------- */
+BUILDERS.hashLab=function(mount,cfg){
+  const original=cfg.text||'Evidence file contents';
+  const ta=el('textarea'); ta.value=original; ta.setAttribute('aria-label','File contents to hash');
+  ta.style.cssText='width:100%;min-height:66px;font-family:var(--mono);font-size:14px;padding:10px;border:2px solid var(--ink);border-radius:10px;text-align:left;background:#fff;color:var(--ink);resize:vertical';
+  const hashOut=el('div','mline'); hashOut.style.wordBreak='break-all';
+  const cmp=el('div','fb neutral'); let baseline=null;
+  function simpleHash(s){let h=5381>>>0;for(let i=0;i<s.length;i++){h=(((h<<5)+h)+s.charCodeAt(i))>>>0;}let hex=h.toString(16);while(hex.length<64)hex=(h=(h*33+hex.length)>>>0).toString(16)+hex;return hex.slice(0,64);}
+  function sha(text){
+    if(window.crypto&&crypto.subtle&&location.protocol!=='file:'||(window.crypto&&crypto.subtle&&crypto.subtle.digest)){
+      try{ return crypto.subtle.digest('SHA-256',new TextEncoder().encode(text)).then(buf=>Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('')).catch(()=>Promise.resolve(simpleHash(text))); }
+      catch(e){ return Promise.resolve(simpleHash(text)); }
+    }
+    return Promise.resolve(simpleHash(text));
+  }
+  function update(){ sha(ta.value).then(h=>{ hashOut.innerHTML='<b>SHA-256:</b> '+h; if(baseline){ const same=h===baseline; cmp.className='fb '+(same?'ok':'bad'); cmp.textContent=same?'✅ MATCH — the evidence is unchanged.':'❌ NO MATCH — one small change produced a completely different hash!'; } }); }
+  ta.addEventListener('input',update);
+  const row=el('div','btnrow');
+  const setB=el('button','btn solid','📌 Set baseline hash'); setB.type='button';
+  setB.addEventListener('click',()=>{ sha(ta.value).then(h=>{ baseline=h; cmp.className='fb ok'; cmp.textContent='📌 Baseline saved. Now change ONE character above and watch the hash.'; blip(660); }); });
+  const rst=el('button','btn mini','↺ Restore text'); rst.type='button';
+  rst.addEventListener('click',()=>{ ta.value=original; update(); });
+  row.appendChild(setB); row.appendChild(rst);
+  mount.appendChild(ta); mount.appendChild(hashOut); mount.appendChild(row); mount.appendChild(cmp);
+  mount.appendChild(el('div','note info','🔬 This uses your browser’s real <b>Web Crypto</b> SHA-256 — safe &amp; fully local. A tiny change makes a totally different fingerprint. That’s how we prove evidence wasn’t altered.'));
+  update();
+};
+
+/* ---------- CIPHER (encryption demo: symmetric / asymmetric) ---------- */
+BUILDERS.cipher=function(mount,cfg){
+  const asym=cfg.mode==='asymmetric';
+  const keys=el('div','terms');
+  if(asym){ keys.innerHTML='<span class="term" style="border-color:var(--indigo);color:var(--indigo)">🔑 Public key — locks</span><span class="term" style="border-color:var(--red);color:var(--red)">🗝️ Private key — unlocks</span>'; }
+  else{ keys.innerHTML='<span class="term" style="border-color:var(--teal);color:var(--teal)">🔑 One shared secret key</span>'; }
+  mount.appendChild(keys);
+  const inp=el('input'); inp.type='text'; inp.value=cfg.text||'Secret message'; inp.setAttribute('aria-label','Message to encrypt'); inp.style.cssText='width:100%;text-align:left;margin-top:10px';
+  const out=el('div','mline'); out.style.minHeight='32px'; out.innerHTML='<span class="muted">Type a message, then press Encrypt…</span>';
+  function shift(s,k){return s.replace(/[a-z]/gi,c=>{const base=c<='Z'?65:97;return String.fromCharCode((c.charCodeAt(0)-base+k+26)%26+base);});}
+  const K=asym?7:3;
+  const row=el('div','btnrow');
+  const enc=el('button','btn solid',asym?'🔑 Encrypt with PUBLIC key':'🔒 Encrypt'); enc.type='button';
+  const dec=el('button','btn',asym?'🗝️ Decrypt with PRIVATE key':'🔓 Decrypt'); dec.type='button';
+  let busy=false;
+  enc.addEventListener('click',()=>{
+    if(busy)return; const plain=inp.value; const cipher=shift(plain,K);
+    // per-character scramble animation
+    busy=true; let i=0; blip(500);
+    (function step(){ if(i<=cipher.length){ out.innerHTML='<b>Ciphertext:</b> <span style="color:var(--red);font-family:var(--mono)">'+esc(cipher.slice(0,i))+'</span><span class="muted">'+esc(plain.slice(i))+'</span>'; i++; setTimeout(step,26); } else { out.innerHTML='<b>Ciphertext:</b> <span style="color:var(--red);font-family:var(--mono)">'+esc(cipher)+'</span> 🔒 <span class="muted">— unreadable without the key</span>'; busy=false; } })();
+  });
+  dec.addEventListener('click',()=>{ if(busy)return; out.innerHTML='<b>Plaintext:</b> <span style="color:var(--green);font-family:var(--mono)">'+esc(inp.value)+'</span> ✅ <span class="muted">— '+(asym?'only the private key could open it':'unlocked with the shared key')+'</span>'; blip(700); });
+  row.appendChild(enc); row.appendChild(dec);
+  mount.appendChild(inp); mount.appendChild(out); mount.appendChild(row);
+  if(asym) mount.appendChild(el('div','note info','🔁 Anyone can lock a message with your <b>public</b> key, but only your <b>private</b> key can open it — perfect for secure key exchange &amp; identity.'));
+};
+
+/* ---------- UI COMPARE (good vs bad) ---------- */
+BUILDERS.uiCompare=function(mount){
+  let show='bad';
+  const row=el('div'); row.style.cssText='display:flex;gap:8px;justify-content:center;margin-bottom:12px;flex-wrap:wrap';
+  const bBad=el('button','btn mini','😖 Bad UI'), bGood=el('button','btn mini','😍 Good UI');
+  bBad.type='button'; bGood.type='button'; row.appendChild(bBad); row.appendChild(bGood);
+  const phone=el('div'); phone.style.cssText='display:flex;justify-content:center;margin:6px 0';
+  const notes=el('div','note');
+  function bad(){
+    return '<svg viewBox="0 0 170 280" style="width:170px" role="img" aria-label="A cluttered, confusing app screen">'+
+      '<rect x="5" y="5" width="160" height="270" rx="18" fill="#FFE9A8" stroke="#1C2434" stroke-width="3"/>'+
+      '<rect x="12" y="14" width="146" height="20" rx="3" fill="#E0457B"/><text x="85" y="29" text-anchor="middle" font-size="9" fill="#fff" font-family="cursive">!! FOOD APP !! CLICK NOW !!</text>'+
+      '<rect x="12" y="38" width="70" height="16" rx="2" fill="#22C1D6"/><rect x="86" y="38" width="72" height="16" rx="8" fill="#7A2BD6"/>'+
+      '<rect x="12" y="58" width="46" height="16" rx="2" fill="#E0457B"/><rect x="62" y="58" width="46" height="16" rx="9" fill="#3BD62B"/><rect x="112" y="58" width="46" height="16" rx="2" fill="#FF7A00"/>'+
+      '<text x="16" y="86" font-size="7" fill="#7A2BD6" font-family="cursive">tiny writing nobody can read at all</text>'+
+      '<text x="16" y="96" font-size="7" fill="#E0457B" font-family="monospace">more tiny writing here too ok</text>'+
+      '<rect x="12" y="104" width="146" height="56" rx="2" fill="#3BD62B"/><text x="85" y="136" text-anchor="middle" font-size="11" fill="#E0457B" font-family="cursive">CLICK HERE MAYBE?</text>'+
+      '<rect x="12" y="166" width="34" height="30" rx="2" fill="#7A2BD6"/><rect x="50" y="166" width="34" height="30" rx="15" fill="#FF7A00"/><rect x="88" y="166" width="34" height="30" rx="2" fill="#22C1D6"/><rect x="126" y="166" width="32" height="30" rx="15" fill="#E0457B"/>'+
+      '<text x="16" y="214" font-size="8" fill="#1C2434" font-family="cursive">and even more text down here</text>'+
+      '<rect x="12" y="222" width="146" height="14" rx="7" fill="#FF7A00"/><rect x="12" y="240" width="146" height="14" rx="2" fill="#22C1D6"/><rect x="12" y="258" width="146" height="12" rx="6" fill="#7A2BD6"/>'+
+      '</svg>';
+  }
+  function good(){
+    return '<svg viewBox="0 0 170 280" style="width:170px" role="img" aria-label="A clean, simple app screen">'+
+      '<rect x="5" y="5" width="160" height="270" rx="18" fill="#FBF9F3" stroke="#1C2434" stroke-width="3"/>'+
+      '<rect x="20" y="22" width="130" height="26" rx="7" fill="#2C7A3E"/><text x="85" y="39" text-anchor="middle" font-size="11" fill="#fff" font-family="Baloo 2,sans-serif">🍎 Zero Hunger</text>'+
+      '<circle cx="85" cy="104" r="34" fill="#E7F4EA" stroke="#1C2434" stroke-width="2.4"/><text x="85" y="116" text-anchor="middle" font-size="30">🍲</text>'+
+      '<text x="85" y="158" text-anchor="middle" font-size="12" font-family="Baloo 2,sans-serif" fill="#1C2434">Share a meal</text>'+
+      '<text x="85" y="176" text-anchor="middle" font-size="9" font-family="IBM Plex Sans,sans-serif" fill="#5C6478">Help someone near you today</text>'+
+      '<rect x="26" y="196" width="118" height="34" rx="17" fill="#2C7A3E"/><text x="85" y="218" text-anchor="middle" font-size="12" fill="#fff" font-family="Baloo 2,sans-serif">Donate</text>'+
+      '<rect x="26" y="238" width="118" height="30" rx="15" fill="#fff" stroke="#1C2434" stroke-width="2.4"/><text x="85" y="258" text-anchor="middle" font-size="11" fill="#1C2434" font-family="Baloo 2,sans-serif">Learn more</text>'+
+      '</svg>';
+  }
+  function render(){
+    bBad.classList.toggle('solid',show==='bad'); bGood.classList.toggle('solid',show==='good');
+    phone.innerHTML = show==='bad' ? bad() : good();
+    notes.className = show==='bad' ? 'note warn' : 'note good';
+    notes.innerHTML = show==='bad'
+      ? '😖 <b>Too much of everything!</b> Six colours, three fonts, tiny writing, buttons everywhere — the user does not know where to look or what to press.'
+      : '😍 <b>Simple wins.</b> One main colour, one clear title, one big obvious button. The user knows <b>exactly</b> what to do.';
+  }
+  bBad.addEventListener('click',()=>{show='bad';render();blip(360);});
+  bGood.addEventListener('click',()=>{show='good';render();blip(700);});
+  render();
+  mount.appendChild(row); mount.appendChild(phone); mount.appendChild(notes);
+  mount.appendChild(el('div','note info','🧠 <b>Ask yourself:</b> if a friend opened this for 3 seconds, would they know what to do? If not — make it <b>simpler</b>.'));
+};
+
+/* ---------- ⭐ 60-30-10 COLOUR LAB ---------- */
+BUILDERS.colourLab=function(mount){
+  const PALETTES=[
+    {n:'Green',  a:'#2C7A3E', b:'#E7F4EA', c:'#DE8A22'},
+    {n:'Blue',   a:'#1D5B9E', b:'#E7F0FA', c:'#D85A30'},
+    {n:'Purple', a:'#463A9C', b:'#ECEAFB', c:'#1D9E75'},
+    {n:'Warm',   a:'#B02A2A', b:'#FBF0DA', c:'#0F6E56'}
+  ];
+  let pi=0, p60=60, p30=30;
+  const pal=el('div'); pal.style.cssText='display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:12px';
+  PALETTES.forEach((P,i)=>{ const b=el('button','btn mini',P.n); b.type='button';
+    b.addEventListener('click',()=>{pi=i;render();blip(600);}); pal.appendChild(b); });
+  const stage=el('div'); stage.style.cssText='display:flex;gap:20px;flex-wrap:wrap;justify-content:center;align-items:flex-start';
+  const phone=el('div'); const barWrap=el('div'); barWrap.style.cssText='min-width:min(280px,90vw)';
+  const bar=el('div'); bar.style.cssText='display:flex;height:34px;border:2px solid var(--ink);border-radius:9px;overflow:hidden;box-shadow:var(--shadow-xs);margin-bottom:10px';
+  const readout=el('div'); readout.style.cssText='display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px';
+  const c60=el('span','chip'), c30=el('span','chip'), c10=el('span','chip');
+  readout.appendChild(c60); readout.appendChild(c30); readout.appendChild(c10);
+  const fb=el('div','fb neutral');
+  function slider(lab,val,onch){
+    const w=el('div'); w.style.cssText='display:flex;gap:10px;align-items:center;margin:6px 0';
+    const l=el('span'); l.style.cssText='min-width:120px;font-weight:600;font-size:14px'; l.textContent=lab;
+    const r=el('input'); r.type='range'; r.min=10; r.max=80; r.value=val; r.style.flex='1 1 100px';
+    r.setAttribute('aria-label',lab);
+    r.addEventListener('input',()=>onch(+r.value));
+    w.appendChild(l); w.appendChild(r); return {w,r};
+  }
+  const s1=slider('Main colour %',p60,v=>{p60=v; if(p60+p30>95)p30=95-p60; s2.r.value=p30; render();});
+  const s2=slider('Second colour %',p30,v=>{p30=v; if(p60+p30>95)p60=95-p30; s1.r.value=p60; render();});
+  function render(){
+    const P=PALETTES[pi]; const p10=Math.max(0,100-p60-p30);
+    [...pal.children].forEach((b,i)=>b.classList.toggle('solid',i===pi));
+    bar.innerHTML='<div style="width:'+p60+'%;background:'+P.a+'"></div>'+
+                  '<div style="width:'+p30+'%;background:'+P.b+'"></div>'+
+                  '<div style="width:'+p10+'%;background:'+P.c+'"></div>';
+    c60.innerHTML='<span style="display:inline-block;width:12px;height:12px;border:1.5px solid var(--ink);background:'+P.a+';border-radius:3px"></span> Main '+p60+'%';
+    c30.innerHTML='<span style="display:inline-block;width:12px;height:12px;border:1.5px solid var(--ink);background:'+P.b+';border-radius:3px"></span> Second '+p30+'%';
+    c10.innerHTML='<span style="display:inline-block;width:12px;height:12px;border:1.5px solid var(--ink);background:'+P.c+';border-radius:3px"></span> Accent '+p10+'%';
+    // phone preview: header height scales with 60, body panel with 30, accent button with 10
+    const hH=Math.round(30+p60*0.9), bH=Math.round(20+p30*1.6), aH=Math.max(14,Math.round(p10*1.4));
+    phone.innerHTML='<svg viewBox="0 0 170 280" style="width:168px" role="img" aria-label="App preview with the chosen colours">'+
+      '<rect x="5" y="5" width="160" height="270" rx="18" fill="#fff" stroke="#1C2434" stroke-width="3"/>'+
+      '<rect x="12" y="12" width="146" height="'+hH+'" rx="9" fill="'+P.a+'"/>'+
+      '<text x="85" y="'+(12+hH/2+5)+'" text-anchor="middle" font-size="12" fill="#fff" font-family="Baloo 2,sans-serif">🍎 Zero Hunger</text>'+
+      '<rect x="12" y="'+(20+hH)+'" width="146" height="'+bH+'" rx="9" fill="'+P.b+'" stroke="#1C2434" stroke-width="1.6"/>'+
+      '<text x="85" y="'+(20+hH+bH/2+4)+'" text-anchor="middle" font-size="10" fill="#1C2434" font-family="IBM Plex Sans,sans-serif">Share a meal today</text>'+
+      '<rect x="36" y="'+(30+hH+bH)+'" width="98" height="'+aH+'" rx="'+(aH/2)+'" fill="'+P.c+'"/>'+
+      '<text x="85" y="'+(30+hH+bH+aH/2+4)+'" text-anchor="middle" font-size="'+Math.min(11,aH*0.55)+'" fill="#fff" font-family="Baloo 2,sans-serif">Donate</text>'+
+      '</svg>';
+    const near = Math.abs(p60-60)<=7 && Math.abs(p30-30)<=7;
+    fb.className='fb '+(near?'ok':'neutral');
+    fb.innerHTML = near
+      ? '🎯 <b>Perfect balance!</b> That is the 60-30-10 rule — it just looks right, doesn’t it?'
+      : (p60>75 ? '😵 Too much of the main colour — it feels heavy.'
+         : p10>35 ? '🌈 Way too much accent colour! The accent should be a small pop, not the whole app.'
+         : 'Move the sliders towards <b>60</b> and <b>30</b> and watch it click into place…');
+    if(near) blip(760);
+  }
+  barWrap.appendChild(bar); barWrap.appendChild(readout); barWrap.appendChild(s1.w); barWrap.appendChild(s2.w); barWrap.appendChild(fb);
+  stage.appendChild(phone); stage.appendChild(barWrap);
+  mount.appendChild(pal); mount.appendChild(stage);
+  mount.appendChild(el('div','note info','🎨 <b>60% main</b> sets the mood · <b>30% second</b> supports it · <b>10% accent</b> makes the important button <b>pop</b>. Try 90/5/5 and see how ugly it gets! 😄'));
+  render();
+};
+
+/* ---------- ⭐ ENVELOPE VARIABLE MACHINE ---------- */
+BUILDERS.envelopeVar=function(mount){
+  let name='userName', value='Sara', open=false, busy=false;
+  const top=el('div'); top.style.cssText='display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-bottom:12px';
+  function field(lab,val,ph,onch){
+    const w=el('div'); w.style.cssText='display:flex;flex-direction:column;gap:4px';
+    const l=el('label'); l.style.cssText='font-size:12.5px;font-weight:600;color:var(--muted)'; l.textContent=lab;
+    const i=el('input'); i.type='text'; i.value=val; i.placeholder=ph; i.maxLength=14;
+    i.style.cssText='width:min(160px,44vw);text-align:left'; i.setAttribute('aria-label',lab);
+    i.addEventListener('input',()=>{onch(i.value);});
+    w.appendChild(l); w.appendChild(i); return w;
+  }
+  top.appendChild(field('🏷️ Name on the envelope','userName','name',v=>{name=v||'userName';render();}));
+  top.appendChild(field('📥 Value inside','Sara','value',v=>{value=v||'?';render();}));
+  const env=el('div'); env.style.cssText='display:flex;justify-content:center;margin:8px 0';
+  const code=el('pre','code'); code.style.margin='10px 0';
+  const out=el('div'); out.style.cssText='border:2px solid var(--ink);border-radius:12px;background:#fff;padding:12px;box-shadow:var(--shadow-xs);min-height:74px;display:flex;flex-direction:column;gap:7px';
+  const fb=el('div','fb neutral'); fb.style.textAlign='center';
+  function envSVG(){
+    const flap = open ? '<path d="M10 22 L85 22 L85 26 L10 26 Z" fill="#DE8A22"/>' :
+                        '<path d="M10 22 L85 62 L160 22 Z" fill="#FBF0DA" stroke="#1C2434" stroke-width="2.4" stroke-linejoin="round"/>';
+    const val = open ? '<rect x="42" y="8" width="86" height="34" rx="6" fill="#fff" stroke="#1C2434" stroke-width="2.4"/><text x="85" y="31" text-anchor="middle" font-size="15" font-family="Baloo 2,sans-serif" fill="#1C2434">'+esc(value)+'</text>' : '';
+    return '<svg viewBox="0 0 170 120" style="width:190px" role="img" aria-label="An envelope labelled '+esc(name)+'">'+
+      val+
+      '<rect x="10" y="22" width="150" height="80" rx="7" fill="#FBF0DA" stroke="#1C2434" stroke-width="2.8"/>'+
+      flap+
+      '<rect x="26" y="70" width="118" height="22" rx="5" fill="#fff" stroke="#1C2434" stroke-width="2"/>'+
+      '<text x="85" y="86" text-anchor="middle" font-size="12" font-family="IBM Plex Mono,monospace" fill="#1C2434">'+esc(name)+'</text>'+
+      '</svg>';
+  }
+  function render(){
+    env.innerHTML=envSVG();
+    code.textContent =
+      'set ['+name+'] to "'+value+'"\n\n'+
+      'say "Hello, " + '+name+'\n'+
+      'say name+", you have 3 tasks"\n'.replace('name+',name+' + ')+
+      'say "Bye " + '+name;
+  }
+  function run(){
+    if(busy)return; busy=true; open=true; render(); out.innerHTML=''; fb.className='fb neutral';
+    const lines=[
+      {t:'Hello, '+value},
+      {t:value+', you have 3 tasks'},
+      {t:'Bye '+value}
+    ];
+    let i=0;
+    (function step(){
+      if(i<lines.length){
+        const b=el('div'); b.style.cssText='border:2px solid var(--ink);border-radius:9px;padding:7px 11px;background:var(--green-l);font-size:15px';
+        b.innerHTML='💬 '+esc(lines[i].t);
+        out.appendChild(b); blip(600+i*60); i++; setTimeout(step,750);
+      } else {
+        busy=false; fb.className='fb ok';
+        fb.innerHTML='✅ The program used <span class="mono">'+esc(name)+'</span> <b>three times</b> — and each time it opened the envelope and used “<b>'+esc(value)+'</b>”.';
+        celebrate();
+      }
+    })();
+  }
+  const row=el('div','btnrow'); row.style.justifyContent='center';
+  const rb=el('button','btn solid','▶ Run the program'); rb.type='button'; rb.addEventListener('click',run);
+  const cb=el('button','btn mini','✉️ Close the envelope'); cb.type='button';
+  cb.addEventListener('click',()=>{ if(busy)return; open=!open; cb.textContent=open?'✉️ Close the envelope':'📂 Open the envelope'; render(); blip(500); });
+  const clr=el('button','btn mini','↺ Clear output'); clr.type='button'; clr.addEventListener('click',()=>{ if(!busy){out.innerHTML='';fb.textContent='';fb.className='fb neutral';} });
+  row.appendChild(rb); row.appendChild(cb); row.appendChild(clr);
+  const grid=el('div'); grid.style.cssText='display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;align-items:start';
+  const left=el('div'); left.appendChild(env); left.appendChild(code);
+  const right=el('div'); const oh=el('h4',null,'💬 What the program says'); oh.style.cssText='margin:0 0 6px;font-size:15px;color:var(--sfg)';
+  right.appendChild(oh); right.appendChild(out); right.appendChild(fb);
+  grid.appendChild(left); grid.appendChild(right);
+  mount.appendChild(top); mount.appendChild(grid); mount.appendChild(row);
+  mount.appendChild(el('div','note info','✉️ <b>Change the value and press Run again.</b> You only change it in <b>one</b> place — the envelope — and the whole program updates. That is the superpower of a variable!'));
+  render();
+};
+
+/* ---------- FEEDBACK (star rating sim, no data collected) ---------- */
+BUILDERS.feedback=function(mount){
+  let rating=0; const arr=[];
+  const stars=el('div'); stars.style.cssText='display:flex;gap:8px;justify-content:center;margin:6px 0';
+  for(let i=1;i<=5;i++){ const s=el('button',null,'☆'); s.type='button'; s.style.cssText='background:none;border:none;font-size:40px;cursor:pointer;line-height:1;color:var(--amber-mid);padding:0';
+    s.setAttribute('aria-label',i+' star'+(i>1?'s':''));
+    s.addEventListener('click',()=>{ rating=i; arr.forEach((x,j)=>x.textContent=j<i?'★':'☆'); blip(580+i*40); });
+    arr.push(s); stars.appendChild(s); }
+  const ta=el('textarea'); ta.placeholder='Optional: one thing we could improve…'; ta.setAttribute('aria-label','Feedback comments');
+  ta.style.cssText='width:100%;min-height:60px;margin-top:12px;font-family:var(--body);font-size:15px;padding:10px;border:2px solid var(--ink);border-radius:10px;resize:vertical';
+  const row=el('div','btnrow'); row.style.justifyContent='center';
+  const sub=el('button','btn solid','Submit feedback'); sub.type='button';
+  const fb=el('div','fb ok'); fb.style.textAlign='center';
+  sub.addEventListener('click',()=>{ if(!rating){ toast('Tap a star first ⭐'); return; } fb.textContent='💛 Thank you! Your '+rating+'-star feedback stays on this device — nothing was sent.'; celebrate(); blip(760); });
+  row.appendChild(sub);
+  mount.appendChild(stars); mount.appendChild(ta); mount.appendChild(row); mount.appendChild(fb);
+  mount.appendChild(el('div','note info','🔒 This is a simulation — your rating &amp; comments are <b>not</b> collected, sent or stored anywhere.'));
+};
+
+/* ---------- BREAK TIMER (self-contained countdown scene) ---------- */
+BUILDERS.breakTimer=function(mount,cfg){
+  let total=(cfg.min||5)*60,left=total,run=false,iv=null;
+  const clock=el('div','tclock'); clock.style.fontSize='clamp(54px,16vw,128px)';
+  const ret=el('div','returnat');
+  const preset=el('div','tpreset');
+  [3,5,10,15].forEach(m=>{const b=el('button','btn mini',m+' min');b.type='button';b.addEventListener('click',()=>{stop();total=m*60;left=total;paint();});preset.appendChild(b);});
+  const row=el('div','btnrow'); row.style.justifyContent='center';
+  const start=el('button','btn solid','▶ Start'); start.type='button';
+  const pause=el('button','btn','⏸ Pause'); pause.type='button';
+  const reset=el('button','btn','↺ Reset'); reset.type='button';
+  const full=el('button','btn','⛶ Fullscreen'); full.type='button';
+  row.appendChild(start);row.appendChild(pause);row.appendChild(reset);row.appendChild(full);
+  function fmtL(s){s=Math.max(0,Math.round(s));return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');}
+  function paint(){clock.textContent=fmtL(left);const at=new Date(Date.now()+left*1000);ret.textContent=run?('⏰ Return at ~ '+at.getHours()+':'+String(at.getMinutes()).padStart(2,'0')):'Set a time and press Start';}
+  function startT(){if(run)return;run=true;const t0=Date.now(),base=left;iv=setInterval(()=>{left=base-(Date.now()-t0)/1000;if(left<=0){left=0;stop();blip(880);toast('⏰ Break over — welcome back!','ok');}paint();},250);}
+  function stop(){run=false;clearInterval(iv);}
+  start.addEventListener('click',startT);
+  pause.addEventListener('click',stop);
+  reset.addEventListener('click',()=>{stop();left=total;paint();});
+  full.addEventListener('click',()=>{const box=mount.closest('.breakbox')||mount;(box.requestFullscreen||box.webkitRequestFullscreen||function(){}).call(box);});
+  mount.appendChild(clock);mount.appendChild(ret);mount.appendChild(preset);mount.appendChild(row);
+  paint();
+  node_reset(mount,()=>{stop();left=total;paint();});
+};
+
+/* ---------- QUIZ ---------- */
+const KB=['A','B','C','D','E'];
+BUILDERS.quiz=function(mount,cfg,node){
+  // cfg: {id, questions:[{q,choices,answer,explain}]}
+  const qid=cfg.id||('q'+Math.floor(scenes.indexOf(node.closest('.scene'))));
+  const state={answered:{},score:0,best:store.get(KEY_QUIZ,{})[qid]||null};
+  const quiz=el('div','quiz'); mount.appendChild(quiz);
+  cfg.questions.forEach((qq,qi)=>{
+    const q=el('div','q');
+    q.innerHTML='<div class="qt"><span class="qn">Q'+(qi+1)+'.</span>'+esc(qq.q)+'</div>';
+    const mc=el('div','mc');
+    qq.choices.forEach((ch,ci)=>{
+      const o=el('button','opt'); o.type='button';
+      o.innerHTML='<span class="kbd">'+KB[ci]+'</span><span>'+esc(ch)+'</span>';
+      o.addEventListener('click',()=>answer(qi,ci));
+      mc.appendChild(o);
+    });
+    const ex=el('div','explain');
+    q.appendChild(mc); q.appendChild(ex); quiz.appendChild(q);
+  });
+  const scoreBox=el('div','scorebox'); scoreBox.style.display='none';
+  scoreBox.innerHTML='<div class="ring"><span class="rv"></span></div><div class="big"></div><p class="muted" style="margin-top:6px"></p><div class="btnrow" style="justify-content:center"><button class="btn mini" data-retry>↺ Retry missed</button><button class="btn mini" data-retryall>⟲ Restart quiz</button></div>';
+  mount.appendChild(scoreBox);
+  const qEls=$$('.q',quiz);
+
+  function answer(qi,ci){
+    if(state.answered[qi]!=null) return;
+    const qq=cfg.questions[qi]; state.answered[qi]=ci;
+    const opts=$$('.opt',qEls[qi]);
+    opts.forEach((o,i)=>{o.disabled=true; if(i===qq.answer)o.classList.add('right'); if(i===ci&&ci!==qq.answer)o.classList.add('wrong'); if(i!==qq.answer&&i!==ci)o.classList.add('dim');});
+    const ok=ci===qq.answer; if(ok)state.score++;
+    blip(ok?720:300);
+    if(ok && cfg.doneFlag && window.__game) window.__game.done(cfg.doneFlag);
+    const ex=$('.explain',qEls[qi]); ex.classList.add('show');
+    ex.innerHTML='<span class="'+(ok?'lab-ok':'lab-bad')+'">'+(ok?'✅ Correct.':'✖ Not quite.')+'</span> '+esc(qq.explain);
+    if(Object.keys(state.answered).length===cfg.questions.length) finish();
+  }
+  function finish(){
+    const n=cfg.questions.length, pct=Math.round(state.score/n*100);
+    scoreBox.style.display='block';
+    scoreBox.querySelector('.ring').style.setProperty('--p',pct);
+    scoreBox.querySelector('.rv').textContent=state.score+'/'+n;
+    scoreBox.querySelector('.big').textContent = pct===100?'Perfect! 🏆':pct>=60?'Nice work! 👍':'Keep practising 💪';
+    scoreBox.querySelector('.muted').textContent='You scored '+pct+'%.'+(state.best!=null?' Best: '+state.best+'%.':'');
+    const best=store.get(KEY_QUIZ,{}); if(state.best==null||pct>state.best){best[qid]=pct;store.set(KEY_QUIZ,best);state.best=pct;}
+    if(pct===100) celebrate();
+    scoreBox.scrollIntoView({behavior:'smooth',block:'nearest'});
+  }
+  scoreBox.addEventListener('click',e=>{
+    if(e.target.hasAttribute('data-retryall')){ hardReset(true); }
+    else if(e.target.hasAttribute('data-retry')){ hardReset(false); }
+  });
+  function hardReset(all){
+    cfg.questions.forEach((qq,qi)=>{
+      if(!all && state.answered[qi]===qq.answer) return; // keep correct
+      delete state.answered[qi];
+      const q=qEls[qi];
+      $$('.opt',q).forEach(o=>{o.disabled=false;o.classList.remove('right','wrong','dim');});
+      $('.explain',q).classList.remove('show');
+    });
+    state.score=Object.keys(state.answered).reduce((a,qi)=>a+(state.answered[qi]===cfg.questions[qi].answer?1:0),0);
+    scoreBox.style.display='none';
+  }
+  node._reset=()=>hardReset(true);
+};
+
+/* ============================================================
+   FAKEBANK GAME MODULE (safe, local, fictional — never contacts a host)
+   ============================================================ */
+const GAME={
+  progress:{t1:false,t2:false,t3:false,t4:false},
+  accountNo:'8881', holder:'Jean Paul', startBal:3250.00, balance:3250.00,
+  discovered:false, hacked:false,
+  tx:[{d:'Salary — Acme Corp',a:1500.00},{d:'Grocery Mart',a:-42.50},{d:'Coffee Shop',a:-6.25}],
+  done(f){ if(this.progress[f])return; this.progress[f]=true; paintHud(); toast('✅ Task '+f.slice(1)+' complete','ok'); blip(760); if(this.allDone()){celebrate();toast('🏆 All 4 tasks complete!','ok');} },
+  allDone(){ return this.progress.t1&&this.progress.t2&&this.progress.t3&&this.progress.t4; },
+  restart(){
+    this.progress={t1:false,t2:false,t3:false,t4:false}; this.balance=this.startBal; this.discovered=false; this.hacked=false;
+    $$('.scene[data-sec="6"] [data-act]').forEach(n=>{ n._init=false; const m=$('[data-mount]',n); if(m)m.innerHTML=''; else if(n.getAttribute('data-act')==='gameHud')n.innerHTML=''; });
+    paintHud();
+    const sc=scenes[cur]; if(sc&&sc.getAttribute('data-sec')==='6')initSceneActivities(sc);
+    toast('↺ Lab restarted','ok');
+    const idx=indexOfTitle('FakeBank Lab — Ethics'); if(idx>=0)go(idx);
+  }
+};
+window.__game=GAME;
+function indexOfTitle(t){ for(let i=0;i<scenes.length;i++){ if(scenes[i].getAttribute('data-title')===t) return i; } return -1; }
+function paintHud(){ $$('.gamehud').forEach(renderHud); }
+function renderHud(h){
+  h.innerHTML='';
+  [['t1','1'],['t2','2'],['t3','3'],['t4','4']].forEach(pair=>{
+    h.appendChild(el('div','taskpill'+(GAME.progress[pair[0]]?' done':''),(GAME.progress[pair[0]]?'✅':'⬜')+' Task '+pair[1]));
+  });
+  const rb=el('button','btn mini restart','↺ Restart lab'); rb.type='button';
+  rb.addEventListener('click',()=>GAME.restart()); h.appendChild(rb);
+}
+BUILDERS.gameHud=function(mount){ const h=el('div','gamehud'); mount.appendChild(h); renderHud(h); };
+
+/* reusable "type the answer" box */
+function makeAnswer(cfg){
+  const box=el('div','lab'); box.style.marginTop='16px'; box.style.borderColor='var(--sfg)';
+  box.appendChild(el('h3',null,'<span class="tag">ANSWER</span> '+cfg.q));
+  const row=el('div','btnrow');
+  const inp=el('input'); inp.type='text'; inp.placeholder='Type your answer…'; inp.setAttribute('aria-label',(cfg.q||'').replace(/<[^>]+>/g,'')); inp.style.width='min(240px,60vw)'; inp.style.textAlign='left';
+  const sub=el('button','btn solid','Submit'); sub.type='button';
+  const hintB=el('button','btn mini','💡 Hint'); hintB.type='button';
+  const fb=el('div','fb neutral'); let hi=0;
+  function norm(s){ return (s||'').trim().toLowerCase().replace(/^https?:\/\/fakebank\.thm\/?/,'').replace(/^\/+/,''); }
+  function check(){
+    const v=norm(inp.value);
+    const ok=cfg.accept.some(a=>{const aa=(a||'').toLowerCase().replace(/^\/+/,'');return v===aa;});
+    if(ok){ fb.className='fb ok'; fb.textContent=cfg.success||'✅ Correct!'; inp.disabled=true; sub.disabled=true; blip(760); celebrate();
+      if(cfg.after){ const nn=el('div','note info'); nn.innerHTML=cfg.after; box.appendChild(nn); }
+      if(cfg.doneFlag&&window.__game) window.__game.done(cfg.doneFlag);
+    } else { fb.className='fb bad'; fb.textContent='❌ Not quite — try again.'+(cfg.hints?' Tap Hint if stuck.':''); blip(280); }
+  }
+  sub.addEventListener('click',check);
+  inp.addEventListener('keydown',e=>{ if(e.key==='Enter'){e.preventDefault();check();} });
+  hintB.addEventListener('click',()=>{ if(cfg.hints&&cfg.hints[hi]){ hint(cfg.hints[hi]); hi=Math.min(hi+1,cfg.hints.length-1); } });
+  row.appendChild(inp); row.appendChild(sub); if(cfg.hints)row.appendChild(hintB);
+  box.appendChild(row); box.appendChild(fb);
+  return box;
+}
+
+/* Ethics gate */
+BUILDERS.ethics=function(mount){
+  const lbl=el('label','ethics-check');
+  const cb=el('input'); cb.type='checkbox'; cb.id='ethicsCb';
+  lbl.appendChild(cb); lbl.appendChild(el('span',null,'I understand and will only practise in authorized labs.'));
+  const row=el('div','btnrow'); row.style.marginTop='12px';
+  const btn=el('button','btn solid','🔓 Enter the lab →'); btn.type='button'; btn.disabled=true;
+  cb.addEventListener('change',()=>{ btn.disabled=!cb.checked; if(cb.checked)blip(660); });
+  btn.addEventListener('click',()=>{ toast('🔓 Lab access granted — stay ethical!','ok'); next(); });
+  row.appendChild(btn); mount.appendChild(lbl); mount.appendChild(row);
+};
+
+/* Task 2 — simulated desktop + FakeBank account page */
+BUILDERS.bankPage=function(mount,cfg){
+  const dt=el('div','desktop');
+  dt.innerHTML='<div class="wall-ic">'+
+      '<button data-open="browser" aria-label="Open browser">🌐<div class="lbl">Browser</div></button>'+
+      '<button data-open="term" aria-label="Terminal">▟<div class="lbl">Terminal</div></button></div>';
+  const win=el('div','win');
+  win.innerHTML='<div class="titlebar"><span class="dots"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i></span> FakeBank — Secure Online Banking <span style="margin-inline-start:auto;cursor:pointer" data-min title="Minimize">—</span> <span style="cursor:pointer" data-close title="Close">✕</span></div>'+
+    '<div class="urlbar"><span class="lock">🔒</span><span class="u">http://fakebank.thm/account</span></div>'+
+    '<div class="page"><div class="fb-top"><span class="logo">🏦 FakeBank</span><span class="fb-nav"><span>Home</span><span>Accounts</span><span>Transfer</span><span>Help</span></span></div>'+
+    '<div class="fb-body"><div class="fb-acct">'+
+      '<div class="rowln"><span>Account holder</span><b>'+GAME.holder+'</b></div>'+
+      '<div class="rowln"><span>Account number</span><b>'+GAME.accountNo+'</b></div>'+
+      '<div class="rowln"><span>Current balance</span><b class="fb-bal" data-bal>$'+GAME.balance.toFixed(2)+'</b></div>'+
+      '<div class="fb-sec">🔒 Security status: connection encrypted</div></div>'+
+      '<div class="fb-tx"><h4>Recent transactions</h4>'+GAME.tx.map(t=>'<div class="txln"><span>'+esc(t.d)+'</span><span class="'+(t.a<0?'neg':'pos')+'">'+(t.a<0?'-':'+')+'$'+Math.abs(t.a).toFixed(2)+'</span></div>').join('')+'</div>'+
+      '</div></div>';
+  dt.appendChild(win);
+  const bar=el('div','taskbar'); bar.innerHTML='<button class="start">▚ Start</button><button class="tb-ic" data-open="browser" aria-label="FakeBank browser">🌐</button><span class="clock">fakebank-lab</span>';
+  dt.appendChild(bar);
+  win.querySelector('[data-min]').addEventListener('click',()=>win.classList.add('minimized'));
+  win.querySelector('[data-close]').addEventListener('click',()=>{win.classList.add('minimized');toast('Reopen from the taskbar 🌐');});
+  dt.querySelectorAll('[data-open="browser"]').forEach(b=>b.addEventListener('click',()=>win.classList.remove('minimized')));
+  dt.querySelector('[data-open="term"]').addEventListener('click',()=>toast('💡 The terminal opens in Task 3'));
+  mount.appendChild(dt);
+  mount.appendChild(makeAnswer({q:'🔎 What is the FakeBank account number?',accept:['8881'],hints:['Look at the account details in the browser window.','Find the four-digit number next to “Account number”.'],success:'✅ Correct — account #8881. You found it by inspecting the visible page, just like an analyst.',doneFlag:'t2'}));
+};
+
+/* Task 3 — safe terminal simulator */
+BUILDERS.terminal=function(mount,cfg){
+  const term=el('div','terminal');
+  term.innerHTML='<div class="tbar"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i> &nbsp;analyst@lab: ~ — safe simulation</div><div class="screen" role="log" aria-live="polite"></div>';
+  const screen=$('.screen',term);
+  const inln=el('div','inln'); inln.innerHTML='<span class="ps">analyst@lab:~$</span>';
+  const inp=el('input'); inp.type='text'; inp.setAttribute('aria-label','terminal command input'); inp.autocomplete='off'; inp.spellcheck=false;
+  inln.appendChild(inp); term.appendChild(inln); mount.appendChild(term);
+  const hist=[]; let hp=0, busy=false;
+  const ans=makeAnswer({q:'DIRB found <span class="mono">/images</span>. What is the <b>other</b> hidden URL?',accept:['bank-transfer'],hints:['Look at the line marked CODE:200.','It ends with <span class="mono">/bank-transfer</span>.'],success:'✅ Yes — /bank-transfer. Hidden does not mean secure!',doneFlag:'t3',after:'<b>Security through obscurity:</b> hiding a page is like hiding a house key under the doormat — it does <b>not</b> make the house secure. Real security needs authorization.'});
+  function pr(html,cls){ const l=el('div',cls||null,html); screen.appendChild(l); screen.scrollTop=screen.scrollHeight; }
+  function help(){ pr('Available (safe, simulated) commands:','dim'); ['help — this list','clear — clear the screen','pwd — print working directory','whoami — current user','echo &lt;text&gt; — print text','dirb http://fakebank.thm — scan for hidden pages'].forEach(l=>pr('&nbsp;&nbsp;'+l,'dim')); }
+  pr('FakeBank practice terminal — type <span class="found">help</span> to begin.','dim');
+  function run(raw){
+    const c=raw.trim(); if(!c)return; pr('<span class="ps" style="color:#7CE0A0">analyst@lab:~$</span> <span class="cmd">'+esc(c)+'</span>'); hist.push(c); hp=hist.length;
+    if(/[;&|`$><]|&&|\|\|/.test(c)){ pr('Real commands and external targets are disabled in this educational simulation.','err'); return; }
+    const parts=c.split(/\s+/), cmd=parts[0].toLowerCase();
+    if(cmd==='help'){help();return;}
+    if(cmd==='clear'){screen.innerHTML='';return;}
+    if(cmd==='pwd'){pr('/home/analyst/lab','ok');return;}
+    if(cmd==='whoami'){pr('analyst','ok');return;}
+    if(cmd==='echo'){pr(esc(c.slice(4).trim()));return;}
+    if(['curl','wget','nmap','gobuster','ssh','ping','nc','netcat','telnet','ftp','sudo','rm','cat'].indexOf(cmd)>=0){ pr('Real commands and external targets are disabled in this educational simulation.','err'); return; }
+    if(cmd==='dirb'){
+      const target=(parts[1]||'').replace(/\/$/,'');
+      if(target!=='http://fakebank.thm'){ pr('This safe lab only allows the fictional target fakebank.thm.','err'); return; }
+      runDirb(); return;
+    }
+    pr('command not found: '+esc(cmd)+" — type 'help'.",'err');
+  }
+  function runDirb(){
+    busy=true; inp.disabled=true;
+    const lines=[['-----------------','dim'],['DIRB v2.22  (safe simulation)','dim'],['START_TIME: (simulated)','dim'],['URL_BASE: http://fakebank.thm/','dim'],['-----------------','dim'],['&nbsp;','dim'],['GENERATED WORDS: 4612','dim'],['&nbsp;','dim'],['---- Scanning URL: http://fakebank.thm/ ----','dim'],['+ http://fakebank.thm/images  (CODE:301)','ok'],['+ http://fakebank.thm/bank-transfer  (CODE:200)','found'],['&nbsp;','dim'],['-----------------','dim'],['END_TIME: (simulated)','dim'],['DOWNLOADED: 4612 — FOUND: 2','dim'],['-----------------','dim']];
+    let i=0;
+    (function step(){
+      if(i<lines.length){ pr(lines[i][0],lines[i][1]); i++; setTimeout(step,i<9?60:240); }
+      else{ busy=false; inp.disabled=false; try{inp.focus();}catch(e){}
+        pr('&nbsp;','dim'); pr('Scan complete. A hidden path was found. Remember: <span class="found">hidden ≠ secure</span>.','ok');
+        GAME.discovered=true;
+        if(!ans.parentNode){ mount.appendChild(ans); ans.scrollIntoView({behavior:'smooth',block:'nearest'}); }
+      }
+    })();
+  }
+  inp.addEventListener('keydown',e=>{
+    if(e.key==='Enter'&&!busy){ run(inp.value); inp.value=''; }
+    else if(e.key==='ArrowUp'){ if(hp>0){hp--;inp.value=hist[hp]||'';} e.preventDefault(); }
+    else if(e.key==='ArrowDown'){ if(hp<hist.length-1){hp++;inp.value=hist[hp]||'';}else{hp=hist.length;inp.value='';} e.preventDefault(); }
+  });
+  term.addEventListener('click',()=>{try{inp.focus();}catch(e){}});
+};
+
+/* Task 4 — admin transfer page */
+BUILDERS.transferPage=function(mount,cfg){
+  const box=el('div','xfer');
+  box.innerHTML='<div class="titlebar" style="background:var(--ink);color:#fff;font-family:var(--mono);font-size:12px;padding:6px 10px">🌐 http://fakebank.thm/bank-transfer</div>'+
+    '<div class="fb-warn-banner">⚠️ No login required · No role check · No authorization — anyone who finds this page can use it</div>'+
+    '<div class="xbody"><div class="fb-top" style="border-radius:8px"><span class="logo">🏦 FakeBank — Admin Transfer</span></div>'+
+    '<div class="field"><label>Destination account number</label><input type="text" data-acct placeholder="e.g. 8881" inputmode="numeric"></div>'+
+    '<div class="field"><label>Amount (USD)</label><input type="number" data-amt placeholder="e.g. 2000"></div>'+
+    '<div class="field"><label>Transaction description</label><input type="text" data-desc placeholder="(optional)"></div>'+
+    '<button class="btn solid" data-deposit>💸 Deposit Money</button>'+
+    '<div class="fb-fb fb neutral"></div>'+
+    '<div class="log"><b>Activity log</b><div data-log></div></div>'+
+    '<div class="flag" data-flag></div></div>';
+  mount.appendChild(box);
+  const acct=$('[data-acct]',box),amt=$('[data-amt]',box),desc=$('[data-desc]',box),fb=$('.fb-fb',box),logEl=$('[data-log]',box),flag=$('[data-flag]',box);
+  function log(t){ const l=el('div',null,'&raquo; '+esc(t)); logEl.appendChild(l); logEl.scrollTop=logEl.scrollHeight; }
+  log('Page loaded. No authentication was requested.');
+  const ans=makeAnswer({q:'🎉 What are the <b>green words</b> shown after the transfer?',accept:['bank-hacked'],hints:['Look at the big green box that appeared.','It reads BANK-HACKED.'],success:'✅ BANK-HACKED — challenge complete!',doneFlag:'t4',after:'<b>Why it worked:</b> the transfer endpoint never checked <b>who</b> you are or <b>whether you are allowed</b>. That missing <b>authorization</b> check is the real vulnerability.'});
+  $('[data-deposit]',box).addEventListener('click',()=>{
+    const a=(acct.value||'').trim(), n=parseFloat(amt.value);
+    if(a!==GAME.accountNo){ fb.className='fb-fb fb bad'; fb.textContent='Account not found.'; log('Rejected: account '+(a||'(empty)')+' not found.'); blip(280); return; }
+    if(!(n>=2000)){ fb.className='fb-fb fb bad'; fb.textContent='Deposit at least $2,000 to complete this challenge.'; log('Rejected: amount below $2,000.'); blip(280); return; }
+    GAME.balance+=n; GAME.hacked=true;
+    fb.className='fb-fb fb ok'; fb.textContent='✅ Transfer completed with no authorization check. New balance: $'+GAME.balance.toFixed(2)+'.';
+    log('SUCCESS: +$'+n.toFixed(2)+' to account '+a+(desc.value?' ('+desc.value+')':''));
+    flag.textContent='BANK-HACKED'; flag.classList.add('show');
+    // reflect on the account page balance if present
+    $$('[data-bal]').forEach(b=>b.textContent='$'+GAME.balance.toFixed(2));
+    blip(880); celebrate();
+    if(!ans.parentNode){ mount.appendChild(ans); ans.scrollIntoView({behavior:'smooth',block:'nearest'}); }
+  });
+};
+
+/* Debrief — secure redesign toggles */
+BUILDERS.secureRedesign=function(mount){
+  const controls=[
+    {t:'Require login (authentication)',ok:true},
+    {t:'Verify admin role on the server (authorization)',ok:true,key:true},
+    {t:'Add MFA for sensitive actions',ok:true},
+    {t:'Log every transaction',ok:true},
+    {t:'Alert on unusual deposits',ok:true},
+    {t:'Limit amount / rate limiting',ok:true},
+    {t:'Require a second approval',ok:true},
+    {t:'Hide the URL only',ok:false,ins:true}
+  ];
+  const on={};
+  controls.forEach((c,i)=>{
+    const r=el('div','switchrow');
+    r.innerHTML='<button class="switch" aria-checked="false" aria-label="'+esc(c.t)+'"></button><span class="sw-tx">'+esc(c.t)+(c.ins?' <small>⚠️ obscurity is not access control</small>':'')+'</span>';
+    const sw=$('.switch',r);
+    sw.addEventListener('click',()=>{
+      const v=sw.getAttribute('aria-checked')!=='true'; sw.setAttribute('aria-checked',v?'true':'false'); on[i]=v; r.dataset.on=v;
+      if(v&&c.ins){ r.classList.add('insufficient'); toast('⚠️ Hiding the URL is NOT real protection','bad'); blip(240); }
+      else{ r.classList.remove('insufficient'); if(v)blip(640); }
+      score();
+    });
+    mount.appendChild(r);
+  });
+  const fb=el('div','fb neutral'); mount.appendChild(fb);
+  function score(){
+    const good=controls.filter((c,i)=>on[i]&&c.ok).length;
+    const badOn=controls.some((c,i)=>on[i]&&c.ins);
+    const authz=on[1];
+    if(good>=5&&authz&&!badOn){ fb.className='fb ok'; fb.textContent='🎉 Secure! Server-side authorization + layered controls fixed it ('+good+' real controls).'; celebrate(); }
+    else if(badOn&&good<2){ fb.className='fb bad'; fb.textContent='“Hide the URL only” does not stop anyone who finds the page. Turn on REAL controls — start with server-side authorization.'; }
+    else{ fb.className='fb neutral'; fb.textContent=good+' real control(s) on'+(authz?'':' — the key one, server-side authorization, is still off')+'.'; }
+  }
+  mount.appendChild(el('div','note info','💡 The single most important fix is <b>server-side authorization</b>: the server must verify the user is allowed to perform each action.'));
+};
+
+/* ============================================================
+   FEEDBACK: sound (WebAudio), confetti, toast, hint
+   ============================================================ */
+let soundOn=store.get('cyber_sound',false), audioCtx=null;
+function blip(freq){
+  if(!soundOn) return;
+  try{ audioCtx=audioCtx||new (window.AudioContext||window.webkitAudioContext)();
+    const o=audioCtx.createOscillator(), g=audioCtx.createGain();
+    o.frequency.value=freq||600; o.type='sine'; o.connect(g); g.connect(audioCtx.destination);
+    g.gain.setValueAtTime(.0001,audioCtx.currentTime); g.gain.exponentialRampToValueAtTime(.12,audioCtx.currentTime+.01);
+    g.gain.exponentialRampToValueAtTime(.0001,audioCtx.currentTime+.18); o.start(); o.stop(audioCtx.currentTime+.2);
+  }catch(e){}
+}
+function toast(msg,kind){
+  const t=$('#toast'); t.textContent=msg; t.className='toast show'+(kind?' '+kind:'');
+  clearTimeout(toast._t); toast._t=setTimeout(()=>t.classList.remove('show'),2200);
+}
+/* confetti */
+const cv=$('#confetti'); let cx=cv.getContext('2d'), parts=[], raf=null;
+function sizeCanvas(){cv.width=innerWidth;cv.height=innerHeight;}
+addEventListener('resize',sizeCanvas); sizeCanvas();
+function celebrate(){
+  if(document.body.classList.contains('no-motion')||matchMedia('(prefers-reduced-motion:reduce)').matches){toast('🎉 Perfect!','ok');return;}
+  const colors=['#0F6E56','#D85A30','#534AB7','#FFE873','#149DAD','#D4537E'];
+  parts=[]; for(let i=0;i<130;i++)parts.push({x:innerWidth/2,y:innerHeight/3,vx:(((i*13)%20)-10)*.6,vy:-Math.abs(((i*7)%14))*.5-4,g:.16+((i%5)*.02),r:5+(i%6),c:colors[i%colors.length],rot:i,vr:((i%7)-3)*.2,life:0});
+  cv.classList.add('on'); if(raf)cancelAnimationFrame(raf); tick();
+  blip(880);setTimeout(()=>blip(1040),120);
+}
+function tick(){
+  cx.clearRect(0,0,cv.width,cv.height); let alive=false;
+  parts.forEach(p=>{p.life++;p.vy+=p.g;p.x+=p.vx;p.y+=p.vy;p.rot+=p.vr;if(p.y<cv.height+30&&p.life<160){alive=true;cx.save();cx.translate(p.x,p.y);cx.rotate(p.rot);cx.fillStyle=p.c;cx.fillRect(-p.r/2,-p.r/2,p.r,p.r*.6);cx.restore();}});
+  if(alive)raf=requestAnimationFrame(tick); else cv.classList.remove('on');
+}
+function hint(html){
+  const p=$('#hintPop'); p.innerHTML='<b>💡 Hint</b>'+html; p.classList.add('show');
+  clearTimeout(hint._t); hint._t=setTimeout(()=>p.classList.remove('show'),6000);
+}
+/* expose a couple for inline game code added later */
+window.__cyber={blip,toast,celebrate,hint,go:i=>go(i),next:()=>next(),prev:()=>prev(),idx:()=>cur,count:()=>scenes.length,el,esc,$,$$,BUILDERS};
+
+/* ============================================================
+   NAVIGATION: keyboard, swipe, buttons, modals, map, search, timer
+   ============================================================ */
+$('#prevBtn').addEventListener('click',prev);
+$('#nextBtn').addEventListener('click',next);
+
+function typing(e){const t=e.target;return t&&(t.tagName==='INPUT'||t.tagName==='TEXTAREA'||t.isContentEditable);}
+function inActivity(e){return e.target&&e.target.closest&&e.target.closest('[data-act],.terminal,[data-nokeys]');}
+document.addEventListener('keydown',e=>{
+  if(anyModalOpen()){ if(e.key==='Escape')closeModals(); return; }
+  if(e.key==='Escape'){ if($('#tBig').classList.contains('on')){$('#tBig').classList.remove('on');} return; }
+  if(typing(e)) return;
+  switch(e.key){
+    case 'ArrowRight': if(!inActivity(e)){e.preventDefault();next();} break;
+    case ' ': if(!inActivity(e)){e.preventDefault();next();} break;
+    case 'ArrowLeft': if(!inActivity(e)){e.preventDefault();prev();} break;
+    case 'Home': e.preventDefault(); go(0); break;
+    case 'End': e.preventDefault(); go(scenes.length-1); break;
+    case 'f': case 'F': toggleFull(); break;
+    case 'm': case 'M': openModal('mapModal'); break;
+    case 'q': case 'Q': jumpQuiz(); break;
+    case 't': case 'T': openModal('timerModal'); break;
+    case 'r': case 'R': resetActivity(); break;
+    case 'h': case 'H': showHint(); break;
+    case '/': e.preventDefault(); openModal('searchModal'); setTimeout(()=>$('#searchInput').focus(),50); break;
+  }
+});
+/* swipe */
+let tsx=0,tsy=0,tst=0;
+stage.addEventListener('touchstart',e=>{const t=e.changedTouches[0];tsx=t.clientX;tsy=t.clientY;tst=Date.now();},{passive:true});
+stage.addEventListener('touchend',e=>{
+  const t=e.changedTouches[0],dx=t.clientX-tsx,dy=t.clientY-tsy,dt=Date.now()-tst;
+  if(dt<600&&Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)*1.8){ if(e.target.closest('input[type=range],.terminal'))return; dx<0?next():prev(); }
+},{passive:true});
+
+/* modals */
+function openModal(id){ closeModals(); $('#'+id).classList.add('open'); }
+function anyModalOpen(){ return $$('.modal.open').length>0; }
+function closeModals(){ $$('.modal.open').forEach(m=>m.classList.remove('open')); }
+$$('.modal').forEach(m=>{ m.addEventListener('click',e=>{ if(e.target===m||e.target.hasAttribute('data-close'))closeModals(); }); });
+$('#tMap').addEventListener('click',()=>openModal('mapModal'));
+$('#tSearch').addEventListener('click',()=>{openModal('searchModal');setTimeout(()=>$('#searchInput').focus(),50);});
+$('#tTimer').addEventListener('click',()=>openModal('timerModal'));
+
+/* fullscreen */
+function toggleFull(){ const d=document.documentElement; if(!document.fullscreenElement){(d.requestFullscreen||d.webkitRequestFullscreen||function(){}).call(d);}else{(document.exitFullscreen||document.webkitExitFullscreen||function(){}).call(document);} }
+$('#tFull').addEventListener('click',toggleFull);
+
+/* sound + motion toggles */
+const tsnd=$('#tSound');
+function paintSound(){tsnd.classList.toggle('on',soundOn);tsnd.textContent=soundOn?'🔊':'🔈';tsnd.setAttribute('aria-pressed',soundOn);}
+tsnd.addEventListener('click',()=>{soundOn=!soundOn;store.set('cyber_sound',soundOn);paintSound();if(soundOn)blip(660);});
+paintSound();
+const tmot=$('#tMotion'); let noMotion=store.get('cyber_nomotion',false);
+function paintMotion(){document.body.classList.toggle('no-motion',noMotion);tmot.classList.toggle('on',noMotion);tmot.setAttribute('aria-pressed',noMotion);}
+tmot.addEventListener('click',()=>{noMotion=!noMotion;store.set('cyber_nomotion',noMotion);paintMotion();toast(noMotion?'🎞️ Reduced motion on':'🎞️ Motion on');});
+paintMotion();
+
+/* reset current activity (R) */
+function resetActivity(){
+  const sc=scenes[cur]; let did=false;
+  $$('[data-act]',sc).forEach(n=>{ if(n._reset){n._reset();did=true;} const rb=$$('.btn',n).find?null:null; });
+  // trigger any reset buttons present
+  $$('button',sc).forEach(b=>{ if(/reset|shuffle/i.test(b.textContent)&&b.offsetParent){/* leave manual */} });
+  toast(did?'↺ Activity reset':'Nothing to reset on this scene');
+}
+function showHint(){
+  const sc=scenes[cur]; const h=sc.getAttribute('data-hint');
+  if(h){hint(h);} else {hint('Look for the <b>badges</b>, <b>colored cards</b> and <b>Reveal</b> buttons — every scene teaches one clear idea. Use ← → to move.');}
+}
+function jumpQuiz(){
+  // jump to nearest quiz scene at/after current, else search all
+  for(let i=cur;i<scenes.length;i++){ if($('[data-act="quiz"]',scenes[i])){go(i);return;} }
+  for(let i=0;i<scenes.length;i++){ if($('[data-act="quiz"]',scenes[i])){go(i);return;} }
+  toast('No quiz found');
+}
+
+/* ---------- section map ---------- */
+function buildMap(){
+  const grid=$('#mapGrid'); grid.innerHTML='';
+  const bySec={};
+  scenes.forEach((s,i)=>{ const sec=sceneSection(i); (bySec[sec]=bySec[sec]||[]).push({i,title:s.getAttribute('data-title')||('Scene '+(i+1))}); });
+  Object.keys(bySec).map(Number).sort((a,b)=>a-b).forEach(sec=>{
+    const meta=SECTIONS[sec]||SECTIONS[0];
+    const wrap=el('div','mapsec');
+    wrap.innerHTML='<div class="msh"><span class="sw" style="background:'+meta.color+'"></span>'+meta.emoji+' '+esc(meta.label)+'</div>';
+    const links=el('div','maplinks');
+    bySec[sec].forEach(o=>{
+      const a=el('button','maplink'+(o.i===cur?' here':''),esc(o.title));
+      a.addEventListener('click',()=>{closeModals();go(o.i);});
+      links.appendChild(a);
+    });
+    wrap.appendChild(links); grid.appendChild(wrap);
+  });
+}
+
+/* ---------- search ---------- */
+const searchIndex=()=>scenes.map((s,i)=>({i,title:s.getAttribute('data-title')||'',sec:(SECTIONS[sceneSection(i)]||{}).label||'',text:(s.textContent||'').replace(/\s+/g,' ').slice(0,600)}));
+let IDX=[];
+$('#searchInput').addEventListener('input',function(){
+  const q=this.value.trim().toLowerCase(); const box=$('#searchRes'); box.innerHTML='';
+  if(!q){return;}
+  const hits=IDX.map(o=>{const t=(o.title+' '+o.sec+' '+o.text).toLowerCase();let s=0;q.split(/\s+/).forEach(w=>{if(o.title.toLowerCase().includes(w))s+=5;if(t.includes(w))s+=1;});return{o,s};}).filter(x=>x.s>0).sort((a,b)=>b.s-a.s).slice(0,12);
+  if(!hits.length){box.innerHTML='<p class="muted" style="font-size:14px">No matches. Try: CIA, integrity, lifecycle, vendor, chain of custody, hash, HTTPS, asymmetric.</p>';return;}
+  hits.forEach(({o})=>{const r=el('div','sr');r.innerHTML='<div class="st">'+esc(o.title)+'</div><div class="sm">'+esc(o.sec)+' · scene '+(o.i+1)+'</div>';r.addEventListener('click',()=>{closeModals();go(o.i);});box.appendChild(r);});
+});
+
+/* ---------- timer (presenter + break) ---------- */
+const timer={sec:300,left:300,run:false,iv:null};
+function fmt(s){s=Math.max(0,Math.round(s));return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');}
+function paintTimer(){
+  $('#tClock').textContent=fmt(timer.left); $('#tBigClock').textContent=fmt(timer.left);
+  const at=new Date(Date.now()+timer.left*1000);
+  const retxt=timer.run?('Return at ~ '+at.getHours()+':'+String(at.getMinutes()).padStart(2,'0')):'';
+  $('#returnAt').textContent=retxt; $('#tBigReturn').textContent=retxt;
+}
+function tStart(){ if(timer.run)return; timer.run=true; const t0=Date.now(),base=timer.left;
+  timer.iv=setInterval(()=>{ timer.left=base-(Date.now()-t0)/1000; if(timer.left<=0){timer.left=0;tStop();blip(880);toast('⏰ Time!','ok');} paintTimer(); },250); }
+function tStop(){ timer.run=false; clearInterval(timer.iv); }
+function tSet(min){ tStop(); timer.sec=min*60; timer.left=min*60; paintTimer(); }
+$('#tStart').addEventListener('click',()=>{tStart();});
+$('#tPause').addEventListener('click',tStop);
+$('#tReset').addEventListener('click',()=>{tStop();timer.left=timer.sec;paintTimer();});
+$$('.tpreset .btn').forEach(b=>b.addEventListener('click',()=>tSet(parseInt(b.dataset.min,10))));
+$('#tFullClock').addEventListener('click',()=>{$('#tBig').classList.add('on');closeModals();});
+$('#tBigClose').addEventListener('click',()=>$('#tBig').classList.remove('on'));
+paintTimer();
+
+/* ============================================================
+   BOOT
+   ============================================================ */
+function boot(){
+  collectScenes();
+  IDX=searchIndex();
+  buildMap();
+  // resume?
+  const saved=store.get(KEY_POS,0);
+  if(saved>0 && saved<scenes.length){
+    go(0,{silent:true});
+    setTimeout(()=>askResume(saved),400);
+  } else { go(0,{silent:true}); }
+  // rebuild map when opened (positions/here)
+  $('#tMap').addEventListener('click',buildMap);
+}
+function askResume(saved){
+  const t=$('#toast');
+  t.innerHTML='Resume where you left off? (scene '+(saved+1)+') &nbsp;<button class="btn mini" id="rsYes" style="margin-inline-start:6px">Resume</button> <button class="btn mini" id="rsNo">Start fresh</button>';
+  t.className='toast show'; t.style.pointerEvents='auto';
+  const done=()=>{t.classList.remove('show');t.style.pointerEvents='';};
+  $('#rsYes').addEventListener('click',()=>{go(saved);done();});
+  $('#rsNo').addEventListener('click',()=>{go(0);store.set(KEY_POS,0);done();});
+  clearTimeout(t._t2); t._t2=setTimeout(done,9000);
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
+})();
+</script>
+</body>
+</html>
