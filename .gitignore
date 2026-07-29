@@ -9,3 +9,8 @@ Thumbs.db
 # scratch files from build/inspection scripts
 _*.txt
 _*.js
+
+# private teaching guides — local only, never committed or deployed
+MY_PRIVATE_GUIDE.html
+MY_GUIDE_LESSON*.html
+MY_CHATBOT_GUIDE.html
