@@ -12,5 +12,5 @@ _*.js
 
 # private teaching guides — local only, never committed or deployed
 MY_PRIVATE_GUIDE.html
-MY_GUIDE_LESSON*.html
+MY_GUIDE_*.html
 MY_CHATBOT_GUIDE.html
