@@ -1,0 +1,439 @@
+<!doctype html>
+<!-- ============================================================
+     ALFREDO ACTIVITY — The Smart Device Command Center.
+     A standalone worksheet version of the FigJam board: students
+     place every card freely with NO right/wrong feedback, then the
+     answers are only marked once the teacher's password is entered.
+     Standalone · offline · no build step · nothing is sent anywhere.
+     ============================================================ -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<title>🎯 Alfredo Activity — The Smart Device Command Center</title>
+<meta name="description" content="The Smart Device Command Center: sort every card into its correct zone — logic gates, the CPU cycle, binary, embedded system parts and robot sensors. Answers are checked with the facilitator's password.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
+<style>
+:root{
+  --paper:#FBF9F3; --ink:#1C2434; --muted:#5C6478; --line:#E6E2D4; --hl:#FFE873;
+  --green:#2C7A3E; --green-l:#E7F4EA; --red:#B02A2A; --red-l:#FBE9E9;
+  --blue:#1D5B9E; --blue-l:#E7F0FA; --amber:#96590F; --amber-l:#FBF0DA;
+  --violet:#463A9C; --violet-l:#ECEAFB; --teal:#0F6E56; --teal-l:#E1F5EE;
+  --pink:#C0356A; --pink-l:#FBEAF0; --ink-l:#F1EFE6;
+  --disp:'Baloo 2','Trebuchet MS',system-ui,sans-serif;
+  --body:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,Consolas,monospace;
+  --shadow:6px 6px 0 rgba(28,36,52,.9); --shadow-s:3px 3px 0 var(--ink); --shadow-xs:2px 2px 0 var(--ink);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--body);color:var(--ink);background:var(--paper);line-height:1.6;font-size:16.5px;
+  background-image:linear-gradient(rgba(28,36,52,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(28,36,52,.04) 1px,transparent 1px);
+  background-size:26px 26px;min-height:100vh;-webkit-text-size-adjust:100%}
+h1,h2,h3,h4{font-family:var(--disp);line-height:1.2;font-weight:700}
+:focus-visible{outline:3px solid var(--violet);outline-offset:3px;border-radius:8px}
+.hl{background:linear-gradient(100deg,transparent 1%,var(--hl) 4%,var(--hl) 96%,transparent 99%);padding:0 8px;border-radius:5px}
+.wrap{max-width:1000px;margin:0 auto;padding:0 16px 90px}
+
+.topbar{position:sticky;top:0;z-index:30;display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:10px 16px;
+  background:rgba(251,249,243,.97);backdrop-filter:blur(6px);border-bottom:2px solid var(--ink)}
+.brand{display:flex;align-items:center;gap:9px;font-family:var(--disp);font-weight:800;font-size:17px}
+.sp{flex:1}
+.btn{font-family:var(--disp);font-weight:700;font-size:14.5px;background:#fff;border:2px solid var(--ink);
+  border-radius:10px;padding:8px 15px;cursor:pointer;box-shadow:var(--shadow-xs);white-space:nowrap}
+.btn:hover:not(:disabled){background:var(--hl)}
+.btn:disabled{opacity:.5;cursor:default}
+.btn.solid{background:var(--ink);color:#fff}
+.btn.solid:hover:not(:disabled){background:#2b3444}
+.pill{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:13px;font-weight:600;
+  background:#fff;border:2px solid var(--ink);border-radius:999px;padding:4px 12px;box-shadow:var(--shadow-xs)}
+
+.hero{text-align:center;padding:38px 0 12px}
+.stamp{display:inline-block;font-family:var(--mono);font-size:12.5px;letter-spacing:1px;border:2px dashed var(--pink);
+  color:var(--pink);padding:5px 15px;border-radius:8px;transform:rotate(-1.3deg);background:#fff;box-shadow:var(--shadow-xs)}
+.hero h1{font-size:clamp(28px,6vw,48px);margin:15px 0 8px}
+.hero p{color:var(--muted);font-size:clamp(15px,2.3vw,19px);max-width:640px;margin:0 auto}
+
+.brief{border:2px solid var(--ink);border-inline-start:6px solid var(--hl);background:#FFFBE8;border-radius:12px;
+  padding:15px 18px;box-shadow:var(--shadow-xs);margin:22px 0}
+.brief h3{font-size:17px;margin-bottom:6px}
+.brief ol{margin:6px 20px 0;font-size:15.3px}
+.brief li{margin:3px 0}
+.namebar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:16px 0}
+.namebar input{flex:1 1 240px;font-family:var(--body);font-size:15.5px;padding:9px 13px;
+  border:2px solid var(--ink);border-radius:10px;background:#fff;box-shadow:var(--shadow-xs)}
+
+.zone{border:2.5px solid var(--ink);border-radius:15px;background:#fff;box-shadow:var(--shadow);margin:18px 0;overflow:hidden}
+.zhead{background:var(--ink-l);border-bottom:2.5px solid var(--ink);padding:13px 17px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.zhead .zi{font-size:27px;line-height:1}
+.zhead h3{flex:1;font-size:clamp(16px,3vw,20px);min-width:180px}
+.zbody{padding:15px 17px 18px}
+.zhint{background:var(--blue-l);border:2px solid var(--ink);border-radius:10px;padding:9px 13px;font-size:14.5px;margin-bottom:13px}
+
+.pool{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;background:var(--ink-l);
+  border:2px dashed var(--ink);border-radius:12px;padding:11px;min-height:56px;margin-bottom:13px}
+.pool:empty::after{content:'all cards placed ✅';color:var(--muted);font-size:14px;font-style:italic}
+.card{background:#fff;border:2px solid var(--ink);border-radius:10px;padding:9px 13px;cursor:pointer;
+  box-shadow:var(--shadow-xs);text-align:start;font-family:var(--body);font-size:14.5px;max-width:100%}
+.card:hover{background:var(--hl)}
+.card.sel{background:var(--hl);border-width:3px;transform:translate(1px,1px);box-shadow:none}
+.card.right{background:var(--green-l);border-color:var(--green)}
+.card.wrong{background:var(--red-l);border-color:var(--red)}
+.card .fix{display:block;font-size:12.5px;color:var(--red);font-weight:600;margin-top:3px}
+.card{position:relative;display:block}
+.card .rm{position:absolute;top:-9px;inset-inline-end:-9px;width:24px;height:24px;border-radius:50%;
+  background:var(--red);color:#fff;border:2px solid var(--ink);display:grid;place-items:center;
+  font-family:var(--body);font-size:13px;font-weight:700;line-height:1;cursor:pointer;box-shadow:var(--shadow-xs)}
+.card .rm:hover{background:#DC4B4B;transform:scale(1.12)}
+.pool.armed{background:var(--hl);border-style:solid;border-width:3px}
+
+.slots{display:grid;gap:9px}
+.slots.g5{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.slots.g3{grid-template-columns:repeat(auto-fit,minmax(160px,1fr))}
+.slot{border:2.5px solid var(--ink);border-radius:12px;background:#fff;padding:10px;min-height:96px;cursor:pointer;
+  box-shadow:var(--shadow-xs);display:flex;flex-direction:column}
+.slot:hover{background:#FFFDF4}
+.slot h4{font-size:14.5px;text-align:center;padding-bottom:7px;border-bottom:2px dashed var(--line);font-family:var(--mono)}
+.slot .drop{display:flex;flex-direction:column;gap:6px;margin-top:8px;flex:1}
+.slot.armed{background:var(--hl);border-width:3px}
+
+.check{border:2.5px solid var(--ink);border-radius:15px;background:#fff;box-shadow:var(--shadow);
+  padding:18px;margin:26px 0 0;text-align:center}
+.check h3{font-size:20px;margin-bottom:6px}
+.check p{color:var(--muted);font-size:15px;max-width:520px;margin:0 auto 12px}
+.pwrow{display:flex;gap:9px;justify-content:center;flex-wrap:wrap;margin-top:10px}
+.pwrow input{font-family:var(--mono);font-size:16px;padding:9px 14px;border:2px solid var(--ink);
+  border-radius:10px;background:#fff;box-shadow:var(--shadow-xs);max-width:230px;text-align:center}
+.result{margin-top:14px;border-radius:12px;padding:14px 16px;border:2px solid var(--ink);display:none}
+.result.show{display:block}
+.result.good{background:var(--green-l);border-inline-start:6px solid var(--green)}
+.result.part{background:var(--amber-l);border-inline-start:6px solid var(--amber)}
+.result.bad{background:var(--red-l);border-inline-start:6px solid var(--red)}
+.result .big{font-family:var(--disp);font-size:clamp(24px,6vw,38px);font-weight:800}
+.zscores{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-top:10px}
+.zs{font-family:var(--mono);font-size:13px;font-weight:600;border:2px solid var(--ink);border-radius:999px;padding:3px 11px;background:#fff}
+.zs.ok{background:var(--green-l);border-color:var(--green)}
+.zs.no{background:var(--red-l);border-color:var(--red)}
+
+footer{text-align:center;color:var(--muted);font-size:13px;margin-top:30px;font-family:var(--mono)}
+.shake{animation:sk .35s}
+@keyframes sk{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+@media print{.topbar,.check,.pool{display:none}.zone{break-inside:avoid;box-shadow:none}}
+@media (prefers-reduced-motion:reduce){.shake{animation:none}}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <svg width="26" height="26" viewBox="0 0 40 40" aria-hidden="true"><rect x="6" y="7" width="28" height="26" rx="4" fill="#FFE873" stroke="#1C2434" stroke-width="2.6"/><path d="M13 15h14M13 21h14M13 27h8" stroke="#1C2434" stroke-width="2.4" stroke-linecap="round"/></svg>
+    <span>Alfredo Activity</span>
+  </div>
+  <span class="sp"></span>
+  <span class="pill">placed <b id="pCount">0</b>/<span id="pTotal">24</span></span>
+  <button class="btn" id="btnReset" type="button">↺ Start again</button>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <span class="stamp">GROUP ACTIVITY 🎯</span>
+    <h1>The Smart Device <span class="hl">Command Center</span></h1>
+    <p>You are embedded systems engineers. Your manager left the cards scrambled. Sort every one into its correct zone before the product launch.</p>
+  </section>
+
+  <div class="brief">
+    <h3>📋 How to play</h3>
+    <ol>
+      <li><b>Tap a card</b> to pick it up, then <b>tap the box</b> where you think it belongs.</li>
+      <li>Changed your mind? Tap the red <b>✕</b> on a placed card to take it back out — or tap the card and then tap a different box to move it straight there.</li>
+      <li>Place <b>all 24 cards</b> across the five zones.</li>
+      <li>Then scroll to the bottom and ask your facilitator to <b>unlock the answers</b>.</li>
+    </ol>
+    <p style="margin-top:8px;font-size:14.5px"><b>💡 Two questions that solve most of this:</b> for Zone 1 — does the outcome need <b>BOTH</b> conditions, just <b>ONE</b>, or the <b>OPPOSITE</b>? For Zones 4 and 5 — does this item <b>sense</b>, <b>decide</b>, or <b>act</b>?</p>
+  </div>
+
+  <div class="namebar">
+    <input type="text" id="team" placeholder="Your names / team — so your screenshot shows who you are" aria-label="Team names">
+  </div>
+
+  <div id="board"></div>
+
+  <section class="check">
+    <h3>🔒 Check your answers</h3>
+    <p>Only your facilitator has the password. Place every card first — you will not be told what is right or wrong until it is unlocked.</p>
+    <div class="pwrow">
+      <input type="password" id="pw" placeholder="Password" aria-label="Facilitator password" autocomplete="off">
+      <button class="btn solid" id="btnCheck" type="button">✅ Unlock &amp; mark</button>
+    </div>
+    <div class="result" id="result"></div>
+  </section>
+
+  <footer>The Smart Device Command Center · Digital Electronics &amp; Embedded Systems</footer>
+</main>
+
+<script>
+(function(){
+  "use strict";
+  var PASSWORD = "Alfredo1234";
+
+  /* Every zone below mirrors the FigJam board. `a` is the correct slot id. */
+  var ZONES = [
+    { id:'z1', e:'🔣', n:'Zone 1 — Logic Gate Match',
+      hint:'Does the outcome need <b>BOTH</b> conditions, just <b>ONE</b>, or the <b>OPPOSITE</b>?',
+      slots:[{id:'AND',n:'AND'},{id:'OR',n:'OR'},{id:'NOT',n:'NOT'},{id:'NAND',n:'NAND'},{id:'NOR',n:'NOR'}],
+      grid:'g5',
+      cards:[
+        {t:'Door opens only if both people push', a:'AND'},
+        {t:'Light turns on at night or when someone walks by', a:'OR'},
+        {t:'Fan turns off when not cold', a:'NOT'},
+        {t:'Door stays locked unless both keys are wrong', a:'NAND'},
+        {t:'Alarm stays silent only when the door is closed and there is no motion', a:'NOR'}
+      ]},
+
+    { id:'z2', e:'🔁', n:'Zone 2 — Fetch / Decode / Execute Order',
+      hint:'The chef follows a recipe: read the line, understand the line, then cook.',
+      slots:[{id:'F',n:'1 · FETCH'},{id:'D',n:'2 · DECODE'},{id:'E',n:'3 · EXECUTE'}],
+      grid:'g3',
+      cards:[
+        {t:'The chef reads the next line', a:'F'},
+        {t:'The chef understands what it means', a:'D'},
+        {t:'The chef cracks the eggs and adds them', a:'E'}
+      ]},
+
+    { id:'z3', e:'🔢', n:'Zone 3 — Binary Quick Match',
+      hint:'Place values are 8 · 4 · 2 · 1. Add up the ones that are switched on.',
+      slots:[{id:'101',n:'101'},{id:'110',n:'110'},{id:'1010',n:'1010'},{id:'1101',n:'1101'}],
+      grid:'g5',
+      cards:[
+        {t:'5',  a:'101'},
+        {t:'6',  a:'110'},
+        {t:'10', a:'1010'},
+        {t:'13', a:'1101'}
+      ]},
+
+    { id:'z4', e:'📥', n:'Zone 4 — Embedded System Sort',
+      hint:'Does this item <b>sense</b>, <b>decide</b>, or <b>act</b>?',
+      slots:[{id:'in',n:'INPUT'},{id:'pr',n:'PROCESSOR'},{id:'out',n:'OUTPUT'}],
+      grid:'g3',
+      cards:[
+        {t:'button', a:'in'},
+        {t:'temperature sensor', a:'in'},
+        {t:'microcontroller', a:'pr'},
+        {t:'ESP32', a:'pr'},
+        {t:'motor', a:'out'},
+        {t:'buzzer', a:'out'}
+      ]},
+
+    { id:'z5', e:'🤖', n:'Zone 5 — Robot Sensor Categories',
+      hint:'Does the robot use this to <b>see</b>, to <b>feel</b>, or to know <b>which way up</b> it is?',
+      slots:[{id:'v',n:'VISION'},{id:'t',n:'TOUCH / PROXIMITY'},{id:'o',n:'ORIENTATION'}],
+      grid:'g3',
+      cards:[
+        {t:'camera', a:'v'},
+        {t:'line sensor', a:'v'},
+        {t:'bumper switch', a:'t'},
+        {t:'infrared proximity', a:'t'},
+        {t:'accelerometer', a:'o'},
+        {t:'gyroscope', a:'o'}
+      ]}
+  ];
+
+  var TOTAL = ZONES.reduce(function(s,z){ return s + z.cards.length; }, 0);
+  var sel = null, marked = false;
+  var board = document.getElementById('board');
+  document.getElementById('pTotal').textContent = TOTAL;
+
+  function esc(s){ return String(s).replace(/[&<>"]/g, function(c){
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+
+  /* deterministic shuffle so every student sees the same board */
+  function shuffle(arr, seed){
+    return arr.map(function(v,i){ return {v:v, k:(i*7 + seed*5 + 3) % arr.length}; })
+              .sort(function(a,b){ return a.k - b.k; })
+              .map(function(o){ return o.v; });
+  }
+
+  function build(){
+    board.innerHTML = '';
+    sel = null; marked = false;
+    ZONES.forEach(function(z, zi){
+      var sec = document.createElement('section');
+      sec.className = 'zone';
+      sec.innerHTML =
+        '<div class="zhead"><span class="zi">' + z.e + '</span><h3>' + esc(z.n) + '</h3>' +
+        '<span class="pill" data-zp="' + z.id + '">0/' + z.cards.length + '</span></div>' +
+        '<div class="zbody"><div class="zhint">💡 ' + z.hint + '</div>' +
+        '<div class="pool" data-pool="' + z.id + '"></div>' +
+        '<div class="slots ' + z.grid + '" data-slots="' + z.id + '"></div></div>';
+      board.appendChild(sec);
+
+      var pool = sec.querySelector('[data-pool]');
+      pool.addEventListener('click', function(){ returnToPool(); });
+      shuffle(z.cards.slice(), zi).forEach(function(c){
+        var b = document.createElement('div');
+        b.className = 'card'; b.setAttribute('role','button'); b.tabIndex = 0;
+        b.appendChild(document.createTextNode(c.t));
+        b.dataset.a = c.a; b.dataset.z = z.id;
+        b.addEventListener('click', function(ev){ ev.stopPropagation(); pickUp(b); });
+        b.addEventListener('keydown', function(ev){
+          if (ev.key === 'Enter' || ev.key === ' '){ ev.preventDefault(); pickUp(b); } });
+        pool.appendChild(b);
+      });
+
+      var slots = sec.querySelector('[data-slots]');
+      z.slots.forEach(function(s){
+        var d = document.createElement('div');
+        d.className = 'slot'; d.dataset.slot = s.id; d.dataset.z = z.id;
+        d.innerHTML = '<h4>' + esc(s.n) + '</h4><div class="drop"></div>';
+        d.addEventListener('click', function(){ drop(d); });
+        slots.appendChild(d);
+      });
+    });
+    count();
+  }
+
+  function pickUp(b){
+    if (marked) return;
+    if (sel === b){ b.classList.remove('sel'); sel = null; arm(null); return; }
+    if (sel) sel.classList.remove('sel');
+    sel = b; b.classList.add('sel');
+    arm(b.dataset.z);
+  }
+
+  function arm(zid){
+    document.querySelectorAll('.slot').forEach(function(s){
+      s.classList.toggle('armed', !!zid && s.dataset.z === zid);
+    });
+    document.querySelectorAll('.pool').forEach(function(p){
+      p.classList.toggle('armed', !!zid && p.dataset.pool === zid && !!sel &&
+                                  !sel.parentElement.classList.contains('pool'));
+    });
+  }
+
+  function drop(d){
+    if (marked) return;
+    if (!sel){ d.classList.add('shake'); setTimeout(function(){ d.classList.remove('shake'); }, 350); return; }
+    if (sel.dataset.z !== d.dataset.z){
+      d.classList.add('shake'); setTimeout(function(){ d.classList.remove('shake'); }, 350);
+      return;   /* a card can only go into a slot of its own zone */
+    }
+    sel.classList.remove('sel');
+    d.querySelector('.drop').appendChild(sel);
+    addRemove(sel);
+    sel = null; arm(null); count();
+  }
+
+  /* the ✕ badge that takes a card back out of a box */
+  function addRemove(card){
+    if (card.querySelector('.rm')) return;
+    var x = document.createElement('span');
+    x.className = 'rm'; x.textContent = '✕';
+    x.setAttribute('role','button'); x.tabIndex = 0;
+    x.title = 'Take this card back out';
+    x.setAttribute('aria-label','Take ' + card.firstChild.nodeValue + ' back out');
+    x.addEventListener('click', function(ev){ ev.stopPropagation(); unplace(card); });
+    x.addEventListener('keydown', function(ev){
+      if (ev.key === 'Enter' || ev.key === ' '){ ev.preventDefault(); ev.stopPropagation(); unplace(card); } });
+    card.appendChild(x);
+  }
+
+  function unplace(card){
+    if (marked) return;
+    if (sel === card){ sel = null; arm(null); }
+    card.classList.remove('sel');
+    var x = card.querySelector('.rm'); if (x) x.remove();
+    document.querySelector('[data-pool="' + card.dataset.z + '"]').appendChild(card);
+    count();
+  }
+
+  /* tapping the pool sends the selected card back to it */
+  function returnToPool(){
+    if (marked || !sel) return;
+    if (sel.parentElement.classList.contains('pool')){ sel.classList.remove('sel'); sel = null; arm(null); return; }
+    unplace(sel);
+  }
+
+  function count(){
+    var placed = 0;
+    ZONES.forEach(function(z){
+      var n = document.querySelectorAll('[data-slots="' + z.id + '"] .card').length;
+      placed += n;
+      var p = document.querySelector('[data-zp="' + z.id + '"]');
+      if (p) p.textContent = n + '/' + z.cards.length;
+    });
+    document.getElementById('pCount').textContent = placed;
+    return placed;
+  }
+
+  document.getElementById('btnCheck').addEventListener('click', function(){
+    var res = document.getElementById('result');
+    var pw = document.getElementById('pw');
+    if (pw.value !== PASSWORD){
+      res.className = 'result show bad';
+      res.innerHTML = '🔒 <b>Wrong password.</b> Ask your facilitator to unlock the answers.';
+      pw.value = ''; pw.focus();
+      return;
+    }
+    var placed = count();
+    if (placed < TOTAL){
+      res.className = 'result show part';
+      res.innerHTML = '⚠️ <b>Not finished yet — ' + placed + ' of ' + TOTAL + ' cards placed.</b> Put every card in a box before marking.';
+      return;
+    }
+    marked = true;
+    document.querySelectorAll('.card .rm').forEach(function(x){ x.remove(); });
+    var right = 0, perZone = [];
+    ZONES.forEach(function(z){
+      var zr = 0;
+      document.querySelectorAll('[data-slots="' + z.id + '"] .slot').forEach(function(s){
+        s.querySelectorAll('.card').forEach(function(c){
+          var ok = c.dataset.a === s.dataset.slot;
+          c.classList.add(ok ? 'right' : 'wrong');
+          if (ok){ zr++; right++; }
+          else {
+            var fix = document.createElement('span');
+            fix.className = 'fix';
+            fix.textContent = '✗ belongs in ' + slotName(z, c.dataset.a);
+            c.appendChild(fix);
+          }
+        });
+      });
+      perZone.push({ n: z.n, got: zr, of: z.cards.length });
+    });
+    var pct = Math.round(right / TOTAL * 100);
+    res.className = 'result show ' + (pct === 100 ? 'good' : pct >= 60 ? 'part' : 'bad');
+    res.innerHTML =
+      '<div class="big">' + right + ' / ' + TOTAL + '</div>' +
+      '<div>' + (pct === 100
+        ? '🏆 <b>Perfect — every card in the right place.</b> Logic gates, the CPU cycle, binary, embedded parts and robot senses. That is the whole session on one board.'
+        : '📊 <b>' + pct + '%.</b> Every wrong card now shows where it should have gone — read those before you present.') + '</div>' +
+      '<div class="zscores">' + perZone.map(function(p){
+        return '<span class="zs ' + (p.got === p.of ? 'ok' : 'no') + '">' +
+               esc(p.n.split('—')[0].trim()) + ' ' + p.got + '/' + p.of + '</span>'; }).join('') + '</div>';
+    document.getElementById('btnCheck').disabled = true;
+    pw.disabled = true;
+    res.scrollIntoView({ block:'center', behavior:'smooth' });
+  });
+
+  function slotName(z, id){
+    var s = z.slots.filter(function(x){ return x.id === id; })[0];
+    return s ? s.n.replace(/^\d+\s·\s/, '') : id;
+  }
+
+  document.getElementById('btnReset').addEventListener('click', function(){
+    var res = document.getElementById('result');
+    res.className = 'result'; res.innerHTML = '';
+    var pw = document.getElementById('pw');
+    pw.value = ''; pw.disabled = false;
+    document.getElementById('btnCheck').disabled = false;
+    build();
+    window.scrollTo({ top:0, behavior:'smooth' });
+  });
+
+  build();
+})();
+</script>
+</body>
+</html>
