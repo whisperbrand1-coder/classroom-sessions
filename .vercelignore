@@ -1,7 +1,10 @@
 # private teaching guides — never uploaded to the live site
+# (both forms: at the repo root and inside any session folder)
 MY_PRIVATE_GUIDE.html
 MY_GUIDE_*.html
 MY_CHATBOT_GUIDE.html
+**/MY_GUIDE_*.html
+**/MY_PRIVATE_GUIDE.html
 
 # lives on its own project/URL (alfredo-activity.vercel.app) — students must not reach the rest
 Alfredo_Activity.html
