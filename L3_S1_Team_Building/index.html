@@ -27,8 +27,8 @@
 <!-- Fonts: progressive enhancement, NON render-blocking (offline → instant system fallbacks). -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap"></noscript>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap"></noscript>
 
 <style>
 /* ============================================================
@@ -591,31 +591,75 @@ body.no-motion *{transition:none!important;animation-duration:.001s!important;an
 .gw-line i{font-style:normal;color:var(--muted)}
 .gw-no{margin-top:2px;background:#FFE0E0;border:2px solid var(--red);border-radius:6px;
   padding:6px 9px;font-size:12px;text-align:center;font-weight:600}
+/* --- shared bilingual line: Egyptian Arabic under the English --- */
+.rq-ar{display:block;direction:rtl;text-align:right;unicode-bidi:isolate;
+  font-family:'IBM Plex Sans Arabic','Segoe UI',Tahoma,'Noto Sans Arabic',sans-serif;
+  font-size:.92em;line-height:1.75;color:var(--muted);margin-top:5px;
+  border-top:1px dashed rgba(28,36,52,.22);padding-top:5px}
+.fb .rq-ar{border-top-color:rgba(28,36,52,.28);color:inherit;opacity:.86}
+.instr .rq-ar{margin-top:6px}
+
 .rq-bar{height:10px;border:2px solid var(--ink);background:#fff;border-radius:99px;overflow:hidden;margin:10px 0 14px}
 .rq-bar span{display:block;height:100%;background:var(--teal);transition:width .3s}
 .rq-card{border:2px solid var(--ink);background:#fff;box-shadow:4px 4px 0 var(--ink);padding:18px;border-radius:6px}
 .rq-n{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
-.rq-q{font-family:'Baloo 2',cursive;font-size:clamp(19px,2.4vw,26px);line-height:1.35;margin:8px 0 16px}
-.rq-opts{display:flex;flex-wrap:wrap;gap:10px}
-.rq-opts .btn{flex:1 1 150px}
-.rq-win{display:flex;gap:16px;align-items:center;border:3px solid var(--rc,var(--ink));background:#fff;box-shadow:6px 6px 0 var(--rc,var(--ink));padding:18px;border-radius:6px}
-.rq-win h3{margin:4px 0 4px;font-size:clamp(22px,3vw,32px)}
-.rq-win p{margin:0;color:var(--muted)}
-.rq-em{font-size:52px;line-height:1}
-.rq-scores{margin:14px 0}
-.rq-row{display:grid;grid-template-columns:150px 1fr 30px;gap:10px;align-items:center;margin:6px 0;font-size:14px}
-.rq-track{height:12px;border:2px solid var(--ink);background:#fff;border-radius:99px;overflow:hidden}
-.rq-track i{display:block;height:100%}
-.rq-num{font-family:'IBM Plex Mono',monospace;font-weight:700;text-align:right}
-@media(max-width:640px){.rq-row{grid-template-columns:110px 1fr 26px;font-size:12px}.rq-win{flex-direction:column;text-align:center}}
+.rq-q{font-family:'Baloo 2',cursive;font-size:clamp(19px,2.4vw,26px);line-height:1.35;margin:8px 0 0}
+.rq-q-ar{direction:rtl;text-align:right;unicode-bidi:isolate;
+  font-family:'IBM Plex Sans Arabic','Segoe UI',Tahoma,'Noto Sans Arabic',sans-serif;
+  font-size:clamp(15px,1.8vw,19px);line-height:1.8;color:var(--muted);
+  margin:8px 0 16px;padding-top:8px;border-top:2px dashed rgba(28,36,52,.18)}
 
+/* five role buttons */
+.rq-opts{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.rq-role{display:flex;flex-direction:column;align-items:center;gap:3px;
+  background:#fff;border:2px solid var(--ink);border-radius:10px;box-shadow:4px 4px 0 var(--ink);
+  padding:12px 8px;font:inherit;cursor:pointer;text-align:center;transition:transform .1s,box-shadow .1s,background .15s}
+.rq-role:hover:not(:disabled){background:#FFFBEA;transform:translate(-1px,-1px);box-shadow:5px 5px 0 var(--ink)}
+.rq-role:active:not(:disabled){transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}
+.rq-role:disabled{cursor:default;opacity:.92}
+.rq-e{font-size:28px;line-height:1}
+.rq-nm{font-family:'Baloo 2',cursive;font-weight:700;font-size:15px;line-height:1.15}
+.rq-arn{font-family:'IBM Plex Sans Arabic','Segoe UI',Tahoma,sans-serif;font-size:13px;color:var(--muted);direction:rtl}
+.rq-role.right{background:#D8F5E3;border-color:var(--green);box-shadow:4px 4px 0 var(--green)}
+.rq-role.wrong{background:#FFE0E0;border-color:var(--red);box-shadow:4px 4px 0 var(--red)}
+@media(max-width:820px){.rq-opts{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:520px){.rq-opts{grid-template-columns:repeat(2,1fr)}.rq-e{font-size:22px}.rq-nm{font-size:13px}}
+
+/* result: the five role cards */
+.rq-cards{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:14px 0}
+.rq-rc{border:2px solid var(--rc,var(--ink));background:#fff;border-radius:8px;box-shadow:4px 4px 0 var(--rc,var(--ink));padding:12px 10px}
+.rq-rc-h{display:flex;flex-direction:column;align-items:center;gap:2px;text-align:center;margin-bottom:7px}
+.rq-rc-h span{font-size:26px;line-height:1}
+.rq-rc-h b{font-family:'Baloo 2',cursive;font-size:15px}
+.rq-rc-h i{font-style:normal;font-family:'IBM Plex Sans Arabic','Segoe UI',Tahoma,sans-serif;font-size:12.5px;color:var(--muted);direction:rtl}
+.rq-rc p{font-size:12.5px;line-height:1.4;margin:0;color:var(--muted)}
+.rq-rc .rq-ar{font-size:12.5px;line-height:1.65}
+@media(max-width:900px){.rq-cards{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.rq-cards{grid-template-columns:1fr}}
+
+/* --- LISTEN LAB --- */
 .ll-stage{border:2px solid var(--ink);background:#fff;box-shadow:4px 4px 0 var(--ink);padding:16px;border-radius:6px;margin-top:4px}
-.ll-say{display:flex;gap:14px;align-items:flex-start;background:var(--paper);border:2px dashed var(--ink);border-radius:6px;padding:14px}
-.ll-av{font-size:34px;line-height:1}
-.ll-say b{font-family:'Baloo 2',cursive;font-size:18px}
-.ll-say p{margin:4px 0 0;font-size:clamp(16px,2vw,20px);line-height:1.45}
+.ll-say{display:flex;gap:14px;align-items:flex-start;background:var(--paper);border:2px dashed var(--ink);border-radius:8px;padding:14px}
+.ll-av{font-size:36px;line-height:1;flex:none}
+.ll-bub{flex:1;min-width:0}
+.ll-bub b{font-family:'Baloo 2',cursive;font-size:18px}
+.ll-bub p{margin:4px 0 0;font-size:clamp(16px,2vw,20px);line-height:1.45}
+.ll-bub .rq-ar{font-size:clamp(14px,1.7vw,17px)}
 .ll-opts{display:grid;gap:10px;margin-top:14px}
-.ll-opts .opt{text-align:left}
+.ll-opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;
+  background:#fff;border:2px solid var(--ink);border-radius:10px;box-shadow:4px 4px 0 var(--ink);
+  padding:12px 14px;font:inherit;font-size:15.5px;line-height:1.45;cursor:pointer;
+  transition:transform .1s,box-shadow .1s,background .15s}
+.ll-opt:hover:not(:disabled){background:#FFFBEA;transform:translate(-1px,-1px);box-shadow:5px 5px 0 var(--ink)}
+.ll-opt:active:not(:disabled){transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}
+.ll-opt:disabled{cursor:default;opacity:.94}
+.ll-kbd{flex:none;width:26px;height:26px;display:grid;place-items:center;border-radius:6px;
+  background:var(--ink);color:#fff;font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:13px;margin-top:1px}
+.ll-tx{flex:1;min-width:0}
+.ll-opt.right{background:#D8F5E3;border-color:var(--green);box-shadow:4px 4px 0 var(--green)}
+.ll-opt.right .ll-kbd{background:var(--green)}
+.ll-opt.wrong{background:#FFE0E0;border-color:var(--red);box-shadow:4px 4px 0 var(--red)}
+.ll-opt.wrong .ll-kbd{background:var(--red)}
 
 .ir-field{position:relative;height:min(46vh,340px);border:3px solid var(--ink);border-radius:8px;overflow:hidden;
   background:linear-gradient(180deg,#EAF3FF 0%,#FFF7E3 100%);box-shadow:6px 6px 0 var(--ink);margin:4px 0 10px;touch-action:none;cursor:crosshair}
@@ -915,12 +959,12 @@ body.no-motion *{transition:none!important;animation-duration:.001s!important;an
       </div>
     </section>
 
-    <section class="scene" data-sec="1" data-title="GAME · Which role are you?" data-src="Activity prep">
+    <section class="scene" data-sec="1" data-title="GAME · Which role is this?" data-src="Deck 8 applied">
       <div class="scene-inner">
         <div class="card">
-          <div class="head"><span class="badge">PROJECTOR GAME 🎮</span><h2>Which crew role are you? 🎭</h2></div>
+          <div class="head"><span class="badge">PROJECTOR GAME 🎮</span><h2>Which crew role is this? 🎭</h2></div>
           <div class="body">
-            <p class="sub">Run this on the screen and let a volunteer answer for themselves — then everyone does their own on paper. Ten statements, thirty seconds each.</p>
+            <p class="sub">Fifteen real crew moments, three for each role. The class calls out the role, then we tap it and read why. <b>Arabic is written under every line</b> — read whichever one lands faster.</p>
             <div data-act="roleQuiz"></div>
           </div>
         </div>
@@ -948,7 +992,7 @@ body.no-motion *{transition:none!important;animation-duration:.001s!important;an
         <div class="card">
           <div class="head"><span class="badge">PROJECTOR GAME 🎮</span><h2>Listen Lab 👂</h2></div>
           <div class="body">
-            <p class="sub">Six teammates speak. The class votes on the best response — then we read <b>why</b>. Hands up before you tap.</p>
+            <p class="sub">Ten teammates speak. The class votes on the best response — then we read <b>why</b>. Hands up before you tap. Careful: some wrong answers sound perfectly polite. <b>Arabic is written under every line.</b></p>
             <div data-act="listenLab"></div>
           </div>
         </div>
@@ -1671,71 +1715,164 @@ const BUILDERS={};
    LEVEL 3 · SESSION 1 — CUSTOM ACTIVITY BUILDERS
    ============================================================ */
 
-/* ---------- ROLE QUIZ: Which Changemaker Role Are You? ---------- */
+/* ---------- ROLE QUIZ: which of the 5 crew roles is this?  (bilingual) ---------- */
 BUILDERS.roleQuiz=function(mount,cfg){
-  const ROLES={
-    leader   :{n:'Leader',      e:'🧭',d:'Keeps the crew on track and makes sure every voice is heard.',c:'#B02A2A'},
-    organiser:{n:'Organiser',   e:'🗂️',d:'Manages the clock and keeps notes so nothing gets lost.',c:'#1D5B9E'},
-    idea     :{n:'Idea Person', e:'💡',d:'Sparks creative thinking and encourages the wild ideas.',c:'#96590F'},
-    checker  :{n:'Checker',     e:'🔍',d:'Reviews the work and asks &ldquo;does this actually make sense?&rdquo;',c:'#0F6E56'},
-    presenter:{n:'Presenter',   e:'🎤',d:'Shares the crew&rsquo;s work with confidence and clarity.',c:'#3C3489'}
-  };
-  const Q=[
-    {t:'When a group goes quiet, I am the one who says &ldquo;OK &mdash; what do we do first?&rdquo;',r:'leader'},
-    {t:'I notice when somebody has not spoken yet, and I ask them what they think.',r:'leader'},
-    {t:'I like writing things down so we can find them again later.',r:'organiser'},
-    {t:'I am the person who says &ldquo;we have ten minutes left, let us move on.&rdquo;',r:'organiser'},
-    {t:'My brain fires out lots of ideas fast &mdash; even the strange ones.',r:'idea'},
-    {t:'When somebody shares an idea, I love saying &ldquo;yes, AND we could also&hellip;&rdquo;',r:'idea'},
-    {t:'I spot the mistake nobody else saw. Spelling, logic, a missing step.',r:'checker'},
-    {t:'Before we hand work in, I want to read it through one more time.',r:'checker'},
-    {t:'Standing up and explaining our work to the room does not scare me.',r:'presenter'},
-    {t:'I enjoy finding the clearest way to say something out loud.',r:'presenter'}
+  const ROLES=[
+    {id:'leader',   n:'Leader',      ar:'القائد',        e:'🧭', c:'#B02A2A',
+     d:'Keeps the crew on track and makes sure every voice is heard.', dar:'بيخلي الكرو ماشي، وبيتأكد إن كل واحد اتسمع.'},
+    {id:'organiser',n:'Organiser',   ar:'المنظّم',       e:'🗂️', c:'#1D5B9E',
+     d:'Manages the clock and keeps notes so nothing gets lost.',      dar:'مسك الوقت وكتابة الملاحظات عشان ما يضيعش حاجة.'},
+    {id:'idea',     n:'Idea Person', ar:'صاحب الأفكار',  e:'💡', c:'#96590F',
+     d:'Sparks creative thinking and encourages the wild ideas.',      dar:'بيولّع الأفكار وبيشجّع الأفكار المجنونة.'},
+    {id:'checker',  n:'Checker',     ar:'المراجع',       e:'🔍', c:'#0F6E56',
+     d:'Reviews the work and asks: does this actually make sense?',    dar:'بيراجع الشغل وبيسأل: هو ده فعلًا منطقي؟'},
+    {id:'presenter',n:'Presenter',   ar:'المتحدّث',      e:'🎤', c:'#3C3489',
+     d:'Shares the crew&rsquo;s work with confidence and clarity.',    dar:'بيوصّل شغل الكرو بثقة ووضوح.'}
   ];
-  const scores={leader:0,organiser:0,idea:0,checker:0,presenter:0};
-  let i=0;
-  mount.appendChild(el('p','instr','Ten quick statements. Be honest &mdash; there is no best role. Answer for <b>who you are today</b>.'));
+  const Q=[
+    {t:'The crew has gone completely silent. Somebody says: &ldquo;OK &mdash; what do we do first?&rdquo;',
+     ar:'الكرو سكت خالص. حد قال: «طب نبدأ بإيه؟»', a:'leader',
+     w:'Getting a stuck crew moving again is the Leader&rsquo;s core job.',
+     war:'إن الكرو الواقف يتحرّك تاني &mdash; دي شغلانة الليدر الأساسية.'},
+    {t:'Two people want the same role. Somebody decides in twenty seconds so the crew can move on.',
+     ar:'اتنين عايزين نفس الدور. حد حسمها في 20 ثانية عشان الكرو يكمّل.', a:'leader',
+     w:'The Leader decides <b>fast</b> when a decision is blocking everyone. A slow decision costs the crew ten minutes.',
+     war:'الليدر بيقرر <b>بسرعة</b> لما القرار واقف الشغل. القرار البطيء بيكلّف الكرو عشر دقايق.'},
+    {t:'Notices that one person has not spoken for ten minutes, and asks them what they think.',
+     ar:'لاحظ إن فيه واحد عدّت عليه عشر دقايق ماتكلمش، وسأله رأيه إيه.', a:'leader',
+     w:'&ldquo;Makes sure everyone is heard&rdquo; is written into the Leader role &mdash; including the quiet one.',
+     war:'«يتأكد إن كل واحد اتسمع» جزء من دور الليدر &mdash; وده بيشمل اللي ساكت.'},
+
+    {t:'&ldquo;We have ten minutes left &mdash; let us move on.&rdquo;',
+     ar:'«فاضل عشر دقايق &mdash; يلا نعدّي.»', a:'organiser',
+     w:'The Organiser manages time. They are the only person watching the clock while everyone argues.',
+     war:'المنظّم بيمسك الوقت. هو الشخص الوحيد اللي بيبص على الساعة وهما بيتناقشوا.'},
+    {t:'Writes every idea onto a sticky note so nothing gets lost before Session 2.',
+     ar:'بيكتب كل فكرة على استيكي نوت عشان ما يضيعش حاجة قبل الجلسة الجاية.', a:'organiser',
+     w:'Keeping the record is Organiser work. If it is not written down, by next week it never happened.',
+     war:'حفظ الكلام مكتوب شغل المنظّم. اللي مش متكتب، الأسبوع الجاي يبقى كأنه ماحصلش.'},
+    {t:'Keeps the Miro board tidy so the crew can still read it next week.',
+     ar:'بيخلي بورد Miro مرتّب عشان الكرو يقدر يقراه الأسبوع الجاي.', a:'organiser',
+     w:'A messy board is a lost board. The Organiser protects the crew&rsquo;s memory.',
+     war:'البورد الملخبط بورد ضايع. المنظّم بيحمي ذاكرة الكرو.'},
+
+    {t:'The crew is stuck on three ideas. Somebody fires out five more in one minute.',
+     ar:'الكرو واقف عند تلات أفكار. حد طلّع خمس كمان في دقيقة.', a:'idea',
+     w:'The Idea Person&rsquo;s job is <b>volume</b> &mdash; unsticking the crew by adding options, not by judging them.',
+     war:'شغل صاحب الأفكار هو <b>الكمية</b> &mdash; بيفكّ الكرو بإنه يزوّد اختيارات، مش بإنه يحكم عليها.'},
+    {t:'A teammate says &ldquo;this will sound silly&hellip;&rdquo; and somebody replies &ldquo;go on &mdash; silly is allowed here.&rdquo;',
+     ar:'واحد قال «دي هتبان سخيفة…» وحد ردّ عليه: «قولها &mdash; السخيف مسموح هنا.»', a:'idea',
+     w:'Rule 4: welcome wild ideas. Protecting a nervous teammate is the Idea Person keeping the flow open.',
+     war:'القاعدة الرابعة: رحّب بالأفكار المجنونة. حماية الزميل الخايف دي صاحب الأفكار وهو بيفتح المجال.'},
+    {t:'Says the most ridiculous version of the idea out loud, on purpose.',
+     ar:'بيقول أكتر نسخة مجنونة من الفكرة بصوت عالي، وهو قاصد.', a:'idea',
+     w:'Deliberately going wild is a technique, not a joke &mdash; the ridiculous version very often contains the real one.',
+     war:'إنه يجنّن بقصد دي تقنية مش هزار &mdash; النسخة المجنونة جواها غالبًا الفكرة الحقيقية.'},
+
+    {t:'Asks &ldquo;does this actually make sense?&rdquo; right before the crew hands the work in.',
+     ar:'بيسأل «هو ده فعلًا منطقي؟» قبل ما الكرو يسلّم بشوية.', a:'checker',
+     w:'That exact question is the Checker&rsquo;s signature move. It costs thirty seconds and saves the whole submission.',
+     war:'السؤال ده بالظبط هو حركة المراجع. بياخد تلاتين ثانية وبينقذ التسليم كله.'},
+    {t:'Spots that the crew wrote &ldquo;break&rdquo; in one place and &ldquo;lunch&rdquo; in another, and fixes it.',
+     ar:'لاحظ إن الكرو كتب «الفسحة» في مكان و«الغدا» في مكان تاني، وظبّطها.', a:'checker',
+     w:'Catching the small inconsistency nobody else saw is Checker work. Details are where credibility lives.',
+     war:'إنه يمسك التناقض الصغير اللي محدش شافه ده شغل المراجع. التفاصيل هي اللي بتدّي مصداقية.'},
+    {t:'Hands the crew&rsquo;s page to somebody from another crew and watches where they hesitate &mdash; without helping.',
+     ar:'بيدّي صفحة الكرو لحد من كرو تاني ويتفرّج هيتردّد فين &mdash; من غير ما يساعده.', a:'checker',
+     w:'In the Web &times; Art project the Checker becomes the <b>UX tester</b>. Where the person hesitates is the bug.',
+     war:'في مشروع الويب والآرت المراجع بيبقى <b>UX tester</b>. المكان اللي الشخص اتردّد فيه هو المشكلة.'},
+
+    {t:'Stands up and covers who / the problem / the idea in sixty seconds.',
+     ar:'بيقف ويغطّي: مين في الكرو / المشكلة / الفكرة &mdash; في ستين ثانية.', a:'presenter',
+     w:'The 1-Minute Crew Share belongs to the Presenter &mdash; though the whole crew stands up together.',
+     war:'عرض الدقيقة بتاع الكرو من نصيب المتحدّث &mdash; بس الكرو كله بيقف معاه.'},
+    {t:'Practises the sentence out loud twice so it lands clearly.',
+     ar:'بيتمرّن على الجملة بصوت عالي مرتين عشان تنزل واضحة.', a:'presenter',
+     w:'Delivery is a skill you rehearse, not a personality you are born with. The Presenter practises.',
+     war:'التوصيل مهارة بتتمرّن عليها مش شخصية بتتولد بيها. المتحدّث بيتمرّن.'},
+    {t:'Points at the crew&rsquo;s Miro board while talking, so the room can follow.',
+     ar:'بيشاور على بورد الكرو وهو بيتكلم عشان القاعة تمشي معاه.', a:'presenter',
+     w:'Making the audience able to follow is the Presenter&rsquo;s whole purpose &mdash; clarity, not volume.',
+     war:'إن الجمهور يقدر يمشي معاك دي وظيفة المتحدّث كلها &mdash; وضوح، مش صوت عالي.'}
+  ];
+  let i=0,score=0,streak=0,best=0;
+  mount.appendChild(el('p','instr','Fifteen moments from a real crew. <b>Which of the five roles is this?</b>'
+    +'<span class="rq-ar">خمستاشر موقف من كرو حقيقي. <b>ده أنهي دور من الخمسة؟</b></span>'));
+  const hud=el('div','gamehud');
+  hud.innerHTML='<span class="taskpill">Q <b class="rq-i">1</b>/'+Q.length+'</span>'
+    +'<span class="taskpill">Score <b class="rq-s">0</b></span>'
+    +'<span class="taskpill">Streak <b class="rq-k">0</b></span>';
+  mount.appendChild(hud);
   const bar=el('div','rq-bar'); const fill=el('span'); bar.appendChild(fill); mount.appendChild(bar);
   const card=el('div','rq-card'); mount.appendChild(card);
+  const fb=el('div','fb neutral'); fb.style.display='none'; mount.appendChild(fb);
   const res=el('div','rq-res'); res.style.display='none'; mount.appendChild(res);
+
   function paint(){
     fill.style.width=Math.round(i/Q.length*100)+'%';
+    hud.querySelector('.rq-i').textContent=Math.min(i+1,Q.length);
+    hud.querySelector('.rq-s').textContent=score;
+    hud.querySelector('.rq-k').textContent=streak;
     if(i>=Q.length){ finish(); return; }
-    card.innerHTML='<div class="rq-n">Statement '+(i+1)+' of '+Q.length+'</div><div class="rq-q">'+Q[i].t+'</div>';
+    fb.style.display='none';
+    card.innerHTML='<div class="rq-n">Situation '+(i+1)+' of '+Q.length+'</div>'
+      +'<div class="rq-q">'+Q[i].t+'</div>'
+      +'<div class="rq-q-ar">'+Q[i].ar+'</div>';
     const row=el('div','rq-opts');
-    [['That is so me','2','#0F6E56'],['Sometimes','1','#96590F'],['Not really','0','#7A2E2E']].forEach(o=>{
-      const b=el('button','btn',o[0]); b.type='button'; b.style.borderColor=o[2];
-      b.addEventListener('click',()=>{ scores[Q[i].r]+=(+o[1]); blip(520+(+o[1])*120); i++; paint(); });
+    ROLES.forEach(r=>{
+      const b=el('button','btn rq-role'); b.type='button'; b.style.borderColor=r.c;
+      b.innerHTML='<span class="rq-e">'+r.e+'</span><span class="rq-nm">'+r.n+'</span><span class="rq-arn">'+r.ar+'</span>';
+      b.addEventListener('click',()=>judge(r.id,row));
       row.appendChild(b);
     });
     card.appendChild(row);
-    const back=el('div','btnrow');
-    if(i>0){ const u=el('button','btn mini','↩ Undo last'); u.type='button';
-      u.addEventListener('click',()=>{ i--; paint(); }); back.appendChild(u); }
-    card.appendChild(back);
+  }
+  function judge(pick,row){
+    if(card.dataset.locked) return; card.dataset.locked='1';
+    const btns=[...row.querySelectorAll('.rq-role')];
+    btns.forEach(b=>b.disabled=true);
+    const ai=ROLES.findIndex(r=>r.id===Q[i].a);
+    btns[ai].classList.add('right');
+    const ok=pick===Q[i].a;
+    if(!ok) btns[ROLES.findIndex(r=>r.id===pick)].classList.add('wrong');
+    if(ok){ score++; streak++; best=Math.max(best,streak); blip(760); }
+    else { streak=0; blip(210); }
+    const R=ROLES[ai];
+    fb.style.display='block'; fb.className='fb '+(ok?'ok':'bad');
+    fb.innerHTML=(ok?'✅ ':'❌ ')+'<b>'+R.e+' '+R.n+'</b> &mdash; '+Q[i].w
+      +'<span class="rq-ar">'+(ok?'✅ ':'❌ ')+'<b>'+R.ar+'</b> &mdash; '+Q[i].war+'</span>';
+    const nx=el('button','btn solid mini',i<Q.length-1?'Next situation →':'See my score →'); nx.type='button';
+    nx.style.marginTop='10px';
+    nx.addEventListener('click',()=>{ i++; delete card.dataset.locked; paint(); });
+    fb.appendChild(nx);
   }
   function finish(){
-    card.style.display='none'; res.style.display='block';
-    const order=Object.keys(scores).sort((a,b)=>scores[b]-scores[a]);
-    const top=order[0], second=order[1];
-    const R=ROLES[top];
-    res.innerHTML='<div class="rq-win" style="--rc:'+R.c+'">'+
-      '<div class="rq-em">'+R.e+'</div>'+
-      '<div><span class="badge">YOUR CREW ROLE TODAY</span><h3>'+R.n+'</h3><p>'+R.d+'</p></div></div>'+
-      '<p class="instr">Runner-up: <b>'+ROLES[second].e+' '+ROLES[second].n+'</b> &mdash; a good backup if somebody else takes your first choice.</p>'+
-      '<div class="rq-scores"></div>'+
-      '<div class="note info"><b>Now finish your card.</b> Write one sentence in Canva: &ldquo;I will help my crew by&hellip;&rdquo; Be <b>specific</b> &mdash; not &ldquo;I will help&rdquo; but &ldquo;I will keep our timer running and tell the crew when 5 minutes are left.&rdquo;</div>';
-    const sc=res.querySelector('.rq-scores');
-    order.forEach(k=>{
-      const row=el('div','rq-row');
-      row.innerHTML='<span class="rq-lbl">'+ROLES[k].e+' '+ROLES[k].n+'</span><span class="rq-track"><i style="width:'+Math.round(scores[k]/4*100)+'%;background:'+ROLES[k].c+'"></i></span><span class="rq-num">'+scores[k]+'</span>';
-      sc.appendChild(row);
+    card.style.display='none'; fb.style.display='none'; res.style.display='block';
+    const band=score>=13?'ok':score>=9?'neutral':'bad';
+    res.innerHTML='<div class="fb '+band+'"><h3 style="margin:0 0 6px">'+score+' / '+Q.length+' &mdash; best streak '+best+'</h3>'
+      +'<p>'+(score>=13?'You know the crew inside out. Now pick yours.'
+              :score>=9?'Solid. Read the five cards below once more, then pick yours.'
+                       :'Read the five cards below carefully &mdash; then play again.')+'</p>'
+      +'<p class="rq-ar">'+(score>=13?'إنت عارف الكرو كويس. دلوقتي اختار دورك.'
+              :score>=9?'كويس. اقرا الخمس كروت تحت تاني، وبعدين اختار دورك.'
+                       :'اقرا الخمس كروت تحت بتركيز &mdash; وبعدين العبها تاني.')+'</p></div>';
+    const grid=el('div','rq-cards');
+    ROLES.forEach(r=>{
+      const t=el('div','rq-rc'); t.style.setProperty('--rc',r.c);
+      t.innerHTML='<div class="rq-rc-h"><span>'+r.e+'</span><b>'+r.n+'</b><i>'+r.ar+'</i></div>'
+        +'<p>'+r.d+'</p><p class="rq-ar">'+r.dar+'</p>';
+      grid.appendChild(t);
     });
+    res.appendChild(grid);
+    const note=el('div','note info');
+    note.innerHTML='<b>Now choose yours.</b> Pick the ONE role that feels most like you today, then write your Canva card sentence: &ldquo;I will help my crew by&hellip;&rdquo; Be <b>specific</b>.'
+      +'<span class="rq-ar"><b>دلوقتي اختار دورك.</b> اختار دور واحد بس اللي حاسس إنه أقرب ليك النهاردة، وبعدين اكتب جملة الكارت في Canva: «I will help my crew by…» وخليها <b>محدّدة</b>.</span>';
+    res.appendChild(note);
     const row=el('div','btnrow');
-    const again=el('button','btn','↺ Try again'); again.type='button';
-    again.addEventListener('click',()=>{ i=0; Object.keys(scores).forEach(k=>scores[k]=0); res.style.display='none'; card.style.display='block'; paint(); });
+    const again=el('button','btn','↺ Play again'); again.type='button';
+    again.addEventListener('click',()=>{ i=0;score=0;streak=0;best=0;delete card.dataset.locked;res.style.display='none';card.style.display='block';paint(); });
     row.appendChild(again); res.appendChild(row);
-    celebrate(); toast('🎭 Role found: '+R.n,'ok');
+    if(score>=13) celebrate();
   }
   paint();
 };
@@ -1810,92 +1947,213 @@ BUILDERS.clueLab=function(mount,cfg){
   paint();
 };
 
-/* ---------- LISTEN LAB: active listening trainer ---------- */
+/* ---------- LISTEN LAB: active listening trainer (bilingual, 10 rounds) ---------- */
 BUILDERS.listenLab=function(mount,cfg){
+  const KB=['A','B','C'];
   const R=[
-    {who:'Nour',say:'I think the biggest problem is that the canteen queue takes so long we barely get to eat&hellip;',
+    {who:'Nour',av:'🧕',
+     say:'I think the biggest problem is that the canteen queue takes so long we barely get to eat&hellip;',
+     sar:'أنا شايفة إن أكبر مشكلة إن طابور الكانتين بياخد وقت طويل لدرجة إننا بالعافية بناكل…',
      opts:[
-       {t:'&ldquo;No, the real problem is the bus.&rdquo;',ok:false,why:'You replaced her idea with yours before she finished. That is the fastest way to make a teammate stop talking.'},
-       {t:'&ldquo;So what you are saying is the queue eats our break time?&rdquo;',ok:true,why:'<b>Repeat back.</b> You proved you understood, and you gave her a chance to correct you if you did not.'},
-       {t:'*nods while scrolling phone*',ok:false,why:'No eye contact = no listening. She can see it, and she will share less next time.'}
-     ]},
-    {who:'Omar',say:'What if we made a&hellip; sorry, this is going to sound silly&hellip;',
+       {t:'&ldquo;No, the real problem is the bus.&rdquo;', tar:'«لأ، المشكلة الحقيقية هي الأتوبيس.»', ok:false,
+        w:'You replaced her idea with yours before she finished.', war:'استبدلت فكرتها بفكرتك قبل ما تخلّص.'},
+       {t:'&ldquo;So what you are saying is the queue eats our break time?&rdquo;', tar:'«يعني اللي بتقوليه إن الطابور بياكل وقت الفسحة؟»', ok:true,
+        w:'<b>Repeat back.</b> You proved you understood, and you gave her a chance to correct you.',
+        war:'<b>إعادة الصياغة.</b> أثبتّ إنك فهمت، وإدّيتها فرصة تصحّحلك.'},
+       {t:'*nods while scrolling phone*', tar:'*بيهزّ راسه وهو بيتفرّج في الموبايل*', ok:false,
+        w:'No eye contact = no listening. She can see it, and she will share less next time.',
+        war:'مفيش تواصل بالعين = مفيش استماع. هي شايفاك، وهتشارك أقل المرة الجاية.'}]},
+
+    {who:'Omar',av:'🧑',
+     say:'What if we made a&hellip; sorry, this is going to sound silly&hellip;',
+     sar:'طب لو عملنا… معلش، دي هتبان سخيفة…',
      opts:[
-       {t:'&ldquo;Go on &mdash; silly ideas are allowed here.&rdquo;',ok:true,why:'Rule 4 of brainstorming: <b>welcome wild ideas</b>. Protecting a nervous teammate is a Leader move.'},
-       {t:'&ldquo;Only if it is quick.&rdquo;',ok:false,why:'You just put a price on speaking. He will keep his best idea to himself.'},
-       {t:'&ldquo;We already have enough ideas.&rdquo;',ok:false,why:'Judging during the generate phase. Filtering comes later &mdash; never during the storm.'}
-     ]},
-    {who:'Salma',say:'&hellip;and so the sign should be near the gate, I think, because that is where everyone stands.',
+       {t:'&ldquo;Go on &mdash; silly ideas are allowed here.&rdquo;', tar:'«قولها — السخيف مسموح هنا.»', ok:true,
+        w:'Rule 4: <b>welcome wild ideas</b>. Protecting a nervous teammate keeps the flow open.',
+        war:'القاعدة 4: <b>رحّب بالأفكار المجنونة</b>. حماية الزميل الخايف بتخلي الأفكار تفضل نازلة.'},
+       {t:'&ldquo;Only if it is quick.&rdquo;', tar:'«بس لو هتبقى سريعة.»', ok:false,
+        w:'You just put a price on speaking. He will keep his best idea to himself.',
+        war:'إنت حطيت تمن على إنه يتكلم. هيحتفظ بأحسن فكرة عنده لنفسه.'},
+       {t:'&ldquo;We already have enough ideas.&rdquo;', tar:'«إحنا عندنا أفكار كفاية أصلًا.»', ok:false,
+        w:'Judging during the generate phase. Filtering comes later &mdash; never during the storm.',
+        war:'حكم في مرحلة التوليد. الفلترة بعدين — مش وسط العاصفة أبدًا.'}]},
+
+    {who:'Hana',av:'👩',
+     say:'&hellip;so the first part is a sign at the gate, and the second part is a rota where two students actually stand there for the first week.',
+     sar:'…فالجزء الأول لافتة عند البوابة، والجزء التاني جدول اتنين طلبة يقفوا هناك فعلًا أول أسبوع.',
      opts:[
-       {t:'&ldquo;Near the gate. Got it &mdash; can you say more about why there?&rdquo;',ok:true,why:'A <b>clarifying question</b>. It shows you were present and it digs one level deeper into the idea.'},
-       {t:'&ldquo;OK next person.&rdquo;',ok:false,why:'You moved on before the idea landed. The crew loses the reasoning behind it.'},
-       {t:'&ldquo;That will never get approved.&rdquo;',ok:false,why:'Feasibility matters &mdash; but not yet. This is still generate mode.'}
-     ]},
-    {who:'Yassin',say:'I do not really mind, whatever you all want is fine.',
+       {t:'&ldquo;Great idea!&rdquo;', tar:'«فكرة عظيمة!»', ok:false,
+        w:'Praise is not listening. It feels nice and proves nothing &mdash; she still does not know if you followed the second half.',
+        war:'المدح مش استماع. بيبقى شكله حلو وما بيثبتش حاجة — هي لسه مش عارفة إنت فهمت النص التاني ولا لأ.'},
+       {t:'&ldquo;The part I am not sure I got is the rota &mdash; can you take me through it again?&rdquo;',
+        tar:'«الحتة اللي مش متأكد إني فهمتها هي الجدول — ممكن تعيديها؟»', ok:true,
+        w:'A <b>precise clarifying question</b>. Naming the exact part you missed is far more useful than &ldquo;can you repeat that?&rdquo;',
+        war:'<b>سؤال توضيحي محدّد.</b> إنك تسمّي الجزء اللي فاتك أنفع بكتير من «ممكن تعيدي؟»'},
+       {t:'&ldquo;I agree.&rdquo;', tar:'«أنا موافق.»', ok:false,
+        w:'Agreement without understanding. If she asked you to explain it back right now, could you?',
+        war:'موافقة من غير فهم. لو طلبت منك تشرحها دلوقتي، هتعرف؟'}]},
+
+    {who:'Salma',av:'👧',
+     say:'&hellip;and so the sign should be near the gate, I think, because that is where everyone stands.',
+     sar:'…فاللافتة المفروض تبقى جنب البوابة، لأن ده المكان اللي كله بيقف فيه.',
      opts:[
-       {t:'&ldquo;Great, decided then.&rdquo;',ok:false,why:'A quiet teammate is not an agreeing teammate. You just lost a whole person&rsquo;s thinking.'},
-       {t:'&ldquo;Yassin &mdash; which of the two feels closer to right for you?&rdquo;',ok:true,why:'The Leader&rsquo;s job: <b>make sure everyone is heard</b>. A narrow question is easier to answer than an open one.'},
-       {t:'&ldquo;You never have an opinion.&rdquo;',ok:false,why:'Feedback about the person, not the work. That breaks trust instantly.'}
-     ]},
-    {who:'Layla',say:'Our idea is good but I do not know how we would actually pay for it.',
+       {t:'&ldquo;Near the gate. Got it &mdash; say more about why there?&rdquo;', tar:'«جنب البوابة. فهمت — قوليلي أكتر ليه هناك؟»', ok:true,
+        w:'Repeat back <b>plus</b> a clarifying question. Two moves in one sentence.',
+        war:'إعادة صياغة <b>زائد</b> سؤال توضيحي. حركتين في جملة واحدة.'},
+       {t:'&ldquo;OK, next person.&rdquo;', tar:'«تمام، اللي بعده.»', ok:false,
+        w:'You moved on before the idea landed. The crew loses the reasoning behind it.',
+        war:'عديت قبل ما الفكرة تنزل. الكرو خسر السبب اللي وراها.'},
+       {t:'&ldquo;That will never get approved.&rdquo;', tar:'«ده عمره ما هيتوافق عليه.»', ok:false,
+        w:'Feasibility matters &mdash; but not yet. This is still generate mode.',
+        war:'الجدوى مهمة — بس مش دلوقتي. إحنا لسه في مرحلة التوليد.'}]},
+
+    {who:'Yassin',av:'🧒',
+     say:'I do not really mind, whatever you all want is fine.',
+     sar:'أنا مش فارقة معايا، أي حاجة تعجبكم تمام.',
      opts:[
-       {t:'&ldquo;Yes, AND what if the school council funded a small version first?&rdquo;',ok:true,why:'<b>Build on others.</b> You kept her point AND pushed the idea forward instead of killing it.'},
-       {t:'&ldquo;Then it is not a good idea.&rdquo;',ok:false,why:'A problem is not a verdict. Problems are things to solve, and solving is the whole point.'},
-       {t:'&ldquo;Money is not our problem.&rdquo;',ok:false,why:'Dismissing a real constraint. It will come straight back at you during the pitch.'}
-     ]},
-    {who:'Adam',say:'Can I just finish my point? I had two parts&mdash;',
+       {t:'&ldquo;Great, decided then.&rdquo;', tar:'«تمام، يبقى اتفقنا.»', ok:false,
+        w:'A quiet teammate is not an agreeing teammate. You just lost a whole person&rsquo;s thinking.',
+        war:'الزميل الساكت مش زميل موافق. إنت خسرت تفكير شخص كامل.'},
+       {t:'&ldquo;Yassin &mdash; which of the two feels closer to right for you?&rdquo;',
+        tar:'«ياسين — أنهي واحدة في الاتنين حاسس إنها أقرب للصح؟»', ok:true,
+        w:'A <b>narrow</b> question is far easier to answer than an open one. That is how you include a quiet person.',
+        war:'السؤال <b>الضيّق</b> أسهل بكتير في الإجابة من السؤال المفتوح. كده بتدخّل الشخص الساكت.'},
+       {t:'&ldquo;You never have an opinion.&rdquo;', tar:'«إنت عمرك ما بيبقى عندك رأي.»', ok:false,
+        w:'Feedback about the person, not the work. That breaks trust instantly.',
+        war:'ملاحظة على الشخص مش على الشغل. دي بتكسر الثقة على طول.'}]},
+
+    {who:'Layla',av:'👩‍🦱',
+     say:'Our idea is good but I do not know how we would actually pay for it.',
+     sar:'فكرتنا كويسة بس مش عارفة هندفع تكلفتها إزاي.',
      opts:[
-       {t:'&ldquo;Sorry &mdash; go ahead, I will wait.&rdquo;',ok:true,why:'<b>Do not interrupt.</b> Owning the interruption and handing the floor back repairs it in one sentence.'},
-       {t:'&ldquo;I know what you are going to say.&rdquo;',ok:false,why:'You almost certainly do not &mdash; and even if you did, he still has not been heard.'},
-       {t:'&ldquo;We are short on time.&rdquo;',ok:false,why:'That is the Timekeeper&rsquo;s call, and the fix is a shorter turn for everyone, not cutting one person off.'}
-     ]}
+       {t:'&ldquo;Yes, AND what if the school council funded a small version first?&rdquo;',
+        tar:'«أيوة، وكمان لو مجلس الطلبة موّل نسخة صغيرة الأول؟»', ok:true,
+        w:'<b>Build on others.</b> You kept her point AND pushed the idea forward instead of killing it.',
+        war:'<b>ابنِ على أفكار غيرك.</b> حافظت على نقطتها وكمان دفعت الفكرة لقدام بدل ما تقتلها.'},
+       {t:'&ldquo;Then it is not a good idea.&rdquo;', tar:'«يبقى مش فكرة كويسة.»', ok:false,
+        w:'A problem is not a verdict. Problems are things to solve &mdash; that is the whole point.',
+        war:'المشكلة مش حكم نهائي. المشاكل حاجات بتتحل — ده الهدف أصلًا.'},
+       {t:'&ldquo;We can worry about money later.&rdquo;', tar:'«نقلق بخصوص الفلوس بعدين.»', ok:false,
+        w:'Softer than a rejection, but it still dismisses her point instead of using it. She raised a real constraint.',
+        war:'ألطف من الرفض، بس برضه بيتجاهل نقطتها بدل ما يستخدمها. هي قالت قيد حقيقي.'}]},
+
+    {who:'Adam',av:'👦',
+     say:'Can I just finish my point? I had two parts&mdash;',
+     sar:'ممكن أكمّل نقطتي؟ كانت جزئين—',
+     opts:[
+       {t:'&ldquo;Sorry &mdash; go ahead, I will wait.&rdquo;', tar:'«آسف — كمّل، أنا هستنى.»', ok:true,
+        w:'<b>Do not interrupt.</b> Owning the interruption and handing the floor back repairs it in one sentence.',
+        war:'<b>متقاطعش.</b> إنك تعترف بالمقاطعة وترجّعله الكلام بيصلّحها في جملة واحدة.'},
+       {t:'&ldquo;I know what you are going to say.&rdquo;', tar:'«أنا عارف هتقول إيه.»', ok:false,
+        w:'You almost certainly do not &mdash; and even if you did, he still has not been heard.',
+        war:'غالبًا إنت مش عارف — وحتى لو عارف، هو لسه ماتسمعش.'},
+       {t:'&ldquo;Make it quick then.&rdquo;', tar:'«خلّيها سريعة بقى.»', ok:false,
+        w:'You gave the floor back with a threat attached. Half a repair is not a repair.',
+        war:'رجّعتله الكلام ومعاه تهديد. نص إصلاح مش إصلاح.'}]},
+
+    {who:'Mariam &amp; Ziad',av:'🗣️',
+     say:'*both start talking at exactly the same time, then both stop*',
+     sar:'*الاتنين بدأوا يتكلموا في نفس اللحظة، وبعدين الاتنين سكتوا*',
+     opts:[
+       {t:'&ldquo;Mariam, go first &mdash; Ziad, you are straight after her.&rdquo;',
+        tar:'«مريم، ابدأي إنتي — زياد، إنت وراها على طول.»', ok:true,
+        w:'Order plus a <b>guaranteed turn</b>. The second person now listens instead of waiting to fight for the floor.',
+        war:'ترتيب زائد <b>دور مضمون</b>. الشخص التاني دلوقتي بيسمع بدل ما يستنى يتخانق على الكلام.'},
+       {t:'&ldquo;Whoever was louder, carry on.&rdquo;', tar:'«اللي كان صوته أعلى، يكمّل.»', ok:false,
+        w:'Rewarding volume. Do this twice and the quieter half of the crew stops speaking at all.',
+        war:'مكافأة الصوت العالي. اعملها مرتين والنص الهادي من الكرو هيبطّل كلام خالص.'},
+       {t:'&ldquo;Let us just move on, we are short on time.&rdquo;', tar:'«يلا نعدّي، الوقت ضيّق.»', ok:false,
+        w:'You just deleted two contributions to save fifteen seconds.',
+        war:'إنت مسحت مشاركتين عشان توفّر خمستاشر ثانية.'}]},
+
+    {who:'Farida',av:'👱‍♀️',
+     say:'I still think the sign idea is the strongest one.',
+     sar:'أنا لسه شايفة إن فكرة اللافتة هي الأقوى.',
+     opts:[
+       {t:'&ldquo;We already said that.&rdquo;', tar:'«إحنا قلنا كده خلاص.»', ok:false,
+        w:'Dismissive, and probably wrong &mdash; a repeat usually means the person feels their point was not actually taken.',
+        war:'استخفاف، وغالبًا غلط — التكرار عادةً معناه إن الشخص حاسس إن نقطته ماتاخدتش فعلًا.'},
+       {t:'&ldquo;Yes &mdash; and I think you are adding that it should be at the gate <i>specifically</i>. Is that it?&rdquo;',
+        tar:'«أيوة — وأنا حاسس إنك بتضيفي إنها تبقى عند البوابة <i>بالذات</i>. صح كده؟»', ok:true,
+        w:'You listened for the <b>new</b> part inside a repeat, and checked it. Repeats almost always carry something extra.',
+        war:'إنت سمعت الجزء <b>الجديد</b> جوه التكرار، واتأكدت منه. التكرار دايمًا تقريبًا جواه حاجة زيادة.'},
+       {t:'*says nothing and waits for someone else to answer*', tar:'*ما بيقولش حاجة ومستني حد تاني يرد*', ok:false,
+        w:'Silence after someone repeats themselves reads as disagreement. Say something, even just an acknowledgement.',
+        war:'السكوت بعد ما حد يكرّر نفسه بيتفهم إنه اعتراض. قول حاجة، حتى لو مجرد إنك سمعت.'}]},
+
+    {who:'Kareem',av:'🧑‍🦰',
+     say:'What if the school just built a second staircase?',
+     sar:'طب لو المدرسة بنت سلم تاني وخلاص؟',
+     opts:[
+       {t:'&ldquo;That costs a fortune, it is not happening.&rdquo;', tar:'«ده بيكلّف ثروة، مش هيحصل.»', ok:false,
+        w:'True <i>and</i> wrong to say now. You are judging in the generate phase &mdash; and you just taught the room not to think big.',
+        war:'صح <i>وبرضه</i> غلط إنك تقولها دلوقتي. إنت بتحكم في مرحلة التوليد — وعلّمت القاعة ما تفكّرش بكبر.'},
+       {t:'&ldquo;On the board. And what is the smallest version of that we could do ourselves?&rdquo;',
+        tar:'«اكتبها على البورد. وإيه أصغر نسخة منها نقدر نعملها بنفسنا؟»', ok:true,
+        w:'You kept the wild idea <b>and</b> mined it. Big ideas are where the doable ones come from &mdash; filtering still waits for the select phase.',
+        war:'إنت حافظت على الفكرة المجنونة <b>وكمان</b> استخرجت منها. الأفكار الكبيرة هي مصدر الأفكار القابلة للتنفيذ — والفلترة لسه مستنية مرحلة الاختيار.'},
+       {t:'&ldquo;Sure, write it down.&rdquo; *and moves on*', tar:'«ماشي، اكتبها.» *ويعدّي*', ok:false,
+        w:'Better than rejecting it, but you left the value in the ground. A wild idea is a starting point, not a box to tick.',
+        war:'أحسن من إنك ترفضها، بس سيبت القيمة في الأرض. الفكرة المجنونة نقطة بداية مش خانة تتعلّم عليها صح.'}]}
   ];
   let i=0,score=0,streak=0,best=0;
-  mount.appendChild(el('p','instr','A teammate speaks. Pick the response a great listener would give. <b>6 rounds.</b>'));
+  mount.appendChild(el('p','instr','A teammate speaks. Pick the response a <b>great listener</b> would give. Ten rounds &mdash; and some of the wrong answers sound perfectly polite.'
+    +'<span class="rq-ar">زميلك بيتكلم. اختار الرد اللي <b>المستمع الشاطر</b> هيقوله. عشر جولات — وفي إجابات غلط شكلها مؤدّب جدًا.</span>'));
   const hud=el('div','gamehud');
-  hud.innerHTML='<span class="taskpill">Round <b class="ll-r">1</b>/6</span><span class="taskpill">Score <b class="ll-s">0</b></span><span class="taskpill">Streak <b class="ll-k">0</b></span>';
+  hud.innerHTML='<span class="taskpill">Round <b class="ll-r">1</b>/'+R.length+'</span>'
+    +'<span class="taskpill">Score <b class="ll-s">0</b></span>'
+    +'<span class="taskpill">Streak <b class="ll-k">0</b></span>';
   mount.appendChild(hud);
+  const bar=el('div','rq-bar'); const fill=el('span'); bar.appendChild(fill); mount.appendChild(bar);
   const stage=el('div','ll-stage'); mount.appendChild(stage);
   const fb=el('div','fb neutral'); fb.style.display='none'; mount.appendChild(fb);
+
   function paint(){
+    fill.style.width=Math.round(i/R.length*100)+'%';
     hud.querySelector('.ll-r').textContent=Math.min(i+1,R.length);
     hud.querySelector('.ll-s').textContent=score;
     hud.querySelector('.ll-k').textContent=streak;
     if(i>=R.length){ done(); return; }
     fb.style.display='none';
     const r=R[i];
-    stage.innerHTML='<div class="ll-say"><span class="ll-av">🗣️</span><div><b>'+r.who+'</b><p>'+r.say+'</p></div></div>';
+    stage.innerHTML='<div class="ll-say"><span class="ll-av">'+r.av+'</span>'
+      +'<div class="ll-bub"><b>'+r.who+'</b><p>'+r.say+'</p><p class="rq-ar">'+r.sar+'</p></div></div>';
     const box=el('div','ll-opts');
-    r.opts.forEach(o=>{
-      const b=el('button','opt'); b.type='button'; b.innerHTML=o.t;
-      b.addEventListener('click',()=>{
-        if(stage.dataset.locked)return; stage.dataset.locked='1';
-        box.querySelectorAll('.opt').forEach(x=>x.disabled=true);
-        b.classList.add(o.ok?'right':'wrong');
-        r.opts.forEach((oo,k)=>{ if(oo.ok) box.children[k].classList.add('right'); });
-        if(o.ok){ score++; streak++; best=Math.max(best,streak); blip(760); }
-        else { streak=0; blip(200); }
-        fb.style.display='block';
-        fb.className='fb '+(o.ok?'ok':'bad');
-        fb.innerHTML=(o.ok?'✅ ':'❌ ')+o.why;
-        const nx=el('button','btn solid mini',i<R.length-1?'Next teammate →':'See my result →'); nx.type='button';
-        nx.style.marginTop='10px';
-        nx.addEventListener('click',()=>{ i++; delete stage.dataset.locked; paint(); });
-        fb.appendChild(nx);
-      });
+    r.opts.forEach((o,k)=>{
+      const b=el('button','ll-opt'); b.type='button';
+      b.innerHTML='<span class="ll-kbd">'+KB[k]+'</span>'
+        +'<span class="ll-tx">'+o.t+'<span class="rq-ar">'+o.tar+'</span></span>';
+      b.addEventListener('click',()=>judge(k,box));
       box.appendChild(b);
     });
     stage.appendChild(box);
   }
+  function judge(k,box){
+    if(stage.dataset.locked) return; stage.dataset.locked='1';
+    const r=R[i], o=r.opts[k];
+    const btns=[...box.querySelectorAll('.ll-opt')];
+    btns.forEach(x=>x.disabled=true);
+    r.opts.forEach((oo,n)=>{ if(oo.ok) btns[n].classList.add('right'); });
+    if(!o.ok) btns[k].classList.add('wrong');
+    if(o.ok){ score++; streak++; best=Math.max(best,streak); blip(760); }
+    else { streak=0; blip(200); }
+    fb.style.display='block'; fb.className='fb '+(o.ok?'ok':'bad');
+    fb.innerHTML=(o.ok?'✅ ':'❌ ')+o.w+'<span class="rq-ar">'+(o.ok?'✅ ':'❌ ')+o.war+'</span>';
+    const nx=el('button','btn solid mini',i<R.length-1?'Next teammate →':'See my result →'); nx.type='button';
+    nx.style.marginTop='10px';
+    nx.addEventListener('click',()=>{ i++; delete stage.dataset.locked; paint(); });
+    fb.appendChild(nx);
+  }
   function done(){
-    stage.innerHTML='';
-    fb.style.display='block'; fb.className='fb '+(score>=5?'ok':score>=3?'neutral':'bad');
-    fb.innerHTML='<h3 style="margin:0 0 6px">'+score+' / 6 &mdash; '+(score>=5?'Superpower unlocked 👂':score>=3?'Getting there':'Practice needed')+'</h3>'+
-      '<p>Best streak: <b>'+best+'</b>. Remember the three moves: <b>Look</b> · <b>Do not interrupt</b> · <b>Repeat back</b>.</p>';
+    stage.innerHTML=''; fill.style.width='100%';
+    fb.style.display='block'; fb.className='fb '+(score>=8?'ok':score>=5?'neutral':'bad');
+    fb.innerHTML='<h3 style="margin:0 0 6px">'+score+' / '+R.length+' &mdash; best streak '+best+'</h3>'
+      +'<p>The three moves: <b>Look</b> &middot; <b>Do not interrupt</b> &middot; <b>Repeat back</b>. And the trap you now know: <b>&ldquo;great idea!&rdquo; and &ldquo;I agree&rdquo; are not listening</b> &mdash; they are polite ways of not listening.</p>'
+      +'<p class="rq-ar">التلات حركات: <b>بُص</b> &middot; <b>متقاطعش</b> &middot; <b>أعِد الصياغة</b>. والفخ اللي عرفته دلوقتي: <b>«فكرة عظيمة!» و«أنا موافق» مش استماع</b> — دول طرق مؤدّبة إنك ما تسمعش.</p>';
     const again=el('button','btn mini','↺ Play again'); again.type='button'; again.style.marginTop='8px';
     again.addEventListener('click',()=>{ i=0;score=0;streak=0;best=0;delete stage.dataset.locked; paint(); });
     fb.appendChild(again);
-    if(score>=5) celebrate();
+    if(score>=8) celebrate();
   }
   paint();
 };
