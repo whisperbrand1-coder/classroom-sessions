@@ -581,6 +581,16 @@ body.no-motion *{transition:none!important;animation-duration:.001s!important;an
 
 
 /* ===== L3 S1 · custom activity styles ===== */
+.gw-sheet{border:3px solid var(--ink);border-radius:8px;background:#fff;box-shadow:6px 6px 0 var(--ink);
+  padding:14px;display:flex;flex-direction:column;gap:9px;transform:rotate(-.7deg)}
+.gw-draw{border:2px dashed var(--ink);border-radius:6px;background:var(--paper);min-height:118px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;
+  color:var(--muted);font-size:13px;font-family:'IBM Plex Mono',monospace;letter-spacing:.04em}
+.gw-draw span{font-size:30px}
+.gw-line{border-bottom:2px solid var(--ink);padding:2px 2px 9px;font-size:14px}
+.gw-line i{font-style:normal;color:var(--muted)}
+.gw-no{margin-top:2px;background:#FFE0E0;border:2px solid var(--red);border-radius:6px;
+  padding:6px 9px;font-size:12px;text-align:center;font-weight:600}
 .rq-bar{height:10px;border:2px solid var(--ink);background:#fff;border-radius:99px;overflow:hidden;margin:10px 0 14px}
 .rq-bar span{display:block;height:100%;background:var(--teal);transition:width .3s}
 .rq-card{border:2px solid var(--ink);background:#fff;box-shadow:4px 4px 0 var(--ink);padding:18px;border-radius:6px}
@@ -739,7 +749,7 @@ body.no-motion *{transition:none!important;animation-duration:.001s!important;an
         <div style="font-size:54px;margin:18px 0 4px" aria-hidden="true">🤝 💡 🎯</div>
         <h1 class="big">The <span class="hl">Changemaker</span> Journey</h1>
         <p class="sub">Over five sessions your crew will pick a real problem students your age face — and build a real solution together. Today we form the crew, unlock creative thinking, and choose our first idea.</p>
-        <div class="hero-badges"><span class="chip">🎭 5 crew roles</span><span class="chip">🧠 4 brainstorm rules</span><span class="chip">🎮 8 live games</span><span class="chip">🌐 Web + Art build</span></div>
+        <div class="hero-badges"><span class="chip">🎭 5 crew roles</span><span class="chip">🧠 4 brainstorm rules</span><span class="chip">🎮 9 live games</span><span class="chip">🌐 Web + Art build</span></div>
         <p class="mono" style="margin-top:18px;color:var(--muted);font-size:14px">Press <b>→</b> or <b>Space</b> to start.</p>
       </div>
     </section>
@@ -767,19 +777,87 @@ body.no-motion *{transition:none!important;animation-duration:.001s!important;an
       </div>
     </section>
 
-    <section class="scene" data-sec="0" data-title="Icebreaker — Two Truths and a Team" data-src="Deck 4">
+    <section class="scene" data-sec="0" data-title="Icebreaker — Guess Whose Sheet" data-src="Deck 4 (adapted)">
       <div class="scene-inner">
         <div class="card">
-          <div class="head"><span class="badge">ICEBREAKER · 15 MIN 🎯</span><h2>Two Truths and a Team</h2></div>
+          <div class="head"><span class="badge">ICEBREAKER · 15 MIN 🎨</span><h2>Guess Whose Sheet 🕵️</h2></div>
           <div class="body">
+            <p class="lead">Everybody makes one sheet about themselves — <b>a drawing plus three lines</b>, and <b>no name on it</b>. Then the whole class tries to work out whose sheet it is.</p>
             <div class="grid g4">
-              <div class="tile accent"><span class="ic">1️⃣</span><h4>Form your team</h4><p>The tutor makes crews of <b>5</b>. Sit together — you will be this crew for all five sessions.</p></div>
-              <div class="tile"><span class="ic">2️⃣</span><h4>Share two truths</h4><p>Each person says two <b>true</b> things about themselves. No lies today — this is not that game.</p></div>
-              <div class="tile"><span class="ic">3️⃣</span><h4>Your crew guesses</h4><p>Which one is the <b>most surprising</b>? Discuss it as a crew.</p></div>
-              <div class="tile"><span class="ic">4️⃣</span><h4>Listen carefully</h4><p>The goal is to learn something new about every single teammate.</p></div>
+              <div class="tile accent"><span class="ic">1️⃣</span><h4>Draw yourself in</h4><p>One drawing that says something about <b>you</b>: a self-portrait, your favourite thing, a place you love, an object you always carry. Stick figures are completely fine — this is not an art exam.</p></div>
+              <div class="tile"><span class="ic">2️⃣</span><h4>Write three lines</h4><p>Three short clues about your <b>personality</b> — see the sheet layout below. Short. Honest. Nothing that names you directly.</p></div>
+              <div class="tile"><span class="ic">3️⃣</span><h4>No name, fold it, hand it in</h4><p>The tutor shuffles every sheet. From this moment nobody knows which sheet is coming next.</p></div>
+              <div class="tile"><span class="ic">4️⃣</span><h4>The class guesses</h4><p>One sheet at a time on the screen. <b>30 seconds</b> to guess — then the owner stands up.</p></div>
             </div>
-            <div class="note info" style="margin-top:14px">🕐 <b>Run it tight:</b> 90 seconds per person. Timekeeper (or the tutor) calls time — the clock is part of the game.</div>
-            <div data-act="pitchTimer" data-config='{"seconds":90,"marks":[{"at":0,"t":"Truth one","e":"1️⃣"},{"at":30,"t":"Truth two","e":"2️⃣"},{"at":60,"t":"Crew guesses the surprising one","e":"🤔"}]}'></div>
+            <div class="grid g2" style="margin-top:16px">
+              <div class="gw-sheet" aria-hidden="true">
+                <div class="gw-draw"><span>✏️</span>your drawing goes here</div>
+                <div class="gw-line"><i>I am really good at…</i></div>
+                <div class="gw-line"><i>Something that annoys me is…</i></div>
+                <div class="gw-line"><i>Something nobody in this room knows about me is…</i></div>
+                <div class="gw-no">🚫 no name · no class · no obvious giveaways</div>
+              </div>
+              <div>
+                <h3>This is the sheet</h3>
+                <p>One drawing, three lines, nothing else. The drawing does not have to be good — it has to be <b>yours</b>.</p>
+                <div class="note good" style="margin-top:12px">💚 <b>Why we start here:</b> your crew will spend five sessions together. It is far easier to say a wild idea out loud in front of people you already know something about.</div>
+                <div class="note warn" style="margin-top:12px">⚠️ Before you write a single line — the next slide shows what actually makes a clue <b>guessable</b>.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="scene" data-sec="0" data-title="GAME · What makes a good clue?" data-src="Icebreaker prep">
+      <div class="scene-inner">
+        <div class="card">
+          <div class="head"><span class="badge">PROJECTOR GAME 🎮</span><h2>Before you write: what makes a good clue? 🕵️</h2></div>
+          <div class="body">
+            <p class="sub">A good sheet is <b>guessable but not instant</b>. Ten real clues — which ones would actually make a good round?</p>
+            <div data-act="clueLab"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="scene" data-sec="0" data-title="Make your sheet — 6 minutes" data-src="Icebreaker">
+      <div class="scene-inner">
+        <div class="card">
+          <div class="head"><span class="badge">MAKE IT · 6 MIN ✏️</span><h2>Your turn. Six minutes.</h2></div>
+          <div class="body">
+            <div data-act="pitchTimer" data-config='{"seconds":360,"marks":[{"at":0,"t":"Draw — one picture that says something about you","e":"✏️"},{"at":180,"t":"Write your three lines","e":"📝"},{"at":300,"t":"Check: no name, no giveaway — then fold it","e":"🙈"}]}'></div>
+            <div class="grid g2" style="margin-top:16px">
+              <div>
+                <h3>Then the guessing starts</h3>
+                <div class="steps">
+                  <div class="step">The tutor shuffles every sheet and puts one on the screen.</div>
+                  <div class="step">Crews get <b>30 seconds</b> and write down <b>one name</b> — <b>no shouting it out</b>, that ruins the round for everyone else.</div>
+                  <div class="step">Each crew reads their guess. <b>1 point</b> for a correct one.</div>
+                  <div class="step">The owner stands up and says <b>one sentence</b> about their drawing.</div>
+                </div>
+              </div>
+              <div>
+                <h3>Last check before you fold it</h3>
+                <div data-act="checklist" data-config='{"items":["A drawing — any drawing. Stick figures count.","Three lines, one per prompt.","Every line is <b>specific</b> — nobody else could write it.","No line can be solved by looking around the room.","<b>No name anywhere on the sheet.</b>"]}'></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="scene" data-sec="0" data-title="Form your crews" data-src="Deck 4">
+      <div class="scene-inner">
+        <div class="card">
+          <div class="head"><span class="badge">CREW FORMATION 🤝</span><h2>Now form your crews</h2></div>
+          <div class="body">
+            <div class="grid g3">
+              <div class="tile accent"><span class="ic">5️⃣</span><h4>Crews of five</h4><p>The tutor makes the crews. Sit together — <b>you will be this crew for all five sessions</b>.</p></div>
+              <div class="tile"><span class="ic">🕵️</span><h4>Guessing was crew vs crew</h4><p>Whichever crew guessed most sheets correctly opens today's brainstorm. Small prize, big energy.</p></div>
+              <div class="tile"><span class="ic">👂</span><h4>One rule from now on</h4><p>You already learned something about everybody in the room. <b>Nobody in your crew gets talked over today.</b></p></div>
+            </div>
+            <div class="note warn" style="margin-top:14px">⚠️ <b>Keep the sheets.</b> Pin them on the wall for the five sessions — they are the fastest way for a new facilitator (or a shy student) to remember who is who.</div>
           </div>
         </div>
       </div>
@@ -1658,6 +1736,76 @@ BUILDERS.roleQuiz=function(mount,cfg){
     again.addEventListener('click',()=>{ i=0; Object.keys(scores).forEach(k=>scores[k]=0); res.style.display='none'; card.style.display='block'; paint(); });
     row.appendChild(again); res.appendChild(row);
     celebrate(); toast('🎭 Role found: '+R.n,'ok');
+  }
+  paint();
+};
+
+/* ---------- CLUE LAB: what makes a guessable sheet? ---------- */
+BUILDERS.clueLab=function(mount,cfg){
+  const CATS=[
+    {id:'give',l:'Dead giveaway',e:'🔓'},
+    {id:'vague',l:'Too vague',e:'🌫️'},
+    {id:'good',l:'Perfect clue',e:'🎯'}
+  ];
+  const ITEMS=[
+    {t:'&ldquo;I am the tallest person in this room.&rdquo;',v:'give',
+     w:'Everybody solves it in one second and the round is over. A giveaway is not clever &mdash; it just ends the game early.'},
+    {t:'&ldquo;I like food.&rdquo;',v:'vague',
+     w:'True of every human alive. A clue that fits everyone tells the room nothing about you.'},
+    {t:'&ldquo;I can name every capital city in Africa.&rdquo;',v:'good',
+     w:'Specific, surprising, and guessable only by people who already know you a bit. That is exactly the target.'},
+    {t:'&ldquo;My name starts with the letter M.&rdquo;',v:'give',
+     w:'That is not a personality clue, that is your name in a costume. Straight giveaway.'},
+    {t:'&ldquo;I am a normal person.&rdquo;',v:'vague',
+     w:'Says nothing at all. If your clue could be printed on any sheet in the room, rewrite it.'},
+    {t:'&ldquo;I get genuinely angry when people chew loudly.&rdquo;',v:'good',
+     w:'A real, specific reaction. Clues about what <b>annoys</b> you are usually the most recognisable ones you can write.'},
+    {t:'&ldquo;I sit in the front row next to the window.&rdquo;',v:'give',
+     w:'Anyone can just look. Location clues are giveaways &mdash; keep it to what is inside your head.'},
+    {t:'&ldquo;I have taught myself to solve a Rubik&rsquo;s cube in under two minutes.&rdquo;',v:'good',
+     w:'Unusual enough to be interesting, ordinary enough that a friend would recognise it. Perfect.'},
+    {t:'&ldquo;I am good at things.&rdquo;',v:'vague',
+     w:'Good at <b>what</b>? A clue with no detail is a wasted line on your sheet.'},
+    {t:'&ldquo;I am the only one here who wears glasses.&rdquo;',v:'give',
+     w:'Visible from across the room. If someone can solve it by looking up, it is a giveaway.'}
+  ];
+  let i=0,score=0;
+  mount.appendChild(el('p','instr','Ten clues from real sheets. Which ones would actually make a good round? Read the reason each time &mdash; that is the part that improves their sheets.'));
+  const hud=el('div','gamehud');
+  hud.innerHTML='<span class="taskpill">Clue <b class="cl-i">1</b>/'+ITEMS.length+'</span><span class="taskpill">Correct <b class="cl-s">0</b></span>';
+  mount.appendChild(hud);
+  const card=el('div','pp-card'); mount.appendChild(card);
+  const fb=el('div','fb neutral'); fb.style.display='none'; mount.appendChild(fb);
+  function paint(){
+    hud.querySelector('.cl-i').textContent=Math.min(i+1,ITEMS.length);
+    hud.querySelector('.cl-s').textContent=score;
+    if(i>=ITEMS.length){
+      card.innerHTML='';
+      fb.style.display='block'; fb.className='fb '+(score>=8?'ok':score>=6?'neutral':'bad');
+      fb.innerHTML='<h3 style="margin:0 0 6px">'+score+' / '+ITEMS.length+'</h3>'+
+        '<p>The target for every line on your sheet: <b>specific</b> (nobody else could write it) · <b>invisible</b> (you cannot solve it by looking across the room) · <b>true</b>. Now go and write yours.</p>';
+      const a=el('button','btn mini','↺ Play again'); a.type='button'; a.style.marginTop='8px';
+      a.addEventListener('click',()=>{i=0;score=0;paint();}); fb.appendChild(a);
+      if(score>=8) celebrate();
+      return;
+    }
+    fb.style.display='none';
+    card.innerHTML='<div class="pp-q">'+ITEMS[i].t+'</div>';
+    const row=el('div','pp-opts');
+    CATS.forEach(c=>{
+      const b=el('button','btn',c.e+' '+c.l); b.type='button';
+      b.addEventListener('click',()=>{
+        row.querySelectorAll('.btn').forEach(x=>x.disabled=true);
+        const ok=c.id===ITEMS[i].v; b.classList.add(ok?'right':'wrong');
+        if(!ok) row.children[CATS.findIndex(x=>x.id===ITEMS[i].v)].classList.add('right');
+        if(ok){score++;blip(740);}else blip(210);
+        fb.style.display='block'; fb.className='fb '+(ok?'ok':'bad'); fb.innerHTML=ITEMS[i].w;
+        const nx=el('button','btn solid mini',i<ITEMS.length-1?'Next clue →':'See result →'); nx.type='button';
+        nx.style.marginTop='10px'; nx.addEventListener('click',()=>{i++;paint();}); fb.appendChild(nx);
+      });
+      row.appendChild(b);
+    });
+    card.appendChild(row);
   }
   paint();
 };
