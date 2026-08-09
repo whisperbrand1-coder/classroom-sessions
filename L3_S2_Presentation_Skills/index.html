@@ -712,6 +712,104 @@ body.no-motion *{transition:none!important;animation-duration:.001s!important;an
   color:var(--muted);border-left:1px solid rgba(28,36,52,.3);padding-left:7px}
 @media(max-width:700px){.tsw-x{display:none}.tracksw{padding:5px 10px}}
 
+/* ============================================================
+   SHARED HOOK TOOLKIT — styles used by Level 2 S2 and Level 3 S2
+   Appended to both files; rules repeated from a level's own sheet
+   carry identical values, so order never matters.
+   ============================================================ */
+.pp-card{border:2px solid var(--ink);background:#fff;box-shadow:4px 4px 0 var(--ink);padding:18px;border-radius:6px}
+.pp-q{font-family:'Baloo 2',cursive;font-size:clamp(18px,2.3vw,26px);line-height:1.35;margin:6px 0 16px}
+.pp-opts{display:flex;flex-wrap:wrap;gap:10px}
+.pp-opts .btn{flex:1 1 180px}
+.pp-opts .btn.right{background:#D8F5E3;border-color:var(--green)}
+.pp-opts .btn.wrong{background:#FFE0E0;border-color:var(--red)}
+
+/* video hook lab */
+.vl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:14px}
+.vl-card{border:3px solid var(--ink);border-radius:10px;background:#fff;box-shadow:5px 5px 0 var(--ink);
+  padding:12px;display:flex;flex-direction:column;gap:9px}
+.vl-tag{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.vl-screen{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
+  aspect-ratio:16/9;border:2px solid var(--ink);border-radius:8px;text-decoration:none;
+  background:linear-gradient(135deg,#1C2434 0%,#39415a 100%);color:#fff;transition:transform .12s}
+.vl-screen:hover{transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--ink)}
+.vl-play{width:54px;height:54px;border-radius:50%;background:#fff;color:var(--ink);
+  display:grid;place-items:center;font-size:22px;padding-left:4px;box-shadow:0 3px 0 rgba(0,0,0,.35)}
+.vl-open{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.05em;opacity:.85}
+.vl-meta b{display:block;font-family:'Baloo 2',cursive;font-size:17px;line-height:1.25}
+.vl-meta span{font-size:12.5px;color:var(--muted)}
+.vl-q{background:var(--paper);border:2px dashed var(--ink);border-radius:6px;padding:9px 11px;
+  font-size:14px;font-style:italic;margin-top:auto}
+.vl-rev{border:2px solid var(--teal);background:var(--teal-l);border-radius:8px;padding:10px 12px;font-size:13.5px;line-height:1.5}
+.vl-rev b{display:block;font-family:'Baloo 2',cursive;font-size:16px;margin-bottom:3px}
+.vl-pat{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
+.vl-p{border:3px solid var(--ink);background:var(--hl);border-radius:10px;padding:13px;
+  box-shadow:5px 5px 0 var(--ink);font-size:14px;line-height:1.45}
+.vl-p b{display:block;font-family:'Baloo 2',cursive;font-size:19px;margin-bottom:4px}
+@media(max-width:900px){.vl-grid,.vl-pat{grid-template-columns:1fr}}
+
+/* shared writing field */
+.wf{width:100%;border:2px solid var(--ink);border-radius:8px;padding:10px 12px;font:inherit;
+  font-size:15.5px;line-height:1.45;background:#fff;resize:vertical}
+.wf:focus{outline:3px solid var(--teal);outline-offset:1px}
+textarea.wf{min-height:56px}
+
+/* hook writer */
+.hw-list{display:grid;gap:12px;margin:4px 0 12px}
+.hw-row{border:2px solid var(--ink);border-radius:10px;background:#fff;box-shadow:4px 4px 0 var(--ink);padding:12px}
+.hw-h{display:flex;align-items:center;gap:9px;margin-bottom:8px}
+.hw-h span{font-size:24px}
+.hw-h b{font-family:'Baloo 2',cursive;font-size:18px}
+.hw-meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:7px}
+.hw-w{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--muted)}
+.hw-warn{font-size:12.5px;background:#FFF3D6;border:1px solid var(--amber);border-radius:5px;padding:3px 8px}
+.brief-box{display:grid;gap:8px;border:3px solid var(--ink);border-radius:10px;background:var(--paper);
+  padding:14px;margin-bottom:14px;box-shadow:4px 4px 0 var(--ink)}
+.brief-box>div{font-size:15.5px;line-height:1.45}
+.bb-l{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.1em;
+  background:var(--ink);color:#fff;border-radius:4px;padding:2px 7px;margin-right:9px;vertical-align:1px}
+
+/* hero preview */
+.hp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:14px}
+.hp-card{display:flex;flex-direction:column;gap:6px}
+.hp-lab{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.hp-hero{border:3px solid var(--ink);border-radius:10px;box-shadow:5px 5px 0 var(--ink);
+  padding:14px;min-height:190px;display:flex;flex-direction:column;gap:9px;color:#fff}
+.hp-nav{display:flex;align-items:center;gap:6px;opacity:.75}
+.hp-nav i{width:22px;height:8px;background:#fff;border-radius:2px;display:block}
+.hp-nav span{width:16px;height:5px;background:rgba(255,255,255,.6);border-radius:2px;margin-left:auto}
+.hp-nav span+span{margin-left:0}
+.hp-h1{font-family:'Baloo 2',cursive;font-size:clamp(15px,1.9vw,20px);line-height:1.2;margin-top:6px}
+.hp-h1.empty{opacity:.45;font-style:italic;font-size:14px}
+.hp-sub{font-size:12px;opacity:.8;line-height:1.4}
+.hp-cta{align-self:flex-start;margin-top:auto;background:#fff;color:#1C2434;border-radius:99px;
+  padding:6px 14px;font-size:12px;font-weight:700}
+.hp-h4{margin:16px 0 7px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--muted);font-family:'IBM Plex Mono',monospace}
+.ap-pre{background:#12324F;color:#EAF3FF;border:3px solid var(--ink);border-radius:8px;box-shadow:5px 5px 0 var(--ink);
+  padding:13px 15px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;line-height:1.7;
+  white-space:pre-wrap;word-break:break-word;margin:0 0 10px}
+@media(max-width:900px){.hp-grid{grid-template-columns:1fr}}
+
+/* A/B/C peer test */
+.ab-q{font-family:'Baloo 2',cursive;font-size:clamp(19px,2.5vw,26px);text-align:center;margin:6px 0 14px}
+.ab-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.ab-btn{display:flex;flex-direction:column;align-items:center;gap:5px;text-align:center;
+  border:3px solid var(--ink);background:#fff;border-radius:10px;box-shadow:5px 5px 0 var(--ink);
+  padding:14px 11px;font:inherit;cursor:pointer;transition:transform .1s,box-shadow .1s,background .15s}
+.ab-btn:hover{background:#FFFBEA;transform:translate(-1px,-1px);box-shadow:6px 6px 0 var(--ink)}
+.ab-btn.sel{background:var(--hl);transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}
+.ab-l{font-family:'Baloo 2',cursive;font-size:30px;line-height:1}
+.ab-e{font-size:20px}
+.ab-n{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.ab-t{font-size:13px;line-height:1.4;border-top:1px dashed rgba(28,36,52,.3);padding-top:7px;width:100%}
+.ab-t.empty{opacity:.5;font-style:italic}
+.ab-final{margin-top:14px}
+.ab-win{border:3px solid var(--green);background:#D8F5E3;border-radius:10px;padding:14px;box-shadow:5px 5px 0 var(--green)}
+.ab-win p{margin:8px 0 0;font-family:'Baloo 2',cursive;font-size:clamp(18px,2.4vw,25px);line-height:1.25}
+.ab-none{border:2px dashed var(--ink);border-radius:10px;padding:14px;text-align:center;color:var(--muted)}
+@media(max-width:760px){.ab-row{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body class="lang-en">
@@ -881,6 +979,18 @@ body.no-motion *{transition:none!important;animation-duration:.001s!important;an
     </section>
 
 <!-- ============ 2 · HOOK ============ -->
+    <section class="scene" data-sec="2" data-title="What made you keep watching?" data-src="Shared hook toolkit">
+      <div class="scene-inner wide">
+        <div class="card">
+          <div class="head"><span class="badge">DISCOVER 🔍</span><h2>What made you keep watching?</h2></div>
+          <div class="body">
+            <p class="sub">Before anybody says the word &ldquo;hook&rdquo;. Three real openings, type hidden — the crews work out the pattern themselves.</p>
+            <div data-act="videoLab"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="scene" data-sec="2" data-title="Activity 1 — Hook It" data-src="Deck 15-16 + Instructor Instructions">
       <div class="scene-inner">
         <div class="card">
@@ -898,6 +1008,43 @@ body.no-motion *{transition:none!important;animation-duration:.001s!important;an
         </div>
       </div>
     </section>
+
+    <section class="scene" data-sec="2" data-title="One idea. Three openings." data-src="Shared hook toolkit">
+      <div class="scene-inner">
+        <div class="card">
+          <div class="head"><span class="badge">CHALLENGE ✍️</span><h2>One idea. Three openings.</h2></div>
+          <div class="body">
+            <p class="sub">Use <b>your crew&rsquo;s own problem from Session 1</b> — not the example. Same idea, three different ways in. Write all three before you judge any of them.</p>
+            <div data-act="hookWrite" data-config='{"intro":"Your crew&#39;s Session 1 problem, written three different ways.","phQ":"A question about your crew&#39;s problem…","phF":"Something you have actually seen — no invented numbers…","phS":"One person, one moment, one thing that happened…","exQ":"&ldquo;How many minutes did you lose being lost this week?&rdquo;","exF":"&ldquo;Ninety new students. Zero signs.&rdquo;","exS":"&ldquo;On Monday, Mariam missed half a lesson looking for B-block.&rdquo;"}'></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="scene" data-sec="2" data-title="Turn your hooks into hero sections" data-src="Shared hook toolkit">
+      <div class="scene-inner wide">
+        <div class="card">
+          <div class="head"><span class="badge">SEE YOUR WRITING 🌐</span><h2>Three hooks, three hero sections</h2></div>
+          <div class="body">
+            <p class="sub">Same words, rendered as a real page. <b>Web crews</b> — this is your page&rsquo;s <span class="mono">&lt;h1&gt;</span> being chosen. <b>Art crews</b> — this is the line every visual has to support.</p>
+            <div data-act="heroPreview" data-config='{"sub":"Your crew&#39;s solution, in one supporting line.","project":"our crew&#39;s school improvement project"}'></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="scene" data-sec="2" data-title="A / B / C peer test" data-src="Shared hook toolkit">
+      <div class="scene-inner">
+        <div class="card">
+          <div class="head"><span class="badge">PEER TEST 🅰️🅱️🅲️</span><h2>Which one makes you keep scrolling?</h2></div>
+          <div class="body">
+            <p class="sub">Another crew picks one and says why. That sentence becomes your <b>hero headline</b> and the first line of your 3-minute pitch.</p>
+            <div data-act="abTest"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
 
     <section class="scene" data-sec="2" data-title="GAME · Hook Lab" data-src="Deck 16 applied">
       <div class="scene-inner">
@@ -1566,6 +1713,307 @@ function pauseAnimations(){
    COMPONENT DISPATCHER — init any [data-act] once, on first show
    ============================================================ */
 const BUILDERS={};
+window.__WORK_KEY='l3s2_work_v1';
+
+/* ============================================================
+   SHARED HOOK TOOLKIT — used by Level 2 S2 and Level 3 S2
+   Discover a hook from real video → write three → see them as
+   website heroes → peer-test → lock the final one.
+   Content that differs between the two levels comes from
+   data-config, so the code stays in one place.
+   ============================================================ */
+const WORK_KEY=(window.__WORK_KEY||'hook_work_v1');
+const WORK=(function(){
+  let d={hq:'',hf:'',hs:'',pick:'',why:'',audience:'',
+         problem:'',solution:'',b1:'',b2:'',b3:'',cta:'',
+         sp1:'',sp2:'',sp3:'',ho1:'',ho2:'',worked:'',fix:'',fixPart:''};
+  try{ const raw=localStorage.getItem(WORK_KEY); if(raw) Object.assign(d,JSON.parse(raw)); }catch(e){}
+  return d;
+})();
+function workSave(){
+  try{ localStorage.setItem(WORK_KEY,JSON.stringify(WORK)); }catch(e){}
+  document.dispatchEvent(new CustomEvent('workchange'));
+}
+/* Typing fires `input`; buttons do not. Listen for both. */
+function onWork(fn){ document.addEventListener('input',fn); document.addEventListener('workchange',fn); }
+function workField(key,ph,rows){
+  const n=rows?el('textarea'):el('input');
+  if(!rows) n.type='text';
+  n.className='wf'; n.placeholder=ph||''; n.value=WORK[key]||'';
+  if(rows) n.rows=rows;
+  n.addEventListener('input',()=>{ WORK[key]=n.value; workSave();
+    document.querySelectorAll('[data-mirror="'+key+'"]').forEach(m=>{
+      m.textContent=n.value||m.dataset.empty||'…'; m.classList.toggle('empty',!n.value); }); });
+  return n;
+}
+/* WORK.pick holds the field key ('hq' | 'hf' | 'hs') */
+function finalHook(){ return (WORK.pick&&WORK[WORK.pick])||''; }
+
+/* ---------- VIDEO LAB: what made you keep watching? ---------- */
+BUILDERS.videoLab=function(mount,cfg){
+  const V=[
+    {l:'A',id:'ajkuJMuff30',t:'كيف بدأ العد؟',en:'How did counting begin?',ch:'El Da7ee7',
+     type:'Question',e:'❓',why:'It opens by asking something your brain cannot help trying to answer. You keep watching to find out.'},
+    {l:'B',id:'3Ov9I8-C6j0',t:'هاري بوتر',en:'Harry Potter',ch:'El Da7ee7',
+     type:'Fact / Number',e:'😲',why:'It opens on the sheer scale of it — <b>more than 600 million books sold</b>. A number that big is surprising, and surprise buys attention.'},
+    {l:'C',id:'4BJk47OUDqk',t:'Lonesome Traveler (2022)',en:'Lonesome Traveler',ch:'Magdi Yacoub Heart Foundation',
+     type:'Micro-story',e:'📖',why:'It drops you straight into a journey with a child in it. You keep watching because you want to know what happens to them.'}
+  ];
+  mount.appendChild(el('p','instr','Three real openings. After each one, one question: <b>why did you want to keep watching?</b> Do not say the hook type yet — let them find the pattern.'));
+  const grid=el('div','vl-grid'); mount.appendChild(grid);
+  V.forEach(v=>{
+    const c=el('div','vl-card');
+    c.innerHTML=
+      '<div class="vl-tag">Hook example '+v.l+'</div>'+
+      '<a class="vl-screen" href="https://www.youtube.com/watch?v='+v.id+'" target="_blank" rel="noopener noreferrer" '+
+        'aria-label="Open '+esc(v.en)+' on YouTube in a new tab">'+
+        '<span class="vl-play" aria-hidden="true">▶</span>'+
+        '<span class="vl-open">Opens on YouTube ↗</span></a>'+
+      '<div class="vl-meta"><b dir="auto">'+v.t+'</b><span>'+esc(v.ch)+'</span></div>'+
+      '<div class="vl-q">“What grabbed your attention?”</div>';
+    const rowb=el('div','btnrow');
+    const rev=el('button','btn mini','🔍 Reveal hook type'); rev.type='button';
+    const out=el('div','vl-rev'); out.style.display='none';
+    rev.addEventListener('click',()=>{
+      const open=out.style.display==='none';
+      out.style.display=open?'block':'none';
+      rev.textContent=open?'🙈 Hide hook type':'🔍 Reveal hook type';
+      if(open){ out.innerHTML='<b>'+v.e+' '+v.type+'</b>'+v.why; blip(720); }
+    });
+    rowb.appendChild(rev); c.appendChild(rowb); c.appendChild(out);
+    grid.appendChild(c);
+  });
+  const row=el('div','btnrow');
+  const all=el('button','btn solid','✨ Show the pattern'); all.type='button'; row.appendChild(all);
+  mount.appendChild(row);
+  const pat=el('div','vl-pat'); pat.style.display='none'; mount.appendChild(pat);
+  all.addEventListener('click',()=>{
+    pat.style.display='block';
+    pat.innerHTML=
+      '<div class="vl-p"><b>❓ Question</b>It makes your brain search for an answer.</div>'+
+      '<div class="vl-p"><b>😲 Fact / Number</b>It surprises you with something unexpected.</div>'+
+      '<div class="vl-p"><b>📖 Story</b>It puts you inside a situation and you want to know what happens next.</div>';
+    blip(880); celebrate();
+  });
+};
+
+/* ---------- HOOK LAB: which kind of opening is this? ---------- */
+BUILDERS.hookLab=function(mount,cfg){
+  const CATS=[
+    {id:'q',l:'Question',e:'❓'},
+    {id:'f',l:'Fact / Number',e:'😲'},
+    {id:'s',l:'Micro-story',e:'📖'},
+    {id:'x',l:'Not a hook',e:'🚫'}
+  ];
+  const IT=[
+    {t:'“Have you ever felt completely lost the night before a big test?”',v:'q',
+     w:'It opens with a <b>question mark</b> and asks the audience to picture themselves in the problem. That is the Question hook.'},
+    {t:'“Most students waste two hours a day without realising it.”',v:'f',
+     w:'A <b>number</b> the audience did not expect. No question, no characters, no time markers — just a fact that makes them sit up.'},
+    {t:'“Last month our whole group failed a quiz — because nobody knew when it was.”',v:'s',
+     w:'It has a <b>time marker</b> (“last month”), <b>characters</b> (“our group”) and <b>something that happened</b>. Those three make it a story.'},
+    {t:'“Good morning everyone, my name is Adam and this is my group.”',v:'x',
+     w:'A greeting is not a hook — it gives the audience no reason to keep listening. Introduce yourselves <b>after</b> the hook, once they already care.'},
+    {t:'“Today I am going to talk about our school improvement idea.”',v:'x',
+     w:'This announces the topic instead of creating interest. It is a <b>table of contents</b>, not an opening. Cut it entirely.'},
+    {t:'“What would you do with fifteen extra minutes every single school day?”',v:'q',
+     w:'A question that makes the audience imagine a benefit before you have even named the problem. Question hook.'},
+    {t:'“Three out of every four students in this room have been late because of the stairs.”',v:'f',
+     w:'A statistic, and a local one. Note it is <b>not</b> a story: no time marker, no characters, nothing happens.'},
+    {t:'“Sorry, we did not have much time to prepare this.”',v:'x',
+     w:'An apology tells the audience to expect something weak. Never open by lowering expectations — even if it is true.'},
+    {t:'“On Tuesday, Sara waited eleven minutes in the canteen queue and went back to class hungry.”',v:'s',
+     w:'Named person, named day, something happened. That is a micro-story. The number inside it does not make it a fact hook — the <b>shape</b> is what decides.'},
+    {t:'“Our school has 900 students and only one working water fountain.”',v:'f',
+     w:'Two numbers placed side by side so the gap does the work. Surprising fact.'},
+    {t:'“Why does the busiest corridor in this school have the narrowest staircase?”',v:'q',
+     w:'A question, and a rhetorical one — you are not really expecting an answer, you are planting the problem in their heads.'},
+    {t:'“In conclusion, we think our idea is good.”',v:'x',
+     w:'This is a <b>closing</b> sentence, and a weak one. It belongs nowhere near the opening — and “we think it is good” is an opinion, not a reason.'}
+  ];
+  let i=0,score=0;
+  mount.appendChild(el('p','instr','Three hook types — and a fourth pile that ruins openings. <b>Which is which?</b>'));
+  const hud=el('div','gamehud');
+  hud.innerHTML='<span class="taskpill">Opening <b class="hk-i">1</b>/'+IT.length+'</span><span class="taskpill">Correct <b class="hk-s">0</b></span>';
+  mount.appendChild(hud);
+  const card=el('div','pp-card'); mount.appendChild(card);
+  const fb=el('div','fb neutral'); fb.style.display='none'; mount.appendChild(fb);
+  function paint(){
+    hud.querySelector('.hk-i').textContent=Math.min(i+1,IT.length);
+    hud.querySelector('.hk-s').textContent=score;
+    if(i>=IT.length){
+      card.innerHTML='';
+      fb.style.display='block'; fb.className='fb '+(score>=10?'ok':score>=7?'neutral':'bad');
+      fb.innerHTML='<h3 style="margin:0 0 6px">'+score+' / '+IT.length+'</h3>'
+        +'<p>The test that separates them: a <b>question</b> ends in “?” · a <b>fact</b> is a number with no characters · a <b>story</b> has a time marker AND a person AND something that happened. Greetings, topic announcements and apologies are none of the three.</p>';
+      const a=el('button','btn mini','↺ Play again'); a.type='button'; a.style.marginTop='8px';
+      a.addEventListener('click',()=>{i=0;score=0;paint();}); fb.appendChild(a);
+      if(score>=10) celebrate();
+      return;
+    }
+    fb.style.display='none';
+    card.innerHTML='<div class="pp-q">'+IT[i].t+'</div>';
+    const row=el('div','pp-opts');
+    CATS.forEach(c=>{
+      const b=el('button','btn',c.e+' '+c.l); b.type='button';
+      b.addEventListener('click',()=>{
+        row.querySelectorAll('.btn').forEach(x=>x.disabled=true);
+        const ok=c.id===IT[i].v; b.classList.add(ok?'right':'wrong');
+        const ci=CATS.findIndex(x=>x.id===IT[i].v);
+        if(!ok) row.children[ci].classList.add('right');
+        if(ok){score++;blip(740);}else blip(210);
+        fb.style.display='block'; fb.className='fb '+(ok?'ok':'bad');
+        fb.innerHTML=(ok?'✅ ':'❌ <b>The answer is '+CATS[ci].e+' '+CATS[ci].l+'.</b> ')+IT[i].w;
+        const nx=el('button','btn solid mini',i<IT.length-1?'Next opening →':'See result →'); nx.type='button';
+        nx.style.marginTop='10px'; nx.addEventListener('click',()=>{i++;paint();}); fb.appendChild(nx);
+      });
+      row.appendChild(b);
+    });
+    card.appendChild(row);
+  }
+  paint();
+};
+
+/* ---------- HOOK WRITER: one idea, three openings ---------- */
+BUILDERS.hookWrite=function(mount,cfg){
+  cfg=cfg||{};
+  const F=[
+    {k:'hq',e:'❓',n:'Question hook',ph:cfg.phQ||'What would you do with 15 extra minutes of your break?',
+     ex:cfg.exQ||'“What would you do with 15 extra minutes of your break?”',
+     test:v=>v.indexOf('?')>=0,tip:'A question hook needs a <b>question mark</b>. Right now this reads as a statement.'},
+    {k:'hf',e:'😲',n:'Fact / observation hook',ph:cfg.phF||'Students can spend most of their break standing in one queue.',
+     ex:cfg.exF||'“Students can spend most of their break standing in one queue.”',
+     test:v=>v.length>0,tip:''},
+    {k:'hs',e:'📖',n:'Micro-story hook',ph:cfg.phS||'Ahmed finally reached the front of the queue just as the bell rang.',
+     ex:cfg.exS||'“Ahmed finally reached the front of the queue just as the bell rang.”',
+     test:v=>v.length>0,tip:''}
+  ];
+  mount.appendChild(el('p','instr','<b>One idea. Three openings.</b> '+(cfg.intro||'Same problem, written three different ways.')+' Write all three before you judge any of them.'));
+  const wrap=el('div','hw-list'); mount.appendChild(wrap);
+  F.forEach(f=>{
+    const b=el('div','hw-row');
+    b.innerHTML='<div class="hw-h"><span>'+f.e+'</span><b>'+f.n+'</b></div>';
+    const ta=workField(f.k,f.ph,2);
+    b.appendChild(ta);
+    const meta=el('div','hw-meta'); b.appendChild(meta);
+    function upd(){
+      const v=(WORK[f.k]||'').trim();
+      const words=v?v.split(/\s+/).length:0;
+      let msg='<span class="hw-w">'+words+' words</span>';
+      if(v && !f.test(v)) msg+='<span class="hw-warn">'+f.tip+'</span>';
+      if(/\d+\s*%/.test(v)) msg+='<span class="hw-warn">⚠️ Only use a number you can actually check. If you cannot, turn it into an <b>observation</b> instead.</span>';
+      meta.innerHTML=msg;
+    }
+    ta.addEventListener('input',upd); upd();
+    wrap.appendChild(b);
+  });
+  const row=el('div','btnrow');
+  const ex=el('button','btn','👀 Show example hooks'); ex.type='button'; row.appendChild(ex);
+  mount.appendChild(row);
+  const box=el('div','note info'); box.style.display='none'; mount.appendChild(box);
+  ex.addEventListener('click',()=>{
+    const done=F.filter(f=>(WORK[f.k]||'').trim()).length;
+    if(done<3 && !box.dataset.forced){
+      box.dataset.forced='1'; box.style.display='block';
+      box.innerHTML='✍️ <b>Write your own three first.</b> You have '+done+' of 3. Tap again if you really want the examples now.';
+      blip(300); return;
+    }
+    box.style.display='block';
+    box.innerHTML='<b>Examples — yours do not have to match these:</b>'+
+      F.map(f=>'<p style="margin:6px 0">'+f.e+' '+f.ex+'</p>').join('')+
+      '<p style="margin:8px 0 0"><b>Notice:</b> same idea, same problem. Only the <b>opening move</b> changed.</p>';
+    blip(700);
+  });
+};
+
+/* ---------- HERO PREVIEW: see your writing as a webpage ---------- */
+BUILDERS.heroPreview=function(mount,cfg){
+  cfg=cfg||{};
+  const SUB=cfg.sub||'A simple pre-order system for the school canteen.';
+  const PROJ=cfg.project||'the same school canteen project';
+  mount.appendChild(el('p','instr','Your three hooks, rendered as three real hero sections. <b>Type in the box on the previous slide and these update live.</b> Then use the brief below to make the same thing with AI.'));
+  const grid=el('div','hp-grid'); mount.appendChild(grid);
+  const OPT=[{k:'hq',l:'Option 1',e:'❓',c:'#12324F'},{k:'hf',l:'Option 2',e:'😲',c:'#0F6E56'},{k:'hs',l:'Option 3',e:'📖',c:'#7A2E5C'}];
+  OPT.forEach(o=>{
+    const c=el('div','hp-card');
+    c.innerHTML='<div class="hp-lab">'+o.e+' '+o.l+'</div>'+
+      '<div class="hp-hero" style="background:'+o.c+'">'+
+        '<div class="hp-nav"><i></i><span></span><span></span></div>'+
+        '<div class="hp-h1" data-hero="'+o.k+'"></div>'+
+        '<div class="hp-sub">'+esc(SUB)+'</div>'+
+        '<div class="hp-cta">See how it works</div></div>';
+    grid.appendChild(c);
+  });
+  function paint(){
+    OPT.forEach(o=>{
+      const n=grid.querySelector('[data-hero="'+o.k+'"]');
+      const v=(WORK[o.k]||'').trim();
+      n.textContent=v||'…your hook goes here';
+      n.classList.toggle('empty',!v);
+    });
+  }
+  mount.addEventListener('focusin',paint);
+  onWork(paint);
+  paint();
+
+  mount.appendChild(el('h4','hp-h4','The brief you give the AI'));
+  const pre=el('pre','ap-pre'); mount.appendChild(pre);
+  function brief(){
+    return 'Create one simple webpage showing three different hero-section options\n'
+      +'for '+PROJ+'.\n\n'
+      +'Option 1 uses my Question Hook:\n  '+((WORK.hq||'').trim()||'[write it first]')+'\n\n'
+      +'Option 2 uses my Fact / Observation Hook:\n  '+((WORK.hf||'').trim()||'[write it first]')+'\n\n'
+      +'Option 3 uses my Micro-story Hook:\n  '+((WORK.hs||'').trim()||'[write it first]')+'\n\n'
+      +'Use my exact wording. Do not rewrite my hooks.\n'
+      +'Make each version look like the hero section of a real website.';
+  }
+  function repaint(){ pre.textContent=brief(); }
+  onWork(repaint); repaint();
+  const row=el('div','btnrow');
+  const cp=el('button','btn solid','📋 Copy the brief'); cp.type='button';
+  cp.addEventListener('click',()=>{
+    const t=brief();
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(t).then(()=>{ toast('Brief copied — paste it into your AI tool','ok'); blip(760); },
+        ()=>toast('Could not copy — select the text above instead','warn'));
+    } else toast('Select the text above and copy it','warn');
+  });
+  row.appendChild(cp); mount.appendChild(row);
+  mount.appendChild(el('div','note warn','⚠️ <b>You write the hooks. The AI only shows them.</b> If it changes your wording, tell it again: <i>“use my exact words”</i>.'));
+};
+
+/* ---------- A/B/C PEER TEST ---------- */
+BUILDERS.abTest=function(mount,cfg){
+  mount.appendChild(el('p','instr','Show your three versions to another team. They answer <b>one question</b>, then you lock your final hook.'));
+  const q=el('div','ab-q','“Which one makes you want to keep scrolling?”'); mount.appendChild(q);
+  const row=el('div','ab-row'); mount.appendChild(row);
+  const OPT=[{k:'hq',l:'A',e:'❓',n:'Question'},{k:'hf',l:'B',e:'😲',n:'Fact'},{k:'hs',l:'C',e:'📖',n:'Story'}];
+  OPT.forEach(o=>{
+    const b=el('button','ab-btn'); b.type='button'; b.dataset.k=o.k;
+    b.innerHTML='<span class="ab-l">'+o.l+'</span><span class="ab-e">'+o.e+'</span><span class="ab-n">'+o.n+'</span>'+
+      '<span class="ab-t" data-mirror="'+o.k+'" data-empty="(not written yet)"></span>';
+    b.addEventListener('click',()=>{
+      row.querySelectorAll('.ab-btn').forEach(x=>x.classList.remove('sel'));
+      b.classList.add('sel'); WORK.pick=o.k; workSave(); blip(700); paint();
+    });
+    row.appendChild(b);
+  });
+  mount.appendChild(el('h4','hp-h4','Why? — in the reviewer’s own words'));
+  mount.appendChild(workField('why','Because it made me picture myself in the queue.',2));
+  const outb=el('div','ab-final'); mount.appendChild(outb);
+  function paint(){
+    row.querySelectorAll('.ab-btn').forEach(b=>{
+      b.classList.toggle('sel',b.dataset.k===WORK.pick);
+      const t=b.querySelector('.ab-t'); const v=(WORK[b.dataset.k]||'').trim();
+      t.textContent=v||'(not written yet)'; t.classList.toggle('empty',!v);
+    });
+    const f=finalHook().trim();
+    outb.innerHTML=f
+      ? '<div class="ab-win"><span class="badge">FINAL HOOK · FINAL HERO HEADLINE</span><p>'+esc(f)+'</p></div>'
+      : '<div class="ab-none">Pick A, B or C above to lock your final hook.</div>';
+  }
+  onWork(paint); paint();
+};
 
 /* ============================================================
    LEVEL 3 · SESSION 2 — PRESENTATION SKILLS & TIME MANAGEMENT
@@ -1606,84 +2054,6 @@ BUILDERS.tenSec=function(mount,cfg,node){
     },1000);
   });
   st.addEventListener('click',()=>{ clearInterval(iv); running=false; left=10; paint(); });
-  paint();
-};
-
-/* ---------- HOOK LAB: which kind of hook is this? ---------- */
-BUILDERS.hookLab=function(mount,cfg){
-  const CATS=[
-    {id:'q',l:'Question',e:'❓'},
-    {id:'f',l:'Surprising fact',e:'😲'},
-    {id:'s',l:'Micro-story',e:'📖'},
-    {id:'x',l:'Not a hook',e:'🚫'}
-  ];
-  const IT=[
-    {t:'&ldquo;Have you ever felt completely lost the night before a big test?&rdquo;',v:'q',
-     w:'It opens with a <b>question mark</b> and asks the audience to picture themselves in the problem. That is the Question hook, exactly as the deck defines it.'},
-    {t:'&ldquo;Most students waste two hours a day without realising it.&rdquo;',v:'f',
-     w:'A <b>number</b> the audience did not expect. No question, no characters, no time markers &mdash; just a statistic that makes them sit up.'},
-    {t:'&ldquo;Last month our whole group failed a quiz &mdash; because nobody knew when it was.&rdquo;',v:'s',
-     w:'It has a <b>time marker</b> ("last month"), <b>characters</b> ("our group") and <b>something that happened</b>. Those three together make it a story, not a fact.'},
-    {t:'&ldquo;Good morning everyone, my name is Adam and this is my group.&rdquo;',v:'x',
-     w:'A greeting is not a hook &mdash; it gives the audience no reason to keep listening. Introduce yourselves <b>after</b> the hook, once they already care.'},
-    {t:'&ldquo;Today I am going to talk about our school improvement idea.&rdquo;',v:'x',
-     w:'This announces the topic instead of creating interest. It is a <b>table of contents</b>, not an opening. Cut it entirely.'},
-    {t:'&ldquo;What would you do with fifteen extra minutes every single school day?&rdquo;',v:'q',
-     w:'A question that makes the audience imagine a benefit before you have even named the problem. Question hook.'},
-    {t:'&ldquo;Three out of every four students in this room have been late because of the stairs.&rdquo;',v:'f',
-     w:'A statistic, and a local one. Note it is <b>not</b> a story: no time marker, no characters, nothing happens.'},
-    {t:'&ldquo;Sorry, we did not have much time to prepare this.&rdquo;',v:'x',
-     w:'An apology tells the audience to expect something weak. Never open by lowering expectations &mdash; even if it is true.'},
-    {t:'&ldquo;On Tuesday, Sara waited eleven minutes in the canteen queue and went back to class hungry.&rdquo;',v:'s',
-     w:'Named person, named day, something happened. That is a micro-story. The number inside it does not make it a fact hook &mdash; the <b>shape</b> is what decides.'},
-    {t:'&ldquo;Our school has 900 students and only one working water fountain.&rdquo;',v:'f',
-     w:'Two numbers placed side by side so the gap does the work. Surprising fact.'},
-    {t:'&ldquo;Why does the busiest corridor in this school have the narrowest staircase?&rdquo;',v:'q',
-     w:'A question, and a rhetorical one &mdash; you are not really expecting an answer, you are planting the problem in their heads.'},
-    {t:'&ldquo;In conclusion, we think our idea is good.&rdquo;',v:'x',
-     w:'This is a <b>closing</b> sentence, and a weak one. It belongs nowhere near the opening &mdash; and "we think it is good" is an opinion, not a reason.'}
-  ];
-  let i=0,score=0;
-  mount.appendChild(el('p','instr','The deck gives you three hook styles. A fourth pile is the one that ruins openings. <b>Which is which?</b>'
-    +'<span class="rq-ar">الديك بيديك تلات أنواع هوك. وفيه نوع رابع هو اللي بيخرّب البدايات. <b>ده أنهي واحد؟</b></span>'));
-  const hud=el('div','gamehud');
-  hud.innerHTML='<span class="taskpill">Hook <b class="hk-i">1</b>/'+IT.length+'</span><span class="taskpill">Correct <b class="hk-s">0</b></span>';
-  mount.appendChild(hud);
-  const card=el('div','pp-card'); mount.appendChild(card);
-  const fb=el('div','fb neutral'); fb.style.display='none'; mount.appendChild(fb);
-  function paint(){
-    hud.querySelector('.hk-i').textContent=Math.min(i+1,IT.length);
-    hud.querySelector('.hk-s').textContent=score;
-    if(i>=IT.length){
-      card.innerHTML='';
-      fb.style.display='block'; fb.className='fb '+(score>=10?'ok':score>=7?'neutral':'bad');
-      fb.innerHTML='<h3 style="margin:0 0 6px">'+score+' / '+IT.length+'</h3>'
-        +'<p>The test that separates them: a <b>question</b> ends in "?" &middot; a <b>fact</b> is a number with no characters &middot; a <b>story</b> has a time marker AND a person AND something that happened. Everything else &mdash; greetings, topic announcements, apologies &mdash; is not a hook.</p>';
-      const a=el('button','btn mini','↺ Play again'); a.type='button'; a.style.marginTop='8px';
-      a.addEventListener('click',()=>{i=0;score=0;paint();}); fb.appendChild(a);
-      if(score>=10) celebrate();
-      return;
-    }
-    fb.style.display='none';
-    card.innerHTML='<div class="pp-q">'+IT[i].t+'</div>';
-    const row=el('div','pp-opts');
-    CATS.forEach(c=>{
-      const b=el('button','btn',c.e+' '+c.l); b.type='button';
-      b.addEventListener('click',()=>{
-        row.querySelectorAll('.btn').forEach(x=>x.disabled=true);
-        const ok=c.id===IT[i].v; b.classList.add(ok?'right':'wrong');
-        const ci=CATS.findIndex(x=>x.id===IT[i].v);
-        if(!ok) row.children[ci].classList.add('right');
-        if(ok){score++;blip(740);}else blip(210);
-        fb.style.display='block'; fb.className='fb '+(ok?'ok':'bad');
-        fb.innerHTML=(ok?'✅ ':'❌ <b>The answer is '+CATS[ci].e+' '+CATS[ci].l+'.</b> ')+IT[i].w;
-        const nx=el('button','btn solid mini',i<IT.length-1?'Next hook →':'See result →'); nx.type='button';
-        nx.style.marginTop='10px'; nx.addEventListener('click',()=>{i++;paint();}); fb.appendChild(nx);
-      });
-      row.appendChild(b);
-    });
-    card.appendChild(row);
-  }
   paint();
 };
 

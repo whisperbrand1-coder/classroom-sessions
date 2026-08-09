@@ -803,6 +803,104 @@ textarea.wf{min-height:56px}
   .card{box-shadow:none}
 }
 
+/* ============================================================
+   SHARED HOOK TOOLKIT — styles used by Level 2 S2 and Level 3 S2
+   Appended to both files; rules repeated from a level's own sheet
+   carry identical values, so order never matters.
+   ============================================================ */
+.pp-card{border:2px solid var(--ink);background:#fff;box-shadow:4px 4px 0 var(--ink);padding:18px;border-radius:6px}
+.pp-q{font-family:'Baloo 2',cursive;font-size:clamp(18px,2.3vw,26px);line-height:1.35;margin:6px 0 16px}
+.pp-opts{display:flex;flex-wrap:wrap;gap:10px}
+.pp-opts .btn{flex:1 1 180px}
+.pp-opts .btn.right{background:#D8F5E3;border-color:var(--green)}
+.pp-opts .btn.wrong{background:#FFE0E0;border-color:var(--red)}
+
+/* video hook lab */
+.vl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:14px}
+.vl-card{border:3px solid var(--ink);border-radius:10px;background:#fff;box-shadow:5px 5px 0 var(--ink);
+  padding:12px;display:flex;flex-direction:column;gap:9px}
+.vl-tag{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.vl-screen{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
+  aspect-ratio:16/9;border:2px solid var(--ink);border-radius:8px;text-decoration:none;
+  background:linear-gradient(135deg,#1C2434 0%,#39415a 100%);color:#fff;transition:transform .12s}
+.vl-screen:hover{transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--ink)}
+.vl-play{width:54px;height:54px;border-radius:50%;background:#fff;color:var(--ink);
+  display:grid;place-items:center;font-size:22px;padding-left:4px;box-shadow:0 3px 0 rgba(0,0,0,.35)}
+.vl-open{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.05em;opacity:.85}
+.vl-meta b{display:block;font-family:'Baloo 2',cursive;font-size:17px;line-height:1.25}
+.vl-meta span{font-size:12.5px;color:var(--muted)}
+.vl-q{background:var(--paper);border:2px dashed var(--ink);border-radius:6px;padding:9px 11px;
+  font-size:14px;font-style:italic;margin-top:auto}
+.vl-rev{border:2px solid var(--teal);background:var(--teal-l);border-radius:8px;padding:10px 12px;font-size:13.5px;line-height:1.5}
+.vl-rev b{display:block;font-family:'Baloo 2',cursive;font-size:16px;margin-bottom:3px}
+.vl-pat{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
+.vl-p{border:3px solid var(--ink);background:var(--hl);border-radius:10px;padding:13px;
+  box-shadow:5px 5px 0 var(--ink);font-size:14px;line-height:1.45}
+.vl-p b{display:block;font-family:'Baloo 2',cursive;font-size:19px;margin-bottom:4px}
+@media(max-width:900px){.vl-grid,.vl-pat{grid-template-columns:1fr}}
+
+/* shared writing field */
+.wf{width:100%;border:2px solid var(--ink);border-radius:8px;padding:10px 12px;font:inherit;
+  font-size:15.5px;line-height:1.45;background:#fff;resize:vertical}
+.wf:focus{outline:3px solid var(--teal);outline-offset:1px}
+textarea.wf{min-height:56px}
+
+/* hook writer */
+.hw-list{display:grid;gap:12px;margin:4px 0 12px}
+.hw-row{border:2px solid var(--ink);border-radius:10px;background:#fff;box-shadow:4px 4px 0 var(--ink);padding:12px}
+.hw-h{display:flex;align-items:center;gap:9px;margin-bottom:8px}
+.hw-h span{font-size:24px}
+.hw-h b{font-family:'Baloo 2',cursive;font-size:18px}
+.hw-meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:7px}
+.hw-w{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--muted)}
+.hw-warn{font-size:12.5px;background:#FFF3D6;border:1px solid var(--amber);border-radius:5px;padding:3px 8px}
+.brief-box{display:grid;gap:8px;border:3px solid var(--ink);border-radius:10px;background:var(--paper);
+  padding:14px;margin-bottom:14px;box-shadow:4px 4px 0 var(--ink)}
+.brief-box>div{font-size:15.5px;line-height:1.45}
+.bb-l{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.1em;
+  background:var(--ink);color:#fff;border-radius:4px;padding:2px 7px;margin-right:9px;vertical-align:1px}
+
+/* hero preview */
+.hp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:14px}
+.hp-card{display:flex;flex-direction:column;gap:6px}
+.hp-lab{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.hp-hero{border:3px solid var(--ink);border-radius:10px;box-shadow:5px 5px 0 var(--ink);
+  padding:14px;min-height:190px;display:flex;flex-direction:column;gap:9px;color:#fff}
+.hp-nav{display:flex;align-items:center;gap:6px;opacity:.75}
+.hp-nav i{width:22px;height:8px;background:#fff;border-radius:2px;display:block}
+.hp-nav span{width:16px;height:5px;background:rgba(255,255,255,.6);border-radius:2px;margin-left:auto}
+.hp-nav span+span{margin-left:0}
+.hp-h1{font-family:'Baloo 2',cursive;font-size:clamp(15px,1.9vw,20px);line-height:1.2;margin-top:6px}
+.hp-h1.empty{opacity:.45;font-style:italic;font-size:14px}
+.hp-sub{font-size:12px;opacity:.8;line-height:1.4}
+.hp-cta{align-self:flex-start;margin-top:auto;background:#fff;color:#1C2434;border-radius:99px;
+  padding:6px 14px;font-size:12px;font-weight:700}
+.hp-h4{margin:16px 0 7px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--muted);font-family:'IBM Plex Mono',monospace}
+.ap-pre{background:#12324F;color:#EAF3FF;border:3px solid var(--ink);border-radius:8px;box-shadow:5px 5px 0 var(--ink);
+  padding:13px 15px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;line-height:1.7;
+  white-space:pre-wrap;word-break:break-word;margin:0 0 10px}
+@media(max-width:900px){.hp-grid{grid-template-columns:1fr}}
+
+/* A/B/C peer test */
+.ab-q{font-family:'Baloo 2',cursive;font-size:clamp(19px,2.5vw,26px);text-align:center;margin:6px 0 14px}
+.ab-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.ab-btn{display:flex;flex-direction:column;align-items:center;gap:5px;text-align:center;
+  border:3px solid var(--ink);background:#fff;border-radius:10px;box-shadow:5px 5px 0 var(--ink);
+  padding:14px 11px;font:inherit;cursor:pointer;transition:transform .1s,box-shadow .1s,background .15s}
+.ab-btn:hover{background:#FFFBEA;transform:translate(-1px,-1px);box-shadow:6px 6px 0 var(--ink)}
+.ab-btn.sel{background:var(--hl);transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}
+.ab-l{font-family:'Baloo 2',cursive;font-size:30px;line-height:1}
+.ab-e{font-size:20px}
+.ab-n{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.ab-t{font-size:13px;line-height:1.4;border-top:1px dashed rgba(28,36,52,.3);padding-top:7px;width:100%}
+.ab-t.empty{opacity:.5;font-style:italic}
+.ab-final{margin-top:14px}
+.ab-win{border:3px solid var(--green);background:#D8F5E3;border-radius:10px;padding:14px;box-shadow:5px 5px 0 var(--green)}
+.ab-win p{margin:8px 0 0;font-family:'Baloo 2',cursive;font-size:clamp(18px,2.4vw,25px);line-height:1.25}
+.ab-none{border:2px dashed var(--ink);border-radius:10px;padding:14px;text-align:center;color:var(--muted)}
+@media(max-width:760px){.ab-row{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body class="lang-en">
@@ -868,7 +966,7 @@ textarea.wf{min-height:56px}
               <div class="tbwrap"><table class="tb">
                 <tbody>
                   <tr><td class="mono">00–10</td><td>Hook discovery — 3 real videos</td></tr>
-                  <tr><td class="mono">10–18</td><td>What is a hook? + the 3 types</td></tr>
+                  <tr><td class="mono">10–18</td><td>What is a hook? + the 3 types + spot-the-opening game</td></tr>
                   <tr><td class="mono">18–33</td><td><b>Write 3 hooks</b> for the shared idea</td></tr>
                   <tr><td class="mono">33–48</td><td><b>Gemini</b> — turn them into 3 hero sections</td></tr>
                   <tr><td class="mono">48–55</td><td>A/B/C peer test → choose the final hook</td></tr>
@@ -929,6 +1027,18 @@ textarea.wf{min-height:56px}
               <div class="tile" style="border-color:var(--pink)"><span class="ic">📖</span><h4>Micro-story</h4><p>Puts you <b>inside a situation</b> — you want to know what happens.</p><p class="ex-q">“Ahmed reached the front of the queue just as the bell rang.”</p></div>
             </div>
             <div class="note bad" style="margin-top:14px">🚨 <b>Never invent a number.</b> If you cannot check it, use what you have actually <b>seen</b> instead. A made-up statistic dies on the first question.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="scene" data-sec="1" data-title="Spot the opening" data-src="Shared hook toolkit">
+      <div class="scene-inner">
+        <div class="card">
+          <div class="head"><span class="badge">FAST GAME 🎯</span><h2>Which kind of opening is this?</h2></div>
+          <div class="body">
+            <div class="tto"><span><b>⏱️ 5 min</b></span><span><b>🎯 Task</b> Call out the type before you tap.</span><span><b>📦 Output</b> You can name all three on sight.</span></div>
+            <div data-act="hookLab"></div>
           </div>
         </div>
       </div>
@@ -1314,14 +1424,16 @@ function pauseAnimations(){
    COMPONENT DISPATCHER — init any [data-act] once, on first show
    ============================================================ */
 const BUILDERS={};
+window.__WORK_KEY='l2s2_work_v2';
 
 /* ============================================================
-   LEVEL 2 · SESSION 2 — BUILD IT. SAY IT.
-   One journey: idea → hook → hero → message → webpage → talk.
-   Every builder reads and writes the SAME work store, so what a
-   student types in scene 6 is still theirs in scene 14.
+   SHARED HOOK TOOLKIT — used by Level 2 S2 and Level 3 S2
+   Discover a hook from real video → write three → see them as
+   website heroes → peer-test → lock the final one.
+   Content that differs between the two levels comes from
+   data-config, so the code stays in one place.
    ============================================================ */
-const WORK_KEY='l2s2_work_v2';
+const WORK_KEY=(window.__WORK_KEY||'hook_work_v1');
 const WORK=(function(){
   let d={hq:'',hf:'',hs:'',pick:'',why:'',audience:'',
          problem:'',solution:'',b1:'',b2:'',b3:'',cta:'',
@@ -1329,7 +1441,12 @@ const WORK=(function(){
   try{ const raw=localStorage.getItem(WORK_KEY); if(raw) Object.assign(d,JSON.parse(raw)); }catch(e){}
   return d;
 })();
-function workSave(){ try{ localStorage.setItem(WORK_KEY,JSON.stringify(WORK)); }catch(e){} }
+function workSave(){
+  try{ localStorage.setItem(WORK_KEY,JSON.stringify(WORK)); }catch(e){}
+  document.dispatchEvent(new CustomEvent('workchange'));
+}
+/* Typing fires `input`; buttons do not. Listen for both. */
+function onWork(fn){ document.addEventListener('input',fn); document.addEventListener('workchange',fn); }
 function workField(key,ph,rows){
   const n=rows?el('textarea'):el('input');
   if(!rows) n.type='text';
@@ -1340,7 +1457,7 @@ function workField(key,ph,rows){
       m.textContent=n.value||m.dataset.empty||'…'; m.classList.toggle('empty',!n.value); }); });
   return n;
 }
-/* WORK.pick already holds the field key ('hq' | 'hf' | 'hs') */
+/* WORK.pick holds the field key ('hq' | 'hf' | 'hs') */
 function finalHook(){ return (WORK.pick&&WORK[WORK.pick])||''; }
 
 /* ---------- VIDEO LAB: what made you keep watching? ---------- */
@@ -1353,7 +1470,7 @@ BUILDERS.videoLab=function(mount,cfg){
     {l:'C',id:'4BJk47OUDqk',t:'Lonesome Traveler (2022)',en:'Lonesome Traveler',ch:'Magdi Yacoub Heart Foundation',
      type:'Micro-story',e:'📖',why:'It drops you straight into a journey with a child in it. You keep watching because you want to know what happens to them.'}
   ];
-  mount.appendChild(el('p','instr','Three real openings. After each one, one question: <b>why did you want to keep watching?</b> Do not say the hook type yet &mdash; let them find the pattern.'));
+  mount.appendChild(el('p','instr','Three real openings. After each one, one question: <b>why did you want to keep watching?</b> Do not say the hook type yet — let them find the pattern.'));
   const grid=el('div','vl-grid'); mount.appendChild(grid);
   V.forEach(v=>{
     const c=el('div','vl-card');
@@ -1391,20 +1508,98 @@ BUILDERS.videoLab=function(mount,cfg){
   });
 };
 
+/* ---------- HOOK LAB: which kind of opening is this? ---------- */
+BUILDERS.hookLab=function(mount,cfg){
+  const CATS=[
+    {id:'q',l:'Question',e:'❓'},
+    {id:'f',l:'Fact / Number',e:'😲'},
+    {id:'s',l:'Micro-story',e:'📖'},
+    {id:'x',l:'Not a hook',e:'🚫'}
+  ];
+  const IT=[
+    {t:'“Have you ever felt completely lost the night before a big test?”',v:'q',
+     w:'It opens with a <b>question mark</b> and asks the audience to picture themselves in the problem. That is the Question hook.'},
+    {t:'“Most students waste two hours a day without realising it.”',v:'f',
+     w:'A <b>number</b> the audience did not expect. No question, no characters, no time markers — just a fact that makes them sit up.'},
+    {t:'“Last month our whole group failed a quiz — because nobody knew when it was.”',v:'s',
+     w:'It has a <b>time marker</b> (“last month”), <b>characters</b> (“our group”) and <b>something that happened</b>. Those three make it a story.'},
+    {t:'“Good morning everyone, my name is Adam and this is my group.”',v:'x',
+     w:'A greeting is not a hook — it gives the audience no reason to keep listening. Introduce yourselves <b>after</b> the hook, once they already care.'},
+    {t:'“Today I am going to talk about our school improvement idea.”',v:'x',
+     w:'This announces the topic instead of creating interest. It is a <b>table of contents</b>, not an opening. Cut it entirely.'},
+    {t:'“What would you do with fifteen extra minutes every single school day?”',v:'q',
+     w:'A question that makes the audience imagine a benefit before you have even named the problem. Question hook.'},
+    {t:'“Three out of every four students in this room have been late because of the stairs.”',v:'f',
+     w:'A statistic, and a local one. Note it is <b>not</b> a story: no time marker, no characters, nothing happens.'},
+    {t:'“Sorry, we did not have much time to prepare this.”',v:'x',
+     w:'An apology tells the audience to expect something weak. Never open by lowering expectations — even if it is true.'},
+    {t:'“On Tuesday, Sara waited eleven minutes in the canteen queue and went back to class hungry.”',v:'s',
+     w:'Named person, named day, something happened. That is a micro-story. The number inside it does not make it a fact hook — the <b>shape</b> is what decides.'},
+    {t:'“Our school has 900 students and only one working water fountain.”',v:'f',
+     w:'Two numbers placed side by side so the gap does the work. Surprising fact.'},
+    {t:'“Why does the busiest corridor in this school have the narrowest staircase?”',v:'q',
+     w:'A question, and a rhetorical one — you are not really expecting an answer, you are planting the problem in their heads.'},
+    {t:'“In conclusion, we think our idea is good.”',v:'x',
+     w:'This is a <b>closing</b> sentence, and a weak one. It belongs nowhere near the opening — and “we think it is good” is an opinion, not a reason.'}
+  ];
+  let i=0,score=0;
+  mount.appendChild(el('p','instr','Three hook types — and a fourth pile that ruins openings. <b>Which is which?</b>'));
+  const hud=el('div','gamehud');
+  hud.innerHTML='<span class="taskpill">Opening <b class="hk-i">1</b>/'+IT.length+'</span><span class="taskpill">Correct <b class="hk-s">0</b></span>';
+  mount.appendChild(hud);
+  const card=el('div','pp-card'); mount.appendChild(card);
+  const fb=el('div','fb neutral'); fb.style.display='none'; mount.appendChild(fb);
+  function paint(){
+    hud.querySelector('.hk-i').textContent=Math.min(i+1,IT.length);
+    hud.querySelector('.hk-s').textContent=score;
+    if(i>=IT.length){
+      card.innerHTML='';
+      fb.style.display='block'; fb.className='fb '+(score>=10?'ok':score>=7?'neutral':'bad');
+      fb.innerHTML='<h3 style="margin:0 0 6px">'+score+' / '+IT.length+'</h3>'
+        +'<p>The test that separates them: a <b>question</b> ends in “?” · a <b>fact</b> is a number with no characters · a <b>story</b> has a time marker AND a person AND something that happened. Greetings, topic announcements and apologies are none of the three.</p>';
+      const a=el('button','btn mini','↺ Play again'); a.type='button'; a.style.marginTop='8px';
+      a.addEventListener('click',()=>{i=0;score=0;paint();}); fb.appendChild(a);
+      if(score>=10) celebrate();
+      return;
+    }
+    fb.style.display='none';
+    card.innerHTML='<div class="pp-q">'+IT[i].t+'</div>';
+    const row=el('div','pp-opts');
+    CATS.forEach(c=>{
+      const b=el('button','btn',c.e+' '+c.l); b.type='button';
+      b.addEventListener('click',()=>{
+        row.querySelectorAll('.btn').forEach(x=>x.disabled=true);
+        const ok=c.id===IT[i].v; b.classList.add(ok?'right':'wrong');
+        const ci=CATS.findIndex(x=>x.id===IT[i].v);
+        if(!ok) row.children[ci].classList.add('right');
+        if(ok){score++;blip(740);}else blip(210);
+        fb.style.display='block'; fb.className='fb '+(ok?'ok':'bad');
+        fb.innerHTML=(ok?'✅ ':'❌ <b>The answer is '+CATS[ci].e+' '+CATS[ci].l+'.</b> ')+IT[i].w;
+        const nx=el('button','btn solid mini',i<IT.length-1?'Next opening →':'See result →'); nx.type='button';
+        nx.style.marginTop='10px'; nx.addEventListener('click',()=>{i++;paint();}); fb.appendChild(nx);
+      });
+      row.appendChild(b);
+    });
+    card.appendChild(row);
+  }
+  paint();
+};
+
 /* ---------- HOOK WRITER: one idea, three openings ---------- */
 BUILDERS.hookWrite=function(mount,cfg){
+  cfg=cfg||{};
   const F=[
-    {k:'hq',e:'❓',n:'Question hook',ph:'What would you do with 15 extra minutes of your break?',
-     ex:'“What would you do with 15 extra minutes of your break?”',
+    {k:'hq',e:'❓',n:'Question hook',ph:cfg.phQ||'What would you do with 15 extra minutes of your break?',
+     ex:cfg.exQ||'“What would you do with 15 extra minutes of your break?”',
      test:v=>v.indexOf('?')>=0,tip:'A question hook needs a <b>question mark</b>. Right now this reads as a statement.'},
-    {k:'hf',e:'😲',n:'Fact / observation hook',ph:'Students can spend most of their break standing in one queue.',
-     ex:'“Students can spend most of their break standing in one queue.”',
+    {k:'hf',e:'😲',n:'Fact / observation hook',ph:cfg.phF||'Students can spend most of their break standing in one queue.',
+     ex:cfg.exF||'“Students can spend most of their break standing in one queue.”',
      test:v=>v.length>0,tip:''},
-    {k:'hs',e:'📖',n:'Micro-story hook',ph:'Ahmed finally reached the front of the queue just as the bell rang.',
-     ex:'“Ahmed finally reached the front of the queue just as the bell rang.”',
-     test:v=>/\b[A-Z][a-z]+\b/.test(v)||v.length>0,tip:''}
+    {k:'hs',e:'📖',n:'Micro-story hook',ph:cfg.phS||'Ahmed finally reached the front of the queue just as the bell rang.',
+     ex:cfg.exS||'“Ahmed finally reached the front of the queue just as the bell rang.”',
+     test:v=>v.length>0,tip:''}
   ];
-  mount.appendChild(el('p','instr','<b>One idea. Three openings.</b> Same canteen problem, written three different ways. Write all three before you judge any of them.'));
+  mount.appendChild(el('p','instr','<b>One idea. Three openings.</b> '+(cfg.intro||'Same problem, written three different ways.')+' Write all three before you judge any of them.'));
   const wrap=el('div','hw-list'); mount.appendChild(wrap);
   F.forEach(f=>{
     const b=el('div','hw-row');
@@ -1444,7 +1639,10 @@ BUILDERS.hookWrite=function(mount,cfg){
 
 /* ---------- HERO PREVIEW: see your writing as a webpage ---------- */
 BUILDERS.heroPreview=function(mount,cfg){
-  mount.appendChild(el('p','instr','Your three hooks, rendered as three real hero sections. <b>Type in the box above and these update live.</b> Then use the brief below to make the same thing in Gemini.'));
+  cfg=cfg||{};
+  const SUB=cfg.sub||'A simple pre-order system for the school canteen.';
+  const PROJ=cfg.project||'the same school canteen project';
+  mount.appendChild(el('p','instr','Your three hooks, rendered as three real hero sections. <b>Type in the box on the previous slide and these update live.</b> Then use the brief below to make the same thing with AI.'));
   const grid=el('div','hp-grid'); mount.appendChild(grid);
   const OPT=[{k:'hq',l:'Option 1',e:'❓',c:'#12324F'},{k:'hf',l:'Option 2',e:'😲',c:'#0F6E56'},{k:'hs',l:'Option 3',e:'📖',c:'#7A2E5C'}];
   OPT.forEach(o=>{
@@ -1453,7 +1651,7 @@ BUILDERS.heroPreview=function(mount,cfg){
       '<div class="hp-hero" style="background:'+o.c+'">'+
         '<div class="hp-nav"><i></i><span></span><span></span></div>'+
         '<div class="hp-h1" data-hero="'+o.k+'"></div>'+
-        '<div class="hp-sub">A simple pre-order system for the school canteen.</div>'+
+        '<div class="hp-sub">'+esc(SUB)+'</div>'+
         '<div class="hp-cta">See how it works</div></div>';
     grid.appendChild(c);
   });
@@ -1466,14 +1664,14 @@ BUILDERS.heroPreview=function(mount,cfg){
     });
   }
   mount.addEventListener('focusin',paint);
-  document.addEventListener('input',paint);
+  onWork(paint);
   paint();
 
-  mount.appendChild(el('h4','hp-h4','The brief you give Gemini'));
+  mount.appendChild(el('h4','hp-h4','The brief you give the AI'));
   const pre=el('pre','ap-pre'); mount.appendChild(pre);
   function brief(){
     return 'Create one simple webpage showing three different hero-section options\n'
-      +'for the same school canteen project.\n\n'
+      +'for '+PROJ+'.\n\n'
       +'Option 1 uses my Question Hook:\n  '+((WORK.hq||'').trim()||'[write it first]')+'\n\n'
       +'Option 2 uses my Fact / Observation Hook:\n  '+((WORK.hf||'').trim()||'[write it first]')+'\n\n'
       +'Option 3 uses my Micro-story Hook:\n  '+((WORK.hs||'').trim()||'[write it first]')+'\n\n'
@@ -1481,13 +1679,13 @@ BUILDERS.heroPreview=function(mount,cfg){
       +'Make each version look like the hero section of a real website.';
   }
   function repaint(){ pre.textContent=brief(); }
-  document.addEventListener('input',repaint); repaint();
+  onWork(repaint); repaint();
   const row=el('div','btnrow');
   const cp=el('button','btn solid','📋 Copy the brief'); cp.type='button';
   cp.addEventListener('click',()=>{
     const t=brief();
     if(navigator.clipboard&&navigator.clipboard.writeText){
-      navigator.clipboard.writeText(t).then(()=>{ toast('Brief copied — paste it into Gemini','ok'); blip(760); },
+      navigator.clipboard.writeText(t).then(()=>{ toast('Brief copied — paste it into your AI tool','ok'); blip(760); },
         ()=>toast('Could not copy — select the text above instead','warn'));
     } else toast('Select the text above and copy it','warn');
   });
@@ -1511,7 +1709,7 @@ BUILDERS.abTest=function(mount,cfg){
     });
     row.appendChild(b);
   });
-  mount.appendChild(el('h4','hp-h4','Why? &mdash; in the reviewer&rsquo;s own words'));
+  mount.appendChild(el('h4','hp-h4','Why? — in the reviewer’s own words'));
   mount.appendChild(workField('why','Because it made me picture myself in the queue.',2));
   const outb=el('div','ab-final'); mount.appendChild(outb);
   function paint(){
@@ -1522,11 +1720,17 @@ BUILDERS.abTest=function(mount,cfg){
     });
     const f=finalHook().trim();
     outb.innerHTML=f
-      ? '<div class="ab-win"><span class="badge">FINAL HOOK &middot; FINAL HERO HEADLINE</span><p>'+esc(f)+'</p></div>'
+      ? '<div class="ab-win"><span class="badge">FINAL HOOK · FINAL HERO HEADLINE</span><p>'+esc(f)+'</p></div>'
       : '<div class="ab-none">Pick A, B or C above to lock your final hook.</div>';
   }
-  document.addEventListener('input',paint); paint();
+  onWork(paint); paint();
 };
+
+/* ============================================================
+   LEVEL 2 · SESSION 2 — builders unique to this session.
+   The hook journey (videoLab, hookLab, hookWrite, heroPreview,
+   abTest) lives in the shared toolkit loaded just above.
+   ============================================================ */
 
 /* ---------- MESSAGE BUILDER: the whole 2-minute plan ---------- */
 BUILDERS.msgBuilder=function(mount,cfg){
@@ -1577,7 +1781,7 @@ BUILDERS.msgBuilder=function(mount,cfg){
       n.classList.toggle('empty',!f);
     });
   }
-  document.addEventListener('input',paintHook); paintHook();
+  onWork(paintHook); paintHook();
 
   chk.addEventListener('click',()=>{
     const notes=[]; let ok=0;
@@ -1648,7 +1852,7 @@ BUILDERS.aiBrief=function(mount,cfg){
       +'Give us one simple index.html file.';
   }
   function repaint(){ pre.textContent=brief(); }
-  document.addEventListener('input',repaint); repaint();
+  onWork(repaint); repaint();
   const row=el('div','btnrow');
   const cp=el('button','btn solid','📋 Copy the brief'); cp.type='button';
   cp.addEventListener('click',()=>{
