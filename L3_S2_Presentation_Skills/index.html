@@ -21,8 +21,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="light">
-<meta name="description" content="Level 3, Session 2 of the Changemaker Journey: the 3-part pitch structure, delivery basics, urgent vs important, and breaking a task down — plus a hands-on Web build, a WCAG contrast lab and an AI prompt lab. Interactive classroom presentation with nine live games and a 24-question review.">
-<title>Level 3 &middot; Session 2 &mdash; Presentation Skills &amp; Time Management</title>
+<meta name="description" content="Session 2 master teaching deck for Level 2 and Level 3. One shared journey — hook discovery from three real videos, presentation structure, audience and delivery, a six-step time-management system, the tool shelf and AI deck-building — then three team missions: Canteen Express, Wellbeing Week and Smart Lost & Found.">
+<title>Speak Up. Plan Smart. Build It. Pitch It. &mdash; Session 2 Master Deck</title>
 
 <!-- Fonts: progressive enhancement, NON render-blocking (offline → instant system fallbacks). -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -713,6 +713,153 @@ body.no-motion *{transition:none!important;animation-duration:.001s!important;an
 @media(max-width:700px){.tsw-x{display:none}.tracksw{padding:5px 10px}}
 
 /* ============================================================
+   L3 S2 MASTER DECK — components added for the refactor
+   ============================================================ */
+.tto{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;
+  border:2px solid var(--ink);background:var(--hl);border-radius:10px;
+  padding:10px 14px;margin:0 0 16px;box-shadow:4px 4px 0 var(--ink);font-size:14.5px;line-height:1.35}
+.tto span+span{border-left:2px solid rgba(28,36,52,.28);padding-left:12px}
+@media(max-width:820px){.tto{grid-template-columns:1fr;gap:7px}
+  .tto span+span{border-left:0;border-top:2px solid rgba(28,36,52,.22);padding-left:0;padding-top:7px}}
+
+.flow{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px 6px;margin:6px 0}
+.flow.vert{flex-direction:column;gap:4px}
+.fl{border:2px solid var(--ink);background:#fff;border-radius:99px;padding:8px 16px;
+  font-family:'Baloo 2',cursive;font-weight:700;font-size:clamp(13px,1.5vw,17px);
+  box-shadow:3px 3px 0 var(--ink);white-space:nowrap;flex:0 0 auto}
+.fl.v2hot{background:var(--hl);box-shadow:4px 4px 0 var(--ink)}
+.flow i{font-style:normal;font-size:18px;color:var(--muted);flex:0 0 auto}
+
+.sched{margin-top:16px;border:2px solid var(--ink);border-radius:10px;background:#fff;overflow:hidden}
+.sched summary{cursor:pointer;padding:11px 15px;font-weight:700;font-family:'Baloo 2',cursive;font-size:16px;background:var(--ink-l)}
+.sched .tbwrap{padding:0 12px 12px}
+.sched td:first-child{width:92px;white-space:nowrap;color:var(--muted)}
+
+/* hook anatomy */
+.hookbar{position:relative;display:grid;grid-template-columns:1fr 2.2fr;gap:6px;margin-top:20px;padding-bottom:34px}
+.hb-seg{border:3px solid var(--ink);border-radius:8px;background:#fff;padding:14px 12px;text-align:center;box-shadow:4px 4px 0 var(--ink)}
+.hb-seg b{display:block;font-family:'Baloo 2',cursive;font-size:clamp(16px,2.1vw,22px)}
+.hb-seg span{font-size:12.5px;color:var(--muted)}
+.hb-seg.v2hot{background:var(--hl)}
+.hb-tot{position:absolute;left:0;right:0;bottom:0;text-align:center;font-family:'IBM Plex Mono',monospace;
+  font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);
+  border-top:2px dashed var(--ink);padding-top:7px}
+
+/* structure boxes */
+.struct{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:6px}
+.st-box{position:relative;border:3px solid var(--ink);border-radius:10px;background:#fff;
+  padding:16px 14px;box-shadow:5px 5px 0 var(--ink);text-align:center}
+.st-box.v2hot{background:var(--hl)}
+.st-box b{display:block;font-family:'Baloo 2',cursive;font-size:clamp(16px,2.1vw,21px);margin-bottom:4px}
+.st-box p{margin:0;font-size:14px;color:var(--muted)}
+.st-t{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.08em;
+  background:var(--ink);color:#fff;border-radius:99px;padding:3px 10px;margin-bottom:8px}
+@media(max-width:760px){.struct{grid-template-columns:1fr}}
+
+/* handoff */
+.hd-box{display:grid;gap:6px;max-width:620px;margin:4px auto 0}
+.hd-l{display:flex;gap:11px;align-items:center;border:2px solid var(--ink);background:#fff;
+  border-radius:8px;padding:11px 14px;font-size:clamp(15px,1.9vw,18px);box-shadow:3px 3px 0 var(--ink)}
+.hd-l span{flex:none;width:26px;height:26px;display:grid;place-items:center;border-radius:6px;
+  background:var(--ink);color:#fff;font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:13px}
+.hd-arrow{text-align:center;font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--red);letter-spacing:.06em}
+
+/* six-step system */
+.six{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.sx{border:3px solid var(--ink);border-radius:10px;background:#fff;padding:14px;box-shadow:5px 5px 0 var(--ink)}
+.sx.v2hot{background:var(--hl)}
+.sx b{display:block;font-family:'Baloo 2',cursive;font-size:clamp(15px,1.8vw,18px);margin-bottom:5px}
+.sx p{margin:0 0 6px;font-size:14px}
+.sx i{font-style:normal;display:block;font-size:12.5px;color:var(--muted);background:var(--paper);
+  border-left:3px solid var(--ink);border-radius:4px;padding:7px 9px}
+.sixmini{grid-template-columns:repeat(6,1fr)}
+.sixmini .sx{text-align:center;padding:14px 8px}
+.sixmini .sx b{margin:0;font-size:clamp(12px,1.4vw,15px)}
+@media(max-width:900px){.six{grid-template-columns:repeat(2,1fr)}.sixmini{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:560px){.six,.sixmini{grid-template-columns:1fr}}
+
+/* time plan */
+.tp-list{display:grid;gap:8px;margin:6px 0 12px}
+.tp-row{display:grid;grid-template-columns:200px 1fr auto;gap:12px;align-items:center;
+  border:2px solid var(--ink);background:#fff;border-radius:8px;padding:9px 12px;box-shadow:3px 3px 0 var(--ink)}
+.tp-n{font-size:15px;font-weight:600}
+.tp-bar{height:14px;border:2px solid var(--ink);border-radius:99px;background:var(--paper);overflow:hidden}
+.tp-bar i{display:block;height:100%;background:var(--teal);transition:width .15s}
+.tp-m{display:flex;align-items:center;gap:6px;white-space:nowrap}
+.tp-m b{font-family:'IBM Plex Mono',monospace;font-size:14px;min-width:40px;text-align:center}
+.taskpill.over{background:#FFE0E0;border-color:var(--red)}
+@media(max-width:760px){.tp-row{grid-template-columns:1fr auto}.tp-bar{grid-column:1/-1}}
+
+/* tool shelf */
+.toolgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.tool-c{border:3px solid var(--ink);border-radius:10px;background:#fff;padding:14px;box-shadow:5px 5px 0 var(--ink);
+  display:flex;flex-direction:column;gap:8px}
+.tool-h{display:flex;align-items:center;gap:10px}
+.tool-h span{font-size:28px}
+.tool-h b{font-family:'Baloo 2',cursive;font-size:22px}
+.tool-best{margin:0;font-size:14px;color:var(--muted)}
+.tool-flow{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-family:'IBM Plex Mono',monospace;font-size:11px}
+.tool-flow span{background:var(--ink);color:#fff;border-radius:5px;padding:4px 9px;letter-spacing:.05em}
+.tool-c p{margin:0;font-size:14px;line-height:1.5}
+.tool-btn{align-self:flex-start;margin-top:auto;display:inline-block;text-decoration:none;
+  background:var(--ink);color:#fff;border:2px solid var(--ink);border-radius:99px;
+  padding:8px 16px;font-family:'Baloo 2',cursive;font-weight:700;font-size:14px;box-shadow:3px 3px 0 rgba(28,36,52,.35)}
+.tool-btn:hover{background:var(--hl);color:var(--ink)}
+.tile .tool-btn{margin-top:10px}
+@media(max-width:820px){.toolgrid{grid-template-columns:1fr}}
+
+/* walkthrough steps */
+.wt{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:14px}
+.wt-s{display:flex;gap:11px;align-items:flex-start;border:2px solid var(--ink);background:#fff;
+  border-radius:8px;padding:10px 12px;font-size:14.5px;line-height:1.45;box-shadow:3px 3px 0 var(--ink)}
+.wt-s b{flex:none;width:26px;height:26px;display:grid;place-items:center;border-radius:6px;
+  background:var(--ink);color:#fff;font-family:'IBM Plex Mono',monospace;font-size:13px}
+@media(max-width:820px){.wt{grid-template-columns:1fr}}
+
+/* missions */
+.misgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.mis{border:3px solid var(--ink);border-radius:12px;background:#fff;padding:16px;
+  box-shadow:6px 6px 0 var(--ink);display:flex;flex-direction:column;gap:9px}
+.mis h3{font-size:clamp(19px,2.3vw,24px);margin:0}
+.mis p{margin:0;font-size:14.5px;line-height:1.5}
+.mis-tag{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.09em;
+  background:var(--ink);color:#fff;border-radius:99px;padding:4px 11px;align-self:flex-start}
+.mis-out{background:var(--paper);border-left:3px solid var(--ink);border-radius:4px;padding:8px 10px;font-size:13.5px}
+.mis-btn{align-self:flex-start;margin-top:auto;text-decoration:none;background:var(--ink);color:#fff;
+  border:2px solid var(--ink);border-radius:99px;padding:9px 18px;
+  font-family:'Baloo 2',cursive;font-weight:700;font-size:15px;box-shadow:3px 3px 0 rgba(28,36,52,.35)}
+.mis-btn:hover{background:var(--hl);color:var(--ink)}
+.mis-a{border-color:var(--teal);box-shadow:6px 6px 0 var(--teal)}
+.mis-a .mis-tag,.mis-a .mis-btn{background:var(--teal);border-color:var(--teal)}
+.mis-b{border-color:var(--pink);box-shadow:6px 6px 0 var(--pink)}
+.mis-b .mis-tag,.mis-b .mis-btn{background:var(--pink);border-color:var(--pink)}
+.mis-c{border-color:var(--blue);box-shadow:6px 6px 0 var(--blue)}
+.mis-c .mis-tag,.mis-c .mis-btn{background:var(--blue);border-color:var(--blue)}
+.tile.mis-a{border-color:var(--teal)}
+.tile.mis-b{border-color:var(--pink)}
+.tile.mis-c{border-color:var(--blue)}
+@media(max-width:900px){.misgrid{grid-template-columns:1fr}}
+
+/* team workflow */
+.wflow{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.wf-s{border:3px solid var(--ink);border-radius:10px;background:#fff;padding:14px;
+  text-align:center;box-shadow:5px 5px 0 var(--ink)}
+.wf-s.v2hot{background:var(--hl)}
+.wf-s b{display:block;font-family:'Baloo 2',cursive;font-size:clamp(17px,2vw,21px);margin:6px 0 4px}
+.wf-s p{margin:0;font-size:13.5px;color:var(--muted)}
+.wf-t{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.08em;
+  background:var(--ink);color:#fff;border-radius:99px;padding:3px 10px}
+@media(max-width:820px){.wflow{grid-template-columns:repeat(2,1fr)}}
+
+/* page map (mission outputs) */
+.pagemap{display:grid;gap:8px;margin-top:10px}
+.pm{display:grid;grid-template-columns:190px 1fr;gap:12px;align-items:center;
+  border:2px solid var(--ink);border-radius:8px;background:#fff;padding:11px 13px;box-shadow:3px 3px 0 var(--ink)}
+.pm b{font-family:'Baloo 2',cursive;font-size:16px}
+.pm span{font-size:14.5px;color:var(--muted)}
+@media(max-width:640px){.pm{grid-template-columns:1fr;gap:3px}}
+
+/* ============================================================
    SHARED HOOK TOOLKIT — styles used by Level 2 S2 and Level 3 S2
    Appended to both files; rules repeated from a level's own sheet
    carry identical values, so order never matters.
@@ -823,10 +970,9 @@ textarea.wf{min-height:56px}
   <header class="topbar">
     <div class="brand">
       <svg class="mk" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3 6 8v11c0 9 6 15 14 18 8-3 14-9 14-18V8L20 3Z" fill="#0F6E56" stroke="#1C2434" stroke-width="2.4" stroke-linejoin="round"/><path d="m13.5 20 4.5 4.5 9-9.5" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <span class="txt">Changemaker Crew &middot; L3 S2</span>
+      <span class="txt">Session 2 &middot; Master Deck</span>
     </div>
     <span class="sec-label" id="secLabel" aria-live="polite">Welcome</span>
-    <button class="tracksw" id="tTrack" type="button" title="Switch between the Web section and the Digital Art section"><span class="tsw-e"></span><span class="tsw-t"></span><span class="tsw-x">switch ⇄</span></button>
     <span class="spacer"></span>
     <div class="tools">
       <button class="tool" id="tSearch" title="Search topics (press /)" aria-label="Search topics">🔍</button>
@@ -844,166 +990,159 @@ textarea.wf{min-height:56px}
   <!-- Stage -->
   <main class="stage" id="stage" aria-live="polite">
 <!-- ============ 0 · OPEN ============ -->
-    <section class="scene center" data-sec="0" data-title="Speak up. Plan smart. Pitch it." data-src="Deck 1-3">
+    <section class="scene center" data-sec="0" data-title="Speak up. Plan smart. Build it. Pitch it." data-src="Cover">
       <div class="scene-inner">
-        <span class="stamp">LEVEL 3 · SESSION 2 OF 5 🎤</span>
-        <div style="font-size:54px;margin:18px 0 4px" aria-hidden="true">🎤 ⏱️ 🚀</div>
-        <h1 class="big">Presentation Skills<br>&amp; <span class="hl">Time Management</span></h1>
-        <p class="sub">In Session 1 your crew picked a real problem and a solution idea. Today we turn that idea into something you can actually <b>pitch</b> — a prototype, a three-minute talk, and a page that pitches for you when you are not in the room.</p>
-        <div class="hero-badges"><span class="chip">🎣 Hook · Message · Close</span><span class="chip">⏱️ 3-minute pitch</span><span class="chip">🤖 AI prompt lab</span><span class="chip" data-track="web">🌐 Real HTML</span><span class="chip" data-track="art">🎨 WCAG contrast</span></div>
-        <p class="mono" style="margin-top:18px;color:var(--muted);font-size:14px">Press <b>→</b> or <b>Space</b> to start.</p>
+        <span class="stamp">THE CHANGEMAKER JOURNEY · SESSION 2 · 180 MINUTES</span>
+        <div style="font-size:52px;margin:18px 0 4px" aria-hidden="true">🎤 ⏱️ 🏗️ 🚀</div>
+        <h1 class="big">SPEAK UP. PLAN SMART.<br><span class="hl">BUILD IT. PITCH IT.</span></h1>
+        <p class="sub">Learn how to manage your time, build a strong presentation,<br>and turn an idea into something people can understand and support.</p>
+        <p class="mono" style="margin-top:20px;color:var(--muted);font-size:14px">Press <b>→</b> or <b>Space</b> to start.</p>
       </div>
     </section>
 
-    <section class="scene" data-sec="0" data-title="Session at a glance" data-src="Deck 3-5">
+    <section class="scene" data-sec="0" data-title="Today's mission" data-src="Mission">
       <div class="scene-inner">
         <div class="card">
-          <div class="head"><span class="badge">TODAY 🗺️</span><h2>Four moves</h2></div>
+          <div class="head"><span class="badge">TODAY 🎯</span><h2>Six moves, one deadline</h2></div>
           <div class="body">
-            <div class="grid g4">
-              <div class="tile"><span class="ic">🔁</span><h4>01 · Warm-up &amp; recap</h4><p>Remember your crew's idea from Session 1 — and say it out loud in <b>30 seconds</b>.</p></div>
-              <div class="tile"><span class="ic">🎯</span><h4>02 · Learn two skills</h4><p>Presentation structure and delivery · time management that survives a deadline.</p></div>
-              <div class="tile"><span class="ic">🔨</span><h4>03 · Build &amp; pitch</h4><p>Turn the idea into a real prototype and a tight <b>3-minute</b> pitch.</p></div>
-              <div class="tile"><span class="ic">🎤</span><h4>04 · Present &amp; reflect</h4><p>Share with the room, take one strength and one fix, and keep one habit.</p></div>
+            <div class="flow">
+              <span class="fl">🧠 UNDERSTAND</span><i>→</i>
+              <span class="fl">🗺️ PLAN</span><i>→</i>
+              <span class="fl">✍️ CREATE</span><i>→</i>
+              <span class="fl">🏗️ BUILD</span><i>→</i>
+              <span class="fl">🔁 REHEARSE</span><i>→</i>
+              <span class="fl v2hot">🎤 PRESENT</span>
             </div>
-            <h3 style="margin-top:16px">Quick crew recap — right now</h3>
-            <div class="grid g3">
-              <div class="tile accent"><span class="ic">🙋</span><h4>Stand up</h4><p>One person per crew: your problem and your solution idea, in <b>30 seconds or less</b>.</p></div>
-              <div class="tile"><span class="ic">👂</span><h4>Listen up</h4><p>Other crews absorb. <b>No comments yet</b> — feedback has its own slot today.</p></div>
-              <div class="tile"><span class="ic">✅</span><h4>Confirm it</h4><p>The trainer confirms each crew is ready to move forward with that idea today.</p></div>
+            <div class="grid g3" style="margin-top:18px">
+              <div class="tile accent"><span class="ic">🎣</span><h4>First hour</h4><p>What makes people listen — hooks, structure, audience, delivery.</p></div>
+              <div class="tile accent"><span class="ic">⏱️</span><h4>Second hour</h4><p><b>Time management</b> — the skill that decides whether you finish.</p></div>
+              <div class="tile accent"><span class="ic">🚀</span><h4>Third hour</h4><p>Your team picks a <b>mission</b>, builds it, rehearses it, presents it.</p></div>
             </div>
-            <div data-act="pitchTimer" data-config='{"seconds":30,"marks":[{"at":0,"t":"The problem — one sentence","e":"❗"},{"at":12,"t":"The solution idea","e":"💡"},{"at":24,"t":"Stop. Next crew.","e":"🛑"}]}'></div>
+            <details class="sched">
+              <summary>⏱️ The 180 minutes — tap to open</summary>
+              <div class="tbwrap"><table class="tb"><tbody>
+                <tr><td class="mono">00–10</td><td>Hook discovery — three real videos</td></tr>
+                <tr><td class="mono">10–25</td><td>Presentation fundamentals — hook · structure · audience · delivery · CTA</td></tr>
+                <tr><td class="mono">25–40</td><td>Time management — what it is and the 6-step system</td></tr>
+                <tr><td class="mono">40–55</td><td>Time management toolkit — Trello · Notion · Calendar · Todoist</td></tr>
+                <tr><td class="mono">55–75</td><td>How to build a presentation — Gamma · Canva · alternatives</td></tr>
+                <tr><td class="mono">75–95</td><td>☕ BREAK</td></tr>
+                <tr><td class="mono">95–105</td><td><b>Choose your mission</b> + team planning</td></tr>
+                <tr><td class="mono">105–140</td><td><b>TEAM BUILD CHALLENGE</b></td></tr>
+                <tr><td class="mono">140–150</td><td>Check + rehearse</td></tr>
+                <tr><td class="mono">150–175</td><td>Team presentations and demos</td></tr>
+                <tr><td class="mono">175–180</td><td>Feedback + recap</td></tr>
+              </tbody></table></div>
+            </details>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="scene" data-sec="0" data-title="Icebreaker — Say It in Ten Seconds" data-src="Deck 6-7">
+<!-- ============ 1 · HOOK ============ -->
+    <section class="scene" data-sec="1" data-title="Warm-up — Say It in Ten Seconds" data-src="Warm-up">
       <div class="scene-inner">
         <div class="card">
-          <div class="head"><span class="badge">ICEBREAKER · 15 MIN ⏱️</span><h2>Say It in Ten Seconds</h2></div>
+          <div class="head"><span class="badge">WARM-UP ⏱️</span><h2>Say It in Ten Seconds</h2></div>
           <div class="body">
-            <div class="grid g3">
-              <div class="tile"><span class="ic">🎲</span><h4>Get an object</h4><p>The screen names a random everyday object. No preparation, no thinking time.</p></div>
-              <div class="tile"><span class="ic">⏱️</span><h4>Ten seconds</h4><p>One student describes it — clearly, in <b>exactly</b> ten seconds. Not five. Not twenty.</p></div>
-              <div class="tile"><span class="ic">🔄</span><h4>Switch</h4><p>Next student, new object. Keep rotating around the room.</p></div>
-            </div>
+            <p class="sub">Optional opener while the room settles. A random object appears — one student describes it in <b>exactly</b> ten seconds. Then the next.</p>
             <div data-act="tenSec"></div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="scene" data-sec="0" data-title="Today's big challenge" data-src="Deck 8-9">
-      <div class="scene-inner">
-        <div class="card">
-          <div class="head"><span class="badge">LEARNING OUTCOMES 🏆</span><h2>By the end of today you can…</h2></div>
-          <div class="body">
-            <div class="grid g3">
-              <div class="tile"><span class="ic">🗣️</span><h4>Present clearly</h4><p>Structure any idea with an opening, a main message and a strong close.</p></div>
-              <div class="tile"><span class="ic">⏰</span><h4>Manage your time</h4><p>Break a task into steps and plan realistically inside a deadline.</p></div>
-              <div class="tile"><span class="ic">🚀</span><h4>Pitch your solution</h4><p>Deliver a confident, well-timed <b>3-minute</b> pitch with your crew.</p></div>
-            </div>
-            <div class="note info" style="margin-top:14px">🏆 <b>The big challenge:</b> build a simple prototype of your solution <b>and</b> deliver a tight 3-minute crew pitch in front of the room. Build it · Pitch it · Time it.</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-<!-- ============ 1 · PRESENTATION SKILLS ============ -->
-    <section class="scene" data-sec="1" data-title="Start with purpose &amp; audience" data-src="Deck 10-11">
-      <div class="scene-inner">
-        <div class="card">
-          <div class="head"><span class="badge">CONCEPT 1 · THEORY 🎯</span><h2>Great presenters aren't born — they're trained</h2></div>
-          <div class="body">
-            <p class="lead">Before you say a single word, answer three questions.</p>
-            <div class="grid g3">
-              <div class="tile"><span class="ic">🎯</span><h4>What do I want them to know, feel, or do?</h4><p>Pick <b>one</b> of the three. A pitch that tries to do all three does none of them.</p></div>
-              <div class="tile"><span class="ic">👥</span><h4>Who is my audience?</h4><p>What do they already know? A head teacher and a classmate need different words for the same idea.</p></div>
-              <div class="tile"><span class="ic">💎</span><h4>What is the ONE thing they must remember?</h4><p>If they forget everything else, what survives? Write it down before you write anything else.</p></div>
-            </div>
-            <div class="note good" style="margin-top:14px">💚 <b>Clear purpose = clear presentation. Always.</b> Every confusing pitch you have ever sat through was confusing because the speaker had not answered these three questions.</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="scene" data-sec="1" data-title="The 3-part structure" data-src="Deck 12">
-      <div class="scene-inner">
-        <div class="card">
-          <div class="head"><span class="badge">THE SHAPE 🧱</span><h2>Every great presentation has the same three parts</h2></div>
-          <div class="body">
-            <div class="ex">
-              <div class="arr">1</div>
-              <div class="ex-body"><h4>🎣 Opening Hook</h4><p>Grab attention — a question, a surprising fact, or a story. You get about <b>ten seconds</b> before the room decides whether to listen.</p></div>
-            </div>
-            <div class="ex">
-              <div class="arr">2</div>
-              <div class="ex-body"><h4>💡 Main Message</h4><p>Your solution, explained simply. The problem, then the fix. Not the other way round.</p></div>
-            </div>
-            <div class="ex">
-              <div class="arr">3</div>
-              <div class="ex-body"><h4>🏁 Closing</h4><p>A call to action, or why it matters. The last sentence is the one they walk out with.</p></div>
-            </div>
-            <div class="note info" style="margin-top:12px">🎬 From TED Talks to product launches to a two-minute pitch to your head teacher — <b>same shape every time</b>. Learn it once and you never have to wonder what to say next.</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="scene" data-sec="1" data-title="Delivery basics" data-src="Deck 13">
-      <div class="scene-inner">
-        <div class="card">
-          <div class="head"><span class="badge">CONCEPT 1 · DELIVERY 🧍</span><h2>Four things your body is saying</h2></div>
-          <div class="body">
-            <div class="grid g4">
-              <div class="tile"><span class="ic">🔊</span><h4>Clear voice</h4><p>Slow enough to be understood. <b>Project — don't shout.</b> Volume comes from breath, not throat.</p></div>
-              <div class="tile"><span class="ic">🧍</span><h4>Good posture</h4><p>Stand straight, feet shoulder-width apart. Own the space you are standing in.</p></div>
-              <div class="tile"><span class="ic">👀</span><h4>Eye contact</h4><p>Scan the room. Connect with <b>2–3 people</b> for a few seconds each — not one person for three minutes.</p></div>
-              <div class="tile"><span class="ic">🧘</span><h4>Calm body</h4><p>Limit fidgeting. Breathe. <b>Pause on purpose</b> — silence is powerful and almost nobody uses it.</p></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="scene" data-sec="1" data-title="GAME · Spot the delivery mistake" data-src="Deck 13 applied">
-      <div class="scene-inner">
-        <div class="card">
-          <div class="head"><span class="badge">PROJECTOR GAME 🎮</span><h2>Which delivery basic broke? 🎭</h2></div>
-          <div class="body">
-            <div data-act="deliveryLab"></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-<!-- ============ 2 · HOOK ============ -->
-    <section class="scene" data-sec="2" data-title="What made you keep watching?" data-src="Shared hook toolkit">
+    <section class="scene" data-sec="1" data-title="What made you keep watching?" data-src="Hook discovery">
       <div class="scene-inner wide">
         <div class="card">
           <div class="head"><span class="badge">DISCOVER 🔍</span><h2>What made you keep watching?</h2></div>
           <div class="body">
-            <p class="sub">Before anybody says the word &ldquo;hook&rdquo;. Three real openings, type hidden — the crews work out the pattern themselves.</p>
+            <div class="tto"><span><b>⏱️ 10 min</b></span><span><b>🎯 Task</b> Watch 3 openings. Say why you stayed.</span><span><b>📦 Output</b> You spot the pattern yourselves.</span></div>
             <div data-act="videoLab"></div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="scene" data-sec="2" data-title="Activity 1 — Hook It" data-src="Deck 15-16 + Instructor Instructions">
+    <section class="scene" data-sec="1" data-title="So what is a hook?" data-src="Concept">
       <div class="scene-inner">
         <div class="card">
-          <div class="head"><span class="badge">ACTIVITY 1 · INDIVIDUAL · 10 MIN ✍️</span><h2>Hook It</h2></div>
+          <div class="head"><span class="badge">THE WORD 🎣</span><h2>So what is a hook?</h2></div>
           <div class="body">
-            <p class="lead"><b>Goal:</b> write one strong opening line that grabs attention and introduces your crew's solution idea. On a <b>Canva text card</b>.</p>
-            <div class="grid g3">
-              <div class="tile"><span class="ic">❓</span><h4>Ask a question</h4><p>&ldquo;Have you ever felt completely lost the night before a big test?&rdquo;</p></div>
-              <div class="tile"><span class="ic">😲</span><h4>Share a surprising fact</h4><p>&ldquo;Most students waste 2 hours a day without realising it.&rdquo;</p></div>
-              <div class="tile"><span class="ic">📖</span><h4>Tell a micro-story</h4><p>&ldquo;Last month, our whole group failed a quiz — because no one knew when it was.&rdquo;</p></div>
+            <p class="lead">A <b>hook</b> is the opening that makes your audience want to keep listening.</p>
+            <div class="hookbar">
+              <div class="hb-seg v2hot"><b>HOOK</b><span>first 5–10 sec</span></div>
+              <div class="hb-seg"><b>PROBLEM SETUP</b><span>the rest of the opening</span></div>
+              <div class="hb-tot">OPENING · about 30 seconds</div>
             </div>
-            <div class="note info" style="margin-top:12px">🎯 <b>Your hook is the first thing your audience hears.</b> Make them curious, surprised, or interested enough to keep listening. Open Canva → write your hook → be ready to read it aloud in <b>60 seconds</b>.</div>
-            <div class="note warn" style="margin-top:10px">⚠️ <b>Stuck?</b> Ask yourself: what problem does your solution solve? · what question would make someone <i>care</i> about that problem? · is there a surprising number you could use? · can you tell a very short story about one person experiencing it?</div>
+            <div class="grid g3" style="margin-top:20px">
+              <div class="tile" style="border-color:var(--blue)"><span class="ic">❓</span><h4>Question</h4><p>Makes your brain <b>search for an answer</b>.</p></div>
+              <div class="tile" style="border-color:var(--teal)"><span class="ic">😲</span><h4>Fact / Number</h4><p><b>Surprises</b> you with something unexpected.</p></div>
+              <div class="tile" style="border-color:var(--pink)"><span class="ic">📖</span><h4>Story</h4><p>Drops you <b>into a situation</b> — you want to know what happens next.</p></div>
+            </div>
+            <div class="note warn" style="margin-top:14px">⚠️ <b>The hook is not the whole opening.</b> It is the first few seconds. Then you set up the problem — together they make your 30-second Opening.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="scene" data-sec="1" data-title="Spot the opening" data-src="Shared hook toolkit">
+      <div class="scene-inner">
+        <div class="card">
+          <div class="head"><span class="badge">FAST GAME 🎯</span><h2>Which kind of opening is this?</h2></div>
+          <div class="body">
+            <div class="tto"><span><b>⏱️ 5 min</b></span><span><b>🎯 Task</b> Call out the type before you tap.</span><span><b>📦 Output</b> You can name all three on sight.</span></div>
+            <div data-act="hookLab"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<!-- ============ 2 · PRESENTATION FUNDAMENTALS ============ -->
+    <section class="scene" data-sec="2" data-title="The shape of every presentation" data-src="Fundamentals">
+      <div class="scene-inner">
+        <div class="card">
+          <div class="head"><span class="badge">STRUCTURE 🧱</span><h2>Opening → Main Message → Closing</h2></div>
+          <div class="body">
+            <div class="struct">
+              <div class="st-box"><span class="st-t">~30 sec</span><b>① OPENING</b><p>Hook + problem setup</p></div>
+              <div class="st-box v2hot"><span class="st-t">60–90 sec</span><b>② MAIN MESSAGE</b><p>Problem · solution · benefits</p></div>
+              <div class="st-box"><span class="st-t">~30 sec</span><b>③ CLOSING</b><p>Summary + CTA</p></div>
+            </div>
+            <h3 style="margin-top:20px">CTA = <span class="hl">Call To Action</span></h3>
+            <p class="sub">It tells your audience what you want them to <b>DO</b> next.</p>
+            <div class="grid g2">
+              <div class="tile" style="border-color:var(--red)"><span class="ic">❌</span><h4>Weak</h4><p>“Thank you. That's our project.”</p></div>
+              <div class="tile" style="border-color:var(--green)"><span class="ic">✅</span><h4>Strong</h4><p>“We want the school to <b>test this idea for one week</b>.”</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="scene" data-sec="2" data-title="Audience · Delivery · Handoff" data-src="Fundamentals">
+      <div class="scene-inner wide">
+        <div class="card">
+          <div class="head"><span class="badge">WHO AND HOW 👥</span><h2>Good presentations are made for <span class="hl">someone</span></h2></div>
+          <div class="body">
+            <div class="grid g2">
+              <div class="tile" style="border-color:var(--amber)"><span class="ic">🎒</span><h4>Students may care about</h4><p><b>Experience · convenience · time · fun</b></p></div>
+              <div class="tile" style="border-color:var(--blue)"><span class="ic">🧑‍🏫</span><h4>A principal may care about</h4><p><b>Impact · feasibility · resources · school improvement</b></p></div>
+            </div>
+            <div class="note info" style="margin-top:12px">🎯 <b>Would you say the same words to both?</b> Ask your team now — and pick one before you write anything.</div>
+
+            <h3 style="margin-top:20px">🗣️ Delivery — three rules</h3>
+            <div class="grid g3">
+              <div class="tile"><span class="ic">👀</span><h4>LOOK UP</h4><p>Look at the audience.</p></div>
+              <div class="tile"><span class="ic">🔊</span><h4>SPEAK OUT</h4><p>Make sure everyone can hear you.</p></div>
+              <div class="tile"><span class="ic">🤝</span><h4>PASS IT</h4><p>Move smoothly between speakers.</p></div>
+            </div>
+            <h3 style="margin-top:18px">🔄 One handoff, done properly</h3>
+            <div class="hd-box">
+              <div class="hd-l"><span>1</span>“So that's the problem…”</div>
+              <div class="hd-arrow">↓ no gap ↓</div>
+              <div class="hd-l"><span>2</span>“…and Mariam will show you how our solution works.”</div>
+            </div>
           </div>
         </div>
       </div>
@@ -1014,8 +1153,8 @@ textarea.wf{min-height:56px}
         <div class="card">
           <div class="head"><span class="badge">CHALLENGE ✍️</span><h2>One idea. Three openings.</h2></div>
           <div class="body">
-            <p class="sub">Use <b>your crew&rsquo;s own problem from Session 1</b> — not the example. Same idea, three different ways in. Write all three before you judge any of them.</p>
-            <div data-act="hookWrite" data-config='{"intro":"Your crew&#39;s Session 1 problem, written three different ways.","phQ":"A question about your crew&#39;s problem…","phF":"Something you have actually seen — no invented numbers…","phS":"One person, one moment, one thing that happened…","exQ":"&ldquo;How many minutes did you lose being lost this week?&rdquo;","exF":"&ldquo;Ninety new students. Zero signs.&rdquo;","exS":"&ldquo;On Monday, Mariam missed half a lesson looking for B-block.&rdquo;"}'></div>
+            <div class="tto"><span><b>⏱️ 8 min</b></span><span><b>🎯 Task</b> Write all three for your own project.</span><span><b>📦 Output</b> 3 hooks you wrote yourself.</span></div>
+            <div data-act="hookWrite" data-config='{"intro":"Your team&#39;s own project, written three different ways.","phQ":"A question about your project…","phF":"Something you have actually seen — no invented numbers…","phS":"One person, one moment, one thing that happened…"}'></div>
           </div>
         </div>
       </div>
@@ -1026,8 +1165,7 @@ textarea.wf{min-height:56px}
         <div class="card">
           <div class="head"><span class="badge">SEE YOUR WRITING 🌐</span><h2>Three hooks, three hero sections</h2></div>
           <div class="body">
-            <p class="sub">Same words, rendered as a real page. <b>Web crews</b> — this is your page&rsquo;s <span class="mono">&lt;h1&gt;</span> being chosen. <b>Art crews</b> — this is the line every visual has to support.</p>
-            <div data-act="heroPreview" data-config='{"sub":"Your crew&#39;s solution, in one supporting line.","project":"our crew&#39;s school improvement project"}'></div>
+            <div data-act="heroPreview" data-config='{"sub":"Your team&#39;s solution, in one supporting line.","project":"our team&#39;s school project"}'></div>
           </div>
         </div>
       </div>
@@ -1036,76 +1174,60 @@ textarea.wf{min-height:56px}
     <section class="scene" data-sec="2" data-title="A / B / C peer test" data-src="Shared hook toolkit">
       <div class="scene-inner">
         <div class="card">
-          <div class="head"><span class="badge">PEER TEST 🅰️🅱️🅲️</span><h2>Which one makes you keep scrolling?</h2></div>
+          <div class="head"><span class="badge">PEER TEST 🅰️🅱️🅲</span><h2>Which one makes you keep scrolling?</h2></div>
           <div class="body">
-            <p class="sub">Another crew picks one and says why. That sentence becomes your <b>hero headline</b> and the first line of your 3-minute pitch.</p>
+            <div class="tto"><span><b>⏱️ 5 min</b></span><span><b>🎯 Task</b> Another team picks one and says why.</span><span><b>📦 Output</b> Your FINAL HOOK.</span></div>
             <div data-act="abTest"></div>
           </div>
         </div>
       </div>
     </section>
 
-
-    <section class="scene" data-sec="2" data-title="GAME · Hook Lab" data-src="Deck 16 applied">
+<!-- ============ 3 · TIME MANAGEMENT ============ -->
+    <section class="scene center" data-sec="3" data-title="A good idea is not enough" data-src="Time management">
       <div class="scene-inner">
-        <div class="card">
-          <div class="head"><span class="badge">PROJECTOR GAME 🎮</span><h2>Hook Lab 🎣</h2></div>
-          <div class="body">
-            <div data-act="hookLab"></div>
-          </div>
-        </div>
+        <span class="stamp">TIME MANAGEMENT ⏱️</span>
+        <div style="font-size:52px;margin:16px 0 4px" aria-hidden="true">💡 ⏳</div>
+        <h1 class="big">Having a good idea is not enough.<br>You also have to <span class="hl">finish it on time.</span></h1>
+        <p class="sub"><b>Time management</b> means deciding what needs to be done, who will do it, and how much time each part gets — so the team finishes before the deadline.</p>
+        <div class="note bad" style="max-width:680px;margin:20px auto 0">🚨 <b>It is not about working faster.</b> It is about working <b>with a plan</b>.</div>
       </div>
     </section>
 
-    <section class="scene" data-sec="2" data-title="GAME · AI Prompt Lab" data-src="AI track">
+    <section class="scene" data-sec="3" data-title="The 6-step time system" data-src="Time management">
       <div class="scene-inner wide">
         <div class="card">
-          <div class="head"><span class="badge">AI GAME 🤖</span><h2>AI Prompt Lab — get five hooks, not one paragraph</h2></div>
+          <div class="head"><span class="badge">THE SYSTEM 🗺️</span><h2>Six steps. Every project. Every time.</h2></div>
           <div class="body">
-            <div data-act="aiPromptLab"></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="scene" data-sec="2" data-title="Using AI honestly" data-src="AI track">
-      <div class="scene-inner">
-        <div class="card">
-          <div class="head"><span class="badge">THE RULES 🤖</span><h2>Three rules for using AI in this project</h2></div>
-          <div class="body">
-            <div class="grid g3">
-              <div class="tile" style="border-color:var(--green)"><span class="ic">✅</span><h4>1 · AI drafts, you decide</h4><p>Ask for <b>five</b> options, never one. Then say out loud why you rejected four of them. If you cannot, you have not read them.</p></div>
-              <div class="tile" style="border-color:var(--amber)"><span class="ic">🔍</span><h4>2 · Check every number</h4><p>An AI will happily invent &ldquo;73% of students&rdquo;. If you cannot point at where a number came from, <b>delete it</b> — a made-up statistic destroys a pitch on the first question.</p></div>
-              <div class="tile" style="border-color:var(--blue)"><span class="ic">🗣️</span><h4>3 · Say it in your own mouth</h4><p>Read the line aloud. If it does not sound like a person your age, rewrite it. The audience can hear the difference instantly.</p></div>
+            <div class="six">
+              <div class="sx"><b>1 · BREAK IT DOWN</b><p>One big task becomes small ones.</p><i>“Create a presentation” → research · write · visuals · slides · rehearse · fix</i></div>
+              <div class="sx"><b>2 · PRIORITIZE</b><p><b>MUST DO</b> · <b>SHOULD DO</b> · <b>NICE TO HAVE</b></p><i>Do the work required for success first. Decorations come later.</i></div>
+              <div class="sx"><b>3 · GIVE EVERY TASK AN OWNER</b><p>One task, one name.</p><i>❌ “Someone will make the slides.” ✅ “Mariam — slides.” If everyone owns it, nobody owns it.</i></div>
+              <div class="sx"><b>4 · TIMEBOX IT</b><p>Each task gets a fixed amount of time.</p><i>Plan 5 · Content 10 · Build 15 · Rehearse 5</i></div>
+              <div class="sx"><b>5 · SET MINI-DEADLINES</b><p>Not one big deadline at the end.</p><i>By minute 10: content done. By 25: first version. By 35: ready to rehearse.</i></div>
+              <div class="sx v2hot"><b>6 · LEAVE TIME TO TEST</b><p>Never use 100% of your time building.</p><i>PLAN → BUILD → CHECK → IMPROVE</i></div>
             </div>
-            <div class="note bad" style="margin-top:14px">🚨 <b>The tell:</b> long sentences, words like <i>leverage</i>, <i>utilise</i>, <i>in today's fast-paced world</i>, and three adjectives where one would do. That is not your voice — and everyone in the room can hear it.</div>
           </div>
         </div>
       </div>
     </section>
 
-<!-- ============ 3 · TIME MANAGEMENT ============ -->
-    <section class="scene" data-sec="3" data-title="Important vs urgent" data-src="Deck 17-18">
+    <section class="scene" data-sec="3" data-title="You have 30 minutes." data-src="Time activity">
       <div class="scene-inner">
         <div class="card">
-          <div class="head"><span class="badge">CONCEPT 2 · THEORY ⏰</span><h2>Time doesn't manage itself</h2></div>
+          <div class="head"><span class="badge">TEAM ACTIVITY ⏳</span><h2>You have 30 minutes.</h2></div>
           <div class="body">
-            <p class="lead">Most students spend their time on what <b>feels urgent</b> — not on what actually matters.</p>
-            <div class="grid g3">
-              <div class="tile" style="border-color:var(--red)"><span class="ic">🔥</span><h4>Do Now</h4><p>Urgent <b>and</b> important. Exam tomorrow. A task due today. Something blocking a teammate.</p></div>
-              <div class="tile" style="border-color:var(--blue)"><span class="ic">🗓️</span><h4>Plan It</h4><p>Important, <b>not urgent yet</b>. Prep for next week's pitch. This is the box that decides whether next week is calm or chaotic.</p></div>
-              <div class="tile" style="border-color:var(--muted)"><span class="ic">📵</span><h4>Drop It</h4><p>Neither. Endless scrolling. Re-reading a chat. Making a slide "a bit nicer" for the fourth time.</p></div>
-            </div>
-            <div class="note warn" style="margin-top:14px">⚠️ <b>The trap:</b> Drop It jobs often <i>look</i> like work — tidying, re-formatting, arguing about fonts. Urgency is a feeling. A deadline is a fact. Only one of them should decide your afternoon.</div>
+            <div class="tto"><span><b>⏱️ 8 min</b></span><span><b>🎯 Task</b> Split 30 minutes across the seven jobs.</span><span><b>📦 Output</b> A plan your team agrees on.</span></div>
+            <div data-act="timePlan"></div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="scene" data-sec="3" data-title="GAME · Do Now, Plan It, Drop It" data-src="Deck 18 applied">
+    <section class="scene" data-sec="3" data-title="Do Now · Plan It · Drop It" data-src="Prioritise">
       <div class="scene-inner">
         <div class="card">
-          <div class="head"><span class="badge">PROJECTOR GAME 🎮</span><h2>Where does this task go? ⏰</h2></div>
+          <div class="head"><span class="badge">PRIORITISE 🔥</span><h2>Where does this task go?</h2></div>
           <div class="body">
             <div data-act="timeBuckets"></div>
           </div>
@@ -1113,38 +1235,10 @@ textarea.wf{min-height:56px}
       </div>
     </section>
 
-    <section class="scene" data-sec="3" data-title="Three time-smart habits" data-src="Deck 19">
+    <section class="scene" data-sec="3" data-title="Break it down with a budget" data-src="Break it down">
       <div class="scene-inner">
         <div class="card">
-          <div class="head"><span class="badge">HABITS 🧠</span><h2>Three habits that beat the clock</h2></div>
-          <div class="body">
-            <div class="grid g3">
-              <div class="tile"><span class="ic">🗂️</span><h4>Break it down</h4><p>Split any big task into <b>4–5 small, doable steps</b>. Small steps = less stress, and you can see progress.</p></div>
-              <div class="tile"><span class="ic">⏳</span><h4>Set mini-deadlines</h4><p>Give <b>each step</b> its own time. Don't leave everything for the last minute — leave nothing for it.</p></div>
-              <div class="tile"><span class="ic">🎯</span><h4>Practise within limits</h4><p>Rehearse <b>inside your actual time limit</b>. Surprise timing on the day = a messy presentation.</p></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="scene" data-sec="3" data-title="Activity 2 — Break It Down" data-src="Deck 21-22 + Instructor Instructions">
-      <div class="scene-inner">
-        <div class="card">
-          <div class="head"><span class="badge">ACTIVITY 2 · INDIVIDUAL · 10 MIN 🗂️</span><h2>Break It Down</h2></div>
-          <div class="body">
-            <p class="lead"><b>The task:</b> &ldquo;Prepare a 3-minute pitch.&rdquo; Break it into <b>4–5 ordered steps</b> with rough minutes, on a <b>Miro sticky note</b>.</p>
-            <div class="note warn" style="margin-top:10px">⚠️ <b>The thing everybody gets wrong:</b> the <b>3 minutes is the pitch</b>, not the preparation. Preparing it takes far longer than three minutes. Your plan is for the <i>prep</i>.</div>
-            <div class="note info" style="margin-top:10px">💡 Each sticky note carries three things: <b>step number · task · rough time</b>. For example: <span class="mono">Step 1 — Choose the main message — 2 min</span></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="scene" data-sec="3" data-title="GAME · Break It Down with a budget" data-src="Deck 21-22 applied">
-      <div class="scene-inner">
-        <div class="card">
-          <div class="head"><span class="badge">PROJECTOR GAME 🎮</span><h2>Order the steps — and budget the minutes 🗂️</h2></div>
+          <div class="head"><span class="badge">STEP 1 IN PRACTICE 🗂️</span><h2>Order the steps — and budget the minutes</h2></div>
           <div class="body">
             <div data-act="stepPlan"></div>
           </div>
@@ -1152,377 +1246,493 @@ textarea.wf{min-height:56px}
       </div>
     </section>
 
-<!-- ============ 4 · TRACK: WEB or DIGITAL ART ============ -->
-    <section class="scene center" data-sec="4" data-title="Your pitch, as a page" data-track="web" data-src="Web track">
-      <div class="scene-inner">
-        <span class="stamp">WEB DEVELOPMENT TRACK 🌐</span>
-        <div style="font-size:52px;margin:16px 0 4px" aria-hidden="true">🎤 → 🌐</div>
-        <h1 class="big">A landing page is a pitch<br>with <span class="hl">no speaker</span></h1>
-        <p class="sub">Same three parts. The hook becomes your <span class="mono">&lt;h1&gt;</span>, the main message becomes your sections, the closing becomes your call-to-action button. If you can pitch it, you can build it.</p>
+<!-- ============ 4 · TOOLS ============ -->
+    <section class="scene" data-sec="4" data-title="Time management toolkit" data-src="Tools">
+      <div class="scene-inner wide">
+        <div class="card">
+          <div class="head"><span class="badge">TOOLKIT 🧰</span><h2>Four tools. One job each.</h2></div>
+          <div class="body">
+            <p class="sub">You do not need all four. You need to know <b>what each one is for</b>.</p>
+            <div class="toolgrid">
+              <div class="tool-c">
+                <div class="tool-h"><span>📋</span><b>Trello</b></div>
+                <p class="tool-best">Best for <b>team task management</b></p>
+                <div class="tool-flow"><span>BOARD</span>→<span>LISTS</span>→<span>CARDS</span></div>
+                <p>Your team board: <b>TO DO · DOING · DONE</b>. One card per task — <i>Create hook · Design poster · Build hero · Rehearse</i>. Add an owner and a due date.</p>
+                <a class="tool-btn" href="https://trello.com/" target="_blank" rel="noopener noreferrer">Open Trello ↗</a>
+              </div>
+              <div class="tool-c">
+                <div class="tool-h"><span>📓</span><b>Notion</b></div>
+                <p class="tool-best">Best for the <b>project plan + notes + tasks</b></p>
+                <div class="tool-flow"><span>ONE WORKSPACE</span></div>
+                <p>Keep the brief, the task list, the roles, the deadlines and the research <b>in one place</b> instead of five chats.</p>
+                <a class="tool-btn" href="https://www.notion.com/product/projects" target="_blank" rel="noopener noreferrer">Open Notion ↗</a>
+              </div>
+              <div class="tool-c">
+                <div class="tool-h"><span>📅</span><b>Google Calendar</b></div>
+                <p class="tool-best">Best for <b>time blocking + deadlines</b></p>
+                <div class="tool-flow"><span>4:00–4:15</span><span>4:15–4:35</span><span>4:35–4:45</span></div>
+                <p>Research · build · rehearse. A task with no time booked is a task that will not happen.</p>
+                <a class="tool-btn" href="https://calendar.google.com/" target="_blank" rel="noopener noreferrer">Open Google Calendar ↗</a>
+              </div>
+              <div class="tool-c">
+                <div class="tool-h"><span>✅</span><b>Todoist</b></div>
+                <p class="tool-best">Best for <b>your own</b> task list</p>
+                <div class="tool-flow"><span>TASKS</span>→<span>PRIORITIES</span>→<span>DUE DATES</span></div>
+                <p>Optional. Use it for the part of the project that is <b>yours</b>, not the team's.</p>
+                <a class="tool-btn" href="https://www.todoist.com/" target="_blank" rel="noopener noreferrer">Open Todoist ↗</a>
+              </div>
+            </div>
+            <div class="note good" style="margin-top:14px">💚 <b>Trello</b> manages the team · <b>Notion</b> organises the project · <b>Calendar</b> protects your time · <b>Todoist</b> manages you.</div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="scene" data-sec="4" data-title="GAME · Build the pitch page" data-track="web" data-src="Web track">
+    <section class="scene center" data-sec="4" data-title="Now let's build the deck" data-src="Build">
+      <div class="scene-inner">
+        <span class="stamp">BUILD THE DECK 🏗️</span>
+        <div style="font-size:52px;margin:16px 0 4px" aria-hidden="true">🗣️ → 🖥️</div>
+        <h1 class="big">We know what to say.<br>Now let's <span class="hl">build the deck.</span></h1>
+        <p class="sub">Two main workflows — <b>Gamma</b> for speed, <b>Canva</b> for design — plus two classics.</p>
+      </div>
+    </section>
+
+    <section class="scene" data-sec="4" data-title="Gamma walkthrough" data-src="Build">
       <div class="scene-inner wide">
         <div class="card">
-          <div class="head"><span class="badge">WEB GAME 🌐</span><h2>Pick the tag that carries the meaning</h2></div>
+          <div class="head"><span class="badge">OPTION 1 · GAMMA ⚡</span><h2>Fastest way to turn your plan into a deck</h2></div>
           <div class="body">
+            <div class="wt">
+              <div class="wt-s"><b>1</b>Open Gamma.</div>
+              <div class="wt-s"><b>2</b>Create a new presentation.</div>
+              <div class="wt-s"><b>3</b>Choose the AI creation option in the current interface — <i>Generate</i>, <i>Create with AI</i> or <i>Agent</i>.</div>
+              <div class="wt-s"><b>4</b>Give it <b>YOUR</b> content. <b>AI builds the deck. AI does not invent your idea.</b></div>
+              <div class="wt-s"><b>5</b>Read the outline <b>before</b> you accept it. Ask: <i>does this tell OUR story?</i></div>
+              <div class="wt-s"><b>6</b>Generate the deck.</div>
+              <div class="wt-s"><b>7</b>Replace weak AI text.</div>
+              <div class="wt-s"><b>8</b>Replace generic visuals.</div>
+              <div class="wt-s"><b>9</b>Delete slides you do not need.</div>
+              <div class="wt-s"><b>10</b>Present, share or export.</div>
+            </div>
+            <h4 class="hp-h4">The prompt template</h4>
+            <pre class="ap-pre">Create a short presentation for our school project.
+
+Audience: [students / teachers / principal]
+Goal: [what we want the audience to understand or do]
+
+Use this structure:
+1. Hook
+2. Problem
+3. Solution
+4. Benefits
+5. How it works / Demo
+6. Call To Action
+
+Use our exact project information below. Do not invent facts.
+
+CONTENT:
+[paste team content]</pre>
+            <div class="note bad">🚨 <b>AI FIRST DRAFT ≠ FINAL PRESENTATION.</b> The generated deck is where you start editing, not where you stop.</div>
+            <div class="btnrow"><a class="btn solid" href="https://gamma.app/" target="_blank" rel="noopener noreferrer">Open Gamma ↗</a></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="scene" data-sec="4" data-title="Canva walkthrough" data-src="Build">
+      <div class="scene-inner wide">
+        <div class="card">
+          <div class="head"><span class="badge">OPTION 2 · CANVA 🎨</span><h2>Best when visual design matters</h2></div>
+          <div class="body">
+            <div class="wt">
+              <div class="wt-s"><b>1</b>Open Canva.</div>
+              <div class="wt-s"><b>2</b>Start a Presentation.</div>
+              <div class="wt-s"><b>3</b>Use <i>Magic Design</i> / the AI presentation tool if available — or pick a clean template.</div>
+              <div class="wt-s"><b>4</b>Enter your project idea and content.</div>
+              <div class="wt-s"><b>5</b>Choose one visual direction and stay with it.</div>
+              <div class="wt-s"><b>6</b>Replace template text with your team's <b>real</b> content.</div>
+              <div class="wt-s"><b>7</b>Fix typography · images · spacing · contrast · consistency.</div>
+              <div class="wt-s"><b>8</b>Present from Canva or share it.</div>
+            </div>
+            <div class="note warn">⚠️ <b>ONE SLIDE = ONE MAIN IDEA.</b> Do not fill slides with paragraphs — the audience reads faster than you speak, finishes early, and stops listening.</div>
+            <div class="btnrow"><a class="btn solid" href="https://www.canva.com/create/ai-presentations/" target="_blank" rel="noopener noreferrer">Open Canva ↗</a></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="scene" data-sec="4" data-title="Other tools &amp; how to choose" data-src="Build">
+      <div class="scene-inner wide">
+        <div class="card">
+          <div class="head"><span class="badge">THE OTHER TWO 🧩</span><h2>And how to choose</h2></div>
+          <div class="body">
+            <div class="grid g2">
+              <div class="tile"><span class="ic">📊</span><h4>Google Slides</h4><p><b>Best for simple team collaboration.</b><br>Create deck → choose theme → build the slide structure → the team edits together → rehearse → present.</p>
+                <a class="tool-btn" href="https://workspace.google.com/products/slides/" target="_blank" rel="noopener noreferrer">Open Google Slides ↗</a></div>
+              <div class="tile"><span class="ic">🅿️</span><h4>PowerPoint</h4><p><b>Best classic presentation tool.</b><br>New presentation → choose layout → build slides → add visuals → review → present.</p>
+                <a class="tool-btn" href="https://www.microsoft.com/en-us/microsoft-365/powerpoint" target="_blank" rel="noopener noreferrer">Open PowerPoint ↗</a></div>
+            </div>
+            <h3 style="margin-top:18px">Pick by what your team needs</h3>
+            <div class="tbwrap"><table class="tb">
+              <tbody>
+                <tr><td><b>⚡ Gamma</b></td><td>Fast AI-generated first draft</td></tr>
+                <tr><td><b>🎨 Canva</b></td><td>Strong visual design</td></tr>
+                <tr><td><b>📊 Google Slides</b></td><td>Easy collaboration</td></tr>
+                <tr><td><b>🅿️ PowerPoint</b></td><td>Classic powerful slide tool</td></tr>
+              </tbody>
+            </table></div>
+            <div class="note good" style="margin-top:12px">💚 There is no universal winner. <b>Choose the tool that helps YOUR team finish well and on time.</b></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="scene" data-sec="4" data-title="AI Prompt Lab" data-src="AI">
+      <div class="scene-inner wide">
+        <div class="card">
+          <div class="head"><span class="badge">AI GAME 🤖</span><h2>The brief decides what you get back</h2></div>
+          <div class="body">
+            <div data-act="aiPromptLab"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="scene" data-sec="4" data-title="Presentation checklist" data-src="Build">
+      <div class="scene-inner">
+        <div class="card">
+          <div class="head"><span class="badge">BEFORE YOU START ✅</span><h2>A strong project presentation has six parts</h2></div>
+          <div class="body">
+            <div class="six sixmini">
+              <div class="sx"><b>1 · HOOK</b></div>
+              <div class="sx"><b>2 · PROBLEM</b></div>
+              <div class="sx"><b>3 · SOLUTION</b></div>
+              <div class="sx"><b>4 · BENEFITS</b></div>
+              <div class="sx"><b>5 · PROOF / DEMO / VISUAL</b></div>
+              <div class="sx v2hot"><b>6 · CTA</b></div>
+            </div>
+            <div class="grid g4" style="margin-top:16px">
+              <div class="tile"><span class="ic">✂️</span><h4>Short text</h4></div>
+              <div class="tile"><span class="ic">🖼️</span><h4>Strong visuals</h4></div>
+              <div class="tile"><span class="ic">🔢</span><h4>Clear order</h4></div>
+              <div class="tile"><span class="ic">🎨</span><h4>Consistent design</h4></div>
+            </div>
+            <div class="note bad" style="margin-top:14px">🚨 <b>YOUR SLIDES SUPPORT YOU. THEY DO NOT SPEAK FOR YOU.</b></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<!-- ============ 5 · MISSIONS ============ -->
+    <section class="scene" data-sec="5" data-title="Choose your mission" data-src="Team challenge">
+      <div class="scene-inner wide">
+        <div class="card">
+          <div class="head"><span class="badge">TEAM CHALLENGE 🚀</span><h2>Choose your mission</h2></div>
+          <div class="body">
+            <p class="sub">Everything so far was the same for everyone. <b>From here your team splits.</b></p>
+            <div class="misgrid">
+              <div class="mis mis-a">
+                <div class="mis-tag">MISSION A · LEVEL 2</div>
+                <h3>🍽️ Canteen Express</h3>
+                <p>Students lose too much of their break waiting in the canteen. Build a <b>one-page campaign website</b> for a pre-order system.</p>
+                <p class="mis-out"><b>Output:</b> working page + <b>2-minute</b> team pitch</p>
+                <a class="mis-btn" href="https://alfredo-activity.vercel.app/canteen" target="_blank" rel="noopener noreferrer">Open activity ↗</a>
+              </div>
+              <div class="mis mis-b">
+                <div class="mis-tag">MISSION B · LEVEL 3 · DIGITAL ART</div>
+                <h3>🎨 Wellbeing Week</h3>
+                <p>The school is launching <b>Student Wellbeing Week</b> — and students ignore announcements. Build a <b>visual campaign</b> they cannot ignore.</p>
+                <p class="mis-out"><b>Output:</b> poster + social version + identity, and a <b>3-minute</b> presentation</p>
+                <a class="mis-btn" href="https://alfredo-activity.vercel.app/wellbeing" target="_blank" rel="noopener noreferrer">Open activity ↗</a>
+              </div>
+              <div class="mis mis-c">
+                <div class="mis-tag">MISSION C · LEVEL 3 · WEB</div>
+                <h3>🔍 Smart Lost &amp; Found</h3>
+                <p>Bottles, books, jackets — lost every week. Prototype an <b>interactive lost &amp; found</b> with at least one working interaction.</p>
+                <p class="mis-out"><b>Output:</b> working prototype + <b>3-minute</b> demo pitch</p>
+                <a class="mis-btn" href="https://alfredo-activity.vercel.app/lostfound" target="_blank" rel="noopener noreferrer">Open activity ↗</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="scene" data-sec="5" data-title="Mission A — Canteen Express" data-src="Level 2">
+      <div class="scene-inner">
+        <div class="card">
+          <div class="head"><span class="badge">MISSION A · LEVEL 2 🍽️</span><h2>Canteen Express</h2></div>
+          <div class="body">
+            <div class="tto"><span><b>⏱️ 35 min build</b></span><span><b>🎯 Task</b> One simple campaign page.</span><span><b>📦 Output</b> Page + 2-minute pitch.</span></div>
+            <p class="lead"><b>The problem:</b> students lose too much of their break waiting in the school canteen.<br><b>Your proposal:</b> a simple pre-order system — choose your meal before break.</p>
+            <h3>Your page needs five sections</h3>
+            <div class="pagemap">
+              <div class="pm"><b>1 · HERO</b><span>Hook · one supporting sentence · CTA</span></div>
+              <div class="pm"><b>2 · PROBLEM</b><span>What goes wrong at break</span></div>
+              <div class="pm"><b>3 · SOLUTION</b><span>How pre-ordering fixes it</span></div>
+              <div class="pm"><b>4 · BENEFITS</b><span>Exactly three</span></div>
+              <div class="pm"><b>5 · FINAL CTA</b><span>What you want the school to do</span></div>
+            </div>
+            <div class="note info" style="margin-top:14px">🤖 <b>You may use AI to help make one <span class="mono">index.html</span>.</b> No advanced JavaScript, no complex structure. But every sentence must be <b>your own content</b> — the AI writes the scaffold, not your idea.</div>
+            <div class="note good" style="margin-top:10px">✅ <b>Success:</b> a working simple page <b>and</b> a clear 2-minute team pitch where <b>everyone speaks</b>. Flow: Hook → Problem → Solution → Benefits → CTA.</div>
+            <div class="btnrow"><a class="btn solid" href="https://alfredo-activity.vercel.app/canteen" target="_blank" rel="noopener noreferrer">Open activity ↗</a></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="scene" data-sec="5" data-title="Mission B — Wellbeing Week" data-src="Level 3 Digital Art">
+      <div class="scene-inner">
+        <div class="card">
+          <div class="head"><span class="badge">MISSION B · LEVEL 3 · DIGITAL ART 🎨</span><h2>Wellbeing Week</h2></div>
+          <div class="body">
+            <div class="tto"><span><b>⏱️ 35 min build</b></span><span><b>🎯 Task</b> A visual campaign students notice.</span><span><b>📦 Output</b> Campaign + 3-minute presentation.</span></div>
+            <p class="lead"><b>The problem:</b> the school is launching <b>Student Wellbeing Week</b> — and students scroll past every announcement.</p>
+            <h3>Build a mini visual campaign system</h3>
+            <div class="pagemap">
+              <div class="pm"><b>1 · KEY VISUAL</b><span>The main campaign poster</span></div>
+              <div class="pm"><b>2 · SOCIAL SQUARE</b><span>The same idea, <b>redesigned</b> for a square — not just resized</span></div>
+              <div class="pm"><b>3 · VISUAL IDENTITY</b><span>Campaign name · hook headline · palette · type · hierarchy · CTA</span></div>
+            </div>
+            <h3 style="margin-top:16px">Technical expectations</h3>
+            <div class="grid g3">
+              <div class="tile"><span class="ic">📐</span><h4>Alignment &amp; layers</h4><p>Use layers properly. Align on purpose, not by eye.</p></div>
+              <div class="tile"><span class="ic">🔠</span><h4>Type hierarchy</h4><p>Headline, subhead, body — three clear sizes, used consistently.</p></div>
+              <div class="tile"><span class="ic">🎨</span><h4>Controlled palette</h4><p>Pick your colours and stick to them. High-quality assets only.</p></div>
+            </div>
+            <div class="note bad" style="margin-top:14px">🚨 <b>Do not simply resize.</b> A poster and a social square are different shapes with different reading distances. The square gets <b>redesigned</b>, not squashed.</div>
+            <p style="margin-top:12px"><b>Tools:</b> Canva · Adobe Express · Photopea · or the Digital Art tool you already use.</p>
+            <h3 style="margin-top:14px">Your 3-minute presentation covers</h3>
+            <div class="steps">
+              <div class="step">1 · The problem &nbsp;·&nbsp; 2 · Target audience &nbsp;·&nbsp; 3 · Creative idea</div>
+              <div class="step">4 · Main visual &nbsp;·&nbsp; 5 · The adaptation &nbsp;·&nbsp; 6 · Why the design works &nbsp;·&nbsp; 7 · CTA</div>
+            </div>
+            <div class="btnrow"><a class="btn solid" href="https://alfredo-activity.vercel.app/wellbeing" target="_blank" rel="noopener noreferrer">Open activity ↗</a></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="scene" data-sec="5" data-title="Mission C — Smart Lost &amp; Found" data-src="Level 3 Web">
+      <div class="scene-inner">
+        <div class="card">
+          <div class="head"><span class="badge">MISSION C · LEVEL 3 · WEB 🔍</span><h2>Smart Lost &amp; Found</h2></div>
+          <div class="body">
+            <div class="tto"><span><b>⏱️ 35 min build</b></span><span><b>🎯 Task</b> A prototype with a real interaction.</span><span><b>📦 Output</b> Prototype + 3-minute demo.</span></div>
+            <p class="lead"><b>The problem:</b> students lose water bottles, books, pencil cases, jackets — every single week. The school needs a simple digital solution.</p>
+            <h3>Your prototype needs</h3>
+            <div class="pagemap">
+              <div class="pm"><b>1 · HOME / HERO</b><span>What it is, in one line</span></div>
+              <div class="pm"><b>2 · PROBLEM</b><span>Why this is worth building</span></div>
+              <div class="pm"><b>3 · HOW IT WORKS</b><span>Three steps, no more</span></div>
+              <div class="pm"><b>4 · LOST ITEMS AREA</b><span>The actual list of items</span></div>
+              <div class="pm"><b>5 · CTA</b><span>What a student should do next</span></div>
+            </div>
+            <h3 style="margin-top:16px">Plus <span class="hl">at least one working interaction</span></h3>
+            <div class="grid g3">
+              <div class="tile"><span class="ic">🔎</span><h4>Search or filter</h4><p>Type a word, the list narrows.</p></div>
+              <div class="tile"><span class="ic">🏷️</span><h4>Category filter</h4><p>Bottles · books · clothes.</p></div>
+              <div class="tile"><span class="ic">📝</span><h4>Report a lost item</h4><p>A form that adds to the list.</p></div>
+              <div class="tile"><span class="ic">👁️</span><h4>Show / hide details</h4><p>Tap an item, see more.</p></div>
+              <div class="tile"><span class="ic">✅</span><h4>Mark as found</h4><p>Status changes on click.</p></div>
+              <div class="tile accent"><span class="ic">🎯</span><h4>Pick ONE and make it work</h4><p>One interaction that genuinely runs beats four that half-run.</p></div>
+            </div>
+            <div class="note info" style="margin-top:14px">🛠️ <b>HTML + CSS + basic JavaScript.</b> It must open in a browser, have a readable layout, use consistent design, contain your team's real content, and include <b>one working interaction</b>.</div>
+            <h3 style="margin-top:14px">Your 3-minute demo covers</h3>
+            <div class="steps">
+              <div class="step">1 · Hook &nbsp;·&nbsp; 2 · Problem &nbsp;·&nbsp; 3 · Solution &nbsp;·&nbsp; 4 · <b>Demo it live</b></div>
+              <div class="step">5 · How the interaction works &nbsp;·&nbsp; 6 · Benefits &nbsp;·&nbsp; 7 · CTA</div>
+            </div>
+            <div class="btnrow"><a class="btn solid" href="https://alfredo-activity.vercel.app/lostfound" target="_blank" rel="noopener noreferrer">Open activity ↗</a></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="scene" data-sec="5" data-title="How all three teams work" data-src="Team workflow">
+      <div class="scene-inner">
+        <div class="card">
+          <div class="head"><span class="badge">SAME WORKFLOW FOR EVERYONE ⏱️</span><h2>Plan → Build → Check → Rehearse</h2></div>
+          <div class="body">
+            <div class="wflow">
+              <div class="wf-s"><span class="wf-t">5 MIN</span><b>PLAN</b><p>Roles · priorities · task order</p></div>
+              <div class="wf-s v2hot"><span class="wf-t">20–25 MIN</span><b>BUILD</b><p>Create the main output</p></div>
+              <div class="wf-s"><span class="wf-t">5 MIN</span><b>CHECK</b><p>Test the work</p></div>
+              <div class="wf-s"><span class="wf-t">5–10 MIN</span><b>REHEARSE</b><p>Practise the pitch</p></div>
+            </div>
+            <div class="note bad" style="margin-top:14px">🚨 <b>Step 6 of the system, right here:</b> the CHECK and REHEARSE blocks are not spare time. A team that builds until the last second presents something nobody has ever said out loud.</div>
+            <div data-act="pitchTimer" data-config='{"seconds":2100,"marks":[{"at":0,"t":"PLAN — roles and order","e":"🗺️"},{"at":300,"t":"BUILD — make it","e":"🏗️"},{"at":1800,"t":"CHECK — test it","e":"🔍"},{"at":2100,"t":"REHEARSE — say it out loud","e":"🔁"}]}'></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<!-- ============ 6 · SUPPORT LABS ============ -->
+    <section class="scene" data-sec="6" data-title="LAB · Semantic HTML (Web mission)" data-src="Support lab">
+      <div class="scene-inner wide">
+        <div class="card">
+          <div class="head"><span class="badge">SUPPORT LAB · WEB 🌐</span><h2>Pick the tag that carries the meaning</h2></div>
+          <div class="body">
+            <p class="sub">For <b>Mission C</b> teams — and useful for Mission A too. Run it while the art team plans.</p>
             <div data-act="htmlBuild"></div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="scene" data-sec="4" data-title="🌐 WEB TASK — build it for real" data-track="web" data-src="Web track">
-      <div class="scene-inner">
-        <div class="card">
-          <div class="head"><span class="badge">HANDS-ON TASK · WEB GROUP 🌐</span><h2>Build your crew's pitch page</h2></div>
-          <div class="body">
-            <p class="lead">One HTML file. No framework, no build step, no library. It opens by double-clicking it. <b>This is your crew's prototype for the Main Challenge.</b></p>
-            <h3>What you must ship</h3>
-            <div class="steps">
-              <div class="step"><b>1 · Create <span class="mono">index.html</span></b> with a proper skeleton: <span class="mono">&lt;!doctype html&gt;</span>, <span class="mono">&lt;html lang="en"&gt;</span>, <span class="mono">&lt;meta charset="utf-8"&gt;</span>, <span class="mono">&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;</span> and a real <span class="mono">&lt;title&gt;</span>.</div>
-              <div class="step"><b>2 · One <span class="mono">&lt;h1&gt;</span> and only one</b> — and it must be your actual hook from Activity 1, word for word.</div>
-              <div class="step"><b>3 · Three <span class="mono">&lt;section&gt;</span> blocks</b>: The Problem · Our Solution · Meet the Crew. Each starts with an <span class="mono">&lt;h2&gt;</span>.</div>
-              <div class="step"><b>4 · A <span class="mono">&lt;ul&gt;</span> of exactly three benefits</b>, and one <span class="mono">&lt;img&gt;</span> of your prototype <b>with real alt text</b> that describes it.</div>
-              <div class="step"><b>5 · One call to action</b> — <span class="mono">&lt;a href="…" class="cta"&gt;</span> — styled as a button, at the bottom.</div>
-              <div class="step"><b>6 · A <span class="mono">&lt;footer&gt;</span></b> with the crew name and the five members.</div>
-              <div class="step"><b>7 · CSS in a <span class="mono">&lt;style&gt;</span> block</b>: set a max width on the body (about <span class="mono">70ch</span>), a background colour, a text colour, and give the CTA a <span class="mono">:hover</span> state.</div>
-            </div>
-            <h3 style="margin-top:16px">How you will be checked</h3>
-            <div class="grid g4">
-              <div class="tile"><span class="ic">⌨️</span><h4>Keyboard only</h4><p>Press <b>Tab</b> from the top. Can you reach the CTA and fire it with <b>Enter</b>? If not, it is a <span class="mono">&lt;div&gt;</span> pretending to be a link.</p></div>
-              <div class="tile"><span class="ic">🖼️</span><h4>Break the image</h4><p>Rename the image file. Does readable alt text appear? If it says &ldquo;image&rdquo; or nothing, fix it.</p></div>
-              <div class="tile"><span class="ic">📱</span><h4>Squash it</h4><p>Drag the window down to phone width. Does anything overflow sideways? Nothing should.</p></div>
-              <div class="tile"><span class="ic">🔍</span><h4>Outline test</h4><p>Add <span class="mono">* { outline: 1px solid red }</span> temporarily. Every box should look deliberate.</p></div>
-            </div>
-            <div class="note info" style="margin-top:14px">🤖 <b>Where AI helps and where it does not:</b> ask it to <i>explain</i> why a tag is wrong, or to generate the CSS for a hover state. Do <b>not</b> paste in a whole page you cannot read line by line — the Checker will ask you what any line does, and &ldquo;the AI wrote it&rdquo; is not an answer.</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-    <section class="scene center" data-sec="4" data-title="Design is legibility" data-track="art" data-src="Digital Art track">
-      <div class="scene-inner">
-        <span class="stamp">DIGITAL ART TRACK 🎨</span>
-        <div style="font-size:52px;margin:16px 0 4px" aria-hidden="true">🎨 ✕ 📐</div>
-        <h1 class="big">A slide nobody can read<br>is a slide that <span class="hl">isn't there</span></h1>
-        <p class="sub">Contrast is not a matter of taste. It is a ratio you can calculate, and it either passes or it fails. Today you run the real numbers on your own poster.</p>
-      </div>
-    </section>
-
-    <section class="scene" data-sec="4" data-title="GAME · Contrast Lab" data-track="art" data-src="Digital Art track">
+    <section class="scene" data-sec="6" data-title="LAB · Contrast (Digital Art mission)" data-src="Support lab">
       <div class="scene-inner wide">
         <div class="card">
-          <div class="head"><span class="badge">DIGITAL ART GAME 🎨</span><h2>Contrast Lab — the real WCAG maths</h2></div>
+          <div class="head"><span class="badge">SUPPORT LAB · DIGITAL ART 🎨</span><h2>Contrast is a number, not an opinion</h2></div>
           <div class="body">
+            <p class="sub">For <b>Mission B</b> teams. Every text/background pair in your campaign has to pass this.</p>
             <div data-act="contrastLab"></div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="scene" data-sec="4" data-title="🎨 ART TASK — design it for real" data-track="art" data-src="Digital Art track">
+    <section class="scene" data-sec="6" data-title="LAB · Spot the delivery mistake" data-src="Support lab">
       <div class="scene-inner">
         <div class="card">
-          <div class="head"><span class="badge">HANDS-ON TASK · DIGITAL ART GROUP 🎨</span><h2>Design your crew's pitch visual</h2></div>
+          <div class="head"><span class="badge">SUPPORT LAB · ALL TEAMS 🎭</span><h2>Which delivery rule broke?</h2></div>
           <div class="body">
-            <p class="lead">One hero image plus a three-slide deck, in <b>Canva</b> or <b>Figma</b>. This is what goes on screen behind your crew during the pitch.</p>
-            <h3>What you must ship</h3>
-            <div class="steps">
-              <div class="step"><b>1 · Set the canvas properly</b> — <span class="mono">1920 × 1080</span> for the slides, <span class="mono">1200 × 630</span> for the hero image. Guess the size and it will be blurry on the projector.</div>
-              <div class="step"><b>2 · A real type scale.</b> Headline, subhead, body. The headline must be at least <b>1.6×</b> the subhead, and the subhead bigger than the body. Write the three numbers down.</div>
-              <div class="step"><b>3 · Contrast that passes.</b> Run every text/background pair through the Contrast Lab above. <b>4.5:1</b> for body, <b>3:1</b> for anything 24px or larger. Screenshot the number as proof.</div>
-              <div class="step"><b>4 · Slide 1 is your hook, and nothing else.</b> Maximum <b>8 words</b>. No bullet points, no logo soup, no clip art.</div>
-              <div class="step"><b>5 · One accent colour, used three times maximum.</b> Pick it, name its hex, and stick to it across all three slides.</div>
-              <div class="step"><b>6 · Safe margins.</b> Keep everything at least <b>5%</b> from every edge — projectors crop, and the person at the back is looking through six heads.</div>
-              <div class="step"><b>7 · Export correctly</b> — <span class="mono">PNG</span> for anything with text, <span class="mono">JPG</span> only for photographs. Name the files so the Organiser can find them.</div>
-            </div>
-            <h3 style="margin-top:16px">The tests you must pass</h3>
-            <div class="grid g4">
-              <div class="tile"><span class="ic">⏱️</span><h4>The 3-second test</h4><p>Show slide 1 to someone for three seconds, then hide it. Can they say what it was about?</p></div>
-              <div class="tile"><span class="ic">👀</span><h4>The squint test</h4><p>Squint until it blurs. The most important thing should still be the most obvious thing.</p></div>
-              <div class="tile"><span class="ic">📏</span><h4>The back-row test</h4><p>Stand at the far wall. If you have to lean in, the type is too small — full stop.</p></div>
-              <div class="tile"><span class="ic">⬛</span><h4>The greyscale test</h4><p>Turn it black and white. If it falls apart, you were relying on colour instead of contrast.</p></div>
-            </div>
-            <div class="note info" style="margin-top:14px">🤖 <b>Using AI for images — the prompt has five parts:</b> <b>subject</b> · <b>style</b> · <b>composition</b> · <b>lighting</b> · <b>what to avoid</b>. &ldquo;A school corridor&rdquo; gets you nothing. &ldquo;A wide empty school corridor, flat vector illustration, strong left-to-right composition with space for a headline on the right, bright even lighting, no text and no faces&rdquo; gets you something usable. Then <b>re-prompt</b> — the first image is never the one you ship.</div>
-            <div class="note warn" style="margin-top:10px">⚠️ <b>Leave room for the words.</b> The most common mistake is generating a beautiful image that fills the whole frame — and then having nowhere to put the headline. Ask for the empty space <b>in the prompt</b>.</div>
+            <div data-act="deliveryLab"></div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="scene" data-sec="4" data-title="Web × Art — one product" data-src="Web + Art track">
+<!-- ============ 7 · SHOW ============ -->
+    <section class="scene" data-sec="7" data-title="Rehearse" data-src="Rehearsal">
       <div class="scene-inner">
         <div class="card">
-          <div class="head"><span class="badge">THE HANDOVER 🤝</span><h2>The two groups have to actually meet</h2></div>
+          <div class="head"><span class="badge">REHEARSE 🔁</span><h2>Say it out loud. Once. Properly.</h2></div>
           <div class="body">
-            <p class="sub">The page and the visuals are the <b>same product</b>. Fifteen minutes before the pitch, the two groups swap.</p>
+            <div class="tto"><span><b>⏱️ 10 min</b></span><span><b>🎯 Task</b> One full timed run.</span><span><b>📦 Output</b> A run that lands on time.</span></div>
+            <div data-act="dualTimer"></div>
+            <h3 style="margin-top:16px">Check every one of these</h3>
+            <div data-act="checklist" data-config='{"items":["<b>HOOK</b> — the first line grabs them","<b>CLEAR PROBLEM</b> — we know what is wrong","<b>CLEAR SOLUTION</b> — we know what you propose","<b>VISUAL / PRODUCT READY</b> — it opens and it works","<b>CTA</b> — you asked for something specific","<b>EVERYONE SPEAKS</b>","<b>ON TIME</b>"]}'></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="scene" data-sec="7" data-title="Show us what you built" data-src="Presentations">
+      <div class="scene-inner">
+        <div class="card">
+          <div class="head"><span class="badge">SHOWTIME 🎤</span><h2>Show us what you built.</h2></div>
+          <div class="body">
             <div class="grid g3">
-              <div class="tile" style="border-color:var(--pink)"><span class="ic">🎨</span><h4>Art hands over</h4><p>The exported files, correctly named, plus the <b>hex codes</b> and the three <b>type sizes</b>. Not a screenshot — the actual values.</p></div>
-              <div class="tile" style="border-color:var(--blue)"><span class="ic">🌐</span><h4>Web hands over</h4><p>The live page open on a laptop, plus the <b>alt text</b> they wrote for each image so Art can check it describes the right thing.</p></div>
-              <div class="tile accent"><span class="ic">🔍</span><h4>The Checker runs the test</h4><p>Give someone from another crew <b>one task</b> — &ldquo;find out who to contact&rdquo;. Watch where they hesitate. <b>Do not help them.</b> That hesitation is your bug list.</p></div>
+              <div class="tile mis-a"><span class="ic">🍽️</span><h4>Level 2</h4><p>Show the <b>webpage</b> + 2-minute pitch</p></div>
+              <div class="tile mis-b"><span class="ic">🎨</span><h4>Level 3 · Digital Art</h4><p>Show the <b>campaign</b> + 3-minute presentation</p></div>
+              <div class="tile mis-c"><span class="ic">🔍</span><h4>Level 3 · Web</h4><p><b>Demo the prototype</b> + 3-minute pitch</p></div>
             </div>
-            <div class="note good" style="margin-top:14px">💚 <b>The reason this matters:</b> the crew that hands over hex codes and font sizes finishes in five minutes. The crew that hands over &ldquo;just match the colours&rdquo; is still arguing when the timer goes.</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-<!-- ============ 5 · MAIN CHALLENGE ============ -->
-    <section class="scene center" data-sec="5" data-title="Build &amp; Pitch" data-src="Deck 23">
-      <div class="scene-inner">
-        <span class="stamp">MAIN TEAM CHALLENGE · 45 MIN 🏗️</span>
-        <div style="font-size:52px;margin:16px 0 4px" aria-hidden="true">🏗️</div>
-        <h1 class="big">Build it. <span class="hl">Pitch it.</span> Time it.</h1>
-        <p class="sub">Your crew takes everything from today and Session 1 and turns it into a real pitch with a real prototype.</p>
-      </div>
-    </section>
-
-    <section class="scene" data-sec="5" data-title="Your 45-minute game plan" data-src="Deck 24">
-      <div class="scene-inner">
-        <div class="card">
-          <div class="head"><span class="badge">45 MINUTES ⏱️</span><h2>The game plan</h2></div>
-          <div class="body">
-            <div class="tbwrap"><table class="tb">
-              <thead><tr><th>Phase</th><th>Time</th><th>What has to be true when it ends</th></tr></thead>
-              <tbody>
-                <tr><td><b>1 · Plan</b></td><td>5 min</td><td>You have decided <b>what to show</b> and who does what. Nobody is still asking "so what are we making?"</td></tr>
-                <tr><td><b>2 · Build</b></td><td>20–25 min</td><td>The prototype exists and is <b>saved somewhere the whole crew can open</b>.</td></tr>
-                <tr><td><b>3 · Prepare &amp; rehearse</b></td><td>10–15 min</td><td>The 3-part pitch is written and has been said <b>out loud at least once</b>.</td></tr>
-                <tr><td><b>4 · Time-check</b></td><td>5 min</td><td>A full run has been timed. You know your number and you have cut to fit.</td></tr>
-              </tbody>
-            </table></div>
-            <div data-act="pitchTimer" data-config='{"seconds":300,"marks":[{"at":0,"t":"Decide what to show","e":"🗺️"},{"at":120,"t":"Split the roles — say them out loud","e":"🎭"},{"at":240,"t":"Locked. Start building.","e":"🔒"}]}'></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="scene" data-sec="5" data-title="What the prototype can be" data-src="Deck 25, 27">
-      <div class="scene-inner">
-        <div class="card">
-          <div class="head"><span class="badge">BUILD OPTIONS 🔨</span><h2>Keep it simple and visual</h2></div>
-          <div class="body">
-            <div class="grid g4">
-              <div class="tile"><span class="ic">🎨</span><h4>Canva</h4><p>Visual mock-up, poster, product concept, or a simple app screen.</p></div>
-              <div class="tile"><span class="ic">🖼️</span><h4>Figma</h4><p>A few simple UI screens showing how an app or site could work.</p></div>
-              <div class="tile"><span class="ic">🗺️</span><h4>Miro</h4><p>Service flow, user journey, solution storyboard, or system concept.</p></div>
-              <div class="tile"><span class="ic">🌐</span><h4>One HTML file</h4><p>The Web group's pitch page. Opens by double-clicking — no server needed.</p></div>
-            </div>
-            <div class="grid g2" style="margin-top:14px">
-              <div class="tile" style="border-color:var(--green)"><span class="ic">✅</span><h4>Do this</h4><p>Essential elements only: <b>what is it · who does it help · how does it work</b>.</p></div>
-              <div class="tile" style="border-color:var(--red)"><span class="ic">❌</span><h4>Avoid this</h4><p>Detailed design, complex electronics, or a fully functional product. <b>No coding required</b> unless you are the Web group and you want to.</p></div>
-            </div>
-            <div class="note info" style="margin-top:12px">📌 A clear, simple idea beats a complicated one every time. <b>Add your work to the crew hub on Miro</b> before you present.</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="scene" data-sec="5" data-title="The 3-minute pitch blueprint" data-src="Deck 26">
-      <div class="scene-inner">
-        <div class="card">
-          <div class="head"><span class="badge">PITCH BLUEPRINT 🎤</span><h2>Four beats in three minutes</h2></div>
-          <div class="body">
-            <div class="grid g4">
-              <div class="tile"><span class="ic">1️⃣</span><h4>Opening</h4><p>What problem are we solving? <b>Your hook goes here</b> — the one you wrote in Activity 1.</p></div>
-              <div class="tile"><span class="ic">2️⃣</span><h4>Main message</h4><p>What is our solution, and how does it help?</p></div>
-              <div class="tile"><span class="ic">3️⃣</span><h4>Prototype</h4><p>Show how it would work. <b>Show</b>, do not describe.</p></div>
-              <div class="tile"><span class="ic">4️⃣</span><h4>Closing</h4><p>Why should people use or support it? One sentence, then stop.</p></div>
-            </div>
-            <div data-act="pitchTimer" data-config='{"seconds":180,"marks":[{"at":0,"t":"Opening — the hook and the problem","e":"🎣"},{"at":40,"t":"Main message — the solution","e":"💡"},{"at":100,"t":"Prototype — show it","e":"🖼️"},{"at":150,"t":"Closing — the ask","e":"🏁"}]}'></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-<!-- ============ 6 · PRESENT ============ -->
-    <section class="scene" data-sec="6" data-title="Showtime &amp; audience rules" data-src="Deck 28-29">
-      <div class="scene-inner">
-        <div class="card">
-          <div class="head"><span class="badge">TEAM PRESENTATIONS · 20 MIN 🎤</span><h2>Showtime</h2></div>
-          <div class="body">
-            <p class="sub">Each Changemaker Crew delivers their pitch. The audience listens respectfully — <b>no interruptions</b>.</p>
-            <div class="grid g3">
-              <div class="tile"><span class="ic">👂</span><h4>Listen actively</h4><p>Watch the presenter, not your phone.</p></div>
-              <div class="tile"><span class="ic">📝</span><h4>Take a mental note</h4><p>Think of <b>one strength</b> and <b>one thing you'd improve</b> — you will need both in a minute.</p></div>
-              <div class="tile"><span class="ic">👏</span><h4>Celebrate every crew</h4><p>Applaud after each pitch. Everyone put in effort, including the crew that ran over.</p></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="scene" data-sec="6" data-title="One strength. One fix." data-src="Deck 30">
-      <div class="scene-inner">
-        <div class="card">
-          <div class="head"><span class="badge">FEEDBACK · 10 MIN 💬</span><h2>One strength. One fix.</h2></div>
-          <div class="body">
+            <h3 style="margin-top:18px">Audience feedback — two sentences, that is all</h3>
             <div class="grid g2">
-              <div class="tile" style="border-color:var(--amber)"><span class="ic">⭐</span><h4>One strength</h4><p>&ldquo;I really liked how you…&rdquo; — and then something <b>specific</b> they did, not a general compliment.</p></div>
-              <div class="tile" style="border-color:var(--teal)"><span class="ic">🔧</span><h4>One fix</h4><p>&ldquo;Next time, you could try…&rdquo; — one concrete change, not a list.</p></div>
+              <div class="tile" style="border-color:var(--green)"><span class="ic">⭐</span><h4>One thing that worked</h4></div>
+              <div class="tile" style="border-color:var(--amber)"><span class="ic">🔧</span><h4>One thing to improve</h4></div>
             </div>
-            <div class="note info" style="margin-top:14px">🎯 <b>Focus on clarity and timing:</b> did we understand it? Did it fit three minutes? Those two questions cover almost everything that matters at this stage.</div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="scene" data-sec="6" data-title="What will you keep?" data-src="Deck 31">
+    <section class="scene" data-sec="7" data-title="Quick poll — what are you taking away?" data-src="Reflection">
       <div class="scene-inner">
         <div class="card">
-          <div class="head"><span class="badge">REFLECTION · 10 MIN 🌱</span><h2>Pick one habit you are keeping</h2></div>
+          <div class="head"><span class="badge">QUICK POLL 📊</span><h2>One habit you are keeping</h2></div>
           <div class="body">
-            <p class="lead">Not a lesson. A <b>habit</b> — something you will actually do again, in school or anywhere else.</p>
-            <div class="grid g3">
-              <div class="tile"><span class="ic">👀</span><h4>&ldquo;I'll keep making eye contact instead of reading from my notes.&rdquo;</h4></div>
-              <div class="tile"><span class="ic">🗂️</span><h4>&ldquo;I'll always break big tasks into smaller steps first.&rdquo;</h4></div>
-              <div class="tile"><span class="ic">🎣</span><h4>&ldquo;I'll write my hook before I do anything else.&rdquo;</h4></div>
-            </div>
-            <div class="note good" style="margin-top:14px">💚 Go around the room — <b>each student says their habit in one sentence</b>. Saying it out loud in front of the room is what makes it stick.</div>
-            <div data-act="poll" data-config='{"q":"Which habit is your crew keeping?","options":[{"id":"a","emoji":"🎣","label":"Write the hook first"},{"id":"b","emoji":"🗂️","label":"Break it into steps"},{"id":"c","emoji":"⏱️","label":"Rehearse inside the real limit"},{"id":"d","emoji":"👀","label":"Look up, not down"},{"id":"e","emoji":"🧘","label":"Pause on purpose"}]}'></div>
+            <div data-act="poll" data-config='{"q":"Which habit is your team keeping after today?","options":[{"id":"a","emoji":"🎣","label":"Write the hook first"},{"id":"b","emoji":"🗂️","label":"Break it down before starting"},{"id":"c","emoji":"👤","label":"Every task gets one owner"},{"id":"d","emoji":"⏱️","label":"Timebox every step"},{"id":"e","emoji":"🔍","label":"Always leave time to check"}]}'></div>
           </div>
         </div>
       </div>
     </section>
 
-<!-- ============ 7 · QUIZ ============ -->
-    <section class="scene center" data-sec="7" data-title="Quiz time" data-src="Review">
+    <section class="scene center" data-sec="7" data-title="Plan it. Build it. Pitch it." data-src="Recap">
       <div class="scene-inner">
-        <span class="stamp">CHECK YOUR UNDERSTANDING 🧠</span>
-        <div style="font-size:52px;margin:16px 0 4px" aria-hidden="true">🎯</div>
-        <h1 class="big">Three rounds. <span class="hl">24 questions.</span></h1>
-        <p class="sub">Every answer explains itself — including the wrong ones. Crews compete: shout the letter, trainer taps it.</p>
+        <span class="stamp">SESSION 2 COMPLETE 🎉</span>
+        <h2 style="margin:16px 0 10px;font-size:clamp(20px,2.6vw,28px)">A good team doesn't just have a good idea.</h2>
+        <div class="flow vert" style="margin:12px auto">
+          <span class="fl">WHAT TO SAY</span><i>↓</i>
+          <span class="fl">WHAT TO DO</span><i>↓</i>
+          <span class="fl">WHO DOES IT</span><i>↓</i>
+          <span class="fl">WHEN IT MUST BE DONE</span><i>↓</i>
+          <span class="fl">HOW TO BUILD IT</span><i>↓</i>
+          <span class="fl">HOW TO PRESENT IT</span>
+        </div>
+        <h1 class="big" style="margin-top:18px">PLAN IT. BUILD IT.<br><span class="hl">PITCH IT.</span></h1>
       </div>
     </section>
 
-    <section class="scene" data-sec="7" data-title="Round 1 — Presenting" data-src="Review">
+<!-- ============ 8 · OPTIONAL REVIEW ============ -->
+    <section class="scene center" data-sec="8" data-title="Optional review rounds" data-src="Review">
+      <div class="scene-inner">
+        <span class="stamp">OPTIONAL · ONLY IF YOU HAVE TIME 🧠</span>
+        <div style="font-size:48px;margin:16px 0 4px" aria-hidden="true">🎯</div>
+        <h1 class="big">Three review rounds</h1>
+        <p class="sub">Not part of the 180 minutes. Keep them for a spare ten minutes, a fast recap next session, or a team that finishes early.</p>
+      </div>
+    </section>
+
+    <section class="scene" data-sec="8" data-title="Review — presenting" data-src="Review">
       <div class="scene-inner">
         <div class="card">
-          <div class="head"><span class="badge">ROUND 1 · 8 QUESTIONS 🎤</span><h2>Structure &amp; delivery</h2></div>
+          <div class="head"><span class="badge">OPTIONAL ROUND 1 🎤</span><h2>Structure &amp; delivery</h2></div>
           <div class="body">
             <div data-act="quiz" data-config='{"id":"r1","questions":[
               {"q":"What are the three parts of a presentation, in order?","choices":["Introduction, body, questions","Opening hook, main message, closing","Problem, prototype, price","Greeting, topic, thanks"],"answer":1,"explain":"Opening hook &rarr; main message &rarr; closing. A greeting is not a hook, and a topic announcement is not a message &mdash; both belong AFTER you have earned attention."},
-              {"q":"Which of these is NOT a hook?","choices":["&#39;Have you ever been late because of the stairs?&#39;","&#39;Ninety students, zero signs.&#39;","&#39;Today I am going to talk about our idea.&#39;","&#39;On Monday, Mariam missed half a lesson.&#39;"],"answer":2,"explain":"Announcing your topic is a table of contents. It gives the audience no reason to keep listening. Cut it &mdash; the hook does that job, and your name comes after it."},
-              {"q":"Three questions come before you write a word. Which is NOT one of them?","choices":["What do I want them to know, feel or do?","Who is my audience?","What is the ONE thing they must remember?","How long is my slide deck?"],"answer":3,"explain":"Slide count is a consequence, not a starting point. Purpose, audience and the one memorable thing decide everything else &mdash; including how many slides you need."},
-              {"q":"&#39;Project — don&#39;t shout&#39; means…","choices":["Speak from your breath so the back row hears you","Use a microphone","Talk faster to fit the time","Repeat every sentence twice"],"answer":0,"explain":"Projection is breath support, not volume forced through the throat. Shouting strains your voice, sounds aggressive, and still does not carry to the back of a room."},
-              {"q":"How should you use eye contact in a 3-minute pitch?","choices":["Look at the trainer the whole time","Look at your notes so you do not lose your place","Scan the room, 2–3 people for a few seconds each","Look just above everyone&#39;s heads"],"answer":2,"explain":"Scanning includes the whole room. Locking onto one person leaves everyone else out, and the &#39;look above their heads&#39; trick is visible from the second row &mdash; it reads as avoiding people."},
-              {"q":"Your teammate is fidgeting with a pen through the whole pitch. Which basic broke?","choices":["Clear voice","Good posture","Eye contact","Calm body"],"answer":3,"explain":"Calm body. The audience will watch the pen instead of the pitch. The fix is mechanical, not emotional: put the object down before you start."},
-              {"q":"Why does the deck say silence is powerful?","choices":["It makes the pitch shorter","A deliberate pause lets a point land and shows control","It gives you time to read your notes","It fills time if you finish early"],"answer":1,"explain":"A pause after a key sentence gives the audience a beat to absorb it, and a speaker who can stop talking on purpose reads as confident. Filling every second reads as nervous."},
-              {"q":"What is the audience&#39;s job while another crew presents?","choices":["Prepare their own pitch","Listen actively and note one strength and one fix","Score them out of ten","Ask questions during the pitch"],"answer":1,"explain":"One strength and one fix, saved until after. Interrupting mid-pitch breaks a speaker&#39;s timing, and there is a dedicated feedback slot for exactly this."}
+              {"q":"Which of these is NOT a hook?","choices":["&#39;Have you ever been late because of the stairs?&#39;","&#39;Ninety students, zero signs.&#39;","&#39;Today I am going to talk about our idea.&#39;","&#39;On Monday, Mariam missed half a lesson.&#39;"],"answer":2,"explain":"Announcing your topic is a table of contents. It gives the audience no reason to keep listening &mdash; the hook does that job, and your name comes after it."},
+              {"q":"&#39;Project — don&#39;t shout&#39; means…","choices":["Speak from your breath so the back row hears you","Use a microphone","Talk faster to fit the time","Repeat every sentence twice"],"answer":0,"explain":"Projection is breath support, not volume forced through the throat. Shouting strains your voice and still does not carry to the back of a room."},
+              {"q":"How should you use eye contact?","choices":["Look at the trainer the whole time","Look at your notes so you do not lose your place","Scan the room, 2–3 people for a few seconds each","Look just above everyone&#39;s heads"],"answer":2,"explain":"Scanning includes the whole room. The &#39;look above their heads&#39; trick is visible from the second row &mdash; it reads as avoiding people."},
+              {"q":"What must the closing contain?","choices":["A thank-you","A memorable line AND a call to action","A summary of every point","The team members&#39; names"],"answer":1,"explain":"Without the call to action the audience agrees with you and then does nothing &mdash; which is the same as disagreeing."},
+              {"q":"Best speaker handoff?","choices":["Stop talking and look at them","&#39;So that is the problem — Mariam will show you how our solution works.&#39;","&#39;Erm… Mariam? Do you want to…?&#39;","Say their name only"],"answer":1,"explain":"It closes your part, names the next speaker, and says what is coming. A silent handover looks like a mistake even when it was planned."},
+              {"q":"Why choose ONE audience before writing?","choices":["It is faster","A pitch aimed at everyone persuades nobody","The worksheet requires it","So you know how loud to speak"],"answer":1,"explain":"Vocabulary, examples and benefits all change with the audience. Satisfying both means every line is a compromise, and compromise is not persuasive."},
+              {"q":"Roughly how long is the hook itself?","choices":["The first 5–10 seconds","The first 30 seconds","The first minute","The whole opening"],"answer":0,"explain":"The hook is the first few seconds. Hook + problem setup together make the roughly 30-second Opening."}
             ]}'></div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="scene" data-sec="7" data-title="Round 2 — Time &amp; AI" data-src="Review">
+    <section class="scene" data-sec="8" data-title="Review — time &amp; AI" data-src="Review">
       <div class="scene-inner">
         <div class="card">
-          <div class="head"><span class="badge">ROUND 2 · 8 QUESTIONS ⏰</span><h2>Time management &amp; using AI</h2></div>
+          <div class="head"><span class="badge">OPTIONAL ROUND 2 ⏰</span><h2>Time management &amp; using AI</h2></div>
           <div class="body">
             <div data-act="quiz" data-config='{"id":"r2","questions":[
-              {"q":"&#39;Rehearse your pitch before Thursday&#39; belongs in which bucket?","choices":["Do Now","Plan It","Drop It","None of them"],"answer":1,"explain":"Important but not urgent yet &mdash; so it needs a booked slot. This is the bucket students skip, and skipping it is exactly what turns next Thursday into a Do Now emergency."},
-              {"q":"Why is Drop It dangerous rather than just wasteful?","choices":["It takes the most time","Those jobs often look like work — tidying, re-formatting, arguing about fonts","It is always fun","Teachers cannot see it"],"answer":1,"explain":"Scrolling is easy to spot. Re-styling a slide for the fourth time is not &mdash; it feels productive, which is exactly why it eats the hour you needed for rehearsal."},
-              {"q":"The deck says to split a big task into how many steps?","choices":["2–3","4–5","8–10","As many as possible"],"answer":1,"explain":"4&ndash;5 doable steps. Fewer and each step is still too big to start; many more and managing the list becomes its own task."},
-              {"q":"You are preparing a 3-minute pitch. How long should the preparation take?","choices":["3 minutes","Exactly 3 minutes per person","Much longer than 3 minutes","It does not matter"],"answer":2,"explain":"The 3 minutes is the FINAL presentation length. Preparation &mdash; deciding, structuring, making visuals, rehearsing, timing &mdash; takes far longer, and the instructor notes flag this as the point students most often get wrong."},
-              {"q":"Which step must always come last in the pitch prep plan?","choices":["Make the visuals","Rehearse out loud","Time yourself and adjust","Write the structure"],"answer":2,"explain":"You can only measure something that already exists. Timing last is also what gets cut when crews run out of time &mdash; and it is the step that decides whether they overrun on stage."},
-              {"q":"What makes a prompt useful rather than vague?","choices":["Being polite","Naming the role, task, context, constraints, format and a check","Making it as short as possible","Asking for one perfect answer"],"answer":1,"explain":"A prompt is a specification. Leave out the context and it writes for an imaginary project; leave out the constraints and it writes forty-word sentences nobody can say in one breath."},
-              {"q":"Why ask an AI for FIVE hooks instead of one?","choices":["Five is faster","So you compare and choose — you stay the decision-maker","AI is more accurate in bulk","To fill the slide"],"answer":1,"explain":"One option invites you to accept it. Five forces a judgement, and being able to say why you rejected four is the difference between using the tool and being used by it."},
-              {"q":"An AI writes &#39;73% of students feel lost in week one.&#39; What do you do?","choices":["Use it — it sounds convincing","Delete it unless you can point at where the number came from","Change it to 70% to be safe","Put it in the closing instead"],"answer":1,"explain":"Models invent plausible statistics. An unsourced number destroys a pitch on the first question from the audience &mdash; and rounding an invented number does not make it true."}
+              {"q":"Time management is mostly about…","choices":["Working faster","Working with a plan","Working longer","Working alone"],"answer":1,"explain":"The definition used all session: deciding what needs doing, who does it, and how much time each part gets. Speed is not the variable you control."},
+              {"q":"What is wrong with &#39;Someone will make the slides&#39;?","choices":["Slides are not important","No single owner — so it may never happen","It is too formal","It should say &#39;everyone&#39;"],"answer":1,"explain":"Step 3 of the system: one task, one name. If everyone owns it, nobody owns it."},
+              {"q":"Which belongs in MUST DO?","choices":["Adding animations","Choosing a nicer font","The content the presentation cannot exist without","A custom logo"],"answer":2,"explain":"MUST DO is the work required for success. Decorations are NICE TO HAVE, and they are what gets cut when the clock runs out."},
+              {"q":"Why leave time to test?","choices":["To relax","Because PLAN → BUILD → CHECK → IMPROVE needs the last two steps","To let the AI finish","Because the rules say so"],"answer":1,"explain":"Never spend 100% of your time building. A team that builds to the last second presents something nobody has ever said out loud."},
+              {"q":"What is a mini-deadline?","choices":["A shorter final deadline","A checkpoint partway through, like &#39;content done by minute 10&#39;","The deadline for one person","A deadline you can ignore"],"answer":1,"explain":"Step 5: checkpoints along the way, so you find out you are behind at minute 10 instead of minute 29."},
+              {"q":"Which tool is best for managing the TEAM&#39;s tasks?","choices":["Trello","Todoist","Google Calendar","Notion"],"answer":0,"explain":"Trello — board, lists, cards, with TO DO / DOING / DONE. Todoist is for your own tasks, Calendar protects time, Notion holds the whole project."},
+              {"q":"The AI writes &#39;68% of students report feeling lost.&#39; What do you do?","choices":["Use it — it sounds convincing","Delete it unless you can say where the number came from","Round it to 70%","Move it to the closing"],"answer":1,"explain":"Models invent plausible statistics. One unsourced number destroys credibility the moment somebody asks &mdash; and rounding it does not make it true."},
+              {"q":"AI first draft equals…","choices":["The final presentation","Where you start editing","A waste of time","The team&#39;s idea"],"answer":1,"explain":"AI builds the deck; it does not invent your idea. Read the outline, replace weak text, replace generic visuals, delete slides you do not need."}
             ]}'></div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="scene" data-sec="7" data-track="web" data-title="Round 3 — The web round" data-src="Review">
+    <section class="scene" data-sec="8" data-title="Review — building it" data-src="Review">
       <div class="scene-inner">
         <div class="card">
-          <div class="head"><span class="badge">ROUND 3 · 8 QUESTIONS 🌐</span><h2>The technical round — Web</h2></div>
+          <div class="head"><span class="badge">OPTIONAL ROUND 3 🏗️</span><h2>Design &amp; web</h2></div>
           <div class="body">
-            <div data-act="quiz" data-config='{"id":"r3w","questions":[
-              {"q":"Which tag should carry your hook headline?","choices":["&lt;div class=&#39;big&#39;&gt;","&lt;h1&gt;","&lt;p&gt;&lt;b&gt;","&lt;span&gt;"],"answer":1,"explain":"&lt;h1&gt; is the page&#39;s most important line &mdash; the same job the hook does in a pitch. A styled &lt;div&gt; looks identical and means nothing to a screen reader or a search engine."},
-              {"q":"Your CTA opens the sign-up page. Link or button?","choices":["&lt;button&gt; &mdash; it looks like a button","&lt;a href&gt; &mdash; because it navigates somewhere","&lt;div onclick&gt; &mdash; easiest to style","Either, it makes no difference"],"answer":1,"explain":"If it GOES somewhere it is a link; if it DOES something on this page it is a button. &lt;a href&gt; also gives you right-click, open-in-new-tab and keyboard focus for free."},
-              {"q":"What is wrong with alt=&#39;image&#39;?","choices":["Nothing, it is fine","It announces &#39;image, image&#39; and describes nothing","alt should always be empty","It slows the page down"],"answer":1,"explain":"Alt text replaces the picture for anyone who cannot see it, and shows if the file fails to load. &#39;image&#39; is worse than useless &mdash; describe what the picture actually shows."},
-              {"q":"Why does &lt;ul&gt;&lt;li&gt; beat typing bullet characters into a &lt;p&gt;?","choices":["It looks neater","A screen reader announces &#39;list, 3 items&#39; before reading them","It loads faster","Bullets are not allowed in HTML"],"answer":1,"explain":"The tags carry the meaning. Typed bullet characters look identical on screen and tell assistive technology nothing about how many items there are or where the list ends."},
-              {"q":"How many &lt;h1&gt; tags should your pitch page have?","choices":["One","One per section","As many as you like","None &mdash; use &lt;h2&gt;"],"answer":0,"explain":"One. It is the page&#39;s single most important line. Several &lt;h1&gt; tags is the same as several hooks &mdash; the reader no longer knows which one matters."},
-              {"q":"You press Tab from the top and never reach the CTA. What is it?","choices":["An &lt;a href&gt;","A &lt;button&gt;","A clickable &lt;div&gt;","A &lt;section&gt;"],"answer":2,"explain":"Links and buttons are focusable by default; a &lt;div&gt; is not. If Tab skips it, keyboard and screen-reader users simply cannot activate it &mdash; the page looks fine and is unusable."},
-              {"q":"Which meta tag stops the page rendering zoomed-out on a phone?","choices":["&lt;meta charset=&#39;utf-8&#39;&gt;","&lt;meta name=&#39;viewport&#39; content=&#39;width=device-width, initial-scale=1&#39;&gt;","&lt;meta name=&#39;description&#39;&gt;","&lt;meta name=&#39;author&#39;&gt;"],"answer":1,"explain":"The viewport tag tells the browser to use the real device width. Without it a phone pretends to be about 980px wide and shrinks everything &mdash; the most common reason a page works on a laptop and not on a phone."},
-              {"q":"What does &lt;section&gt; give you that &lt;div&gt; does not?","choices":["Better default styling","Meaning &mdash; it marks a themed part of the page with its own heading","Faster loading","Automatic spacing"],"answer":1,"explain":"Visually they are identical, and that is the point: &lt;section&gt; is the part machines can read. Semantics serve the audience you never see &mdash; screen readers, search engines, and whoever edits the page after you."}
+            <div data-act="quiz" data-config='{"id":"r3","questions":[
+              {"q":"Which tag should carry your hook headline?","choices":["&lt;div class=&#39;big&#39;&gt;","&lt;h1&gt;","&lt;p&gt;&lt;b&gt;","&lt;span&gt;"],"answer":1,"explain":"&lt;h1&gt; is the page&#39;s most important line &mdash; the same job the hook does. A styled &lt;div&gt; looks identical and means nothing to a screen reader or a search engine."},
+              {"q":"Your CTA opens another page. Link or button?","choices":["&lt;button&gt;","&lt;a href&gt; — because it navigates somewhere","&lt;div onclick&gt;","Either, it makes no difference"],"answer":1,"explain":"If it GOES somewhere it is a link; if it DOES something on this page it is a button. &lt;a href&gt; also gives you keyboard focus and open-in-new-tab for free."},
+              {"q":"WCAG AA: what contrast ratio does normal body text need?","choices":["2:1","3:1","4.5:1","7:1"],"answer":2,"explain":"4.5:1 for normal text. Large text — 24px and up — gets a lower bar of 3:1, which is one practical reason to make your headline big."},
+              {"q":"Turning a poster into a social square means…","choices":["Resizing the file","Redesigning for the new shape","Cropping the edges","Reducing the quality"],"answer":1,"explain":"A different shape has a different reading order and reading distance. A squashed poster is the clearest sign a campaign was rushed."},
+              {"q":"What does the greyscale test tell you?","choices":["Whether the printer will work","Whether you relied on colour instead of contrast","Whether the fonts are correct","Whether the file exported properly"],"answer":1,"explain":"Strip the colour and only lightness remains. If the design falls apart, hierarchy was being carried by hue — which fails on a bad projector and for colour-blind viewers."},
+              {"q":"One slide should carry…","choices":["One main idea","Three paragraphs","Everything you will say","As much as fits"],"answer":0,"explain":"ONE SLIDE = ONE MAIN IDEA. The audience reads faster than you speak, so a full slide means they finish early and stop listening."},
+              {"q":"For the Web mission, what makes a prototype count?","choices":["It looks nice","It has at least one working interaction","It has many pages","It uses a framework"],"answer":1,"explain":"Search, filter, a form, show/hide, or mark-as-found — one interaction that genuinely runs beats four that half-run."},
+              {"q":"What does alt text on an image do?","choices":["Makes it load faster","Describes the picture for anyone who cannot see it","Changes the size","Adds a caption under it"],"answer":1,"explain":"It replaces the image for screen-reader users and shows if the file fails to load. &#39;alt=image&#39; is worse than useless — describe what the picture shows."}
             ]}'></div>
           </div>
         </div>
-      </div>
-    </section>
-
-    <section class="scene" data-sec="7" data-track="art" data-title="Round 3 — The design round" data-src="Review">
-      <div class="scene-inner">
-        <div class="card">
-          <div class="head"><span class="badge">ROUND 3 · 8 QUESTIONS 🎨</span><h2>The technical round — Digital Art</h2></div>
-          <div class="body">
-            <div data-act="quiz" data-config='{"id":"r3a","questions":[
-              {"q":"WCAG AA: what contrast ratio does normal body text need?","choices":["2:1","3:1","4.5:1","7:1"],"answer":2,"explain":"4.5:1 for normal text. Large text &mdash; 24px and up, or 18.66px bold &mdash; gets a lower bar of 3:1, which is one practical reason to make your headline big."},
-              {"q":"Pale pink text on a pale pink background fails. Why exactly?","choices":["Pink is unprofessional","The two colours have almost the same luminance, so the ratio is near 1:1","There are too many colours","Pink is hard to print"],"answer":1,"explain":"Contrast is calculated from relative luminance, not hue. Two very different-looking colours with similar lightness still fail &mdash; which is why you check the number instead of trusting your eye."},
-              {"q":"What does the greyscale test tell you?","choices":["Whether the printer will work","Whether you relied on colour instead of contrast","Whether the fonts are correct","Whether the file exported properly"],"answer":1,"explain":"Strip the colour and only lightness differences remain. If the design falls apart, the hierarchy was carried by hue &mdash; which fails on a bad projector and for colour-blind viewers."},
-              {"q":"Your headline and body text are both 18px. What is the problem?","choices":["The file will be too big","No hierarchy &mdash; the eye cannot tell what to read first","18px is always too small","Nothing, it is consistent"],"answer":1,"explain":"Hierarchy is set by size. Same size means everything claims equal importance, so nothing leads. Push the headline to at least 1.6x the body &mdash; and past 24px it also only needs 3:1 contrast."},
-              {"q":"Best AI image prompt for a slide background?","choices":["&#39;A school corridor&#39;","&#39;Nice picture for my presentation&#39;","&#39;Wide empty school corridor, flat vector, space on the right for a headline, bright even lighting, no text&#39;","&#39;School corridor, 4k, amazing, best quality&#39;"],"answer":2,"explain":"Subject, style, composition, lighting and what to avoid &mdash; and crucially it asks for empty space so the headline has somewhere to live. Quality words like &#39;4k, amazing&#39; add nothing a specific description does not."},
-              {"q":"Why export a slide with text as PNG rather than JPG?","choices":["PNG files are smaller","JPG compression smears the edges of letters","PNG supports more colours","JPG cannot be used in Canva"],"answer":1,"explain":"JPG is lossy and built for photographs; it adds fuzzy artefacts exactly where you have hard edges, which is what text is. Photos go to JPG. Anything with type or flat colour goes to PNG."},
-              {"q":"How many words should be on your hook slide?","choices":["Eight or fewer","About twenty","One per bullet point, six bullets","As many as it takes"],"answer":0,"explain":"A slide gets about three seconds. Past eight words the audience is reading instead of listening &mdash; and they read faster than you talk, so they finish early and tune out."},
-              {"q":"Why keep everything 5% away from the slide edge?","choices":["It looks more modern","Projectors crop the edges, and back rows see through other people&#39;s heads","It saves ink","Canva requires it"],"answer":1,"explain":"Real projectors lose the outer few percent, and the bottom of a slide is the first thing blocked by the heads in front. Safe margins are a physical constraint, not a style choice."}
-            ]}'></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-<!-- ============ 8 · RECAP ============ -->
-    <section class="scene" data-sec="8" data-title="Today you learned…" data-src="Deck 32">
-      <div class="scene-inner">
-        <div class="card">
-          <div class="head"><span class="badge">RECAP 🏆</span><h2>What you can do now</h2></div>
-          <div class="body">
-            <div class="grid g3">
-              <div class="tile accent"><span class="ic">3️⃣</span><h4>Pitch structure</h4><p>Opening · main message · closing</p></div>
-              <div class="tile accent"><span class="ic">4️⃣</span><h4>Delivery basics</h4><p>Voice · posture · eye contact · calm body</p></div>
-              <div class="tile accent"><span class="ic">3️⃣</span><h4>Time habits</h4><p>Break it down · set mini-deadlines · rehearse inside the limit</p></div>
-            </div>
-            <h3 style="margin-top:16px">And the technical set</h3>
-            <div class="grid g3">
-              <div class="tile"><span class="ic">🤖</span><h4>Prompting</h4><p>Role · task · context · constraints · format · check — and always asking for a self-critique.</p></div>
-              <div class="tile"><span class="ic">🌐</span><h4>Semantic HTML</h4><p>The tag carries the meaning. <span class="mono">h1</span>, <span class="mono">section</span>, <span class="mono">ul</span>, real alt text, links vs buttons.</p></div>
-              <div class="tile"><span class="ic">🎨</span><h4>Contrast &amp; type scale</h4><p>4.5:1 for body, 3:1 for large. Eight words on a hero. Test in greyscale.</p></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="scene" data-sec="8" data-title="Coming up: Session 3" data-src="Deck 33">
-      <div class="scene-inner">
-        <div class="card">
-          <div class="head"><span class="badge">NEXT TIME 🔭</span><h2>&ldquo;Next time we make your plan fair and organised.&rdquo;</h2></div>
-          <div class="body">
-            <div class="grid g2">
-              <div class="tile"><span class="ic">📋</span><h4>Before Session 3</h4><p>Prototype saved and shared · the pitch script written down · the page and the visuals in one folder with sensible names.</p></div>
-              <div class="tile"><span class="ic">🚀</span><h4>In Session 3</h4><p>You'll divide your crew's work fairly, build a shared action plan, and make sure <b>every voice counts</b>.</p></div>
-            </div>
-            <h3 style="margin-top:16px">Homework checklist</h3>
-            <div data-act="checklist" data-config='{"items":["Hook written and saved on the Canva card","Prep plan on Miro — 4–5 steps, each with minutes","Prototype saved where the whole crew can open it","🌐 Web: index.html passes the keyboard, alt-text and phone-width tests","🎨 Art: every text pair checked in the Contrast Lab, hex codes and type sizes written down","One full timed run of the 3-minute pitch completed","One habit you are keeping — said out loud"]}'></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="scene center" data-sec="8" data-title="Session 2 complete" data-src="Deck 34">
-      <div class="scene-inner">
-        <span class="stamp">SESSION 2 COMPLETE 🎉</span>
-        <div style="font-size:54px;margin:16px 0 4px" aria-hidden="true">🎤 🏗️ 🚀</div>
-        <h1 class="big">You built something real<br>and you <span class="hl">owned the room</span></h1>
-        <p class="sub">Your crew pitched it, timed it, and shipped a prototype anyone can open. That's Changemaker energy.</p>
-        <p class="mono" style="margin-top:20px;color:var(--muted);font-size:14px">See you in Session 3 🚀</p>
       </div>
     </section>
 
@@ -1597,39 +1807,6 @@ textarea.wf{min-height:56px}
 <canvas id="confetti"></canvas>
 
 <script>
-/* Level 3 runs two sections: one takes Web Development, one takes Digital Art.
-   Open ?track=web or ?track=art to go straight to that presentation, or use the
-   switcher in the top bar. Everything not belonging to the active track is removed
-   from the DOM before the engine boots, so scene counts, dots, the map, search and
-   progress all stay correct. */
-(function(){
-  var TRACKS={web:{e:'\uD83C\uDF10',n:'Web'},art:{e:'\uD83C\uDFA8',n:'Digital Art'}};
-  var q=null;
-  try{ q=new URLSearchParams(location.search).get('track'); }catch(e){}
-  var t=(q==='web'||q==='art')?q:null;
-  if(!t){ try{ t=localStorage.getItem('l3s2_track'); }catch(e){} }
-  if(t!=='web'&&t!=='art') t='web';
-  try{ localStorage.setItem('l3s2_track',t); }catch(e){}
-  document.documentElement.setAttribute('data-track',t);
-
-  var kill=document.querySelectorAll('[data-track]');
-  for(var i=0;i<kill.length;i++){ if(kill[i].getAttribute('data-track')!==t) kill[i].remove(); }
-
-  var b=document.getElementById('tTrack');
-  if(b){
-    b.querySelector('.tsw-e').textContent=TRACKS[t].e;
-    b.querySelector('.tsw-t').textContent=TRACKS[t].n;
-    b.setAttribute('aria-label','Currently showing the '+TRACKS[t].n+' presentation. Switch to the other one.');
-    b.addEventListener('click',function(){
-      var next=(t==='web')?'art':'web';
-      try{ localStorage.setItem('l3s2_track',next); }catch(e){}
-      location.search='?track='+next;
-    });
-  }
-  document.title=document.title+' \u00b7 '+TRACKS[t].n;
-})();
-</script>
-<script>
 /* ============================================================
    11. INITIALIZATION + ENGINE + COMPONENTS  (vanilla JS, IIFE)
    ============================================================ */
@@ -1646,22 +1823,21 @@ const store={get(k,d){try{const v=localStorage.getItem(k);return v==null?d:JSON.
 
 /* ---------- section metadata ---------- */
 const SECTIONS=[
- {key:'open',  label:'Welcome & Warm-Up',  emoji:'🎤', color:'#39415a'},
- {key:'pres',  label:'Presentation Skills',emoji:'🗣️', color:'#0F6E56'},
- {key:'hook',  label:'Hook It & AI',       emoji:'🎣', color:'#96590F'},
- {key:'time',  label:'Time Management',    emoji:'⏰', color:'#B02A2A'},
- {key:'web',   label:'Web Build',          emoji:'🌐', color:'#1D5B9E'},
- {key:'art',   label:'Digital Art',        emoji:'🎨', color:'#C0356A'},
- {key:'chal',  label:'Build & Pitch',      emoji:'🏗️', color:'#3C3489'},
- {key:'show',  label:'Showtime & Feedback',emoji:'👏', color:'#0C6C79'},
- {key:'quiz',  label:'Quiz Rounds',        emoji:'🧠', color:'#463A9C'},
- {key:'recap', label:'Recap & Close',      emoji:'🌟', color:'#39415a'}
+ {key:'open',  label:'Mission',             emoji:'🚀', color:'#39415a'},
+ {key:'hook',  label:'Discover the Hook',   emoji:'🎣', color:'#0F6E56'},
+ {key:'pres',  label:'Presentation Skills', emoji:'🗣️', color:'#96590F'},
+ {key:'time',  label:'Time Management',     emoji:'⏱️', color:'#B02A2A'},
+ {key:'tools', label:'Tools & Building',    emoji:'🧰', color:'#1D5B9E'},
+ {key:'mis',   label:'Choose Your Mission', emoji:'🎯', color:'#C0356A'},
+ {key:'labs',  label:'Support Labs',        emoji:'🔬', color:'#0C6C79'},
+ {key:'show',  label:'Rehearse & Present',  emoji:'🎤', color:'#3C3489'},
+ {key:'rev',   label:'Optional Review',     emoji:'🧠', color:'#463A9C'}
 ];
 
 /* ---------- engine state ---------- */
 const stage=$('#stage');
 let scenes=[], cur=0;
-const KEY_POS='l3s2_pos_v1', KEY_QUIZ='l3s2_quiz_v1';
+const KEY_POS='l3s2m_pos_v1', KEY_QUIZ='l3s2m_quiz_v1';
 
 function collectScenes(){ scenes=$$('.scene',stage); }
 
@@ -1713,7 +1889,7 @@ function pauseAnimations(){
    COMPONENT DISPATCHER — init any [data-act] once, on first show
    ============================================================ */
 const BUILDERS={};
-window.__WORK_KEY='l3s2_work_v1';
+window.__WORK_KEY='l3s2m_work_v1';
 
 /* ============================================================
    SHARED HOOK TOOLKIT — used by Level 2 S2 and Level 3 S2
@@ -2641,7 +2817,146 @@ BUILDERS.deliveryLab=function(mount,cfg){
   paint();
 };
 
-/* ---------- reused from L3 S1 ---------- */
+/* ============================================================
+   L3 S2 MASTER DECK — new builders
+   Time management, the tool shelf, and the mission split.
+   ============================================================ */
+
+/* ---------- TIME PLAN: "You have 30 minutes." ---------- */
+BUILDERS.timePlan=function(mount,cfg){
+  const T=[
+    {id:'idea', n:'Decide the idea',        sug:3,  w:'Short on purpose. If the team is still arguing about the idea at minute 10, the deadline is already lost.'},
+    {id:'hook', n:'Write the Hook',         sug:3,  w:'One sentence. It feels small, but it is the line that decides whether anyone listens to the other 29 minutes.'},
+    {id:'msg',  n:'Write the message',      sug:5,  w:'Problem, solution, benefits. Everything you build afterwards is just this, made visible.'},
+    {id:'vis',  n:'Find / create visuals',  sug:4,  w:'The step that eats the whole clock if you let it. Cap it before you start.'},
+    {id:'bld',  n:'Build the presentation', sug:8,  w:'The biggest single block — but still under a third of the time. Building is not the whole job.'},
+    {id:'reh',  n:'Rehearse',               sug:5,  w:'Out loud, not in your head. Silent reading is about twice as fast as speaking, so an unrehearsed talk always overruns.'},
+    {id:'fix',  n:'Fix problems',           sug:2,  w:'The step teams cut first and regret most. Rehearsing with no time to fix what you found is just worrying.'}
+  ];
+  const BUDGET=30;
+  const mins={}; T.forEach(t=>mins[t.id]=4);
+  mount.appendChild(el('p','instr','Your team has <b>30 minutes</b> to make a presentation and deliver it. <b>How do you split them?</b> There is no single right answer — but a deadline without a plan is a guess.'));
+  const hud=el('div','gamehud');
+  hud.innerHTML='<span class="taskpill">Planned <b class="tp-t">28</b>/'+BUDGET+' min</span><span class="taskpill">Left <b class="tp-l">2</b></span>';
+  mount.appendChild(hud);
+  const list=el('div','tp-list'); mount.appendChild(list);
+  const row=el('div','btnrow');
+  const chk=el('button','btn solid','✅ Check our plan'); chk.type='button';
+  const rev=el('button','btn','👀 Show one possible plan'); rev.type='button';
+  const rst=el('button','btn','↺ Reset'); rst.type='button';
+  row.appendChild(chk); row.appendChild(rev); row.appendChild(rst); mount.appendChild(row);
+  const fb=el('div','fb neutral'); fb.style.display='none'; mount.appendChild(fb);
+
+  function total(){ return T.reduce((a,t)=>a+mins[t.id],0); }
+  function draw(){
+    list.innerHTML='';
+    T.forEach(t=>{
+      const r=el('div','tp-row');
+      r.innerHTML='<span class="tp-n">'+t.n+'</span>';
+      const bar=el('div','tp-bar'); const fill=el('i');
+      fill.style.width=Math.round(mins[t.id]/12*100)+'%';
+      bar.appendChild(fill); r.appendChild(bar);
+      const m=el('div','tp-m');
+      const dn=el('button','btn mini','−'); dn.type='button';
+      const v=el('b',null,mins[t.id]+'m');
+      const up=el('button','btn mini','+'); up.type='button';
+      dn.addEventListener('click',()=>{ mins[t.id]=Math.max(0,mins[t.id]-1); draw(); blip(420); });
+      up.addEventListener('click',()=>{ mins[t.id]=Math.min(12,mins[t.id]+1); draw(); blip(620); });
+      m.appendChild(dn); m.appendChild(v); m.appendChild(up);
+      r.appendChild(m); list.appendChild(r);
+    });
+    const t=total();
+    hud.querySelector('.tp-t').textContent=t;
+    hud.querySelector('.tp-l').textContent=BUDGET-t;
+    hud.querySelectorAll('.taskpill')[0].classList.toggle('over',t>BUDGET);
+  }
+  chk.addEventListener('click',()=>{
+    const t=total(); const notes=[]; let ok=0;
+    if(t===BUDGET){ ok++; notes.push('✅ <b>Exactly 30 minutes planned.</b> Every minute has a job.'); }
+    else if(t>BUDGET) notes.push('❌ <b>You have planned '+t+' minutes — that is '+(t-BUDGET)+' more than you have.</b> Something has to come down before you start, not while the clock is running.');
+    else notes.push('❌ <b>Only '+t+' of 30 minutes planned.</b> The other '+(BUDGET-t)+' will not stay empty — they will get eaten by whichever task runs long. Give them to a task on purpose.');
+
+    if(mins.reh+mins.fix>=6){ ok++; notes.push('✅ <b>Rehearse + fix = '+(mins.reh+mins.fix)+' minutes.</b> You left time to test. Most teams do not.'); }
+    else notes.push('❌ <b>Rehearse + fix is only '+(mins.reh+mins.fix)+' minutes.</b> Never spend 100% of your time building. <b>PLAN → BUILD → CHECK → IMPROVE</b> — the last two are what stop you discovering the problem in front of the audience.');
+
+    if(mins.bld<=10){ ok++; notes.push('✅ <b>Building is capped at '+mins.bld+' minutes.</b> Good — it is the task that expands to fill whatever you give it.'); }
+    else notes.push('❌ <b>Building is taking '+mins.bld+' minutes.</b> It will still not feel finished. Cap it and spend the difference on rehearsing.');
+
+    if(mins.idea<=5 && mins.hook>0){ ok++; notes.push('✅ <b>The idea and the hook are decided early.</b> Everything downstream depends on them, so they cannot drift.'); }
+    else notes.push('❌ <b>Decide the idea fast and write the hook early.</b> Every later task depends on both — a late decision makes all the other estimates wrong.');
+
+    fb.style.display='block'; fb.className='fb '+(ok===4?'ok':ok>=2?'neutral':'bad');
+    fb.innerHTML='<h3 style="margin:0 0 8px">Plan check: '+ok+' / 4</h3>'+notes.map(n=>'<p style="margin:6px 0">'+n+'</p>').join('');
+    if(ok===4){ celebrate(); blip(900); } else blip(260);
+  });
+  rev.addEventListener('click',()=>{
+    fb.style.display='block'; fb.className='fb neutral';
+    fb.innerHTML='<h3 style="margin:0 0 8px">One possible plan — not the only one</h3>'
+      +T.map(t=>'<p style="margin:6px 0"><b>'+t.sug+' min · '+t.n+'</b> — '+t.w+'</p>').join('')
+      +'<div class="note info" style="margin-top:10px"><b>The point is not this plan.</b> The point is that your team decided the numbers <b>before</b> the clock started instead of finding out at minute 28.</div>';
+    blip(760);
+  });
+  rst.addEventListener('click',()=>{ T.forEach(t=>mins[t.id]=4); fb.style.display='none'; draw(); });
+  draw();
+};
+
+/* ---------- REHEARSAL TIMER: 2:00 or 3:00 ---------- */
+BUILDERS.dualTimer=function(mount,cfg,node){
+  const MARKS={
+    120:[{at:0,t:'Hook + problem',e:'🎣'},{at:30,t:'Solution',e:'💡'},{at:75,t:'Benefits',e:'⭐'},{at:100,t:'Call to action',e:'🏁'}],
+    180:[{at:0,t:'Hook + problem',e:'🎣'},{at:35,t:'Solution',e:'💡'},{at:80,t:'Demo / show it',e:'🖥️'},{at:130,t:'Benefits',e:'⭐'},{at:155,t:'Call to action',e:'🏁'}]
+  };
+  let total=120,left=120,iv=0,running=false;
+  mount.appendChild(el('p','instr','Pick your length, then run a full rehearsal. <b>Level 2 → 2:00 · Level 3 → 3:00.</b>'));
+  const pick=el('div','btnrow');
+  [[120,'⏱️ 2:00 — Level 2'],[180,'⏱️ 3:00 — Level 3']].forEach(([sec,lab])=>{
+    const b=el('button','btn',lab); b.type='button'; b.dataset.sec=sec;
+    if(sec===total) b.classList.add('sel');
+    b.addEventListener('click',()=>{
+      pick.querySelectorAll('.btn').forEach(x=>x.classList.remove('sel'));
+      b.classList.add('sel'); total=sec; reset(); blip(680);
+    });
+    pick.appendChild(b);
+  });
+  mount.appendChild(pick);
+  const ring=el('div','pt-ring'); ring.innerHTML='<b class="dt-n">120</b><span>seconds</span>'; mount.appendChild(ring);
+  const list=el('div','pt-list'); mount.appendChild(list);
+  const row=el('div','btnrow');
+  const go=el('button','btn solid','▶ Start'); go.type='button';
+  const rs=el('button','btn','↺ Reset'); rs.type='button';
+  row.appendChild(go); row.appendChild(rs); mount.appendChild(row);
+  function paint(){
+    ring.querySelector('.dt-n').textContent=Math.max(0,left);
+    const gone=total-left; const M=MARKS[total];
+    let act=0; M.forEach((m,k)=>{ if(gone>=m.at) act=k; });
+    [].forEach.call(list.children,(r,k)=>{
+      r.classList.toggle('on',k===act&&running); r.classList.toggle('past',k<act); });
+    ring.classList.toggle('warn',left<=15&&left>0);
+    ring.classList.toggle('over',left<=0);
+  }
+  function build(){
+    list.innerHTML='';
+    MARKS[total].forEach(m=>{ const r=el('div','pt-m'); r.innerHTML='<span>'+m.e+'</span>'+m.t; list.appendChild(r); });
+  }
+  function reset(){ clearInterval(iv); running=false; left=total; go.textContent='▶ Start'; build(); paint(); }
+  go.addEventListener('click',()=>{
+    if(running){ running=false; clearInterval(iv); go.textContent='▶ Resume'; paint(); return; }
+    running=true; go.textContent='⏸ Pause';
+    clearInterval(iv);
+    iv=setInterval(()=>{
+      if(!node.closest('.scene').classList.contains('active')) return;
+      left--;
+      if(left<=0){ left=0; clearInterval(iv); running=false; go.textContent='▶ Start'; blip(200); toast('⏰ Time — stop there.','warn'); }
+      else if(left===15) blip(520);
+      paint();
+    },1000);
+    paint();
+  });
+  rs.addEventListener('click',reset);
+  reset();
+};
+
+/* ---------- countdown (reused) ---------- */
 BUILDERS.pitchTimer=function(mount,cfg,node){
   const TOT=cfg&&cfg.seconds?cfg.seconds:60;
   const MARKS=(cfg&&cfg.marks)||[
